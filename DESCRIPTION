@@ -1,0 +1,12 @@
+Package: Kdirectional
+Type: Package
+Title: Analysis of anisotropy in point patterns using second order statistics
+Version: 1.0
+Date: 2015-06-06
+Author: Tuomas Rajala
+Maintainer: Tuomas Rajala <tuomas.rajala@iki.fi>
+Description: Tools for analysing linear transformations of 2D and 3D point patterns. 
+ Includes directed summary statistics, and scaling+rotation estimations using Fry points.
+License: GPL 
+Depends: Rcpp (>= 0.10.6), sphere
+LinkingTo: Rcpp
