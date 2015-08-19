@@ -46,3 +46,4 @@ fry_points <- function(x, double=FALSE, border=TRUE){
   }
   list(fry_r=data_r, fry_units=data_units)
 }
+

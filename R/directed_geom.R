@@ -14,7 +14,7 @@
 #' @details
 #' If pregraph is given, "to" is ignored. 
 #' 
-#' @value 
+#' @return 
 #' Neighbour index vectors as a list.
 #' @export
 
