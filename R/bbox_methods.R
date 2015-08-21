@@ -1,3 +1,12 @@
+#' compute the bounding box for coordinates
+#'
+#' @param x coordinate matrix
+#' @export
+bbox_make <- function(x) {
+  apply(as.matrix(x), 2, diff)
+}
+
+
 #' distance from points to bbox border
 #'
 #' @param x coordinate matrix

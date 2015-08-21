@@ -8,7 +8,11 @@ check_pp <- function(x){
     x <- list(x=coords(x))
     x$bbox <- apply(x$x, 2, range)
   }
-  if(is.null(x$bbox)) stop("x should be list(x=coordinates-matrix, bbox=bounding-box)")
+  if(!is(x,"list")){
+    if(is(x, "matrix")) x <- list(x=x, bbox = bbox_make(x))
+    else stop(paste("Can not parse x of type", is(x) )  )
+  }
+  else if(is.null(x$bbox)) stop("x should be list(x=coordinates-matrix, bbox=bounding-box)")
   x$x <- as.matrix(x$x)
   if(is.bbquad(x$bbox)){ # ok, we have 3d box 
   }

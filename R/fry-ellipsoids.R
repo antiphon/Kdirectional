@@ -12,7 +12,7 @@
 #' @param keep_data Keep the data for each ellipsoid, inside each ellipsoids? Helps with averaging.
 #' @param data The vectors to which fit ellipses. Default is missing, and we compute Fry-points.
 #'
-#' @import sphere
+#' @import sphere ellipsoid
 #' @export
 
 fry_ellipsoids <- function(x, nvec=1:5, r_adjust=1, nangles, eps=0, 
@@ -43,7 +43,13 @@ fry_ellipsoids <- function(x, nvec=1:5, r_adjust=1, nangles, eps=0,
   cat2("Fry points gathered, n=", nrow(data),"\n")
   #
   ##### The directions -grid
-  if(missing(nangles)) nangles <- ifelse(dim==3, 2, 20)
+  if(missing(nangles)) {
+    n <- nrow(x$x)
+    # use poisson approximation and requiremnt P(fry's in sector) ~= n(x)/const
+    nangles <- if(dim==2) round( n/6 )
+               else round( n * pi / 20 )
+    if(dim == 3) nnangles <- (1:5)[ which.min(abs(nangles- 20*4^(1:5)/2+2) )]
+  }
   if(dim==2){
     angles <- seq(0, 2*pi, length=nangles+1)[-1]
     delta <- diff(angles[1:2])/2
@@ -138,9 +144,20 @@ fry_ellipsoids <- function(x, nvec=1:5, r_adjust=1, nangles, eps=0,
 #' @exportMethod plot
 
 
-plot.fryellipsoids <- function(x, ellipsoids=TRUE, used_points=TRUE, sectors=NULL, xlim=NULL, ylim=NULL, ...) {
+plot.fryellipsoids <- function(x, ellipsoids=TRUE, used_points=TRUE, sectors=NULL, xlim=NULL, ylim=NULL, zoom = NULL, pch = 1, cex=0.8, ...) {
+  
+  
+  # zoom
+  if(is.null(xlim)) xlim <- range(x$fry[,1])
+  if(is.null(ylim)) ylim <- range(x$fry[,2])
+  if(!is.null(zoom)) {
+    xlim <- zoom * xlim
+    ylim <- zoom * ylim
+  }
+  
+
   if(x$dim==2){
-    plot(x$fry, asp=1, xlab="x", ylab="y", main="Fry points, estim points(x) and fitted ellipses", xlim=xlim, ylim=ylim)
+    plot(x$fry, asp=1, xlab="x", ylab="y", pch=pch, main="Fry points, estim points(x) and fitted ellipses", cex=cex, xlim=xlim, ylim=ylim)
     for(i in 1:length(x$ellipsoids)){
       if(used_points) points(x$grid_unit * x$jumps[i,], pch=20, col=i)
       if(ellipsoids) plot(x$ellipsoids[[i]], col=i, ...)
@@ -182,9 +199,10 @@ plot.fryellipsoids <- function(x, ellipsoids=TRUE, used_points=TRUE, sectors=NUL
 #' @export
 print.fryellipsoids <- function(x, ...) {
   cat("Ellipsoid fit to fry points.\n")
+  cat("Number of contours:", length(x$n), "\n")
+  cat("Directions:", nrow(x$grid_unit), "\n")
+  if(x$param$eps) cat("Direction smoothing:", x$param$eps, "\n")
 }
-
-
 
 
 

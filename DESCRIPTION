@@ -8,5 +8,5 @@ Maintainer: Tuomas Rajala <tuomas.rajala@iki.fi>
 Description: Tools for analysing linear transformations of 2D and 3D point patterns. 
  Includes directed summary statistics, and scaling+rotation estimations using Fry points.
 License: GPL 
-Depends: Rcpp (>= 0.10.6), sphere
+Depends: Rcpp (>= 0.10.6), sphere, ellipsoid
 LinkingTo: Rcpp

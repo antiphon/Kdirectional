@@ -1,12 +1,20 @@
 #' Directed K function
 #' 
-#' We use translation edge correction
+#' We use translation edge correction.
 #'
 #' @param x pp, list with $x~coordinates $bbox~bounding box
 #' @param u unit vector of direction
 #' @param epsilon Central angle for the directed cone (total angle is 2 epsilon)
 #' @param r radius vector at which to evaluate K
 #' @param pregraph A super graph for determining neighbourhoods
+#' 
+#' @details 
+#' 
+#' Compute the sector K function.
+#' 
+#' @return 
+#' Returns a dataframe.
+#' 
 #' @import Matrix
 #' @useDynLib Kdirectional
 #' @export
