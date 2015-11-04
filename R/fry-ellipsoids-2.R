@@ -1,5 +1,7 @@
 #' Fit second order intensity ellipses or ellipsoids
 #' 
+#' Difference to v1: Don't use the pseudo-Fry but true Fry.
+#' 
 #' @param x point pattern
 #' @param nvec which jumps to consider
 #' @param r_adjust consider only fry points with length r_adjust*max(window side) 
@@ -15,10 +17,13 @@
 #' @import sphere ellipsoid
 #' @export
 
-fry_ellipsoids <- function(x, nvec=1:5, r_adjust=1, nangles, eps=0, 
-                            cylindric=FALSE, double=FALSE, border=TRUE, origin=TRUE, verbose=FALSE,
-                            keep_data=TRUE, double2=FALSE,
-                            data, ...) {
+fry_ellipsoids2 <- function(x, nvec=1:5, r_adjust=1, nangles, eps=0, 
+                           cylindric=FALSE, double=FALSE, 
+                           border=TRUE, 
+                           origin=TRUE, 
+                           verbose=FALSE,
+                           keep_data=FALSE,
+                           data, ...) {
   x <- check_pp(x)
   dim <- ncol(x$x)
   #
@@ -47,7 +52,7 @@ fry_ellipsoids <- function(x, nvec=1:5, r_adjust=1, nangles, eps=0,
     n <- nrow(x$x)
     # use poisson approximation and requiremnt P(fry's in sector) ~= n(x)/const
     nangles <- if(dim==2) round( n/6 )
-               else round( n * pi / 20 )
+    else round( n * pi / 20 )
     if(dim == 3) nangles <- (1:5)[ which.min(abs(nangles- 20*4^(1:5)/2+2) )]
   }
   if(dim==2){
@@ -61,7 +66,7 @@ fry_ellipsoids <- function(x, nvec=1:5, r_adjust=1, nangles, eps=0,
     nng <-  apply(as.matrix(dist(directions)), 1, function(v) sort(v)[2])
     mdi <- mean(nng) # mean distance between directions in the grid
     # angle between two unit directions with distance mdi
-    delta <- 2*asin(mdi/(sqrt(3)) )
+    delta <- asin(mdi) * 0.57 # >.5 factor to get the full coverage, .5 too small. 1/sqrt(3) should do it
   }
   if(cylindric){
     # go for the width of the cylinder grown up to nearest neighbour of origin
@@ -82,8 +87,17 @@ fry_ellipsoids <- function(x, nvec=1:5, r_adjust=1, nangles, eps=0,
                       s <- data_units%*%u
                       a <- acos(s)
                       a <- pmin(pi-a, a)
-                      if(double & !double2) a < delta else a< delta & s>0
+                      a< delta & s>=0
                     })
+    if(double) {
+      inside_antipode <- apply(-grid_unit, 1, 
+                      function(u) {
+                        s <- data_units%*%u
+                        a <- acos(s)
+                        a <- pmin(pi-a, a)
+                        a< delta & s>=0
+                      })
+    }
   }
   else { # cylindrical
     inside <- apply(grid_unit, 1, 
@@ -91,12 +105,14 @@ fry_ellipsoids <- function(x, nvec=1:5, r_adjust=1, nangles, eps=0,
                       s <- c(data%*%u)
                       p <- data - t(sapply(s, "*", u))
                       d <- sqrt(rowSums(p^2))
-                      if(double) d < delta & s >= 0
-                      else d < delta
+                      d < delta & s >= 0
                     })
   }
-    ## get the ranges of each fry point, sorted
-  Kd     <- apply(inside, 2, function(i) cbind(r=sort(data_r[i])) )
+  ## get the ranges of each fry point, sorted
+  Kd     <- apply(inside, 2, function(i) cbind(idx=which(i)[order(data_r[i])] ) )
+  if(double){
+    Kd_antipode  <- apply(inside_antipode, 2, function(i) cbind(idx=which(i)[order(data_r[i])] ) )
+  }
   #
   ns <- sapply(Kd, length) # counts per sector
   #
@@ -106,119 +122,74 @@ fry_ellipsoids <- function(x, nvec=1:5, r_adjust=1, nangles, eps=0,
     cat2(txt)
   }
   
-  ## directional isocurves, the ranges jumps in each direction
-  iso_ranges <- sapply(Kd, function(k) {
-      ok <- nvec[nvec <= length(k)]
-      e <- k[ok, 1]  # need nvec out of this
-      n <- length(e)
-      if(n < length(nvec)) e <- c(e, rep(NA, length(nvec)-n))
-      e
-    } )
+#   ## directional isocurves, the ranges jumps in each direction
+#   iso_ranges <- sapply(Kd, function(k) {
+#     ok <- nvec[nvec <= length(k)]
+#     e <- k[ok, 1]  # need nvec out of this
+#     n <- length(e)
+#     if(n < length(nvec)) e <- c(e, rep(NA, length(nvec)-n))
+#     e
+#   } )
+#  iso_ranges <- rbind(iso_ranges)
+  # compile the idx table
+  
+  iso_idx <- sapply(Kd, function(k) {
+    ok <- nvec[ nvec <= length(k)]
+    ko <- k[ok,1]
+    n <- length(ko)
+    if(n < length(nvec)) ko <- c(ko, rep(NA, length(nvec)-n))
+    ko
+  } ) 
+  iso_idx <- rbind(iso_idx)
+  
+  if(double){
+    iso_idxa <- sapply(Kd_antipode, function(k) {
+      ok <- nvec[ nvec <= length(k)]
+      ko <- k[ok,1]
+      n <- length(ko)
+      if(n < length(nvec)) ko <- c(ko, rep(NA, length(nvec)-n))
+      ko
+    } ) 
+    iso_idxa <- rbind(iso_idxa)
+  }
+  
   # Fit ellipses:
-  iso_ranges <- rbind(iso_ranges)
   
   # check counts
-  counts <- apply(iso_ranges, 2, function(v) sum(!is.na(v)) )
+  counts <- apply(iso_idx, 2, function(v) sum(!is.na(v)) )
   cat2("Range vectors per direction jumps computed, count varies ", min(counts), "-",max(counts),"\n")
-  perc <- apply(iso_ranges, 1, function(v)sum(!is.na(v)))
+  perc <- apply(iso_idx, 1, function(v)sum(!is.na(v)))
   cat2("Data points per contour varies ", min(perc), "-",max(perc),"\n")
   
   good_k <- perc > (3+dim)
   if(any(perc< (3+dim))) cat2(sum(!good_k),"contours not computed, not enough data.\n")
   
-  els <- apply(iso_ranges[good_k, ], 1, function(r){
-    p <- r * grid_unit
-    p <- p[!is.na(r),]
-    if(double2) p <- rbind(p, -p)
+#   els <- apply(iso_idx[good_k, ], 1, function(idxs){
+#     p <- data[idxs,]
+#     p <- p[!is.na(idxs),]
+#     if(double) p <- rbind(p, -p)
+#     el <- ellipsoid_OLS(p, origin=origin) # in 'ellipsoid' package 
+#     if(keep_data) el$data <- p
+#     el
+#   } )
+  
+  els <- lapply(which(good_k), function(k) {
+    p <- data[iso_idx[k,],]
+    if(double) p <- rbind(p, data[iso_idxa[k,],])
     el <- ellipsoid_OLS(p, origin=origin) # in 'ellipsoid' package 
     if(keep_data) el$data <- p
     el
-  } )
+  })
   nvec <- nvec[good_k]
   # done
   res <- list(ellipsoids=els, dim=dim, param=list(cylindric=cylindric, delta=delta, eps=eps),
-              jumps=iso_ranges, 
+              jump_idx=iso_idx, 
               fry=data,
-              n=nvec, grid_unit=grid_unit, double2= double2, double=double)
+              n=nvec, grid_unit=grid_unit, v2=TRUE)
   #
   class(res) <- "fryellipsoids"
   res
 }
-
-#############################################################
-#' plot method for fryellipsoids
-#' 
-#' @exportMethod plot
-#' @export
-
-plot.fryellipsoids <- function(x, ellipsoids=TRUE, used_points=TRUE, sectors=NULL, xlim=NULL, ylim=NULL, zoom = NULL, pch = 1, cex=0.8, ...) {
-  
-  
-  # zoom
-  if(is.null(xlim)) xlim <- range(x$fry[,1])
-  if(is.null(ylim)) ylim <- range(x$fry[,2])
-  if(!is.null(zoom)) {
-    xlim <- zoom * xlim
-    ylim <- zoom * ylim
-  }
-  
-
-  if(x$dim==2){
-    plot(x$fry, asp=1, xlab="x", ylab="y", pch=pch, main="Fry points, estim points(x) and fitted ellipses", cex=cex, xlim=xlim, ylim=ylim)
-    for(i in 1:length(x$ellipsoids)){
-      if(used_points){
-        if(is.null(x$v2)){
-          points(x$grid_unit * x$jumps[i,], pch=20, col=i)
-        }
-        else if(!is.null(x$ellipsoids[[i]]$data)) {
-          points(x$ellipsoids[[i]]$data, pch=20, col=i)
-        }
-      }
-      if(ellipsoids) plot(x$ellipsoids[[i]], col=i, ...)
-    }
-    abline(h=0, col="gray50")
-    abline(v=0, col="gray50")
-    
-    # 
-    if(any(sectors)){
-      delta <- x$param$delta
-      r <- max(x$fry)
-      for(i in sectors){
-      u <- x$grid_unit[i,]
-      if(x$param$cylindric){
-        ut <- u[2:1]*c(-1,1)
-        uv <- sapply(seq(0, r, length=2), "*", u )
-        lines(rbind(delta*ut, -delta*ut))
-        lines(t(delta*ut+uv))
-        lines(t(-delta*ut+uv))  
-      }
-      else{
-        m <- cbind(c(cos(delta), sin(delta)),c(-sin(delta), cos(delta)))
-        u1 <- c(m%*%u)
-        u2 <- c(solve(m)%*%u)
-        lines(rbind(c(0,0), u1))
-        lines(rbind(c(0,0), u2))
-      }
-      }
-    }
-    
-  }
-  else warning("Plot not implemented in 3d")
-}
-
-#############################################################
-#' Print method for fryellipsoids
-#' 
-#' @exportMethod print
-#' @export
-print.fryellipsoids <- function(x, ...) {
-  cat("Ellipsoid fit to fry points.\n")
-  cat("Number of contours:", length(x$n), "\n")
-  cat("Directions:", nrow(x$grid_unit), "\n")
-  if(x$param$eps) cat("Direction smoothing:", x$param$eps, "\n")
-}
-
-
 
 
 

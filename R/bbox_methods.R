@@ -3,7 +3,7 @@
 #' @param x coordinate matrix
 #' @export
 bbox_make <- function(x) {
-  apply(as.matrix(x), 2, diff)
+  apply(as.matrix(x), 2, range)
 }
 
 
