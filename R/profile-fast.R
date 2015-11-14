@@ -1,7 +1,15 @@
 #' Anisotropy profile for given diagonal transformations
 #' 
-#' @param x point pattern, list(x=coords, bbox=bounding-box)
+#' Compares the directed sector-K functions along main axes.
+#' 
+#' @param x point pattern
 #' @param grid p x dim matrix giving the diagonals of the candidate transformations
+#' @param r vector of range values to sum over ('integration nodes')
+#' @param verb verbose?
+#' @param power Power of the differences, absolute value for power=1.
+#' @param eps Sector angle
+#' @param border Border correction? Should use this unless the data is large.
+#' @param antipodal Use antipodally symmetric estimation of sector-K?
 #' 
 #' @details
 #' For each v in grid, transform x -> T(v)x and summarize anisotropy by
@@ -9,13 +17,18 @@
 #' 
 #' The transformations T(v) are given by diagonal vector v, rows of parameter \code{grid}.
 #' 
-#' We assume that no rotation is present, or that rotation is already corrected for. 
+#' We assume that no rotation is present, or that rotation is already corrected for, so that
+#' squared difference sums of the directed sector-K functions along main axes should indicate
+#' the optimal v.
 #' 
 #' @export
 #' 
 
-anisotropy_profile_fast <- function(x, grid, r, verb=FALSE, eps=pi/4, border=TRUE, antipodal=TRUE, ...) {
+anisotropy_profile_fast <- function(x, grid, r, verb=FALSE, eps=pi/4, border=TRUE, antipodal=TRUE, power=2, ...) {
   x <- check_pp(x)
+  
+  if(!is.bbquad(x$bbox)) x$bbox <- bbox2bbquad(x$bbox)
+  
   dim <- ncol(x$x)
   if(is.null(ncol(grid))) stop("grid should be matrix.")
   if(dim != ncol(grid)) stop(paste("grid should a p x", dim, " matrix."))
@@ -24,11 +37,14 @@ anisotropy_profile_fast <- function(x, grid, r, verb=FALSE, eps=pi/4, border=TRU
   
   cat2 <- if(verb) cat else function(...)NULL
 
-  fry <- fry_points(x, border = border)
-  Fxyz <- fry$fry_r * fry$fry_units
+  # if no active border correction
+  if(!border){
+    fry <- fry_points(x, border = TRUE)
+    Fxyz <- fry$fry_r * fry$fry_units
+  }
   
-  
-  #' inverse transform the fry points
+  #' Inverse transform the fry points, need to recompute 
+  #' since border distances change.
   Theta <- function(ce) {
     A <- diag(1/ce)
     x0 <- x$x%*%t(A)
@@ -46,7 +62,7 @@ anisotropy_profile_fast <- function(x, grid, r, verb=FALSE, eps=pi/4, border=TRU
   vals <- list()
   
   vol <- bbox_volume(x$bbox) 
-  scaling <- 1/(nrow(x$x)/vol)
+  scaling <- 1/(nrow(x$x)/vol) # for scaling the K function
   
   for(ce in gridl) {
     # deform fry points
@@ -58,7 +74,7 @@ anisotropy_profile_fast <- function(x, grid, r, verb=FALSE, eps=pi/4, border=TRU
     }
     else{
       # compute anisotropy using fry points:
-      val <- anisotropy_abs_fast(Ff, r, eps, antipodal)
+      val <- anisotropy_abs_fast(Ff, r, eps, antipodal, power)
       vals <- append(vals, list(val))
       # gather
       profile <- c(profile, val$stat * scaling)
@@ -66,11 +82,73 @@ anisotropy_profile_fast <- function(x, grid, r, verb=FALSE, eps=pi/4, border=TRU
     cat2(k<-k+1, "/", length(gridl), "   \r")
   }
   cat2("\nDone.")
-  profile <- data.frame(grid=grid, anisotropy=profile)
-  
-  list(profile=profile, raw=vals)
+  #profile <- data.frame(grid=grid, anisotropy=profile)
+  out <- list(grid=grid, profile=profile, 
+              raw=vals, r=r, power=power,
+              eps=eps, border=border, antipodal=antipodal)
+  class(out) <- "anisotropyprofile"
+  out
 }
 
+#' print for anisotropy profile
+#' 
+#' @export
+print.anisotropyprofile <- function(x, ...) {
+  summary(x,...)
+}
+
+#' Summary for anisotropy profile
+#' 
+#' @export
+summary.anisotropyprofile <- function(x, ...) {
+  y <- x
+  tab <- x$profile
+  i <- which.min(tab)
+  x$estimate <- diag(x$grid[i,])
+  class(x) <- "anisotropyprofile.summary"
+  x
+}
+
+#' Print method for "anisotropyprofile" summary
+#' 
+#' @export
+print.anisotropyprofile.summary <- function(x, ...){
+  cat("Anisotropy profile\n")
+  cat("Range of integration: [", min(x$r), ",", max(x$r), "]\n")
+  cat("Difference power:", x$power, "\n")
+  cat("Optimal transformation: diag(", diag(x$estimate), ")" )
+}
+
+#' Plot method for "anisotropyprofile"
+#' 
+#' @export
+plot.anisotropyprofile <- function(x, ..., 
+                                   xlab = "first grid component",
+                                   ylab = "anisotropy profile",
+                                   scale = TRUE) {
+  d <- ncol(x$grid)
+  if(scale) x$profile <- (x$profile-min(x$profile))/diff(range(x$profile))
+  if(d == 2) {
+    plot(x$grid[,1], x$profile, xlab=xlab, ylab=ylab , ...)
+  }
+  else{ # assume 3D
+    stop("Plot not implemented for 3D")
+  }
+}  
+
+#' Lines method for "anisotropyprofile"
+#' 
+#' @export
+lines.anisotropyprofile <- function(x, ..., scale=TRUE) {
+  d <- ncol(x$grid)
+  if(scale) x$profile <- (x$profile-min(x$profile))/diff(range(x$profile))
+  if(d == 2) {
+    lines(x$grid[,1], x$profile, ...)
+  }
+  else{ # assume 3D
+    stop("Lines not implemented for 3D")
+  }
+}  
 
 
 #####################################################################
@@ -81,8 +159,7 @@ anisotropy_profile_fast <- function(x, grid, r, verb=FALSE, eps=pi/4, border=TRU
 #' @param eps width of cone angle
 #' @param antipodal If TRUE, antipodes are equated
 #'
-#' @export
-anisotropy_abs_fast <- function(f, r, eps, antipodal){
+anisotropy_abs_fast <- function(f, r, eps, antipodal, power){
   Fr <- sqrt(rowSums(f^2))
   # drop too longs
   o <- Fr < max(r)
@@ -96,6 +173,7 @@ anisotropy_abs_fast <- function(f, r, eps, antipodal){
   ang <- acos(Fu %*% diag(1,dim,dim))
   if(antipodal) ang <- pmin(ang, pi-ang)
   inside <- ang < eps
+  metr <- if(power==1) abs else function(x) x^power
   if(is.null(nrow(inside))){
     warning("No data to bin.")
     counts <- matrix(rep(0, dim*length(r)), ncol=dim)
@@ -105,17 +183,13 @@ anisotropy_abs_fast <- function(f, r, eps, antipodal){
   }
   
   if(dim==2){
-    stat <- sum(abs(counts[,1]-counts[,2]))
+    stat <- sum(metr(counts[,1]-counts[,2]))
   }
   else{
-    stat <- sum( abs(counts[,1]-counts[,2])+abs(counts[,1]-counts[,3])+abs(counts[,2]-counts[,3])     )
+    stat <- sum( metr(counts[,1]-counts[,2]) + metr(counts[,1]-counts[,3]) + metr(counts[,2]-counts[,3])     )
   }
   # add dr
   stat <- stat * mean(diff(r))
-  
-  list(statistic=stat, raw=counts)
+  out <- list(statistic=stat, raw=counts)
+  out
 }
-
-
-
-

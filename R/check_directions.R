@@ -37,6 +37,13 @@ check_directions <- function(theta, epsilon, unit, dim=2, antipode=FALSE, n_dir=
   list(theta=theta, unit=unit, epsilon=epsilon, grid=grid)
 }
 
+#' Make a direction grid
+#' 
+#' @export
+direction.grid <- function(n_dir=2, d=2, max=pi/2){
+  if(d==3) sphere.grid(n_dir)
+  else theta_2_unit(list(seq(0, max, length=n_dir)))
+}
 
 #' theta (angle) to unit vector
 #' 

@@ -6,6 +6,16 @@ bbox_make <- function(x) {
   apply(as.matrix(x), 2, range)
 }
 
+#' Turn spatstat window object to bbox
+#' 
+#' @export
+owin_to_bbox <- function(x) {
+  if(x$type == "rectangle") cbind(x$xrange, x$yrange)
+  else if(x$type == "polygonal")
+    with(x$bdry[[1]], poly_to_bbquad(x,y)) # just one pieace of the window supported
+  else stop("Unable to interpret the window.")
+}
+
 
 #' distance from points to bbox border
 #'

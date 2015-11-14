@@ -1,18 +1,19 @@
 #' Plot a sector estimate
 #' 
-#' @param x result object from one of the sector summaries
-#' @param res smoothness of arc, higher smoother
+#' @param x result object from one of the directed summaries
+#' @param res smoothness of arc
 #' @param col function to derive the colors, see values2colors
 #' @param zlim passed to values2colors
 #' @param overlapfactor <1 leaves a bit of space between sectors
 #' @param ... passed to plot, mostly the "main" parameter
+#' 
 #' @import plotrix
 #' @export
 
 sectorplot <- function(x, res=4, col=rainbow, zlim, overlapfactor=0.95, ...){
   #' Ok: 
   ok <- c("pcf_sector", "sector", "Gsector")
-  if(is.null(intersect(ok, is(x))))stop("Not supported.")
+  if(!length(intersect(ok, is(x))))stop("Input type not supported by sectorplot.")
   if(x$dim!=2)stop("Only for 2d.")
   #' Get the sectors
   ang <- x$theta[[1]]

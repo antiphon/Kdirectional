@@ -2,10 +2,13 @@
 #' 
 #' @param x Matrix of coordinates, n rows and d columns
 #' 
+#' @details 
+#' 
 #' If 2d, returns the angle in [-pi,pi]. In 3d also the angle from xy-plane in
 #' [0,pi]
 #' 
-#' The values in 2d are (azimuth, distance)
+#' @return 
+#' The values in 2d are (azimuth, distance).
 #' The values in 3d are physical coordinate system (azimuth, inclination, distance)
 #' 
 #' @export
@@ -40,7 +43,9 @@ angles.bin <- function(x, k=25){
 }
 
 
-#' plot a rose of directions
+#' Plot a rose of directions for a set of angles
+#' 
+#' Useful for checking e.g. nnangles- or fry_points- outputs.
 #' 
 #' @param angles observed angles , -pi to pi
 #' @param binned binning of angles. this or angles needed.
@@ -49,6 +54,8 @@ angles.bin <- function(x, k=25){
 #' @param ... passed to plot (e.g. main)
 #' @param nums plot the values
 #' @param ci Plot approximate pointwise 95\% confidence interval
+#' 
+#' 
 #' 
 #' @export
 
@@ -93,7 +100,7 @@ angles.flower <- function(angles, binned, span=0, k=25, nums=FALSE, ci=FALSE, ..
     rl <- p - 1.96*s
     ru <- p + 1.96*s
     symbols(c(0,0,0),c(0,0,0), circles=c(rl, p, ru), fg=c(4,3,4), add=T, inches=F)  }
-  rs
+  invisible(rs)
 }
 
 

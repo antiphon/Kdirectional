@@ -3,7 +3,12 @@
 #' Pairwise difference vectors of x
 #' 
 #' @param border Should border effects be cancelled by minus sampling, if TRUE, "double" ignored.
-#' @param double Should we use both directions of a pair
+#' @param double Should we return both directions of a pair
+#' 
+#' @return 
+#' 
+#' Returns the lengths and direction unit vectors.
+#' 
 #' @export
 fry_points <- function(x, double=FALSE, border=TRUE){
   x <- check_pp(x)

@@ -11,14 +11,20 @@
 #' @param origin Constrain the ellipses' centers to origo.
 #' @param keep_data Keep the data for each ellipsoid, inside each ellipsoids? Helps with averaging.
 #' @param data The vectors to which fit ellipses. Default is missing, and we compute Fry-points.
-#'
+#' @param ALS (false) Use ALS to refine OLS fits.
+#' 
+#' @details 
+#' 
+#' First we compute the Fry-points, then we look at the Fry-points in many directions from 
+#' origin and find the kth point in each, then we fit ellipsoids to the kth-points.
+#' 
 #' @import sphere ellipsoid
 #' @export
 
 fry_ellipsoids <- function(x, nvec=1:5, r_adjust=1, nangles, eps=0, 
                             cylindric=FALSE, double=FALSE, border=TRUE, origin=TRUE, verbose=FALSE,
                             keep_data=TRUE, double2=FALSE,
-                            data, ...) {
+                            data, ALS=FALSE, ...) {
   x <- check_pp(x)
   dim <- ncol(x$x)
   #
@@ -100,13 +106,15 @@ fry_ellipsoids <- function(x, nvec=1:5, r_adjust=1, nangles, eps=0,
   #
   ns <- sapply(Kd, length) # counts per sector
   #
-  cat2("Sector inclusions resolved, range of point count varies ", min(ns), "-", max(ns),"\n")
-  if(max(nvec) > min(ns)) {
-    txt <- paste("Requested neighbour count not available for all directions (min is", min(ns),")\n")
-    cat2(txt)
-  }
-  
-  ## directional isocurves, the ranges jumps in each direction
+  cat2("Sector inclusions resolved, range of point count varies ", 
+       min(ns), "-", max(ns),"\n")
+  # warnings in case data too sparse
+  if(max(nvec) > min(ns)) 
+    cat2("Requested neighbour count not available for all directions (min is", 
+                 min(ns),")\n")
+  #
+  #
+  ## Compute directional isocurves, the ranges of jumps in each direction
   iso_ranges <- sapply(Kd, function(k) {
       ok <- nvec[nvec <= length(k)]
       e <- k[ok, 1]  # need nvec out of this
@@ -114,26 +122,33 @@ fry_ellipsoids <- function(x, nvec=1:5, r_adjust=1, nangles, eps=0,
       if(n < length(nvec)) e <- c(e, rep(NA, length(nvec)-n))
       e
     } )
-  # Fit ellipses:
+  #
+  #
+  # Fit the ellipses:
   iso_ranges <- rbind(iso_ranges)
-  
   # check counts
   counts <- apply(iso_ranges, 2, function(v) sum(!is.na(v)) )
-  cat2("Range vectors per direction jumps computed, count varies ", min(counts), "-",max(counts),"\n")
+  cat2("Range vectors per direction jumps computed, count varies ", 
+       min(counts), "-",max(counts),"\n")
   perc <- apply(iso_ranges, 1, function(v)sum(!is.na(v)))
   cat2("Data points per contour varies ", min(perc), "-",max(perc),"\n")
-  
+  #
   good_k <- perc > (3+dim)
-  if(any(perc< (3+dim))) cat2(sum(!good_k),"contours not computed, not enough data.\n")
-  
+  if(any(perc< (3+dim))) 
+    cat2(sum(!good_k),"contours not computed, not enough data.\n")
+  #
+  # fitting of ellipses:
   els <- apply(iso_ranges[good_k, ], 1, function(r){
     p <- r * grid_unit
     p <- p[!is.na(r),]
-    if(double2) p <- rbind(p, -p)
+    if(double2) p <- rbind(p, -p) # in case add antipodes
     el <- ellipsoid_OLS(p, origin=origin) # in 'ellipsoid' package 
+    # refine with ALS?
+    if(ALS) el <- ellipsoid_ALS(p, s2 = seq(el$ols_fit$s2*.1, el$ols_fit$s2, length=10))
     if(keep_data) el$data <- p
     el
   } )
+  #
   nvec <- nvec[good_k]
   # done
   res <- list(ellipsoids=els, dim=dim, param=list(cylindric=cylindric, delta=delta, eps=eps),
@@ -164,7 +179,9 @@ plot.fryellipsoids <- function(x, ellipsoids=TRUE, used_points=TRUE, sectors=NUL
   
 
   if(x$dim==2){
-    plot(x$fry, asp=1, xlab="x", ylab="y", pch=pch, main="Fry points, estim points(x) and fitted ellipses", cex=cex, xlim=xlim, ylim=ylim)
+    plot(x$fry, asp=1, xlab="x", ylab="y", pch=pch, 
+         main=paste0("Fry points", ifelse(used_points, ", estim. points(x) "," "), "and fitted ellipses"), 
+         cex=cex, xlim=xlim, ylim=ylim)
     for(i in 1:length(x$ellipsoids)){
       if(used_points){
         if(is.null(x$v2)){

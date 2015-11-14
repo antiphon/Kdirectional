@@ -7,6 +7,19 @@ bbox2bbquad  <- function(bb){
 }
 
 
+#' bbquad from 2d polygon
+#' 
+#' @import ellipsoid
+#' @export
+poly_to_bbquad <- function(x, y) {
+  quads <- rbind(1:length(x))
+  bbq<-list(vertices=cbind(x,y), idx=quads)
+  # store the volume
+  bbq$volume <- area_of_2d_polygon(bbq$vertices)
+  class(bbq) <- "bbquad"
+  bbq
+}
+
 #' Regular bounding box as bounding box of quadrilaterals
 #' 
 #' @export
