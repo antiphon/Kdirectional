@@ -42,7 +42,7 @@ pcf_sector <- function(x, r, theta, unit, epsilon, h, stoyan=0.15, correction="t
   dirgrid <- dirs$grid$unit
   v <- NULL
   for(i in 1:nrow(dirgrid)){
-  v <- cbind(v, c_sector_pcf(xc, dirgrid[i,], epsilon, r, h, bbox, correction_i))
+    v <- cbind(v, c_sector_pcf(xc, dirgrid[i,], epsilon, r, h, bbox, correction_i))
   }
   sector <- if(dim==2)  2*epsilon * r else  2*pi * r^2 * (1-cos(epsilon))
   g <- v/(lambda^2 * sector)

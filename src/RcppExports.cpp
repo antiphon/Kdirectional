@@ -5,6 +5,21 @@
 
 using namespace Rcpp;
 
+// c_angles_in_a_cone
+List c_angles_in_a_cone(NumericMatrix x, NumericVector unit, double theta, IntegerVector from, IntegerVector to);
+RcppExport SEXP Kdirectional_c_angles_in_a_cone(SEXP xSEXP, SEXP unitSEXP, SEXP thetaSEXP, SEXP fromSEXP, SEXP toSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject __result;
+    Rcpp::RNGScope __rngScope;
+    Rcpp::traits::input_parameter< NumericMatrix >::type x(xSEXP);
+    Rcpp::traits::input_parameter< NumericVector >::type unit(unitSEXP);
+    Rcpp::traits::input_parameter< double >::type theta(thetaSEXP);
+    Rcpp::traits::input_parameter< IntegerVector >::type from(fromSEXP);
+    Rcpp::traits::input_parameter< IntegerVector >::type to(toSEXP);
+    __result = Rcpp::wrap(c_angles_in_a_cone(x, unit, theta, from, to));
+    return __result;
+END_RCPP
+}
 // c_angles
 List c_angles(NumericMatrix x, IntegerVector from, IntegerVector to);
 RcppExport SEXP Kdirectional_c_angles(SEXP xSEXP, SEXP fromSEXP, SEXP toSEXP) {
@@ -18,18 +33,18 @@ BEGIN_RCPP
     return __result;
 END_RCPP
 }
-// c_angles_in_a_cone
-List c_angles_in_a_cone(NumericMatrix x, NumericVector unit, double theta, IntegerVector from, IntegerVector to);
-RcppExport SEXP Kdirectional_c_angles_in_a_cone(SEXP xSEXP, SEXP unitSEXP, SEXP thetaSEXP, SEXP fromSEXP, SEXP toSEXP) {
+// c_anisotropic_unit_pcf
+List c_anisotropic_unit_pcf(NumericMatrix x, NumericMatrix r, NumericVector h, NumericMatrix bbox, int correction);
+RcppExport SEXP Kdirectional_c_anisotropic_unit_pcf(SEXP xSEXP, SEXP rSEXP, SEXP hSEXP, SEXP bboxSEXP, SEXP correctionSEXP) {
 BEGIN_RCPP
     Rcpp::RObject __result;
     Rcpp::RNGScope __rngScope;
     Rcpp::traits::input_parameter< NumericMatrix >::type x(xSEXP);
-    Rcpp::traits::input_parameter< NumericVector >::type unit(unitSEXP);
-    Rcpp::traits::input_parameter< double >::type theta(thetaSEXP);
-    Rcpp::traits::input_parameter< IntegerVector >::type from(fromSEXP);
-    Rcpp::traits::input_parameter< IntegerVector >::type to(toSEXP);
-    __result = Rcpp::wrap(c_angles_in_a_cone(x, unit, theta, from, to));
+    Rcpp::traits::input_parameter< NumericMatrix >::type r(rSEXP);
+    Rcpp::traits::input_parameter< NumericVector >::type h(hSEXP);
+    Rcpp::traits::input_parameter< NumericMatrix >::type bbox(bboxSEXP);
+    Rcpp::traits::input_parameter< int >::type correction(correctionSEXP);
+    __result = Rcpp::wrap(c_anisotropic_unit_pcf(x, r, h, bbox, correction));
     return __result;
 END_RCPP
 }
@@ -49,21 +64,6 @@ BEGIN_RCPP
     return __result;
 END_RCPP
 }
-// c_anisotropic_unit_pcf
-List c_anisotropic_unit_pcf(NumericMatrix x, NumericMatrix r, NumericVector h, NumericMatrix bbox, int correction);
-RcppExport SEXP Kdirectional_c_anisotropic_unit_pcf(SEXP xSEXP, SEXP rSEXP, SEXP hSEXP, SEXP bboxSEXP, SEXP correctionSEXP) {
-BEGIN_RCPP
-    Rcpp::RObject __result;
-    Rcpp::RNGScope __rngScope;
-    Rcpp::traits::input_parameter< NumericMatrix >::type x(xSEXP);
-    Rcpp::traits::input_parameter< NumericMatrix >::type r(rSEXP);
-    Rcpp::traits::input_parameter< NumericVector >::type h(hSEXP);
-    Rcpp::traits::input_parameter< NumericMatrix >::type bbox(bboxSEXP);
-    Rcpp::traits::input_parameter< int >::type correction(correctionSEXP);
-    __result = Rcpp::wrap(c_anisotropic_unit_pcf(x, r, h, bbox, correction));
-    return __result;
-END_RCPP
-}
 // c_cutgeom
 List c_cutgeom(NumericMatrix x, List nlist, double r);
 RcppExport SEXP Kdirectional_c_cutgeom(SEXP xSEXP, SEXP nlistSEXP, SEXP rSEXP) {
@@ -74,22 +74,6 @@ BEGIN_RCPP
     Rcpp::traits::input_parameter< List >::type nlist(nlistSEXP);
     Rcpp::traits::input_parameter< double >::type r(rSEXP);
     __result = Rcpp::wrap(c_cutgeom(x, nlist, r));
-    return __result;
-END_RCPP
-}
-// c_directed_geom
-List c_directed_geom(NumericMatrix x, NumericVector u, double theta, double r, IntegerVector from, IntegerVector to);
-RcppExport SEXP Kdirectional_c_directed_geom(SEXP xSEXP, SEXP uSEXP, SEXP thetaSEXP, SEXP rSEXP, SEXP fromSEXP, SEXP toSEXP) {
-BEGIN_RCPP
-    Rcpp::RObject __result;
-    Rcpp::RNGScope __rngScope;
-    Rcpp::traits::input_parameter< NumericMatrix >::type x(xSEXP);
-    Rcpp::traits::input_parameter< NumericVector >::type u(uSEXP);
-    Rcpp::traits::input_parameter< double >::type theta(thetaSEXP);
-    Rcpp::traits::input_parameter< double >::type r(rSEXP);
-    Rcpp::traits::input_parameter< IntegerVector >::type from(fromSEXP);
-    Rcpp::traits::input_parameter< IntegerVector >::type to(toSEXP);
-    __result = Rcpp::wrap(c_directed_geom(x, u, theta, r, from, to));
     return __result;
 END_RCPP
 }
@@ -107,6 +91,22 @@ BEGIN_RCPP
     Rcpp::traits::input_parameter< IntegerVector >::type from(fromSEXP);
     Rcpp::traits::input_parameter< IntegerVector >::type to(toSEXP);
     __result = Rcpp::wrap(c_directed_geom_by_cut(x, u, pregraph, theta, r, from, to));
+    return __result;
+END_RCPP
+}
+// c_directed_geom
+List c_directed_geom(NumericMatrix x, NumericVector u, double theta, double r, IntegerVector from, IntegerVector to);
+RcppExport SEXP Kdirectional_c_directed_geom(SEXP xSEXP, SEXP uSEXP, SEXP thetaSEXP, SEXP rSEXP, SEXP fromSEXP, SEXP toSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject __result;
+    Rcpp::RNGScope __rngScope;
+    Rcpp::traits::input_parameter< NumericMatrix >::type x(xSEXP);
+    Rcpp::traits::input_parameter< NumericVector >::type u(uSEXP);
+    Rcpp::traits::input_parameter< double >::type theta(thetaSEXP);
+    Rcpp::traits::input_parameter< double >::type r(rSEXP);
+    Rcpp::traits::input_parameter< IntegerVector >::type from(fromSEXP);
+    Rcpp::traits::input_parameter< IntegerVector >::type to(toSEXP);
+    __result = Rcpp::wrap(c_directed_geom(x, u, theta, r, from, to));
     return __result;
 END_RCPP
 }
@@ -164,17 +164,6 @@ BEGIN_RCPP
     return __result;
 END_RCPP
 }
-// c_pairwise_dist_angle
-NumericMatrix c_pairwise_dist_angle(NumericMatrix x);
-RcppExport SEXP Kdirectional_c_pairwise_dist_angle(SEXP xSEXP) {
-BEGIN_RCPP
-    Rcpp::RObject __result;
-    Rcpp::RNGScope __rngScope;
-    Rcpp::traits::input_parameter< NumericMatrix >::type x(xSEXP);
-    __result = Rcpp::wrap(c_pairwise_dist_angle(x));
-    return __result;
-END_RCPP
-}
 // c_pairwise_dist_angle_subset
 NumericMatrix c_pairwise_dist_angle_subset(NumericMatrix x, IntegerVector from, IntegerVector to);
 RcppExport SEXP Kdirectional_c_pairwise_dist_angle_subset(SEXP xSEXP, SEXP fromSEXP, SEXP toSEXP) {
@@ -185,6 +174,17 @@ BEGIN_RCPP
     Rcpp::traits::input_parameter< IntegerVector >::type from(fromSEXP);
     Rcpp::traits::input_parameter< IntegerVector >::type to(toSEXP);
     __result = Rcpp::wrap(c_pairwise_dist_angle_subset(x, from, to));
+    return __result;
+END_RCPP
+}
+// c_pairwise_dist_angle
+NumericMatrix c_pairwise_dist_angle(NumericMatrix x);
+RcppExport SEXP Kdirectional_c_pairwise_dist_angle(SEXP xSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject __result;
+    Rcpp::RNGScope __rngScope;
+    Rcpp::traits::input_parameter< NumericMatrix >::type x(xSEXP);
+    __result = Rcpp::wrap(c_pairwise_dist_angle(x));
     return __result;
 END_RCPP
 }

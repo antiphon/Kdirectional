@@ -5,8 +5,9 @@
 
 check_pp <- function(x){
   if("ppp"%in%is(x)){
+    window <- x$window
     x <- list(x=coords(x))
-    x$bbox <- apply(x$x, 2, range)
+    x$bbox <- owin_to_bbox(window)
   }
   if(!is(x,"list")){
     if(is(x, "matrix")) x <- list(x=x, bbox = bbox_make(x))
@@ -14,7 +15,7 @@ check_pp <- function(x){
   }
   else if(is.null(x$bbox)) stop("x should be list(x=coordinates-matrix, bbox=bounding-box)")
   x$x <- as.matrix(x$x)
-  if(is.bbquad(x$bbox)){ # ok, we have 3d box 
+  if(is.bbquad(x$bbox)){ #hmm
   }
   else{
     x$bbox <- as.matrix(x$bbox)

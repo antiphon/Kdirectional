@@ -4,24 +4,18 @@
 
 # Example code in package build process
 *-Ex.R
-
 # RStudio files
 .Rproj.user/
 .Rproj.user
-
 # c-objects
 src/*o
-
 # produced vignettes
 vignettes/*.html
 vignettes/*.pdf
-
-
 # manuals, rebuild with roxygen
 man/**
-
 # test functions
 test/**
 *rd[as]
-
 Kdirectional.Rproj
+inst/doc

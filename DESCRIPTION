@@ -10,3 +10,5 @@ Description: Tools for analysing linear transformations of 2D and 3D point patte
 License: GPL 
 Depends: Rcpp (>= 0.10.6), sphere, ellipsoid
 LinkingTo: Rcpp
+Suggests: knitr
+VignetteBuilder: knitr

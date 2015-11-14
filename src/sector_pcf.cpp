@@ -44,10 +44,11 @@ NumericVector c_sector_pcf(NumericMatrix x, NumericVector u, double theta,
           if(correction>1){
             for(k=0; k < dim; k++) w *= boxlen(k) - abss(x(i,k)-x(j,k));
           }
-          for(k=0; k < nr; k++){
-            v = kernel(abss(d-r[k]), h);
-            val[k] += v/w;
-          }
+          if(w > 0) // just in case
+            for(k=0; k < nr; k++){
+              v = kernel(abss(d-r[k]), h);
+              val[k] += v/w;
+            }
           count++;
         }
       }

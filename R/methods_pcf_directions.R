@@ -5,12 +5,11 @@
 plot.pcf_directions <- function(x, ymax=2,  ...) {
   #' 2D
   if(x$dim==2){
-    v <- x$r
     theta <- round(x$r_phi[,2], 6)
     thetas <- unique(round(sort(theta), 6))
     pcf <- split(x$est, theta)
     nl <- length(pcf)
-    r <- split(apply(v, 1, function(x) sqrt(t(x)%*%x)), theta)
+    r <- split(x$r_phi[,1], theta)
     rangs <- sapply(r, range)
     
     plot(NA, xlim=range(rangs), ylim=c(0, ymax), main="pcf in different directions", ylab="")

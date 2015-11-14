@@ -2,6 +2,7 @@
 #' Confidence intervals for Fry ellipsoids
 #' 
 #' @param x Fitted Fry-ellipsoids object
+#' @param fun contrast function, passed on to confint.ellipsoid
 #' @param ... Passed to confint.ellipsoid
 #' 
 #' @details 
@@ -54,7 +55,7 @@ print.confint_fryellipsoids <- function(x, ...) {
 
 #' Plot confidence intervals
 #' 
-#' @exportMethod plot
+#' 
 #' @export
 
 plot.confint_fryellipsoids <- function(x, ylim, ...) {

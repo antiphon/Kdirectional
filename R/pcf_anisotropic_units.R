@@ -28,7 +28,7 @@ pcf_directions <- function(x, directions, h, f=0.15, correction="translation", n
   x <- check_pp(x)
   bbox <- as.matrix(x$bbox)
   dim <- ncol(bbox)
-  sidelengths <- apply(bbox, 2, diff)
+  sidelengths <- bbox_sideLengths(bbox)
   lambda <- nrow(x$x)/prod(sidelengths)
   #'
   #'

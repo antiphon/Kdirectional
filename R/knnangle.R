@@ -4,8 +4,13 @@
 #' @param k k-th nearest neighbour
 #' @param from From these indices (default all 1,...,nrow(x))
 #' @param to To these indices (default all)
-#' If 2d, returns the angle in [-pi,pi]. In 3d also the angle from xy-plane in
+#' 
+#' @details 
+#' 
+#' If 2d, returns the angle in [-pi, pi]. In 3d also the angle from xy-plane in
 #' [0,pi]
+#' 
+#' @return 
 #' 
 #' The values in 2d are (azimuth, distance)
 #' The values in 3d are physical coordinate system (azimuth, inclination, distance)
