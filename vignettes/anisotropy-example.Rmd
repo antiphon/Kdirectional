@@ -4,7 +4,7 @@ author: "Tuomas Rajala"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteIndexEntry{Example 2D anisotropy analysis using Kdirectional}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -99,7 +99,7 @@ plot(ci, ylim = c(-1,1)*.1)
 
 The first contour is poorly estimated as there are some short range pairs, kind of like Poisson noise. Others seem to hint of compression (the p-values and confidence intervals are biased and conservative). 
 
-Let's compute the average rotation, where we scale each ellipsoid to have det = 1 by setting `just_rotation=TRUE`. Use a subset of contrasts:
+Let's compute the average rotation, where we scale each ellipsoid to have det = 1 by setting `just_rotation=TRUE`.
 
 ```{r}
 contours <- f$ellipsoids[-1]
