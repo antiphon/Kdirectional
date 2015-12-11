@@ -15,7 +15,7 @@ anisotropy_profile <- function(x, i=1, cvec, verb=TRUE, ...) {
   if(is.null(x$bbox)) stop("x should be list(x=coords, bbox=bounding-box)")
   dim <- ncol(x$x)
   dxyz <- rep(1, dim)
-  #' inverse transform the pattern
+  # inverse transform the pattern
   f <- function(ce) {
     dxyz[i] <- 1/ce
     dxyz[-i] <- ce^(1/(dim-1))

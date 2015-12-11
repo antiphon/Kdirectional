@@ -45,7 +45,7 @@ List c_anisotropic_unit_pcf(NumericMatrix x,
         // border correction
         w = 1;
         if(correction>1){
-          for(k=0; k < dim; k++) w *= boxlen(k) - abs(x(i,k)-x(j,k));
+          for(k=0; k < dim; k++) w *= boxlen(k) - fabs(x(i,k)-x(j,k));
         }
         // contribution to each direction
         for(k=0; k < nr; k++) {
@@ -54,9 +54,9 @@ List c_anisotropic_unit_pcf(NumericMatrix x,
           dot = dot/(d * rlength(k));
           ang = acos(dot);
           //printf("d=%f r=%f dot=%f ang=%f", d, rlength(k), dot, ang);
-          ang = min(ang, PI-ang);
+          ang = fmin(ang, PI-ang);
           //printf(" ang2=%f\n", ang);
-          diff = abs( d - rlength(k) );
+          diff = fabs( d - rlength(k) );
           if(ang < h(1) & diff < h(0)){
             W = pow(rlength(k), dim-1);
             v = kernel_epa(diff, h(0)) * kernel_epa(ang, h(1)) / W;

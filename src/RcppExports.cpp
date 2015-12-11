@@ -33,6 +33,42 @@ BEGIN_RCPP
     return __result;
 END_RCPP
 }
+// anisotropic_markcor_c
+List anisotropic_markcor_c(NumericMatrix coord, NumericVector marks, NumericMatrix bbox, NumericVector r, NumericMatrix directions, double bw_r, double bw_a, Function f);
+RcppExport SEXP Kdirectional_anisotropic_markcor_c(SEXP coordSEXP, SEXP marksSEXP, SEXP bboxSEXP, SEXP rSEXP, SEXP directionsSEXP, SEXP bw_rSEXP, SEXP bw_aSEXP, SEXP fSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject __result;
+    Rcpp::RNGScope __rngScope;
+    Rcpp::traits::input_parameter< NumericMatrix >::type coord(coordSEXP);
+    Rcpp::traits::input_parameter< NumericVector >::type marks(marksSEXP);
+    Rcpp::traits::input_parameter< NumericMatrix >::type bbox(bboxSEXP);
+    Rcpp::traits::input_parameter< NumericVector >::type r(rSEXP);
+    Rcpp::traits::input_parameter< NumericMatrix >::type directions(directionsSEXP);
+    Rcpp::traits::input_parameter< double >::type bw_r(bw_rSEXP);
+    Rcpp::traits::input_parameter< double >::type bw_a(bw_aSEXP);
+    Rcpp::traits::input_parameter< Function >::type f(fSEXP);
+    __result = Rcpp::wrap(anisotropic_markcor_c(coord, marks, bbox, r, directions, bw_r, bw_a, f));
+    return __result;
+END_RCPP
+}
+// anisotropic_markcor_c_d
+List anisotropic_markcor_c_d(NumericMatrix coord, NumericVector marks, NumericMatrix bbox, NumericVector r, NumericMatrix directions, double bw_r, double bw_a, Function f);
+RcppExport SEXP Kdirectional_anisotropic_markcor_c_d(SEXP coordSEXP, SEXP marksSEXP, SEXP bboxSEXP, SEXP rSEXP, SEXP directionsSEXP, SEXP bw_rSEXP, SEXP bw_aSEXP, SEXP fSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject __result;
+    Rcpp::RNGScope __rngScope;
+    Rcpp::traits::input_parameter< NumericMatrix >::type coord(coordSEXP);
+    Rcpp::traits::input_parameter< NumericVector >::type marks(marksSEXP);
+    Rcpp::traits::input_parameter< NumericMatrix >::type bbox(bboxSEXP);
+    Rcpp::traits::input_parameter< NumericVector >::type r(rSEXP);
+    Rcpp::traits::input_parameter< NumericMatrix >::type directions(directionsSEXP);
+    Rcpp::traits::input_parameter< double >::type bw_r(bw_rSEXP);
+    Rcpp::traits::input_parameter< double >::type bw_a(bw_aSEXP);
+    Rcpp::traits::input_parameter< Function >::type f(fSEXP);
+    __result = Rcpp::wrap(anisotropic_markcor_c_d(coord, marks, bbox, r, directions, bw_r, bw_a, f));
+    return __result;
+END_RCPP
+}
 // c_anisotropic_unit_pcf
 List c_anisotropic_unit_pcf(NumericMatrix x, NumericMatrix r, NumericVector h, NumericMatrix bbox, int correction);
 RcppExport SEXP Kdirectional_c_anisotropic_unit_pcf(SEXP xSEXP, SEXP rSEXP, SEXP hSEXP, SEXP bboxSEXP, SEXP correctionSEXP) {

@@ -15,10 +15,10 @@ plot.os_K <- function(x, ...){
 
 plot.pcf_anisotropic <- function(x, ab, ...){
   s <- NULL
-  #' 2d:
+  # 2d:
   if(x$dim==2) image(z=x$est, x=x$r, y=x$theta[[1]], xlab="range", ylab="angle", ...)
   else{
-    #' more tricky. We will plot a integral over the range:
+    # more tricky. We will plot a integral over the range:
     lon <- azi2lon(x$theta[[1]])
     lat <- inc2lat(x$theta[[2]])
     
@@ -43,14 +43,14 @@ plot.pcf_anisotropic <- function(x, ab, ...){
 
 plot2d.pcf_anisotropic <- function(x, ab, ...){
   s <- NULL
-  #' 2d:
+  # 2d:
   if(x$dim==2) image(z=x$est, x=x$r, y=x$theta[[1]], xlab="range", ylab="angle", ...)
   else{
-    #' more tricky. We will plot a integral over the range:
+    # more tricky. We will plot a integral over the range:
     if(missing(ab)) ab <- range(x$r)
     ok <- x$r <= ab[2] & x$r >= ab[1]
     s <- apply(x$est[ok,,], 3, apply, 2, sum) * diff(x$r[1:2])
-    #' then we plot this using image
+    # then we plot this using image
     image(z=s , x=x$theta[[1]], y=x$theta[[2]], xlab="azimuth", ylab="inclination (polar angle)", ...)
   }
   invisible(s)

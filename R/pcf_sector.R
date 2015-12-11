@@ -38,7 +38,7 @@ pcf_sector <- function(x, r, theta, unit, epsilon, h, stoyan=0.15, correction="t
   xc <- as.matrix(x$x)
   
   correction_i <- pmatch(correction, c("none", "translation"))
-  #' go for the direction
+  # go for the direction
   dirgrid <- dirs$grid$unit
   v <- NULL
   for(i in 1:nrow(dirgrid)){

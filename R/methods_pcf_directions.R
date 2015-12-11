@@ -3,7 +3,7 @@
 #' @exportMethod plot
 #' @export
 plot.pcf_directions <- function(x, ymax=2,  ...) {
-  #' 2D
+  # 2D
   if(x$dim==2){
     theta <- round(x$r_phi[,2], 6)
     thetas <- unique(round(sort(theta), 6))

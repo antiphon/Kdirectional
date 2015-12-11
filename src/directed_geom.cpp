@@ -13,7 +13,7 @@ List c_directed_geom(NumericMatrix x, NumericVector u, double theta,  double r, 
     int i, j, l, f, t;
     int n = x.nrow();
     int dim = x.ncol();
-    double dot, d, ang;
+    double dot, d, d2, ang, r2 = r*r;
     List nlist(n);
     std::vector<int> neighs;
     for(i=0; i < from.length(); i++) {
@@ -23,10 +23,10 @@ List c_directed_geom(NumericMatrix x, NumericVector u, double theta,  double r, 
         t = to[j]-1;
         if(t!=f) {
             // first check distance
-          d=0;
-          for(l=0; l < dim; l++)  d += pow(x(f,l)-x(t,l), 2);
-          d = sqrt(d);
-          if(d < r){
+          d2=0;
+          for(l=0; l < dim; l++)  d2 += pow(x(f,l)-x(t,l), 2);
+          if(d2 < r2){
+            d = sqrt(d2);
             //then check angle
             dot = 0;
             for(l=0; l < dim; l++)  dot += (x(t,l)-x(f,l))*u[l];

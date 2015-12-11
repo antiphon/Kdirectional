@@ -151,7 +151,7 @@ bbquad_planes <- function(b){
 #' @export
 
 bbquad_distance <- function(x, b){
-  #' form all planes/lines
+  # form all planes/lines
   planes <- bbquad_planes(b)
   # compute distance from each point to each plane
   dists <- apply(planes, 2, dist_point_to_plane, x=x)

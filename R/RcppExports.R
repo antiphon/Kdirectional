@@ -9,6 +9,14 @@ c_angles <- function(x, from, to) {
     .Call('Kdirectional_c_angles', PACKAGE = 'Kdirectional', x, from, to)
 }
 
+anisotropic_markcor_c <- function(coord, marks, bbox, r, directions, bw_r, bw_a, f) {
+    .Call('Kdirectional_anisotropic_markcor_c', PACKAGE = 'Kdirectional', coord, marks, bbox, r, directions, bw_r, bw_a, f)
+}
+
+anisotropic_markcor_c_d <- function(coord, marks, bbox, r, directions, bw_r, bw_a, f) {
+    .Call('Kdirectional_anisotropic_markcor_c_d', PACKAGE = 'Kdirectional', coord, marks, bbox, r, directions, bw_r, bw_a, f)
+}
+
 c_anisotropic_unit_pcf <- function(x, r, h, bbox, correction) {
     .Call('Kdirectional_c_anisotropic_unit_pcf', PACKAGE = 'Kdirectional', x, r, h, bbox, correction)
 }
