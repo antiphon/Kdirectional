@@ -4,26 +4,57 @@
 library(devtools)
 load_all(".")
 
-load("test_strauss.rda")
 
-x <- z
-marks <- exp(rnorm(nrow(z$x), x$x, 0.1))
+set.seed(14)
+x <- matrix(runif(100), ncol=2)
+marks <- exp(rnorm(nrow(x), x[,1], 0.1))
 
 # check by pcf
-u <- rbind(c(0,1))
+u <- diag(c(1,1))
 
-res <- markcorr_anisotropic(x, marks, directions = u, bw=c(0.01, .5))
+res <- markcorr_anisotropic(x, marks, directions = u)
 
 #gr <- pcf_anisotropic(x, res$r, theta=list(0), h=res$bw)
 #plot(gr$r, gr$est, type="l", col=2)
 #with(res, lines(r, pcf, "l"))
 
-with(res, plot(r, mcor, "l", ylim=c(0,2)))
-
+par(mfrow=c(2,2))
+with(res, plot(r, mcor[,1], "l", ylim=c(0,2)))
+with(res, lines(r, mcor[,2], col=2))
+abline(h=1)
+with(res, plot(r, pcf[,1], "l", ylim=c(0,2)))
+with(res, lines(r, pcf[,2], col=2))
 abline(h=1)
 
 
-f <- fry_points(x)
+#f <- fry_points(x)
+
+# 3d
+
+
+#x <- matrix(runif(6000), ncol=3)
+N <- 5000
+xz <- cbind(runif(N, 0,1.5), runif(N), runif(N))
+marks <- exp(rnorm(nrow(xz), xz[,1], 0.1))
+x <- list(x=xz, bbox=bbox_make(xz, T))
+
+# check by pcf
+u <- rotationMatrix(0,pi/3)%*%diag(c(1,1,1))
+
+res <- markcorr_anisotropic(x, marks, directions = u, r = seq(0,.5, length=50)[-1])
+
+with(res, plot(r, mcor[,1], "l", ylim=c(0,2)))
+with(res, for(i in 2:3) lines(r, mcor[,i], col=i))
+abline(h=1)
+with(res, plot(r, pcf[,1], "l", ylim=c(0,2)))
+with(res, for(i in 2:3) lines(r, pcf[,i], col=i))
+abline(h=c(1))
+
+#gr <- pcf_anisotropic(x, res$r, theta=list(0,0), h=res$bw)
+#lines(gr$r, gr$est, type="l", col=5, lty=2, lwd=3)
+#with(res, lines(r, pcf, "l"))
+
+
 #################################################################################
 # the kernel, say (r=0.1, (0,1)):
 # epa <- function(d, bw) {k<-0*d;k[d<bw] <- 0.75 * (1-(d[d<bw]/bw)^2) /bw;k}

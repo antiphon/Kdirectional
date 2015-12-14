@@ -1,9 +1,17 @@
 #' compute the bounding box for coordinates
 #'
 #' @param x coordinate matrix
+#' @param expand expand a bit? (ripras)
 #' @export
-bbox_make <- function(x) {
-  apply(as.matrix(x), 2, range)
+bbox_make <- function(x, expand=TRUE) {
+  bb <- apply(as.matrix(x), 2, range)
+  # expand a bit
+  if(expand){n <- nrow(x)
+    m <- 2^ncol(x)
+    ex <- ( max(bb)*((n+1)/(n-1)-1) ) / sqrt( max(.01, 1-m/n ) )
+    apply(bb, 2, function(ab) {r <- diff(ab); ab + ex*c(-1,1)*r}  )
+  } 
+  else bb
 }
 
 #' Turn spatstat window object to bbox

@@ -20,7 +20,7 @@ pcf_anisotropic <- function(x, r, theta, h, f=0.15, correction="translation", n_
   bbox <- as.matrix(x$bbox)
   dim <- ncol(bbox)
   sidelengths <- apply(bbox, 2, diff)
-  lambda <- nrow(x$x)/prod(sidelengths)
+  lambda <- nrow(x$x)/bbox_volume(bbox)
   
   if(missing(theta)){
     dirs <- check_directions(n_dir=n_dir ,dim=dim)
@@ -46,10 +46,8 @@ pcf_anisotropic <- function(x, r, theta, h, f=0.15, correction="translation", n_
   #'
   directions <- NULL 
   for(ri in r) directions <- rbind(directions, ri*units)
-  res<-NULL
-  for(i in nrow(directions)){
-    res <- cbind(res, c_anisotropic_unit_pcf(xc, directions, h, bbox, correction_i))
-  }
+  #
+  res <- c_anisotropic_unit_pcf(xc, directions, h, bbox, correction_i)
   #'  correction
   grid <- expand.grid(append(list(r=r), theta))
   

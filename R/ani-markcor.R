@@ -45,7 +45,7 @@ markcorr_anisotropic <- function(x, marks=NULL, r, f = function(a,b) a*b,
   bbox <- as.matrix(x$bbox)
   dim <- ncol(bbox)
   sidelengths <- bbox_sideLengths(bbox)
-  lambda <- nrow(x$x)/prod(sidelengths)
+  lambda <- nrow(x$x)/bbox_volume(bbox)
   #'
   #
   if(missing(r)){ 
@@ -63,6 +63,13 @@ markcorr_anisotropic <- function(x, marks=NULL, r, f = function(a,b) a*b,
       directions <- ll2xyz( sphere.grid(n_dir, lower=FALSE) )
     }
   }
+  else{# directions given. make sure unit vectors.
+    directions <- rbind(directions)
+    if(ncol(directions)!=dim) stop(paste("'directions' should be in dimension", dim ))
+    dl <- sqrt(rowSums(directions^2))
+    directions <- directions/dl
+  }
+  #'
   #'
   #'
   # check smoothing parameters
@@ -70,7 +77,7 @@ markcorr_anisotropic <- function(x, marks=NULL, r, f = function(a,b) a*b,
     bw <- c(adjust*0.15/lambda^(1/dim), 
             adjust*0.15*pi)
   }
-  if(length(bw) < 2) stop("bw should be of length 2.")
+  if(length(bw) < 2) stop("'bw' should be of length 2.")
   #
   #
   #
@@ -82,11 +89,11 @@ markcorr_anisotropic <- function(x, marks=NULL, r, f = function(a,b) a*b,
   
   if(divisor=="r"){
     fun <- anisotropic_markcor_c
-    div <- r
+    div <- r^(dim-1) * 0.5^(dim-2)
   }
   else if(divisor=="d"){
     fun <- anisotropic_markcor_c_d
-    div <- 1
+    div <- 1  * 0.5^(dim-2)
   }
   else stop("divisor should 'r' or 'd'")
   # Run

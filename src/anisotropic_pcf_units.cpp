@@ -50,15 +50,14 @@ List c_anisotropic_unit_pcf(NumericMatrix x,
         // contribution to each direction
         for(k=0; k < nr; k++) {
           dot = 0;
-          for(l=0; l < dim; l++)  dot += (x(i,l)-x(j,l))*r(k,l);
+          for(l=0; l < dim; l++)  dot += (x(j,l)-x(i,l))*r(k,l);
           dot = dot/(d * rlength(k));
           ang = acos(dot);
-          //printf("d=%f r=%f dot=%f ang=%f", d, rlength(k), dot, ang);
           ang = fmin(ang, PI-ang);
-          //printf(" ang2=%f\n", ang);
           diff = fabs( d - rlength(k) );
           if(ang < h(1) & diff < h(0)){
-            W = pow(rlength(k), dim-1);
+            //W = pow(rlength(k), dim-1);
+            W = pow(d, dim-1);
             v = kernel_epa(diff, h(0)) * kernel_epa(ang, h(1)) / W;
             val[k] += v/w;
             counts(k)++;
