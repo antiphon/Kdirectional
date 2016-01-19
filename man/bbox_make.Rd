@@ -4,10 +4,12 @@
 \alias{bbox_make}
 \title{compute the bounding box for coordinates}
 \usage{
-bbox_make(x)
+bbox_make(x, expand = TRUE)
 }
 \arguments{
 \item{x}{coordinate matrix}
+
+\item{expand}{expand a bit? (ripras)}
 }
 \description{
 compute the bounding box for coordinates
