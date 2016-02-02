@@ -25,6 +25,14 @@ c_anisotropic_pcf <- function(x, theta, r, h, bbox, correction) {
     .Call('Kdirectional_c_anisotropic_pcf', PACKAGE = 'Kdirectional', x, theta, r, h, bbox, correction)
 }
 
+box_integral <- function(x, bbox, bw, n = 0L) {
+    .Call('Kdirectional_box_integral', PACKAGE = 'Kdirectional', x, bbox, bw, n)
+}
+
+box_integral_grid <- function(x, bbox, bw, n) {
+    .Call('Kdirectional_box_integral_grid', PACKAGE = 'Kdirectional', x, bbox, bw, n)
+}
+
 c_cutgeom <- function(x, nlist, r) {
     .Call('Kdirectional_c_cutgeom', PACKAGE = 'Kdirectional', x, nlist, r)
 }
@@ -37,8 +45,32 @@ c_directed_geom <- function(x, u, theta, r, from, to) {
     .Call('Kdirectional_c_directed_geom', PACKAGE = 'Kdirectional', x, u, theta, r, from, to)
 }
 
+epa_integral <- function(x, bbox, bw, n = 1L) {
+    .Call('Kdirectional_epa_integral', PACKAGE = 'Kdirectional', x, bbox, bw, n)
+}
+
+epa_integral_biased <- function(x, bbox, bw, n = 21L) {
+    .Call('Kdirectional_epa_integral_biased', PACKAGE = 'Kdirectional', x, bbox, bw, n)
+}
+
+epa_integral_grid <- function(x, bbox, bw, n) {
+    .Call('Kdirectional_epa_integral_grid', PACKAGE = 'Kdirectional', x, bbox, bw, n)
+}
+
 c_geom <- function(x, from, to, r) {
     .Call('Kdirectional_c_geom', PACKAGE = 'Kdirectional', x, from, to, r)
+}
+
+intensity_at_other_points_c <- function(x, other, bbox, bw_r, n = 1L) {
+    .Call('Kdirectional_intensity_at_other_points_c', PACKAGE = 'Kdirectional', x, other, bbox, bw_r, n)
+}
+
+intensity_at_points_c <- function(x, bbox, bw_r, b = 1L) {
+    .Call('Kdirectional_intensity_at_points_c', PACKAGE = 'Kdirectional', x, bbox, bw_r, b)
+}
+
+Kest_anin_c <- function(coord, lambda, bbox, r, directions, epsilon) {
+    .Call('Kdirectional_Kest_anin_c', PACKAGE = 'Kdirectional', coord, lambda, bbox, r, directions, epsilon)
 }
 
 c_knnangles <- function(x, k, from, to) {

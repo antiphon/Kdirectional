@@ -8,6 +8,12 @@ double kernel_epa(double r, double h){
   return 0.75 * (1-r*r/(h*h))/h;
 }
 
+double kernel_box(double r, double h){
+  if(r > h) return 0;
+  return 1/(2*h);
+}
+
+
 double abs(double x){
   if(x < 0) return -x;
   return x;

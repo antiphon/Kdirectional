@@ -100,6 +100,34 @@ BEGIN_RCPP
     return __result;
 END_RCPP
 }
+// box_integral
+NumericVector box_integral(NumericMatrix x, NumericMatrix bbox, double bw, int n);
+RcppExport SEXP Kdirectional_box_integral(SEXP xSEXP, SEXP bboxSEXP, SEXP bwSEXP, SEXP nSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject __result;
+    Rcpp::RNGScope __rngScope;
+    Rcpp::traits::input_parameter< NumericMatrix >::type x(xSEXP);
+    Rcpp::traits::input_parameter< NumericMatrix >::type bbox(bboxSEXP);
+    Rcpp::traits::input_parameter< double >::type bw(bwSEXP);
+    Rcpp::traits::input_parameter< int >::type n(nSEXP);
+    __result = Rcpp::wrap(box_integral(x, bbox, bw, n));
+    return __result;
+END_RCPP
+}
+// box_integral_grid
+NumericVector box_integral_grid(NumericMatrix x, NumericMatrix bbox, double bw, int n);
+RcppExport SEXP Kdirectional_box_integral_grid(SEXP xSEXP, SEXP bboxSEXP, SEXP bwSEXP, SEXP nSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject __result;
+    Rcpp::RNGScope __rngScope;
+    Rcpp::traits::input_parameter< NumericMatrix >::type x(xSEXP);
+    Rcpp::traits::input_parameter< NumericMatrix >::type bbox(bboxSEXP);
+    Rcpp::traits::input_parameter< double >::type bw(bwSEXP);
+    Rcpp::traits::input_parameter< int >::type n(nSEXP);
+    __result = Rcpp::wrap(box_integral_grid(x, bbox, bw, n));
+    return __result;
+END_RCPP
+}
 // c_cutgeom
 List c_cutgeom(NumericMatrix x, List nlist, double r);
 RcppExport SEXP Kdirectional_c_cutgeom(SEXP xSEXP, SEXP nlistSEXP, SEXP rSEXP) {
@@ -146,6 +174,48 @@ BEGIN_RCPP
     return __result;
 END_RCPP
 }
+// epa_integral
+NumericVector epa_integral(NumericMatrix x, NumericMatrix bbox, double bw, int n);
+RcppExport SEXP Kdirectional_epa_integral(SEXP xSEXP, SEXP bboxSEXP, SEXP bwSEXP, SEXP nSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject __result;
+    Rcpp::RNGScope __rngScope;
+    Rcpp::traits::input_parameter< NumericMatrix >::type x(xSEXP);
+    Rcpp::traits::input_parameter< NumericMatrix >::type bbox(bboxSEXP);
+    Rcpp::traits::input_parameter< double >::type bw(bwSEXP);
+    Rcpp::traits::input_parameter< int >::type n(nSEXP);
+    __result = Rcpp::wrap(epa_integral(x, bbox, bw, n));
+    return __result;
+END_RCPP
+}
+// epa_integral_biased
+NumericVector epa_integral_biased(NumericMatrix x, NumericMatrix bbox, double bw, int n);
+RcppExport SEXP Kdirectional_epa_integral_biased(SEXP xSEXP, SEXP bboxSEXP, SEXP bwSEXP, SEXP nSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject __result;
+    Rcpp::RNGScope __rngScope;
+    Rcpp::traits::input_parameter< NumericMatrix >::type x(xSEXP);
+    Rcpp::traits::input_parameter< NumericMatrix >::type bbox(bboxSEXP);
+    Rcpp::traits::input_parameter< double >::type bw(bwSEXP);
+    Rcpp::traits::input_parameter< int >::type n(nSEXP);
+    __result = Rcpp::wrap(epa_integral_biased(x, bbox, bw, n));
+    return __result;
+END_RCPP
+}
+// epa_integral_grid
+NumericVector epa_integral_grid(NumericMatrix x, NumericMatrix bbox, double bw, int n);
+RcppExport SEXP Kdirectional_epa_integral_grid(SEXP xSEXP, SEXP bboxSEXP, SEXP bwSEXP, SEXP nSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject __result;
+    Rcpp::RNGScope __rngScope;
+    Rcpp::traits::input_parameter< NumericMatrix >::type x(xSEXP);
+    Rcpp::traits::input_parameter< NumericMatrix >::type bbox(bboxSEXP);
+    Rcpp::traits::input_parameter< double >::type bw(bwSEXP);
+    Rcpp::traits::input_parameter< int >::type n(nSEXP);
+    __result = Rcpp::wrap(epa_integral_grid(x, bbox, bw, n));
+    return __result;
+END_RCPP
+}
 // c_geom
 List c_geom(NumericMatrix x, IntegerVector from, IntegerVector to, double r);
 RcppExport SEXP Kdirectional_c_geom(SEXP xSEXP, SEXP fromSEXP, SEXP toSEXP, SEXP rSEXP) {
@@ -157,6 +227,51 @@ BEGIN_RCPP
     Rcpp::traits::input_parameter< IntegerVector >::type to(toSEXP);
     Rcpp::traits::input_parameter< double >::type r(rSEXP);
     __result = Rcpp::wrap(c_geom(x, from, to, r));
+    return __result;
+END_RCPP
+}
+// intensity_at_other_points_c
+NumericVector intensity_at_other_points_c(NumericMatrix x, NumericMatrix other, NumericMatrix bbox, double bw_r, int n);
+RcppExport SEXP Kdirectional_intensity_at_other_points_c(SEXP xSEXP, SEXP otherSEXP, SEXP bboxSEXP, SEXP bw_rSEXP, SEXP nSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject __result;
+    Rcpp::RNGScope __rngScope;
+    Rcpp::traits::input_parameter< NumericMatrix >::type x(xSEXP);
+    Rcpp::traits::input_parameter< NumericMatrix >::type other(otherSEXP);
+    Rcpp::traits::input_parameter< NumericMatrix >::type bbox(bboxSEXP);
+    Rcpp::traits::input_parameter< double >::type bw_r(bw_rSEXP);
+    Rcpp::traits::input_parameter< int >::type n(nSEXP);
+    __result = Rcpp::wrap(intensity_at_other_points_c(x, other, bbox, bw_r, n));
+    return __result;
+END_RCPP
+}
+// intensity_at_points_c
+NumericVector intensity_at_points_c(NumericMatrix x, NumericMatrix bbox, double bw_r, int b);
+RcppExport SEXP Kdirectional_intensity_at_points_c(SEXP xSEXP, SEXP bboxSEXP, SEXP bw_rSEXP, SEXP bSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject __result;
+    Rcpp::RNGScope __rngScope;
+    Rcpp::traits::input_parameter< NumericMatrix >::type x(xSEXP);
+    Rcpp::traits::input_parameter< NumericMatrix >::type bbox(bboxSEXP);
+    Rcpp::traits::input_parameter< double >::type bw_r(bw_rSEXP);
+    Rcpp::traits::input_parameter< int >::type b(bSEXP);
+    __result = Rcpp::wrap(intensity_at_points_c(x, bbox, bw_r, b));
+    return __result;
+END_RCPP
+}
+// Kest_anin_c
+NumericMatrix Kest_anin_c(NumericMatrix coord, NumericVector lambda, NumericMatrix bbox, NumericVector r, NumericMatrix directions, double epsilon);
+RcppExport SEXP Kdirectional_Kest_anin_c(SEXP coordSEXP, SEXP lambdaSEXP, SEXP bboxSEXP, SEXP rSEXP, SEXP directionsSEXP, SEXP epsilonSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject __result;
+    Rcpp::RNGScope __rngScope;
+    Rcpp::traits::input_parameter< NumericMatrix >::type coord(coordSEXP);
+    Rcpp::traits::input_parameter< NumericVector >::type lambda(lambdaSEXP);
+    Rcpp::traits::input_parameter< NumericMatrix >::type bbox(bboxSEXP);
+    Rcpp::traits::input_parameter< NumericVector >::type r(rSEXP);
+    Rcpp::traits::input_parameter< NumericMatrix >::type directions(directionsSEXP);
+    Rcpp::traits::input_parameter< double >::type epsilon(epsilonSEXP);
+    __result = Rcpp::wrap(Kest_anin_c(coord, lambda, bbox, r, directions, epsilon));
     return __result;
 END_RCPP
 }
