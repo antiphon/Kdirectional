@@ -23,43 +23,38 @@ print(bw1)
 gy <- gx <- seq(-.5, .5, length=50)
 dx <- diff(gx[1:2])^2
 loc <- as.matrix( expand.grid(gx, gy) )
-v <- intensity_somewhere(X, loc, bw1)
+
+v <- intensity_somewhere(X, loc, bw1, b = 121) # grid
+v2 <- intensity_somewhere(X, loc, bw1, b = 1) # box
+v3 <- intensity_somewhere(X, loc, bw1, b = 0) # correct
+
 cat("inten\n")
 # 
-epai <- epa_integral(loc, z$bbox, bw1)
+epai <- epa_integral(loc, z$bbox, bw1, n=91)
+epaib <- epa_integral(loc, z$bbox, bw1, n=1)
+epaic <- epa_integral(loc, z$bbox, bw1, n=0)
+
 cat("epa\n")
 M <- matrix(v, ncol=length(gx))
-
+M2 <- matrix(v2, ncol=length(gx))
+M3 <- matrix(v3, ncol=length(gx))
 Mi <- matrix(epai, ncol=length(gx))
+Mib <- matrix(epaib, ncol=length(gx))
+Mic <- matrix(epaic, ncol=length(gx))
 
-
-
-par(mfrow=c(2,3))
+par(mfrow=c(3,3))
 
 plot(bwv, err, "l", ylim=c(0,1))
-
-image(gx, gy, Mi, asp=1, zlim=c(0,1), main="epanech integral")
-
-image(gx, gy, M, asp=1, zlim=c(0,2*nrow(X)))
+co <- rainbow(120)
+image(gx, gy, Mi, asp=1, zlim=c(0,1), col=co, main="epanech integral grid")
+image(gx, gy, Mib, asp=1, zlim=c(0,1), col=co, main="epanech integral box")
+image(gx, gy, Mic, asp=1, zlim=c(0,1), col=co, main="epanech integral correct")
+image(gx, gy, M, asp=1, zlim=c(0,2*nrow(X)), col=co, main="grid")
 points(X)
+image(gx, gy, M2, asp=1, zlim=c(0,2*nrow(X)), col=co, main="box")
+image(gx, gy, M3, asp=1, zlim=c(0,2*nrow(X)), col=co, main="correct")
+image(gx, gy, M-M2, zlim=zl <- c(-1,1)*20, asp=1, main="grid-box", col=co)
+image(gx, gy, M-M3, zlim=zl, asp=1, main="grid-correct", col=co)
 
-print(range(M))
-print(c(n=nrow(X),int=sum(M*dx)))
-
-# Compare to Cross validation
-library(spatstat)
-pp <- ppp(X[,1], X[,2], window = as.owin(c(bbox_make(X))))
-t1 <- system.time(bwp <- bw.ppl(pp, srange = range(bwv)) ) # for gaussian
-
-plot(bwp)
-image(int2 <- density(pp, sigma = bwp))
-
-print(rbind(t0,t1))
-
-# # use it in an estimate of K
-# l1 <- intensity_at_points(X, bw1)
-# l2 <- int2[pp]
-# k1 <- Kinhom(pp, lambda = l1)
-# k2 <- Kinhom(pp, lambda = l2)
-# plot(k1$r, k1$trans, type="l")
-# lines(k2$r, k2$trans, col=2)
+print(range(M-M3))
+print(c(n=nrow(X),intgrid=sum(M*dx), intbox=sum(M2*dx), intcorec=sum(M3*dx), ssbox=mean((M-M2)^2), sscor=mean((M-M3)^2)))

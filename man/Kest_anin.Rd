@@ -5,7 +5,7 @@
 \title{Inhomogeneous anisotropic K function}
 \usage{
 Kest_anin(x, u, epsilon, r, lambda = NULL, lambda_h, renormalise = TRUE,
-  ...)
+  border = 1, ...)
 }
 \arguments{
 \item{x}{pp, list with $x~coordinates $bbox~bounding box}
@@ -21,6 +21,8 @@ Kest_anin(x, u, epsilon, r, lambda = NULL, lambda_h, renormalise = TRUE,
 \item{lambda_h}{if lambda missing, use this bandwidth in a kernel estimate of lambda(x)}
 
 \item{renormalise}{See details.}
+
+\item{border}{Use translation correction (default=1)? Only for cuboidal windows.}
 
 \item{...}{passed on to e.g. \link{intensity_at_points}}
 }

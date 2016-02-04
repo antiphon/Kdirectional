@@ -8,4 +8,7 @@ using namespace Rcpp;
 NumericVector box_integral(NumericMatrix x,
                               NumericMatrix bbox, double, int);
 
+NumericVector box_integral_grid(NumericMatrix x,
+                           NumericMatrix bbox, double, int);
+
 #endif

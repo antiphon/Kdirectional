@@ -4,9 +4,22 @@
 \alias{intensity_at_points}
 \title{Estimate intensity of point pattern at the points of the pattern}
 \usage{
-intensity_at_points(x, bw, n = 21, ...)
+intensity_at_points(x, bw, b = 1, ...)
+}
+\arguments{
+\item{x}{points, list with $x and $bbox or just a matrix of coordinates.}
+
+\item{bw}{bandwidth, Epanechnikov kernel domain [-bw,bw]}
+
+\item{b}{Type of border correction estimate.}
+
+\item{...}{ignored}
 }
 \description{
 Estimate intensity of point pattern at the points of the pattern
+}
+\details{
+Uses Epanechnikov kernel smoothing. Border correction is approximative, try "b=1,2,3".
+1: Box rectangle approximation, 2: Biased box integral (not working in 3d) >3: fine grid sum with resolution b, very slow.
 }
 

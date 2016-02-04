@@ -33,3 +33,4 @@ nnangle_cone <- function(x, unit, theta, from, to){
   attr(v, "theta") <- theta
   v
 }
+

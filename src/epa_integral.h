@@ -23,4 +23,11 @@ NumericVector epa_integral_grid(NumericMatrix x,
                            double bw,
                            int n);
 
+
+NumericVector epa_integral_2d(NumericMatrix x,
+                             NumericMatrix bbox,
+                             double bw,
+                             int n);
+
+
 #endif

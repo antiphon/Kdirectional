@@ -9,6 +9,7 @@
 #' @param lambda optional vector of intensity estimates at points
 #' @param lambda_h if lambda missing, use this bandwidth in a kernel estimate of lambda(x)
 #' @param renormalise See details. 
+#' @param border Use translation correction (default=1)? Only for cuboidal windows.
 #' @param ... passed on to e.g. \link{intensity_at_points}
 #' @details 
 #' 
@@ -26,7 +27,7 @@
 #' @export
 
 Kest_anin <- function(x, u, epsilon, r, lambda=NULL, lambda_h, 
-                      renormalise=TRUE,  ...) {
+                      renormalise=TRUE,  border=1, ...) {
   x <- check_pp(x)
   bbox <- x$bbox
   if(is.bbquad(bbox)) stop("bbquad window not yet supported.")
@@ -50,14 +51,18 @@ Kest_anin <- function(x, u, epsilon, r, lambda=NULL, lambda_h,
   # ranges
   if(missing(r)) {
     sidelengths <- apply(bbox, 2, diff)
-    b <- min(sidelengths)*0.3
-    r <- seq(0, b, length=50)
+    bl <- min(sidelengths)*0.3
+    r <- seq(0, bl, length=50)
   }
   # check intensity 
   if(!missing(lambda)){
-    err <- paste("lambda should be a vector of length", nrow(x$x))
-    if(!is.vector(lambda))  stop(err)
-    if(length(lambda) != nrow(x$x)) stop(err)
+    err <- paste("lambda should be a single positive number or a vector of length", nrow(x$x))
+    if(!is.vector(lambda)) stop(err)
+    
+    if(length(lambda) != nrow(x$x)){
+      if(length(lambda)!= 1) stop(err)
+      lambda <- rep(lambda, nrow(x$x))
+    }
   }
   else{
     # estimate lambda
@@ -75,16 +80,18 @@ Kest_anin <- function(x, u, epsilon, r, lambda=NULL, lambda_h,
   # 
   # we got everything, let's compute.
   coord <- x$x
-  out <- Kest_anin_c(coord, lambda, bbox, r, u, epsilon )
+  out <- Kest_anin_c(coord, lambda, bbox, r, u, epsilon, border)
   # scaling
   #
-  out <- 2  * S * out / V # double sum
+  out <- 2  * S * out # double sum
+  # in case translation weights are not applied
+  if(border==0) out <- out/V 
   #
   # compile output
   # direction names
   dir_names <- apply(u, 1, function(ui) paste0("(", paste0(ui, collapse=","), ")" ))
   # theoretical
-  theo <- if(dim==2) 2*epsilon*r^2 else 4/3 * r^3 * pi * (1-cos(epsilon))
+  theo <- if(dim==2) (2*epsilon*r^2) else (4/3 * r^3 * pi * (1-cos(epsilon)))
   #
   Kest <- data.frame(r=r, theo=theo, out)
   names(Kest)[] <- c("r", "theo", dir_names)
@@ -99,14 +106,15 @@ Kest_anin <- function(x, u, epsilon, r, lambda=NULL, lambda_h,
 #' Plot Kest_anin object
 #' 
 #' @param x Output from Kest_anin
-#' 
+#' @param r_scale Plot with x-axis r*r_scale
 #' @export
 
-plot.K_anin <- function(x, ...) {
-  plot(x$r, x$theo, col=1, xlab="r", ylab="Kest_anin", type="l", lty=3, ...)
+plot.K_anin <- function(x, r_scale=1, ...) {
+  plot(x$r*r_scale, x$theo, col=1, xlab="r", 
+       ylab="Kest_anin", type="l", lty=3, ...)
   n <- ncol(x)
   for(i in 3:n){
-    lines(x$r, x[,i], col=i-1)
+    lines(x$r*r_scale, x[,i], col=i-1)
   }
   legend("topleft", names(x)[-1], lty=c(3,rep(1,n-2)), col=c(1:(n-1)))
 }

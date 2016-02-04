@@ -6,8 +6,8 @@
 #' @param b Type of border correction estimate.
 #' @param ... ignored
 #' @details 
-#' Uses Epanechnikov kernel smoothing. Border correction is approximative, try "b=1,2,3".
-#' 1: Box rectangle approximation, 2: Biased box integral (not working in 3d) >3: fine grid sum with resolution b, very slow.
+#' Uses Epanechnikov kernel smoothing. Border correction is approximative, try "b=0,1,2,3". Default 0 (works atm only in 2D, in 3D use grid with n~30)
+#' 0: Exact integral 1: Box kernel approximation, 2: Biased epa integral (not working in 3d) >3: fine grid sum with resolution b, very slow.
 #' 
 #' @export
 

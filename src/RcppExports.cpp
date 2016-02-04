@@ -216,6 +216,20 @@ BEGIN_RCPP
     return __result;
 END_RCPP
 }
+// epa_integral_2d
+NumericVector epa_integral_2d(NumericMatrix x, NumericMatrix bbox, double bw, int n);
+RcppExport SEXP Kdirectional_epa_integral_2d(SEXP xSEXP, SEXP bboxSEXP, SEXP bwSEXP, SEXP nSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject __result;
+    Rcpp::RNGScope __rngScope;
+    Rcpp::traits::input_parameter< NumericMatrix >::type x(xSEXP);
+    Rcpp::traits::input_parameter< NumericMatrix >::type bbox(bboxSEXP);
+    Rcpp::traits::input_parameter< double >::type bw(bwSEXP);
+    Rcpp::traits::input_parameter< int >::type n(nSEXP);
+    __result = Rcpp::wrap(epa_integral_2d(x, bbox, bw, n));
+    return __result;
+END_RCPP
+}
 // c_geom
 List c_geom(NumericMatrix x, IntegerVector from, IntegerVector to, double r);
 RcppExport SEXP Kdirectional_c_geom(SEXP xSEXP, SEXP fromSEXP, SEXP toSEXP, SEXP rSEXP) {
@@ -260,8 +274,8 @@ BEGIN_RCPP
 END_RCPP
 }
 // Kest_anin_c
-NumericMatrix Kest_anin_c(NumericMatrix coord, NumericVector lambda, NumericMatrix bbox, NumericVector r, NumericMatrix directions, double epsilon);
-RcppExport SEXP Kdirectional_Kest_anin_c(SEXP coordSEXP, SEXP lambdaSEXP, SEXP bboxSEXP, SEXP rSEXP, SEXP directionsSEXP, SEXP epsilonSEXP) {
+NumericMatrix Kest_anin_c(NumericMatrix coord, NumericVector lambda, NumericMatrix bbox, NumericVector r, NumericMatrix directions, double epsilon, int border);
+RcppExport SEXP Kdirectional_Kest_anin_c(SEXP coordSEXP, SEXP lambdaSEXP, SEXP bboxSEXP, SEXP rSEXP, SEXP directionsSEXP, SEXP epsilonSEXP, SEXP borderSEXP) {
 BEGIN_RCPP
     Rcpp::RObject __result;
     Rcpp::RNGScope __rngScope;
@@ -271,7 +285,8 @@ BEGIN_RCPP
     Rcpp::traits::input_parameter< NumericVector >::type r(rSEXP);
     Rcpp::traits::input_parameter< NumericMatrix >::type directions(directionsSEXP);
     Rcpp::traits::input_parameter< double >::type epsilon(epsilonSEXP);
-    __result = Rcpp::wrap(Kest_anin_c(coord, lambda, bbox, r, directions, epsilon));
+    Rcpp::traits::input_parameter< int >::type border(borderSEXP);
+    __result = Rcpp::wrap(Kest_anin_c(coord, lambda, bbox, r, directions, epsilon, border));
     return __result;
 END_RCPP
 }

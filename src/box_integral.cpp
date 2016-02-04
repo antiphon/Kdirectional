@@ -1,5 +1,12 @@
 #include <Rcpp.h>
-#include "box_integral.h"
+#include "box_integral.h" 
+
+
+// integrand for 2D 
+double Iy(double y, double bw){
+  return 0.5 * ( y * sqrt(bw*bw-y*y)+ bw *bw * asin(y/bw));
+}
+
 
 
 // [[Rcpp::export]]
@@ -7,24 +14,48 @@ NumericVector box_integral(NumericMatrix x,
                                 NumericMatrix bbox,
                                 double bw,
                                 int n=0) {
-  // fine grid approximation
+  // fine grid?
+  if(n > 3) return box_integral_grid(x, bbox, bw, n);
+  
   NumericVector out(x.nrow());
-  int i,j,k;
+  int i;
   int dim = x.ncol();
   double s, h = bw;
-  NumericMatrix lims(2, dim);
+  double h2 = h*h;
   
-  double w =  pow(2*bw, dim);
+  if(dim >2) {
+    Rprintf("3D not implemented.\n");
+    return out; 
+  }
+  
+  // 2D only.
+  
+  double w =  PI * h2;
+  double a, b, c, d;
+  double vh, ch, dh;
   //
   for(i=0; i < x.nrow(); i++) {
-    // integration box
-    for(k=0; k < dim; k++) {
-      lims.at(0,k) = fmin(h, x.at(i,k)-bbox.at(0,k));
-      lims.at(1,k) = fmin(h, bbox.at(1,k)-x.at(i,k));
+    // possibly hitting the edge:
+    a = fmin(h, x.at(i,0)-bbox.at(0,0));
+    b = fmin(h, bbox.at(1,0)-x.at(i,0));
+    c = fmin(h, x.at(i,1)-bbox.at(0,1));
+    d = fmin(h, bbox.at(1,1)-x.at(i,1)); 
+    // not hitting the edge?
+    if(a==h & b==h & c==h & d==h) s=w;
+    else{
+      s=0;
+      // hit edge
+      // part 1
+      vh = sqrt(h2-a*a);
+      ch = fmin(vh, c);
+      dh = fmin(vh, d);
+      s+= a * (ch+dh) + Iy(-ch, h)-Iy(-c,h) + Iy(d,h)-Iy(dh,h);
+      // part 2
+      vh = sqrt(h2-b*b);
+      ch = fmin(vh, c);
+      dh = fmin(vh, d);
+      s+= b * (ch+dh) + Iy(-ch, h)-Iy(-c,h) + Iy(d,h)-Iy(dh,h);
     }
-    s = 1;
-    for(k=0; k < dim; k++) s*= (lims.at(0,k)+lims.at(1,k));
-    // very rough
     out.at(i) = s/w;
   }
   return out;

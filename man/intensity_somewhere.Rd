@@ -2,11 +2,26 @@
 % Please edit documentation in R/intensity.R
 \name{intensity_somewhere}
 \alias{intensity_somewhere}
-\title{Estimate intensity of point pattern at given points}
+\title{Estimate intensity of point pattern at given locations}
 \usage{
-intensity_somewhere(x, loc, bw, n = 21, ...)
+intensity_somewhere(x, loc, bw, b = 1, ...)
+}
+\arguments{
+\item{x}{points, list with $x and $bbox or just a matrix of coordinates.}
+
+\item{loc}{Matrix of locations to estimate the intensity at}
+
+\item{bw}{bandwidth, Epanechnikov kernel domain [-bw,bw]}
+
+\item{b}{Type of border correction estimate.}
+
+\item{...}{ignored}
 }
 \description{
-Estimate intensity of point pattern at given points
+Estimate intensity of point pattern at given locations
+}
+\details{
+Uses Epanechnikov kernel smoothing. Border correction is approximative, try "b=0,1,2,3". Default 0 (works atm only in 2D, in 3D use grid with n~30)
+0: Exact integral 1: Box kernel approximation, 2: Biased epa integral (not working in 3d) >3: fine grid sum with resolution b, very slow.
 }
 

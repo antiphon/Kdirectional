@@ -4,8 +4,9 @@
 NumericVector epa_integral(NumericMatrix x,
                            NumericMatrix bbox,
                            double bw,
-                           int n=1){
+                           int n=0){
   // choose approximation
+  if(n==0) return epa_integral_2d(x, bbox, bw, n);
   if(n==1) return box_integral(x, bbox, bw, n);
   if(n==2) return epa_integral_biased(x, bbox, bw, 0);
   return epa_integral_grid(x, bbox, bw, n);
@@ -143,3 +144,69 @@ NumericVector epa_integral_grid(NumericMatrix x,
   }
   return out;
 }
+
+
+
+// for the intergration
+double Iy(double y){
+  return (y*sqrt(1-y*y)*(5-2*y*y)+3*asin(y))/8.0;
+}
+
+double IIy(double a, double b){
+  return Iy(b)-Iy(a);
+}
+
+
+
+// [[Rcpp::export]]
+NumericVector epa_integral_2d(NumericMatrix x,
+                              NumericMatrix bbox,
+                              double bw,
+                              int n=0) {
+  // fine grid?
+  if(n > 3) return epa_integral_grid(x, bbox, bw, n);
+  
+  NumericVector out(x.nrow());
+  int i;
+  int dim = x.ncol();
+  double s, h = bw;
+  double h2 = h*h;
+  
+  if(dim >2) {
+    Rprintf("3D not implemented.\n");
+    return out; 
+  }
+  
+  // 2D only.
+  
+  double w =  PI/2.0;
+  double a, b, c, d;
+  double vh, ch, dh;
+  //
+  for(i=0; i < x.nrow(); i++) {
+    // possibly hitting the edge:
+    a = fmin(h, x.at(i,0)-bbox.at(0,0))/h;
+    b = fmin(h, bbox.at(1,0)-x.at(i,0))/h;
+    c = fmin(h, x.at(i,1)-bbox.at(0,1))/h;
+    d = fmin(h, bbox.at(1,1)-x.at(i,1))/h; 
+    // not hitting the edge?
+    if(a==1 & b==1 & c==1 & d==1) s=w;
+    else{
+      s=0;
+      // hit edge
+      // part 1
+      vh = sqrt(1-a*a);
+      ch = fmin(vh, c);
+      dh = fmin(vh, d);
+      s+= a*(ch+dh)-a*a*a*(ch+dh)/3.0-a*(ch*ch*ch+dh*dh*dh)/3.0 + (2.0/3.0)*(IIy(-c,-ch)+IIy(dh,d));
+      // part 2
+      vh = sqrt(1-b*b);
+      ch = fmin(vh, c);
+      dh = fmin(vh, d);
+      s+= b*(ch+dh)-b*b*b*(ch+dh)/3.0-b*(ch*ch*ch+dh*dh*dh)/3.0 + (2.0/3.0)*(IIy(-c,-ch)+IIy(dh,d));
+    }
+    out.at(i) = s/w;
+  }
+  return out;
+}
+
