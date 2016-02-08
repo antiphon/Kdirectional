@@ -97,6 +97,14 @@ c_pairwise_dist_angle <- function(x) {
     .Call('Kdirectional_c_pairwise_dist_angle', PACKAGE = 'Kdirectional', x)
 }
 
+pcf_anin_c <- function(coord, lambda, bbox, r, r_h, directions, epsilon, border = 1L) {
+    .Call('Kdirectional_pcf_anin_c', PACKAGE = 'Kdirectional', coord, lambda, bbox, r, r_h, directions, epsilon, border)
+}
+
+pcf_anin_c_d <- function(coord, lambda, bbox, r, r_h, directions, epsilon, border = 1L) {
+    .Call('Kdirectional_pcf_anin_c_d', PACKAGE = 'Kdirectional', coord, lambda, bbox, r, r_h, directions, epsilon, border)
+}
+
 c_sector_pcf <- function(x, u, theta, r, h, bbox, correction) {
     .Call('Kdirectional_c_sector_pcf', PACKAGE = 'Kdirectional', x, u, theta, r, h, bbox, correction)
 }

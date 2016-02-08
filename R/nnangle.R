@@ -12,7 +12,6 @@
 #' The values in 3d are physical coordinate system (azimuth, inclination, distance)
 #' 
 #' @export
-
 nnangle <- function(x, from, to){
   x <- as.matrix(x)
   if(missing(from)) from <- 1:nrow(x)

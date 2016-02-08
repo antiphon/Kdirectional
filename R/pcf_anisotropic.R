@@ -33,8 +33,8 @@ pcf_anisotropic <- function(x, r, theta, h, f=0.15, correction="translation", n_
     b <- min(sidelengths)*0.3
     r <- seq(0, b, length=50)
   }
-  if(missing(h)) {
-    h <- c( f/lambda^(1/dim), f*pi )  
+  if(missing(r_h)) {
+    r_h <- c( f/lambda^(1/dim), f*pi )  
   }
   if(length(h) < 2) h <- rep(h, 2)
   # correction

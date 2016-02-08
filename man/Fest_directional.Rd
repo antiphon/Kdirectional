@@ -13,7 +13,7 @@ Fest_directional(x, u, theta, r, n)
 
 \item{theta}{angle for the directed cone}
 
-\item{r}{radius vector at which to evaluate K}
+\item{r}{radius vector at which to estimate}
 
 \item{n}{number of uniform dummies}
 }

@@ -19,7 +19,7 @@ intensity_at_points(x, bw, b = 1, ...)
 Estimate intensity of point pattern at the points of the pattern
 }
 \details{
-Uses Epanechnikov kernel smoothing. Border correction is approximative, try "b=1,2,3".
-1: Box rectangle approximation, 2: Biased box integral (not working in 3d) >3: fine grid sum with resolution b, very slow.
+Uses Epanechnikov kernel smoothing. Border corrections vary, try "b=1,2,3".
+1: 2D exact, 3D box rectangle approximation; 2: 2D Biased box integral, 3D none; >3: fine grid sum with resolution b^dim (slow). b=0 means no correction.
 }
 
