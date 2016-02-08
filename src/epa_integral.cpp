@@ -174,6 +174,7 @@ NumericVector epa_integral_2d(NumericMatrix x,
   
   if(dim >2) {
     Rprintf("3D not implemented.\n");
+    for(i=0; i < out.size();i++) out.at(1)=1;
     return out; 
   }
   

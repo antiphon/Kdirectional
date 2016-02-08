@@ -15,3 +15,4 @@ g2 <- spatstat::Gest(pp, r=g1$r)
 plot(g2)
 lines(g1$r, g1$v, col=4, lwd=4, lty=3)
 lines(g1$r, g1$theo, col=1, lwd=3, lty=2)
+

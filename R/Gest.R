@@ -5,6 +5,7 @@
 #' @export
 
 Gest <- function(x, r){
+  warning("Not properly tested.")
   x <- check_pp(x)
   bbox <- x$bbox
   dim <- ncol(bbox)

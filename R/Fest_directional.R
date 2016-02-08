@@ -5,13 +5,14 @@
 #' @param x pp, list with $x~coordinates $bbox~bounding box
 #' @param u unit vector of direction
 #' @param theta angle for the directed cone
-#' @param r radius vector at which to evaluate K
+#' @param r radius vector at which to estimate
 #' @param n number of uniform dummies
 #'
 #' @useDynLib Kdirectional
 #' @export
 
 Fest_directional <- function(x, u, theta, r, n) {
+  warning("Not properly tested.")
   if(is.null(x$bbox)) stop("x should be list(x=coordinates-matrix, bbox=bounding-box)")
   bbox <- x$bbox
   dim <- ncol(bbox)

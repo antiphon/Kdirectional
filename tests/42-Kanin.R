@@ -4,10 +4,7 @@ library(devtools)
 load_all(".")
 
 # thinning
-if(!exists("z"))load("test_strauss_big.rda")
-
-# intensity estimate
-lambda <- intensity_at_points(X, 0.3)
+if(!exists("z"))load("test_strauss.rda")
 
 u <- cbind(0:1,1:0)
 
@@ -103,8 +100,8 @@ if(1) {
   C <- diag(c(1/.5, .5))
   zv$x <- zv$x%*%C
   zv$bbox <- bbox_affine(zv$bbox, C)
-  k1 <- Kest_anin(z, u, epsilon=eps <- pi/8, lambda_h=lh<-0.7, n=51, r=seq(0,0.1, length=50))
-  k2 <- Kest_anin(zv, u, epsilon=eps, lambda_h=lh, r=k1$r, n=51)
+  k1 <- Kest_anin(z, u, epsilon=eps <- pi/8, lambda_h=lh<-0.7, r=seq(0,0.1, length=50))
+  k2 <- Kest_anin(zv, u, epsilon=eps, lambda_h=lh, r=k1$r)
   plot(z$x, asp=1)
   plot(k1)
   plot(zv$x, asp=1)

@@ -9,7 +9,7 @@
 #' @param lambda optional vector of intensity estimates at points
 #' @param lambda_h if lambda missing, use this bandwidth in a kernel estimate of lambda(x)
 #' @param renormalise See details. 
-#' @param border Use translation correction (default=1)? Only for cuboidal windows.
+#' @param border Use translation correction? Default=1, yes. Only for cuboidal windows.
 #' @param ... passed on to e.g. \link{intensity_at_points}
 #' @details 
 #' 
@@ -67,7 +67,7 @@ Kest_anin <- function(x, u, epsilon, r, lambda=NULL, lambda_h,
   else{
     # estimate lambda
     if(missing(lambda_h)) stop("Need lambda_h to estimate the intensity function")
-    lambda <- intensity_at_points(x, lambda_h, ...)
+    lambda <- intensity_at_points(x, bw=lambda_h, ...)
   }
   # if renormalisation of the intensity is in order
   if(renormalise) {
@@ -107,9 +107,14 @@ Kest_anin <- function(x, u, epsilon, r, lambda=NULL, lambda_h,
 #' 
 #' @param x Output from Kest_anin
 #' @param r_scale Plot with x-axis r*r_scale
+#' @param rmax plot upto this range
+#' @param ... passed on to plot
 #' @export
 
-plot.K_anin <- function(x, r_scale=1, ...) {
+plot.K_anin <- function(x, r_scale=1, rmax, ...) {
+  # cut r
+  if(!missing(rmax)) x <- x[x$r<rmax,]
+  #
   plot(x$r*r_scale, x$theo, col=1, xlab="r", 
        ylab="Kest_anin", type="l", lty=3, ...)
   n <- ncol(x)

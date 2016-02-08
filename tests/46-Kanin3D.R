@@ -123,8 +123,8 @@ if(1) {
   C <- diag(c(1/sqrt(.5), 1/sqrt(.5), .5))
   zv$x <- zv$x%*%C
   zv$bbox <- bbox_affine(zv$bbox, C)
-  k1 <- Kest_anin(z, epsilon=eps <- pi/8, lambda_h=lh<-0.7, r=r)
-  k2 <- Kest_anin(zv, epsilon=eps, lambda_h=lh, r=k1$r)
+  k1 <- Kest_anin(z, epsilon=eps <- pi/8, lambda_h=lh<-0.7, b=31, r=r, border=1)
+  k2 <- Kest_anin(zv, epsilon=eps, lambda_h=lh, r=k1$r, b=31, border=1)
   plot(z$x, asp=1)
   plot(k1)
   plot(zv$x, asp=1)
