@@ -11,18 +11,18 @@
 #' @export
 
 sectorplot <- function(x, res=4, col=rainbow, zlim, overlapfactor=0.95, ...){
-  #' Ok: 
+  # Ok: 
   ok <- c("pcf_sector", "sector", "Gsector")
   if(!length(intersect(ok, is(x))))stop("Input type not supported by sectorplot.")
   if(x$dim!=2)stop("Only for 2d.")
-  #' Get the sectors
+  # Get the sectors
   ang <- x$theta[[1]]
   eps <- x$epsilon
   sang <- unname( t( rbind(ang, ang) + c(-1,1)*overlapfactor*eps) )
   
   antipode <- "pcf_sector"%in%is(x)
   
-  #' get the estimates
+  # get the estimates
   val <- x$est
   m <- max(x$r)
   if(missing(zlim)) zlim <- range(x$est, na.rm=T)

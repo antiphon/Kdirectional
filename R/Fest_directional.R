@@ -25,11 +25,11 @@ Fest_directional <- function(x, u, theta, r, n) {
     b <- min(sidelengths)*0.3
     r <- seq(0, b, length=50)
   }
-  #'
+  #
   nDummies <- if(missing(n)) 4*N else n
   rcen <- max(r)
   dummies <- sapply(1:dim, function(i) runif(nDummies, bbox[1,i]+r, bbox[2,i]-r))
-  #'
+  #
   
   # make sure unit vector
   u <- u/sqrt(t(u)%*%u)
@@ -39,23 +39,23 @@ Fest_directional <- function(x, u, theta, r, n) {
   to <- 1:nrow(x$x)
   Nr <- length(r)
   
-  #' the F value
+  # the F value
   Fv <- function(edges) {
     # edge correction
     sum( sapply(edges[from], length ) > 0)/nDummies
   }
-  #' the largest graph:
+  # the largest graph:
   edges <- as.list( c_directed_geom(xc, u, theta, r[Nr], from, to) )
-  #'
+  #
   res <- c(Fv(edges), r[Nr])
   for(i in (Nr-1):1) {
     edges <- c_cutgeom(xc, edges, r[i]) 
     res <- rbind(c(Fv(edges), r[i]), res)
   }
-  #'
+  #
   lambda_ang <- N/prod(apply(bbox, 2, diff)) * 2*theta/pi
   bd <- if(dim==3) 4/3 * pi else pi
-  #'
+  #
   warning("Experimental.")
   list(rs=res[,1], theo=1-exp(-lambda_ang*bd*r^dim), r=r)
 }

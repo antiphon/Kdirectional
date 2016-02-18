@@ -40,14 +40,14 @@ Kest_directional <- function(x, u, epsilon, r, pregraph) {
   to <- 1:nrow(xc)
   Nr <- length(r)
   N <- nrow(xc)
-  #' lambda:
+  # lambda:
   lambda <- N/prod(apply(bbox, 2, diff))
-  #' the largest graph:
+  # the largest graph:
   edges <- directed_geom(xc, u, epsilon, r[Nr], from, to, TRUE, pregraph) 
-  #'
-  #' compute weights for translation correction
+  #
+  # compute weights for translation correction
   W <- translation_weights(x, asMatrix=TRUE)
-  #' the K value
+  # the K value
   Kv <- function(edges) {
     has_neighs <- which(sapply(edges, length)>0)
     S <- if(length(has_neighs))
@@ -57,7 +57,7 @@ Kest_directional <- function(x, u, epsilon, r, pregraph) {
       ) else 0
     S/lambda^2
   }
-  #'
+  #
   res <- c(Kv(edges), r[Nr])
   for(i in (Nr-1):1) {
     edges <- c_cutgeom(xc, edges, r[i]) 
@@ -65,7 +65,7 @@ Kest_directional <- function(x, u, epsilon, r, pregraph) {
   }
   #
   bd <- pi * if(dim==3) 4/3  else 1
-  #'
+  #
   list(trans=res[,1], r=r, theo=bd*r^dim)
 }
 

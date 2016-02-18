@@ -19,7 +19,7 @@ dDirectional <- function(x, r, theta, epsilon, n_dir=10) {
   bbox <- x$bbox
   dim <- ncol(bbox)
   sidelengths <- bbox_sideLengths(bbox)
-  #'
+  #
   if(missing(theta)) {
     slice <- 2*pi/n_dir
     if(missing(epsilon)) epsilon <- slice/2
@@ -27,28 +27,28 @@ dDirectional <- function(x, r, theta, epsilon, n_dir=10) {
     if(dim==3) theta <- append(theta, list(ang2 = seq(epsilon, pi-epsilon, by=slice)))
   }
   if(missing(epsilon)) epsilon <- diff(theta[1:2])/2
-  #'
-  #' The isotropic case:
-  #' compute the nn-angles
+  #
+  # The isotropic case:
+  # compute the nn-angles
   na <- nnangle(x$x)
-  #'
+  #
   if(missing(r)) {
     b <- max(na[,dim])
     r <- seq(0, b*1.05, length=100)
   }
-  #' border:
+  # border:
   bd <- bbox_distance(x$x, x$bbox)
   from <- which(bd > na[,dim])
-  #'
-  #'
+  #
+  #
   nr <- na[from, dim]
   G0 <- sapply(r, function(ri) sum(nr < ri)  )
-  #' 
-  #'
+  #
+  #
   counts <- NULL
-  #' The directed ones
+  # The directed ones
   anggrid <- expand.grid(theta)
-  #' make a direction vector out of an angle
+  # make a direction vector out of an angle
   unitv <- function(a){ 
     if(dim==2) c(cos(a), sin(a)) 
     else c( sin(a[2])*cos(a[1]), sin(a[2])*sin(a[1]), cos(a[2]) )

@@ -10,7 +10,7 @@ check_directions <- function(theta, epsilon, unit, dim=2, antipode=FALSE, n_dir=
     theta <- list(ang = seq(epsilon, LIM-epsilon, by=slice) )
     if(dim==3) theta <- append(theta, list(ang2 = seq(epsilon, pi-epsilon, by=slice)))
     unit <- theta_2_unit(theta)
-    #' grid for computation
+    # grid for computation
     thetagrid <- expand.grid(theta)
     unitgrid <- theta_2_unit(thetagrid)
     
@@ -28,7 +28,7 @@ check_directions <- function(theta, epsilon, unit, dim=2, antipode=FALSE, n_dir=
     stop("Something went wrong with direction calculations!!?! Shouldn't happend, contact package creator.")
   }
   
-  #' grid
+  # grid
   
   if(missing(epsilon)) epsilon <- diff(theta[[1]][1:2])/2
   

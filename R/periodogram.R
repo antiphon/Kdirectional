@@ -16,8 +16,8 @@ periodogram <- function(x, p, pgrid, std=TRUE, ...) {
   sidelengths <- apply(bbox, 2, diff)
   n <- nrow(x$x)
   if(missing(p)) p <- n/2
-  #'
-  #' The grid of integral values
+  #
+  # The grid of integral values
   if(missing(pgrid)){
     pv <- matrix( rep(-p:p, dim), ncol = dim)
     pgrid <- as.matrix( expand.grid(data.frame( pv )) )
@@ -30,22 +30,22 @@ periodogram <- function(x, p, pgrid, std=TRUE, ...) {
   
   omega <- sapply(1:ncol(pgrid), function(i) unique(pgrid[,i])*2 * pi/sidelengths[i])
   omegagrid <- 2*pi*t(t(pgrid)/sidelengths)
-  #'
-  #'
+  #
+  #
   loc <- x$x 
-  #' "Standardize" coordinates
+  # "Standardize" coordinates
   if(std){
     loc <- n * t( t( loc/sidelengths ) )
   }
-  #'
-  #' Compute:
+  #
+  # Compute:
   CONST <- (1i) * 2 * pi/n
   g <- function(pvec) sum( exp( CONST * loc%*%pvec ) )
   J <- apply(pgrid, 1, g)
-  #' The constant is chosen mu A = n
+  # The constant is chosen mu A = n
   est <- (Re(J)^2 + Im(J)^2) * 2/n
-  #'
-  #' Drop (0,0,..) value
+  #
+  # Drop (0,0,..) value
   zero <- which( apply(pgrid==0, 1, all) )
   zerov <- est[zero]
   est[ zero ] <- NA

@@ -43,8 +43,8 @@ anisotropy_profile_fast <- function(x, grid, r, verb=FALSE, eps=pi/4, border=TRU
     Fxyz <- fry$fry_r * fry$fry_units
   }
   
-  #' Inverse transform the fry points, need to recompute 
-  #' since border distances change.
+  # Inverse transform the fry points, need to recompute 
+  # since border distances change.
   Theta <- function(ce) {
     A <- diag(1/ce)
     x0 <- x$x%*%t(A)

@@ -24,6 +24,6 @@ Returns a dataframe.
 We use translation edge correction.
 }
 \details{
-Compute the sector K function.
+Compute the sector K function. Try \code{\link{Kest_anin}} for a bit better version that does also second order inhomogeneous patterns.
 }
 

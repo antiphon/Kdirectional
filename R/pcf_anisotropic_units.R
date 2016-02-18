@@ -30,9 +30,9 @@ pcf_directions <- function(x, directions, h, f=0.15, correction="translation", n
   dim <- ncol(bbox)
   sidelengths <- bbox_sideLengths(bbox)
   lambda <- nrow(x$x)/prod(sidelengths)
-  #'
-  #'
-  #' Generate a grid of direction vectors
+  #
+  #
+  # Generate a grid of direction vectors
   if(missing(directions)){
     if(missing(r)){ 
       b <- min(sidelengths)*0.2
@@ -50,7 +50,7 @@ pcf_directions <- function(x, directions, h, f=0.15, correction="translation", n
       for(i in 1:n_dir) s0 <- subdivision3d(s0)
       vb <- t(s0$vb[1:3,])/s0$vb[4,]
       directions2 <- vb
-      #' only the top half
+      # only the top half
       directions1 <- directions2[ directions2[,3]>=0, ]
     }
     # now expand the circles/spheres
@@ -59,36 +59,33 @@ pcf_directions <- function(x, directions, h, f=0.15, correction="translation", n
       directions <- rbind(directions, ri*directions1)
     }
   }
-  #'
-  #'
-  #' check smoothing parameters
+  #
+  #
+  # check smoothing parameters
   if(missing(h)) {
     h <- c(f/lambda^(1/dim), f*pi)
   }
   if(length(h) < 2) h <- rep(h, 2)
-  #'
-  #'
-  #'
-  #' Edge correction
+  # Edge correction
   correction_i <- pmatch(correction, c("none", "translation"))
-  #'
-  #' start:
+  #
+  # start:
   xc <- as.matrix(x$x)
   res <- c_anisotropic_unit_pcf(xc, directions, h, bbox, correction_i)
   
-  #' pcf
+  # pcf
   g <- res[[1]]/lambda^2
   
-  #' compile
+  # compile
   nv <- nrow(directions)
-  #' report also in polar/spherical
+  # report also in polar/spherical
   l <- apply(directions, 1, function(x)sqrt(t(x)%*%x))
   phi <- atan2(directions[,2], directions[,1])
   phi[phi<0] <- phi[phi<0] + 2*pi
   r_phi <- cbind(l, phi  )
   if(dim==3) r_phi <- cbind(r_phi, acos(directions[,3]/l)  )
-  #'
-  #' ok, done.
+  #
+  # ok, done.
   res <- list(est=g, directions=directions, r_phi=r_phi, counts=res[[2]], 
               correction=correction, h=h, dim=dim)
   class(res) <- "pcf_directions"

@@ -39,23 +39,23 @@ pcf_anisotropic <- function(x, r, theta, h, f=0.15, correction="translation", n_
   if(length(h) < 2) h <- rep(h, 2)
   # correction
   correction_i <- pmatch(correction, c("none", "translation"))
-  #' start:
+  # start:
   xc <- as.matrix(x$x)
-  #'
+  #
   units <- theta_2_unit(theta)
-  #'
+  #
   directions <- NULL 
   for(ri in r) directions <- rbind(directions, ri*units)
   #
   res <- c_anisotropic_unit_pcf(xc, directions, h, bbox, correction_i)
-  #'  correction
+  #  correction
   grid <- expand.grid(append(list(r=r), theta))
   
   rho <- res[[1]]
-  #' pcf
+  # pcf
   g <- rho/lambda^2
   g_m <- matrix(g, byrow=T, nrow=length(r))
-  #'
+  #
   res <- list(est=g_m, r=r, theta=theta, directions=directions, correction=correction, h=h, rho=res[[1]], dim=dim, counts=res[[2]])
   class(res) <- "pcf_anisotropic"
   res

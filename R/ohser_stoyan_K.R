@@ -17,7 +17,7 @@ osK <- function(x, r, theta, ...) {
   }
   if(missing(theta)){
     theta <- list(angle=seq(0, pi, length=20))
-    #' add also pi if not already
+    # add also pi if not already
     theta[[1]] <- union(theta[[1]], pi)
     if(dim==3) theta <- append(theta, list(angle2=seq(0, pi, length=20)))
   }
@@ -29,16 +29,16 @@ osK <- function(x, r, theta, ...) {
           increasing azimuth (and in 3d inclination) vector(s), in physical spherical coordinate system.")    
   xc <- x$x
   v <- c_oh_K(xc, theta, r, bbox)
-  #'
+  #
   lambda <- nrow(xc)/prod(sidelengths)
   K <- v/lambda^2
-  #'
+  #
   grid <- expand.grid(append(list(r=r), theta))
-  #' compile useful data
+  # compile useful data
   ntheta <- sapply(theta, length)
   if(dim==2) {
     z <- matrix(K, nrow=length(r))
-    #' isotropic K
+    # isotropic K
     K_iso <- data.frame(r=r, trans=2*z[,ntheta])
   }
   else{
@@ -46,8 +46,8 @@ osK <- function(x, r, theta, ...) {
     z <- array(K, dim=dd)
     K_iso <- data.frame(r=r, trans=2*z[ , ntheta[1], ntheta[2]])
   }
-  #'
-  #'
+  #
+  #
   res <- list(Z=z, K_iso=K_iso, v=K, total_orientation=tot_ori, theta=theta, r=r, grid=grid)
   class(res) <- "os_K"
   res

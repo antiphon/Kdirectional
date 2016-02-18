@@ -102,7 +102,7 @@ summary.nnangle <- function(x, ...) {
     cat("Angle [0, 2pi], observed [", paste0(ranges[,1], collapse=","),"]", sep="")
     cat("\nDistance, observed [", paste0(ranges[,2], collapse=","),"]", sep="")
     cat("\n\n")
-    #' Kolmogorov-Smirnov test
+    # Kolmogorov-Smirnov test
     p0 <- function(x) punif(x, 0, 2*pi)
     angle <- x[,1]
     K <- ks.test(angle, p0, ...)
@@ -113,7 +113,7 @@ summary.nnangle <- function(x, ...) {
     cat("\nAzimuth [0, 2pi], observed [", paste0(ranges[,1], collapse=","),"]", sep="")
     cat("\nInclination (polar angle) [0, pi], observed [", paste0(ranges[,2], collapse=","),"]", sep="")
     cat("\nDistance, observed [", paste0(ranges[,3], collapse=","),"]", sep="")
-    #' Kolmogorov-Smirnov tests
+    # Kolmogorov-Smirnov tests
     p0 <- function(x) punif(x, 0, 2*pi)
     angle1 <- x[,1]
     K1 <- ks.test(angle1, p0, ...)

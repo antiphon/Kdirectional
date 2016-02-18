@@ -17,12 +17,12 @@ nnangle_cone <- function(x, unit, theta, from, to){
   x <- as.matrix(x)
   if(missing(from)) from <- 1:nrow(x)
   if(missing(to)) to <- 1:nrow(x)
-  #' make sure unit
+  # make sure unit
   unit <- unit/sqrt(sum(unit^2))
   d<-c_angles_in_a_cone(x, unit, theta, from, to)
   v<-do.call(cbind, d)
   
-  #' Drop not found
+  # Drop not found
   dim <- ncol(x)
   M<- diff(range(x))*2
   v[v[,dim]>M, ]  <- NA

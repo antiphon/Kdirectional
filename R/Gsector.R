@@ -22,7 +22,7 @@ Gsector <- function(x, r, theta, unit, directions, epsilon, n_dir=10) {
   bbox <- x$bbox
   dim <- ncol(bbox)
   sidelengths <- apply(bbox, 2, diff)
-  #'
+  #
   if(!missing(directions) & missing(epsilon)) stop("Need epsilon when directions given.")
   if(missing(directions)){
     dirs <- check_directions(theta, epsilon, unit, dim=dim, antipode=TRUE, n_dir=n_dir)
@@ -30,25 +30,25 @@ Gsector <- function(x, r, theta, unit, directions, epsilon, n_dir=10) {
   }else{
     dirs <- list()
   }
-  #'
-  #' The isotropic case:
-  #' compute the nn-angles
+  #
+  # The isotropic case:
+  # compute the nn-angles
   na <- nnangle(x$x)
-  #'
+  #
   if(missing(r)) {
     b <- max(na[,dim])
     r <- seq(0, b*1.05, length=100)
   }
-  #' border:
+  # border:
   bd <- bbox_distance(x$x, x$bbox)
   from <- which(bd > na[,dim])
-  #'
-  #' 
-  #'
+  #
+  # 
+  #
   counts <- NULL
-  #' The directions grid
+  # The directions grid
   dirgrid <- if(missing(directions)) dirs$grid$unit else directions
-  #' make a direction vector out of an angle
+  # make a direction vector out of an angle
   
   Gt<-apply(dirgrid, 1, function(u){
     naa <- nnangle_cone(x$x, unit = u, theta = epsilon)
@@ -67,7 +67,7 @@ Gsector <- function(x, r, theta, unit, directions, epsilon, n_dir=10) {
               unit=dirs$unit, 
               theta=dirs$theta, 
               epsilon=epsilon, theo=theo, dim=dim)
-  #'
+  #
   class(res) <- c("Gsector", "sector", is(res))
   res
 }
