@@ -19,7 +19,7 @@ NumericMatrix Kest_anin_c(NumericMatrix coord, NumericVector lambda, NumericMatr
 
   int i,j,l, ui, ri;
   double d, w, dot, ang;
-  double rmax = r.at(nr-1);
+  double rmax = r(nr-1);
   
   for(i=0; i < pp.size()-1 ; i++) {
     for(j= i + 1; j < pp.size(); j++) {
@@ -34,7 +34,7 @@ NumericMatrix Kest_anin_c(NumericMatrix coord, NumericVector lambda, NumericMatr
           ang = fmin(ang, PI-ang);
           if(ang < epsilon){
             for(ri=0; ri < nr; ri++){
-              if(d < r.at(ri)) out.at(ri, ui) += w;
+              if(d < r(ri)) out(ri, ui) += w;
             }
           }
         }

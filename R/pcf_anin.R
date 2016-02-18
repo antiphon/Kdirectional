@@ -133,10 +133,11 @@ pcf_anin <- function(x, u, epsilon, r, lambda=NULL, lambda_h, r_h, f=0.15,
 #' @param r_scale Plot with x-axis r*r_scale
 #' @param rmax plot upto this range
 #' @param ylim optional range for y-axis
+#' @param legpos legend position
 #' @param ... passed on to plot
 #' @export
 
-plot.pcf_anin <- function(x, r_scale=1, rmax, ylim, ...) {
+plot.pcf_anin <- function(x, r_scale=1, rmax, ylim, legpos="topright", ...) {
   # cut r
   if(!missing(rmax)) x <- x[x$r<rmax,]
   if(missing(ylim)) ylim <- c(0,2)
@@ -147,7 +148,7 @@ plot.pcf_anin <- function(x, r_scale=1, rmax, ylim, ...) {
   for(i in 3:n){
     lines(x$r*r_scale, x[,i], col=i-1)
   }
-  legend("topleft", names(x)[-1], lty=c(3,rep(1,n-2)), col=c(1:(n-1)))
+  legend(legpos, names(x)[-1], lty=c(3,rep(1,n-2)), col=c(1:(n-1)))
 }
 
 

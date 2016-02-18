@@ -8,9 +8,9 @@
 #' @param f test function of the form function(m1, m2) ..., returning a vector of length(m1)
 #' @param directions Matrix of directions, in unit vectors, one direction per row. Default: along axes.
 #' @param bw Bandwidths of epanechnicov kernels. Vector of two values, one for ranges and one for angles.
-#' @param adjust If bw not given, use bw=adjust*0.15/lambda^(1/dim) for range and bw=adjust*0.15*pi for angle
+#' @param adjust If bw not given, use bw=adjust[1]*0.15/lambda^(1/dim) for range and bw=adjust[2]*0.15*pi for angle
 #' @param correction "none" or "translation". Translation only for rectangular box.
-#' @param bootsize bootstrap size for estimating the normaliser
+#' @param bootsize bootstrap size for estimating the normaliser if not given.
 #' @param divisor either "d" or "r". Divide by dist(i,j) ("d") instead of r ("r")?
 #' @param normaliser normalising constant under independent marking. If NULL, estimated with bootstrap.
 #' 
@@ -27,7 +27,7 @@
 #' @export
 markcorr_anisotropic <- function(x, marks=NULL, r, f = function(a,b) a*b, 
                                directions,
-                               bw, adjust=1, 
+                               bw, adjust=c(1,1), 
                                correction="translation", 
                                bootsize=1e5,
                                divisor = "d",
@@ -61,8 +61,7 @@ markcorr_anisotropic <- function(x, marks=NULL, r, f = function(a,b) a*b,
   #
   # check smoothing parameters
   if(missing(bw)) {
-    bw <- c(adjust*0.15/lambda^(1/dim), 
-            adjust*0.15*pi)
+    bw <- adjust * c(0.15/lambda^(1/dim), 0.15*pi)
   }
   if(length(bw) < 2) stop("'bw' should be of length 2.")
   #
@@ -96,7 +95,7 @@ markcorr_anisotropic <- function(x, marks=NULL, r, f = function(a,b) a*b,
   #
   # The estimates:
   estg <- est <- NULL
-  for(i in 1:ncol(res[[1]])) {
+  for(i in 1:ncol(res[[1]])) { # per direction
     est <- cbind(est, res[[1]][,i]/res[[2]][,i]) / mnorm
     estg <- cbind(estg, res[[2]][,i]/scaleg)
   }

@@ -55,7 +55,7 @@ List anisotropic_markcor_c(NumericMatrix coord, NumericVector marks, NumericMatr
           for(l=0; l < dim; l++)  dot += (pp.getCoord(&j,&l)-pp.getCoord(&i,&l)) * directions(ui, l);
           ang = acos(dot/d);
           ang = fmin(ang, PI-ang);
-          w = pp.getWeight(&i, &j);
+          if(ui==0) w = pp.getWeight(&i, &j);
           rc =  floor(d/rmax * nr);
           ka = kernel_epa(ang, bw_a);
           if(ka > 0){

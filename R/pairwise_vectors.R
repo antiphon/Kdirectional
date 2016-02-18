@@ -21,35 +21,35 @@
 pairwise_vectors <- function(x, from, to, asMatrix=FALSE, as.xyz=FALSE){
   x <- as.matrix(x)
   d <- ncol(x)
-  #'
-  #' check for subsetting
+  #
+  # check for subsetting
   if(!missing(from) | !missing(to)){
     if(missing(from)) from <- 1:nrow(x)
     if(missing(to)) to <- 1:nrow(x)
     U <- c_pairwise_dist_angle_subset(x, from, to)
-    #' drop empty ones
+    # drop empty ones
     nonempty <- U[,1]>0
     U <- U[nonempty,]
   }
-  else{ #' all pairs once
+  else{ # all pairs once
     U <- c_pairwise_dist_angle(x)
   }
   colnames(U) <- c("distance", if(d==2) "angle" else c("azimuth", "inclination"))
   
-  #' if as matrix
+  # if as matrix
   if(asMatrix){
     if(!missing(from)|!missing(to)) stop("Not implemented for subsets.")
     R <- list()
     M0 <- A <- D <- diag(0, nrow = nrow(x))
     ltri <- lower.tri(D)
-    #' distance matrix
+    # distance matrix
     D[ltri] <- U[,1]
     D <- D + t(D)
-    #' angles:
+    # angles:
     if(d==3) A2 <- A
-    #' i -> j, transposing
+    # i -> j, transposing
     A[ltri] <- U[,2]
-    #' j->i = antipode
+    # j->i = antipode
     B <- M0
     Aa <- U[,2]
     i <- U[,2]>pi
@@ -78,3 +78,4 @@ pairwise_vectors <- function(x, from, to, asMatrix=FALSE, as.xyz=FALSE){
   }
   R
 }
+

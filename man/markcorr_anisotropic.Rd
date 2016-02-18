@@ -5,7 +5,7 @@
 \title{Anisotropic mark correlation function, direction vector formulation}
 \usage{
 markcorr_anisotropic(x, marks = NULL, r, f = function(a, b) a * b,
-  directions, bw, adjust = 1, correction = "translation",
+  directions, bw, adjust = c(1, 1), correction = "translation",
   bootsize = 1e+05, divisor = "d", normaliser = NULL)
 }
 \arguments{
@@ -21,11 +21,11 @@ markcorr_anisotropic(x, marks = NULL, r, f = function(a, b) a * b,
 
 \item{bw}{Bandwidths of epanechnicov kernels. Vector of two values, one for ranges and one for angles.}
 
-\item{adjust}{If bw not given, use bw=adjust*0.15/lambda^(1/dim) for range and bw=adjust*0.15*pi for angle}
+\item{adjust}{If bw not given, use bw=adjust[1]*0.15/lambda^(1/dim) for range and bw=adjust[2]*0.15*pi for angle}
 
 \item{correction}{"none" or "translation". Translation only for rectangular box.}
 
-\item{bootsize}{bootstrap size for estimating the normaliser}
+\item{bootsize}{bootstrap size for estimating the normaliser if not given.}
 
 \item{divisor}{either "d" or "r". Divide by dist(i,j) ("d") instead of r ("r")?}
 

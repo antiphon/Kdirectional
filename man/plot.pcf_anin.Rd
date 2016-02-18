@@ -4,7 +4,8 @@
 \alias{plot.pcf_anin}
 \title{Plot pcf_anin object}
 \usage{
-\method{plot}{pcf_anin}(x, r_scale = 1, rmax, ylim, ...)
+\method{plot}{pcf_anin}(x, r_scale = 1, rmax, ylim, legpos = "topright",
+  ...)
 }
 \arguments{
 \item{x}{Output from pcf_anin}
@@ -14,6 +15,8 @@
 \item{rmax}{plot upto this range}
 
 \item{ylim}{optional range for y-axis}
+
+\item{legpos}{legend position}
 
 \item{...}{passed on to plot}
 }
