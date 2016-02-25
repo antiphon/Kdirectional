@@ -8,7 +8,7 @@ NumericVector intensity_at_other_points_c(NumericMatrix x,
                                 NumericMatrix other,
                                 NumericMatrix bbox, 
                                 double bw_r,
-                                int n=1){
+                                int n=0){
   
   NumericVector out(other.nrow());
   

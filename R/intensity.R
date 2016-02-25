@@ -6,12 +6,17 @@
 #' @param b Type of border correction estimate.
 #' @param ... ignored
 #' @details 
-#' Uses Epanechnikov kernel smoothing. Border correction is approximative, try "b=0,1,2,3". Default 0 (works atm only in 2D, in 3D use grid with n~30)
-#' 0: Exact integral 1: Box kernel approximation, 2: Biased epa integral (not working in 3d) >3: fine grid sum with resolution b, very slow.
+#' Uses Epanechnikov kernel smoothing. Border corrections controlled by what b is:
+#' 0: 2D exact, not available for 3D atm; 
+#' 1: Box rectangle approximation; 
+#' 2: 2D Biased box integral, 3D none;
+#' >3: fine grid sum with resolution b^dim (slow). 
+#' 
+#' if b < 0 no edge correction is applied.
 #' 
 #' @export
 
-intensity_somewhere <- function(x, loc, bw, b=1, ...) {
+intensity_somewhere <- function(x, loc, bw, b=0, ...) {
   x <- check_pp(x)
   bbox <- x$bbox
   coord <- x$x
@@ -26,12 +31,18 @@ intensity_somewhere <- function(x, loc, bw, b=1, ...) {
 #' @param b Type of border correction estimate.
 #' @param ... ignored
 #' @details 
-#' Uses Epanechnikov kernel smoothing. Border corrections vary, try "b=1,2,3".
-#' 1: 2D exact, 3D box rectangle approximation; 2: 2D Biased box integral, 3D none; >3: fine grid sum with resolution b^dim (slow). b=0 means no correction.
+#' Uses Epanechnikov kernel smoothing. Border corrections controlled by what b is:
+#' 0: 2D exact, not available for 3D atm; 
+#' 1: Box rectangle approximation; 
+#' 2: 2D Biased box integral, 3D none;
+#' >3: fine grid sum with resolution b^dim (slow). 
+#' 
+#' if b < 0 no edge correction is applied.
+#' 
 #' 
 #' @export
 
-intensity_at_points <- function(x, bw, b=1, ...) {
+intensity_at_points <- function(x, bw, b=0, ...) {
   x <- check_pp(x)
   bbox <- x$bbox
   coord <- x$x

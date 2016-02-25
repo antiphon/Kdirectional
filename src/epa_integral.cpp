@@ -6,6 +6,10 @@ NumericVector epa_integral(NumericMatrix x,
                            double bw,
                            int n=0){
   // choose approximation
+  if(n < 0){
+    NumericVector xx(x.nrow(), 1.0);
+    return xx;
+  }
   if(n==0) return epa_integral_2d(x, bbox, bw, n);
   if(n==1) return box_integral(x, bbox, bw, n);
   if(n==2) return epa_integral_biased(x, bbox, bw, 0);

@@ -65,7 +65,7 @@ c_geom <- function(x, from, to, r) {
     .Call('Kdirectional_c_geom', PACKAGE = 'Kdirectional', x, from, to, r)
 }
 
-intensity_at_other_points_c <- function(x, other, bbox, bw_r, n = 1L) {
+intensity_at_other_points_c <- function(x, other, bbox, bw_r, n = 0L) {
     .Call('Kdirectional_intensity_at_other_points_c', PACKAGE = 'Kdirectional', x, other, bbox, bw_r, n)
 }
 
