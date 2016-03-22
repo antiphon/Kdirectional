@@ -2,11 +2,21 @@
 % Please edit documentation in R/bbox_methods.R
 \name{bbox_affine}
 \alias{bbox_affine}
-\title{Affine transformation of a bbox}
+\title{Affine transformation of a bbox or bbquad}
 \usage{
 bbox_affine(bbox, A, s = c(0, 0, 0))
 }
+\arguments{
+\item{bbox}{bounding box}
+
+\item{A}{transformation matrix}
+
+\item{s}{shift vector}
+}
 \description{
-Affine transformation of a bbox
+Affine transformation of a bbox or bbquad
+}
+\details{
+If A is not diagonal, bbox will be transformed into a bbquad.
 }
 

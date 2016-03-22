@@ -4,17 +4,19 @@
 \alias{intensity_bandwidth_profile}
 \title{Find the optimal smoothing for intensity estimation kernel width}
 \usage{
-intensity_bandwidth_profile(x, bw_vector, ...)
+intensity_bandwidth_profile(x, bw_vector, keep_min = FALSE, ...)
 }
 \arguments{
 \item{x}{point pattern}
 
 \item{bw_vector}{Vector of bandwidth values to optimize over}
 
+\item{keep_min}{if true, keep the intensity_at_points for the best bw}
+
 \item{...}{passed on to \code{intensity_at_points}}
 }
 \value{
-Vector of losses.
+Vector of losses, or if keep_min=TRUE, list with vector of losses and vector of intensity values with the bw that gives the minimum loss.
 }
 \description{
 Find the optimal smoothing for intensity estimation kernel width

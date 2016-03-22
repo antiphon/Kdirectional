@@ -6,7 +6,19 @@
 \usage{
 bbquad_default(xl = c(-0.5, 0.5), yl = xl, zl = xl)
 }
+\arguments{
+\item{xl}{x range Default -.5,5}
+
+\item{yl}{y range. Default = xl}
+
+\item{zl}{z range. Default = xl. Set it to NA for 2D.}
+}
 \description{
 Regular bounding box as bounding box of quadrilaterals
+}
+\details{
+Default output is a 3D cube with vertices in the corners of [-.5,.5]^3. 
+
+See also \code{\link{poly_to_bbquad}} for more flexible windows in 2D.
 }
 

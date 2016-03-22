@@ -10,7 +10,10 @@
 #' 
 #' @details 
 #' 
-#' Compute the sector K function. Try \code{\link{Kest_anin}} for a bit better version that does also second order inhomogeneous patterns.
+#' 
+#' Compute the sector K function. 
+#' 
+#' Try \code{\link{Kest_anin}} for a bit better version that does also second order inhomogeneous patterns. 
 #' 
 #' @return 
 #' Returns a dataframe.
@@ -19,7 +22,7 @@
 #' @useDynLib Kdirectional
 #' @export
 
-Kest_directional <- function(x, u, epsilon, r, pregraph) {
+Kest_directional_old <- function(x, u, epsilon, r, pregraph) {
   x <- check_pp(x)
   bbox <- x$bbox
   if(is.bbquad(bbox)) stop("bbquad window not yet supported.")
@@ -95,3 +98,34 @@ Kest_along_axis <- function(x, ...) {
 
 
 
+#' Directed K function
+#' 
+#' We use translation edge correction if we have an axis-oriented bounding box. Otherwise minus-correction.
+#'
+#' @param x pp, list with $x~coordinates $bbox~bounding box
+#' @param u unit direction(s), if many then one direction per row.
+#' @param epsilon Central angle for the directed cone (total angle is 2 epsilon)
+#' @param r radius vector at which to evaluate K
+#' @param ... Passed on to \link{\code{Kest_anin}}
+#' 
+#' @details 
+#' 
+#' Compute the sector K function. This version uses the more general anisotropic-inhomonogeneous \link{\code{Kest_anin}}, by setting the intensity = constant.
+#' 
+#' @return 
+#' Returns a dataframe.
+#' 
+#' @import Matrix
+#' @useDynLib Kdirectional
+#' @export
+
+Kest_directional <- function(x, u, epsilon, r, ...) {
+  x <- check_pp(x)
+  bbox <- x$bbox
+  n <- nrow(x$x)
+  lambda1 <- n/bbox_volume(bbox)
+  lambda <- rep(lambda1, n)
+  Kest <- Kest_anin(x, u, epsilon, r, lambda, ...)
+  attr(Kest, "fun_name") <- "Kest_directional"
+  Kest
+}

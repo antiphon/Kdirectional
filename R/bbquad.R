@@ -6,21 +6,39 @@ bbox2bbquad  <- function(bb){
   else bbquad_default(bb[,1],bb[,2],NA)
 }
 
+#' Return the bounding box of a bbquad
+#' 
+#' @export
+bbquad2bbox <- function(x) {
+  apply(x$vertices, 2, range)
+}
 
 #' bbquad from 2d polygon
 #' 
-#' @import ellipsoid
 #' @export
 poly_to_bbquad <- function(x, y) {
   quads <- rbind(1:length(x))
   bbq<-list(vertices=cbind(x,y), idx=quads)
   # store the volume
-  bbq$volume <- area_of_2d_polygon(bbq$vertices)
+  px <- rbind(px,px[1,])
+  n <- nrow(px)
+  px <- bbq$vertices
+  # Shoelace method
+  bbq$volume <- 0.5 * abs( sum(px[-n,1]*px[-1,2]) - sum(px[-1,1]*px[-n,2]) )
   class(bbq) <- "bbquad"
   bbq
 }
 
 #' Regular bounding box as bounding box of quadrilaterals
+#' 
+#' @param xl x range Default -.5,5
+#' @param yl y range. Default = xl
+#' @param zl z range. Default = xl. Set it to NA for 2D.
+#' 
+#' @details 
+#' Default output is a 3D cube with vertices in the corners of [-.5,.5]^3. 
+#' 
+#' See also \code{\link{poly_to_bbquad}} for more flexible windows in 2D.
 #' 
 #' @export
 bbquad_default <- function(xl=c(-.5,.5), yl=xl, zl=xl){
@@ -84,7 +102,9 @@ is.bbquad <- function(x, ...){
 #' @export
 #' @import rgl
 
-plot.bbquad <- function(x, edges=FALSE, normals=FALSE, ecol=2, ncol=4, add=TRUE, ...){
+plot.bbquad <- function(x, edges = FALSE, 
+                        normals = FALSE, 
+                        ecol=2, ncol=4, add=TRUE, ...){
   d <- ncol(x$vertices)
   if(d==3){
     m<-qmesh3d(t(x$vert), x$idx, homog=F)
@@ -202,9 +222,72 @@ dist_point_to_plane <- function(x, pl){
 #' @export
 bbquad_edges <- function(x){
   d <- ncol(x$vertices)
-  ei <- if(d==3)rbind(c(1,2), c(1,3), c(1,5), c(2,4), c(2,6), c(3,4), 
-              c(3,7), c(4,8), c(5,7),c(5,6),c(6,8), c(7,8)) else rbind(c(1,2), c(1,3),c(2,4),c(3,4))
-  apply(ei, 1, function(id) {z<-t(x$vertices[id,]);c(start=z[1:d], end=z[1:d+d]) })
+  ei <- if(d==3)rbind(c(1,2), c(1,3), c(1,5), 
+                      c(2,4), c(2,6), c(3,4), 
+                      c(3,7), c(4,8), c(5,7),
+                      c(5,6), c(6,8), c(7,8)) 
+         else rbind(c(1,2), c(1,3),c(2,4),c(3,4))
+  apply(ei, 1, function(id) {
+      z <- t(x$vertices[id,])
+      c(start=z[1:d], end=z[1:d+d]) 
+    })
+}
+
+#' Triangulate a bbquad 
+#' 
+#' Due to assuming quadrilateral polytope, we get 2 simplices (triangles/tetrahedrons)
+#' 
+#' @param x bbquad object
+#' @export
+
+bbquad_simplices <- function(x) {
+  if(!is.bbquad(x)) stop("x not a bbquad-object.")
+  d <- ncol(x$vertices)
+  if(d==2){
+    list(x$vertices[1:3,], x$vertices[c(1,3,4),])
+  }
+  else if(d==3){
+    if(nrow(x$vertices)!=8) stop("3D bbquad object not in quadrilateral form.")
+    s <- list()
+    # the central vertex
+    c0 <- apply(x$vertices, 2, mean)
+    # split each face to two tetrahedrons
+    k <- 0
+    for(i in 1:6){
+      j <- x$idx[,i]
+      s[[k<-k+1]] <- rbind(x$vertices[j[1:3],], c0)
+      s[[k<-k+1]] <- rbind(x$vertices[j[c(1,3,4)],], c0)
+    }
+    s # done
+  }
+  else stop("bbquad not 2d or 3d.")
+}
+
+#' Volume of a bbquad
+#' 
+#' @param x bbquad-object
+#' 
+#' @details 
+#' Will split the bbquad into simplices and return the sum of simplex volumes.
+#' 
+#' @export
+
+bbquad_volume <- function(x) {
+  s <- bbquad_simplices(x)
+  sum(simplex_volume(s))
 }
 
 
+#' Affine transformation of a bbquad
+#' 
+#' @param x bbquad object
+#' @param A transformation matrix
+#' @param s shift vector
+#' 
+#' @export
+bbquad_affine <- function(x, A, s=c(0,0,0)){
+  d <- ncol(x$vertices)
+  x$vertices <- coord_affine(x$vertices, A, s[1:d])
+  x$volume <- bbquad_volume(x)
+  x
+}

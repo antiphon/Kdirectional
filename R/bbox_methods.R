@@ -46,21 +46,45 @@ bbox_distance <- function(x, bbox){
 }
 
 
-#' Affine transformation of a bbox
+#' Affine transformation of a bbox or bbquad
+#' 
+#' @param bbox bounding box
+#' @param A transformation matrix
+#' @param s shift vector
+#' 
+#' @details 
+#' If A is not diagonal, bbox will be transformed into a bbquad.
 #' 
 #' @export
 bbox_affine <- function(bbox, A, s=c(0,0,0)){
   if(is.bbquad(bbox)){
-    d <- ncol(bbox$vertices)
-    bbox$vertices <- bbox_affine(bbox$vertices, A, s[1:d])
-    bbox$volume <- bbox$volume * abs( det(A) )
+    bbox <- bbquad_affine(bbox, A, s)
   }
-  else{
-    d <- ncol(bbox)
-    bbox <- t(t(bbox %*% t(A)) + s[1:d])
+  else{ # 
+    if(any(c(A[upper.tri(A)],A[lower.tri(A)])!=0)) {
+      bbox <- bbox2bbquad(bbox)
+      bbox <- bbquad_affine(bbox, A, s)
+    }
+    else {
+      bbox <- coord_affine(bbox, A, s)
+    }
   }
   bbox
 }
+
+#' Affine transfomration of coordinates
+#' 
+#' @param x coordinates, one row per coordinate
+#' @param A matrix
+#' @param s shift
+
+#' @export
+coord_affine <- function(x, A, s=c(0,0,0)){
+  x <- rbind(x)
+  d <- ncol(x)
+  t(t(x %*% t(A)) + s[1:d])
+}
+
 
 
 #' Bounding box volume
@@ -68,8 +92,10 @@ bbox_affine <- function(bbox, A, s=c(0,0,0)){
 #' @export
 bbox_volume <- function(bbox){
   if(is.bbquad(bbox)){
-    if(is.null(bbox$volume)) stop("Can't get the volume of the box.")
-    bbox$volume
+    if(is.null(bbox$volume)){
+      bbquad_volume(bbox)  
+    }
+    else bbox$volume
   }
   else{
     prod(apply(bbox, 2, diff))
@@ -92,4 +118,12 @@ bbox_sideLengths <- function(bbox){
   }
 }
 
+#' Bounding box dimension
+#' 
+#' @param x Bounding box or bbquad
+#' @export
 
+bbox_dim <- function(x){
+  if(is.bbquad(x)) ncol(x$vertices)
+  else ncol(x)
+}

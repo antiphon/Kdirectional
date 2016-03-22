@@ -22,7 +22,7 @@ Kest_anin(x, u, epsilon, r, lambda = NULL, lambda_h, renormalise = TRUE,
 
 \item{renormalise}{See details.}
 
-\item{border}{Use translation correction? Default=1, yes. Only for cuboidal windows.}
+\item{border}{Use border correction? Default=1, yes.}
 
 \item{...}{passed on to e.g. \link{intensity_at_points}}
 }
@@ -37,6 +37,9 @@ Computes a second order reweighted version of the Sector-K.
 
 Lambda(x) at points can be given, 
 or else it will be estimated using Epanechnikov kernel smoothing. See 
+
+Border correction: If x$bbox is a a simple bounding box, use translation correction. 
+If bbquad-object, potentially rotated etc., use simple minus correction.
 
 If 'renormalise=TRUE', we normalise the lambda estimate so that sum(1/lambda(x))=|W|. This corresponds in \code{spatstat}'s \code{Kinhom} to setting 'normpower=2'.
 }

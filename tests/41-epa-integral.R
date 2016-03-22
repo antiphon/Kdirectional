@@ -10,24 +10,26 @@ load_all(".")
 if(!exists("z")) load("test_strauss.rda")
 
 
-bbox <- cbind(0:1, 0:1)
-bbox3 <- cbind(bbox, 0:1)
+bbox <- cbind(c(1,3.5), c(0,2))
+bbox3 <- cbind(bbox, c(0,4))
 
 #x <- cbind(c(0.5,0.05), c(0.5, 0.5))
 #x3 <- cbind(x, c(0.5,.5))
 
-ss <- seq(0,1, length=50)
-ssy <- seq(0,1, length=50)
+ss <- seq(bbox[1,1], bbox[2,1], length=50)
+ssy <- seq(bbox[1,2],bbox[2,2], length=50)
 x <- as.matrix(expand.grid(ss,  ssy))
 
 #bbox <- cbind(range(ss),range(ssy))
 
-t0 <- system.time( v <- box_integral(x, bbox, bw<-0.5) )
+t0 <- system.time( v <- box_integral(x, bbox, bw<-5) )
 t1 <- system.time( v1 <- epa_integral_grid(x, bbox, bw, 51) )
 t2 <- system.time( v2 <- epa_integral_biased(x, bbox, bw) )
 t3 <- system.time( v3 <- epa_integral_2d(x, bbox, bw))
 t4 <- system.time( v4 <- epa_integral(x, bbox, bw, -1))
 print(rbind(t0,t1,t2,t3))
+
+print(cbind(range(v), range(v1), range(v2), range(v3), range(v4)) )
 
 ##plot(v[,1:2], asp=1, col=gray(v[,3]/max(v[,3])), pch=19, cex=5)
 
@@ -49,9 +51,11 @@ image2(M3,zlim=0:1, main="correct 2d")
 D1 <- M1-M
 D2 <- M1-M2
 D4 <- M1-M3
+D5 <- M-M3
 image2(D1, zlim=zl<-c(-1,1)*2e-1, main="grid-box")
 image2(D2, zlim=zl, main="grid-biasd")
 image2(D4, zlim=zl, main="grid-correct")
+image2(D5, zlim=zl, main="box-correct")
 SS <- mean(D4^2)
 print(c(ss_gridbox=mean(D1^2),
 ss_gridbia=mean(D2^2), ss_bb=mean(D4^2), ss_gridcorre=SS)/SS)

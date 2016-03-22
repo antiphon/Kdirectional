@@ -4,7 +4,7 @@
 \alias{intensity_somewhere}
 \title{Estimate intensity of point pattern at given locations}
 \usage{
-intensity_somewhere(x, loc, bw, b = 1, ...)
+intensity_somewhere(x, loc, bw, b = 0, ...)
 }
 \arguments{
 \item{x}{points, list with $x and $bbox or just a matrix of coordinates.}
@@ -21,7 +21,12 @@ intensity_somewhere(x, loc, bw, b = 1, ...)
 Estimate intensity of point pattern at given locations
 }
 \details{
-Uses Epanechnikov kernel smoothing. Border correction is approximative, try "b=0,1,2,3". Default 0 (works atm only in 2D, in 3D use grid with n~30)
-0: Exact integral 1: Box kernel approximation, 2: Biased epa integral (not working in 3d) >3: fine grid sum with resolution b, very slow.
+Uses Epanechnikov kernel smoothing. Border corrections controlled by what b is:
+0: 2D exact, not available for 3D atm; 
+1: Box rectangle approximation; 
+2: 2D Biased box integral, 3D none;
+>3: fine grid sum with resolution b^dim (slow). 
+
+if b < 0 no edge correction is applied.
 }
 

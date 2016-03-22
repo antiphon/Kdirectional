@@ -77,6 +77,10 @@ Kest_anin_c <- function(coord, lambda, bbox, r, directions, epsilon, border = 1L
     .Call('Kdirectional_Kest_anin_c', PACKAGE = 'Kdirectional', coord, lambda, bbox, r, directions, epsilon, border)
 }
 
+Kest_anin_border_c <- function(coord, lambda, bbox, bdist, r, directions, epsilon, border = 1L) {
+    .Call('Kdirectional_Kest_anin_border_c', PACKAGE = 'Kdirectional', coord, lambda, bbox, bdist, r, directions, epsilon, border)
+}
+
 c_knnangles <- function(x, k, from, to) {
     .Call('Kdirectional_c_knnangles', PACKAGE = 'Kdirectional', x, k, from, to)
 }

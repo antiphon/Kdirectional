@@ -4,7 +4,7 @@
 \alias{intensity_at_points}
 \title{Estimate intensity of point pattern at the points of the pattern}
 \usage{
-intensity_at_points(x, bw, b = 1, ...)
+intensity_at_points(x, bw, b = 0, ...)
 }
 \arguments{
 \item{x}{points, list with $x and $bbox or just a matrix of coordinates.}
@@ -19,7 +19,12 @@ intensity_at_points(x, bw, b = 1, ...)
 Estimate intensity of point pattern at the points of the pattern
 }
 \details{
-Uses Epanechnikov kernel smoothing. Border corrections vary, try "b=1,2,3".
-1: 2D exact, 3D box rectangle approximation; 2: 2D Biased box integral, 3D none; >3: fine grid sum with resolution b^dim (slow). b=0 means no correction.
+Uses Epanechnikov kernel smoothing. Border corrections controlled by what b is:
+0: 2D exact, not available for 3D atm; 
+1: Box rectangle approximation; 
+2: 2D Biased box integral, 3D none;
+>3: fine grid sum with resolution b^dim (slow). 
+
+if b < 0 no edge correction is applied.
 }
 

@@ -290,6 +290,24 @@ BEGIN_RCPP
     return __result;
 END_RCPP
 }
+// Kest_anin_border_c
+NumericMatrix Kest_anin_border_c(NumericMatrix coord, NumericVector lambda, NumericMatrix bbox, NumericVector bdist, NumericVector r, NumericMatrix directions, double epsilon, int border);
+RcppExport SEXP Kdirectional_Kest_anin_border_c(SEXP coordSEXP, SEXP lambdaSEXP, SEXP bboxSEXP, SEXP bdistSEXP, SEXP rSEXP, SEXP directionsSEXP, SEXP epsilonSEXP, SEXP borderSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject __result;
+    Rcpp::RNGScope __rngScope;
+    Rcpp::traits::input_parameter< NumericMatrix >::type coord(coordSEXP);
+    Rcpp::traits::input_parameter< NumericVector >::type lambda(lambdaSEXP);
+    Rcpp::traits::input_parameter< NumericMatrix >::type bbox(bboxSEXP);
+    Rcpp::traits::input_parameter< NumericVector >::type bdist(bdistSEXP);
+    Rcpp::traits::input_parameter< NumericVector >::type r(rSEXP);
+    Rcpp::traits::input_parameter< NumericMatrix >::type directions(directionsSEXP);
+    Rcpp::traits::input_parameter< double >::type epsilon(epsilonSEXP);
+    Rcpp::traits::input_parameter< int >::type border(borderSEXP);
+    __result = Rcpp::wrap(Kest_anin_border_c(coord, lambda, bbox, bdist, r, directions, epsilon, border));
+    return __result;
+END_RCPP
+}
 // c_knnangles
 List c_knnangles(NumericMatrix x, int k, IntegerVector from, IntegerVector to);
 RcppExport SEXP Kdirectional_c_knnangles(SEXP xSEXP, SEXP kSEXP, SEXP fromSEXP, SEXP toSEXP) {

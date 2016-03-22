@@ -53,6 +53,7 @@ intensity_at_points <- function(x, bw, b=0, ...) {
 #' 
 #' @param x point pattern
 #' @param bw_vector Vector of bandwidth values to optimize over
+#' @param keep_min if true, keep the intensity_at_points for the best bw
 #' @param ... passed on to \code{intensity_at_points}
 #' @details 
 #' 
@@ -61,18 +62,21 @@ intensity_at_points <- function(x, bw, b=0, ...) {
 #' 
 #' @return 
 #' 
-#' Vector of losses.
+#' Vector of losses, or if keep_min=TRUE, list with vector of losses and vector of intensity values with the bw that gives the minimum loss.
 #' 
 #' @export
 
-intensity_bandwidth_profile <- function(x, bw_vector, ...){
+intensity_bandwidth_profile <- function(x, bw_vector, keep_min=FALSE, ...){
   x <- check_pp(x)
   V <- bbox_volume(x$bbox)
   err <- NULL
   for(bw in bw_vector) {
       o <- intensity_at_points(x, bw=bw, ...)
       # discrepancy
-      err <- c(err, (sum(1/o)-V)^2)
+      err1 <- (sum(1/o)-V)^2
+      if(keep_min) if(err1 <= min(err)) i <- o
+      err <- c(err, err1)
   }
-  err
+  if(keep_min) list(err=err, intensity_best=i)
+  else err
 }

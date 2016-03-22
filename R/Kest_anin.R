@@ -9,7 +9,7 @@
 #' @param lambda optional vector of intensity estimates at points
 #' @param lambda_h if lambda missing, use this bandwidth in a kernel estimate of lambda(x)
 #' @param renormalise See details. 
-#' @param border Use translation correction? Default=1, yes. Only for cuboidal windows.
+#' @param border Use border correction? Default=1, yes. 
 #' @param ... passed on to e.g. \link{intensity_at_points}
 #' @details 
 #' 
@@ -17,6 +17,9 @@
 #' 
 #' Lambda(x) at points can be given, 
 #' or else it will be estimated using Epanechnikov kernel smoothing. See 
+#' 
+#' Border correction: If x$bbox is a a simple bounding box, use translation correction. 
+#' If bbquad-object, potentially rotated etc., use simple minus correction.
 #' 
 #' If 'renormalise=TRUE', we normalise the lambda estimate so that sum(1/lambda(x))=|W|. This corresponds in \code{spatstat}'s \code{Kinhom} to setting 'normpower=2'.
 #' 
@@ -30,12 +33,12 @@ Kest_anin <- function(x, u, epsilon, r, lambda=NULL, lambda_h,
                       renormalise=TRUE,  border=1, ...) {
   x <- check_pp(x)
   bbox <- x$bbox
-  if(is.bbquad(bbox)) stop("bbquad window not yet supported.")
-  dim <- ncol(bbox)
+  trans <- !is.bbquad(bbox)
+  dim <- bbox_dim(bbox)
   V <- bbox_volume(bbox)
   # directions
   if(missing(u)){ 
-    u <- diag(c(1), dim)
+    u <- diag(1, dim)
   }
   #
   # make sure unit vectors
@@ -50,7 +53,7 @@ Kest_anin <- function(x, u, epsilon, r, lambda=NULL, lambda_h,
   #
   # ranges
   if(missing(r)) {
-    sidelengths <- apply(bbox, 2, diff)
+    sidelengths <- bbox_sideLengths(bbox)
     bl <- min(sidelengths)*0.3
     r <- seq(0, bl, length=50)
   }
@@ -80,16 +83,29 @@ Kest_anin <- function(x, u, epsilon, r, lambda=NULL, lambda_h,
   # 
   # we got everything, let's compute.
   coord <- x$x
-  out <- Kest_anin_c(coord, lambda, bbox, r, u, epsilon, border)
+  if(trans){
+    out <- Kest_anin_c(coord, lambda, bbox, r, u, epsilon, border)
+    S <- 2 * S # double sum
+  }
+  if(!trans){ # minus border correction
+    bd <- bbox_distance(coord, bbox)
+    bbox0 <- bbquad2bbox(bbox)
+    out <- Kest_anin_border_c(coord, lambda, bbox0, bd, r, u, epsilon, border)
+    # need to correct due to minus sampling
+    if(border){
+      w <- sapply(r, function(r) sum(bd > r))
+      out <- out*nrow(coord)/w
+    }
+  }
   # scaling
   #
-  out <- 2  * S * out # double sum
+  out <- S * out
   # in case translation weights are not applied
-  if(border==0) out <- out/V 
+  if(border==0 | !trans ) out <- out/V 
   #
   # compile output
   # direction names
-  dir_names <- apply(u, 1, function(ui) paste0("(", paste0(ui, collapse=","), ")" ))
+  dir_names <- apply(u, 1, function(ui) paste0("(", paste0(round(ui, 3), collapse=","), ")" ))
   # theoretical
   theo <- if(dim==2) (2*epsilon*r^2) else (4/3 * r^3 * pi * (1-cos(epsilon)))
   #
@@ -97,6 +113,7 @@ Kest_anin <- function(x, u, epsilon, r, lambda=NULL, lambda_h,
   names(Kest)[] <- c("r", "theo", dir_names)
   rownames(Kest) <- NULL
   attr(Kest, "epsilon") <- epsilon
+  attr(Kest, "fun_name") <- "Kest_anin"
   #done
   class(Kest) <- c("K_anin", is(Kest))
   Kest
@@ -117,7 +134,7 @@ plot.K_anin <- function(x, r_scale=1, rmax, legpos="topleft", ...) {
   if(!missing(rmax)) x <- x[x$r<rmax,]
   #
   plot(x$r*r_scale, x$theo, col=1, xlab="r", 
-       ylab="Kest_anin", type="l", lty=3, ...)
+       ylab=attr(x, "fun_name"), type="l", lty=3, ...)
   n <- ncol(x)
   for(i in 3:n){
     lines(x$r*r_scale, x[,i], col=i-1)
