@@ -101,7 +101,7 @@ Kest_anin <- function(x, u, epsilon, r, lambda=NULL, lambda_h,
   #
   out <- S * out
   # in case translation weights are not applied
-  if(border==0 | !trans ) out <- out/V 
+  if(border==0 |  !trans ) out <- out/V 
   #
   # compile output
   # direction names
