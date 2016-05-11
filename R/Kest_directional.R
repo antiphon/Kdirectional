@@ -13,7 +13,7 @@
 #' 
 #' Compute the sector K function. 
 #' 
-#' Try \code{\link{Kest_anin}} for a bit better version that does also second order inhomogeneous patterns. 
+#' Try \link{Kest_anin} for a bit better version that does also second order inhomogeneous patterns. 
 #' 
 #' @return 
 #' Returns a dataframe.
@@ -102,19 +102,24 @@ Kest_along_axis <- function(x, ...) {
 #' 
 #' We use translation edge correction if we have an axis-oriented bounding box. Otherwise minus-correction.
 #'
-#' @param x pp, list with $x~coordinates $bbox~bounding box
+#' @param x pp, spatstat's ppp-object, or a coordinate matrix, or a list with $x~coordinates $bbox~bounding box
 #' @param u unit direction(s), if many then one direction per row.
 #' @param epsilon Central angle for the directed cone (total angle is 2 epsilon)
 #' @param r radius vector at which to evaluate K
-#' @param ... Passed on to \link{\code{Kest_anin}}
+#' @param ... Passed on to \code{\link{Kest_anin}}
 #' 
 #' @details 
 #' 
-#' Compute the sector K function. This version uses the more general anisotropic-inhomonogeneous \link{\code{Kest_anin}}, by setting the intensity = constant.
+#' Compute the sector K function. This version uses the more general anisotropic-inhomonogeneous \link{Kest_anin}, by setting the intensity = constant.
 #' 
 #' @return 
 #' Returns a dataframe.
 #' 
+#' @examples
+#' 
+#' x <- matrix(runif(200), ncol=2)
+#' k <- Kest_directional(x)
+#' plot(k, rmax = 0.1)
 #' @import Matrix
 #' @useDynLib Kdirectional
 #' @export

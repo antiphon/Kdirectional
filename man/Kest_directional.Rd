@@ -7,7 +7,7 @@
 Kest_directional(x, u, epsilon, r, ...)
 }
 \arguments{
-\item{x}{pp, list with $x~coordinates $bbox~bounding box}
+\item{x}{pp, spatstat's ppp-object, or a coordinate matrix, or a list with $x~coordinates $bbox~bounding box}
 
 \item{u}{unit direction(s), if many then one direction per row.}
 
@@ -15,7 +15,7 @@ Kest_directional(x, u, epsilon, r, ...)
 
 \item{r}{radius vector at which to evaluate K}
 
-\item{...}{Passed on to \link{\code{Kest_anin}}}
+\item{...}{Passed on to \code{\link{Kest_anin}}}
 }
 \value{
 Returns a dataframe.
@@ -24,6 +24,12 @@ Returns a dataframe.
 We use translation edge correction if we have an axis-oriented bounding box. Otherwise minus-correction.
 }
 \details{
-Compute the sector K function. This version uses the more general anisotropic-inhomonogeneous \link{\code{Kest_anin}}, by setting the intensity = constant.
+Compute the sector K function. This version uses the more general anisotropic-inhomonogeneous \link{Kest_anin}, by setting the intensity = constant.
+}
+\examples{
+
+x <- matrix(runif(200), ncol=2)
+k <- Kest_directional(x)
+plot(k, rmax = 0.1)
 }
 

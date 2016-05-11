@@ -4,7 +4,7 @@
 \alias{pcf_anin}
 \title{Inhomogeneous anisotropic pcf function, sector version}
 \usage{
-pcf_anin(x, u, epsilon, r, lambda = NULL, lambda_h, r_h, f = 0.15,
+pcf_anin(x, u, epsilon, r, lambda = NULL, lambda_h, r_h, stoyan = 0.15,
   renormalise = TRUE, border = 1, divisor = "d", ...)
 }
 \arguments{
@@ -22,7 +22,7 @@ pcf_anin(x, u, epsilon, r, lambda = NULL, lambda_h, r_h, f = 0.15,
 
 \item{r_h}{smoothing for range dimension, epanechnikov kernel}
 
-\item{f}{If r_h not given, use r_h=f/lambda^(1/dim). Same as 'stoyan' in spatstat's pcf.}
+\item{stoyan}{If r_h not given, use r_h=stoyan/lambda^(1/dim). Same as 'stoyan' in spatstat's pcf.}
 
 \item{renormalise}{See details.}
 

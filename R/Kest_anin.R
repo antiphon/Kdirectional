@@ -4,7 +4,7 @@
 #'
 #' @param x pp, list with $x~coordinates $bbox~bounding box
 #' @param u unit vector(s) of direction, as row vectors. Default: x and y axis.
-#' @param epsilon Central half angle for the directed sector/cone (total angle of the rotation cone is 2*epsilon)
+#' @param epsilon Central half angle for the directed sector/cone (total angle of the rotation cone is 2*epsilon). Default: pi/4.
 #' @param r radius vector at which to evaluate K
 #' @param lambda optional vector of intensity estimates at points
 #' @param lambda_h if lambda missing, use this bandwidth in a kernel estimate of lambda(x)
@@ -47,7 +47,7 @@ Kest_anin <- function(x, u, epsilon, r, lambda=NULL, lambda_h,
   #
   # central half-angle
   if(missing(epsilon)){
-   epsilon <- pi/2 
+   epsilon <- pi/4
   }
   if(abs(epsilon)>pi/2) stop("epsilon should be in range [0, pi/2]")
   #

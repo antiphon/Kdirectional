@@ -12,7 +12,7 @@ Kest_anin(x, u, epsilon, r, lambda = NULL, lambda_h, renormalise = TRUE,
 
 \item{u}{unit vector(s) of direction, as row vectors. Default: x and y axis.}
 
-\item{epsilon}{Central half angle for the directed sector/cone (total angle of the rotation cone is 2*epsilon)}
+\item{epsilon}{Central half angle for the directed sector/cone (total angle of the rotation cone is 2*epsilon). Default: pi/4.}
 
 \item{r}{radius vector at which to evaluate K}
 

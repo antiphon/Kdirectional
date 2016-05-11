@@ -20,4 +20,10 @@ nearest neighbour angles and distances
 If 2d, returns the angle in [-pi,pi]. In 3d also the angle from xy-plane in
 [0,pi]
 }
+\examples{
+x <- matrix(runif(200), ncol = 2)
+nn <- nnangle(x)
+summary(nn)
+
+}
 

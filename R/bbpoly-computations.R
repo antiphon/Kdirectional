@@ -10,7 +10,8 @@ bbpoly_intersection <- function(a, b) {
   if(!is.bbpoly(a)|!is.bbpoly(b)) stop("a and b should be bbpoly-objects.")
   # start with poly a and cut away using the planes of b
   ab <- a
-  d <- ncol(a$vertices)
+  d <- ncol(a$vertices) 
+  if(d!=3) stop("Intersection at the moment only for 3D polytopes.")
   # 
   planes <- bbpoly_planes(b)
   #
