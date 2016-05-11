@@ -4,7 +4,7 @@
 \alias{pcf_anisotropic}
 \title{Anisotropic pair correlation function}
 \usage{
-pcf_anisotropic(x, r, theta, h, f = 0.15, correction = "translation",
+pcf_anisotropic(x, r, theta, h, stoyan = 0.15, correction = "translation",
   n_dir = 7)
 }
 \arguments{
@@ -16,7 +16,7 @@ pcf_anisotropic(x, r, theta, h, f = 0.15, correction = "translation",
 
 \item{h}{widths of epanechnicov kernels, vector of two values, for ranges and angles.}
 
-\item{f}{If h not given, use h=c( f/lambda^(1/dim), h=f*pi). Same as 'stoyan' in spatstat's pcf.}
+\item{stoyan}{If h not given, use h=c( stoyan/lambda^(1/dim), h=stoyan*pi) (cf. \code{pcf.ppp}-function in \code{spatstat}-package).}
 
 \item{correction}{"none" or translation. Translation only for rectangle box.}
 

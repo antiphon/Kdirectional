@@ -94,7 +94,7 @@ anisotropy_profile_fast <- function(x, grid, r, verb=FALSE, eps=pi/4, border=TRU
 #' 
 #' @export
 print.anisotropyprofile <- function(x, ...) {
-  summary(x,...)
+  print( summary(x,...) )
 }
 
 #' Summary for anisotropy profile

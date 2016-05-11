@@ -6,7 +6,7 @@
 #' @param r radius vector at which to estimate
 #' @param theta vector or list of vectors for for angles, see details.
 #' @param h widths of epanechnicov kernels, vector of two values, for ranges and angles.
-#' @param f If h not given, use h=c( f/lambda^(1/dim), h=f*pi). Same as 'stoyan' in spatstat's pcf.
+#' @param stoyan If h not given, use h=c( stoyan/lambda^(1/dim), h=stoyan*pi) (cf. \code{pcf.ppp}-function in \code{spatstat}-package).
 #' @param correction "none" or translation. Translation only for rectangle box.
 #' @param n_dir Angle grid resolution (in case theta not given)
 #' 
@@ -15,7 +15,7 @@
 #' @useDynLib Kdirectional
 #' @export
 
-pcf_anisotropic <- function(x, r, theta, h, f=0.15, correction="translation", n_dir=7) {
+pcf_anisotropic <- function(x, r, theta, h, stoyan=0.15, correction="translation", n_dir=7) {
   x <- check_pp(x)
   bbox <- as.matrix(x$bbox)
   dim <- ncol(bbox)

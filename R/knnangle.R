@@ -29,3 +29,4 @@ knnangle <- function(x, k=1, from, to){
   v
 }
 
+

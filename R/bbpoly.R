@@ -36,9 +36,10 @@ bbpoly_simplex <- function(d=3){
 
 
 #' Affine transformation of a polytope
+#' 
 #' @param bbpoly bbpoly object
 #' @param A linear transformation
-#' @param shift
+#' @param shift shift vector
 #' @param center_before_A Center the polygon to mass centrum before applying A? Reversed after A and before shift.
 #' 
 #' 

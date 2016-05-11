@@ -9,7 +9,7 @@
 #' @param lambda optional vector of intensity estimates at points
 #' @param lambda_h if lambda missing, use this bandwidth in a kernel estimate of lambda(x)
 #' @param r_h smoothing for range dimension, epanechnikov kernel
-#' @param f If r_h not given, use r_h=f/lambda^(1/dim). Same as 'stoyan' in spatstat's pcf.
+#' @param stoyan If r_h not given, use r_h=stoyan/lambda^(1/dim). Same as 'stoyan' in spatstat's pcf.
 #' @param renormalise See details. 
 #' @param border Use translation correction? Default=1, yes. Only for cuboidal windows.
 #' @param divisor See spatstat's pcf.ppp for this.
@@ -29,7 +29,7 @@
 #' @useDynLib Kdirectional
 #' @export
 
-pcf_anin <- function(x, u, epsilon, r, lambda=NULL, lambda_h, r_h, f=0.15,
+pcf_anin <- function(x, u, epsilon, r, lambda=NULL, lambda_h, r_h, stoyan=0.15,
                       renormalise=TRUE,  border=1, divisor = "d", ...) {
   x <- check_pp(x)
   bbox <- x$bbox
@@ -47,7 +47,7 @@ pcf_anin <- function(x, u, epsilon, r, lambda=NULL, lambda_h, r_h, f=0.15,
   #
   # central half-angle
   if(missing(epsilon)){
-    epsilon <- pi/2 
+    epsilon <- pi/4 
   }
   if(abs(epsilon)>pi/2) stop("epsilon should be in range [0, pi/2]")
   #
@@ -74,7 +74,7 @@ pcf_anin <- function(x, u, epsilon, r, lambda=NULL, lambda_h, r_h, f=0.15,
   }
   if(missing(r_h)) {
     lambda0 <- nrow(x$x)/V # mean lambda
-    r_h <- f/lambda0^(1/dim)
+    r_h <- stoyan/lambda0^(1/dim)
   }
   
   # if renormalisation of the intensity is in order
