@@ -96,8 +96,8 @@ markcorr_anisotropic <- function(x, marks=NULL, r, f = function(a,b) a*b,
   # The estimates:
   estg <- est <- NULL
   for(i in 1:ncol(res[[1]])) { # per direction
-    est <- cbind(est, res[[1]][,i]/res[[2]][,i]) / mnorm
-    estg <- cbind(estg, res[[2]][,i]/scaleg)
+    est <- cbind(est,   (res[[1]][,i]/res[[2]][,i]) / mnorm   )
+    estg <- cbind(estg,  res[[2]][,i]/scaleg   )
   }
   #
   # done
