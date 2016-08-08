@@ -7,7 +7,7 @@ library(rstrauss)
 if(!exists("pp")){
   set.seed(1)
   d3 <- T
-  comp <- 0.5
+  comp <- 0.9
   #bb <- cbind(c(0,comp) -comp/2, c(0,1/comp)-0.5/comp)
   side <- c(1,2)
   side2<- c(1,3)
