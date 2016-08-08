@@ -22,10 +22,10 @@ NumericVector intensity_at_other_points_c(NumericMatrix x,
   for(i=0; i < x.nrow(); i++) {
     for(j=0; j < other.nrow(); j++) {
       d = 0;
-      for(k=0; k < dim; k++) d += pow( x.at(i,k)-other.at(j,k), 2);
+      for(k=0; k < dim; k++) d += pow( x(i,k)-other(j,k), 2);
       d = sqrt(d);
       w = kernel_epa(d, bw_r);
-      if(w>0) out.at(j) += w/epaw.at(j);
+      if(w>0) out(j) += w/epaw(j);
     }
   }
   return out;

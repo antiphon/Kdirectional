@@ -37,27 +37,27 @@ NumericVector epa_integral_biased(NumericMatrix x,
   for(i=0; i < x.nrow(); i++) {
     // integration box
     for(k=0; k < dim; k++) {
-      lims.at(0,k) = fmin(h, x.at(i,k)-bbox.at(0,k));
-      lims.at(1,k) = fmin(h, bbox.at(1,k)-x.at(i,k));
+      lims(0,k) = fmin(h, x(i,k)-bbox(0,k));
+      lims(1,k) = fmin(h, bbox(1,k)-x(i,k));
     }
     s = 1;
-    for(k=0; k < dim; k++) s*= (lims.at(0,k)+lims.at(1,k));
+    for(k=0; k < dim; k++) s*= (lims(0,k)+lims(1,k));
     s *= 0.75/h;
     
     if(dim==2){
-      a  = (pow(lims.at(0,0),3) + pow(lims.at(1,0), 3) ) * (lims.at(0,1)+lims.at(1,1));
-      a += (lims.at(0,0)+lims.at(1,0)) * (pow(lims.at(0,1),3) + pow(lims.at(1,1), 3) );
+      a  = (pow(lims(0,0),3) + pow(lims(1,0), 3) ) * (lims(0,1)+lims(1,1));
+      a += (lims(0,0)+lims(1,0)) * (pow(lims(0,1),3) + pow(lims(1,1), 3) );
     }
     else{
-      a  = (pow(lims.at(0,0), 3) + pow(lims.at(1,0), 3) ) * (lims.at(0,1)+lims.at(1,1)) *
-           (lims.at(0,2) + lims.at(1,2));
-      a += (pow(lims.at(0,1), 3) + pow(lims.at(1,1), 3) ) * (lims.at(0,0)+lims.at(1,0)) *
-           (lims.at(0,2) + lims.at(1,2));
-      a += (pow(lims.at(0,2), 3) + pow(lims.at(1,2), 3) ) * (lims.at(0,1)+lims.at(1,1)) *
-           (lims.at(0,0) + lims.at(1,0));
+      a  = (pow(lims(0,0), 3) + pow(lims(1,0), 3) ) * (lims(0,1)+lims(1,1)) *
+           (lims(0,2) + lims(1,2));
+      a += (pow(lims(0,1), 3) + pow(lims(1,1), 3) ) * (lims(0,0)+lims(1,0)) *
+           (lims(0,2) + lims(1,2));
+      a += (pow(lims(0,2), 3) + pow(lims(1,2), 3) ) * (lims(0,1)+lims(1,1)) *
+           (lims(0,0) + lims(1,0));
     }
     s  -= a / (4*pow(h, 3));
-    out.at(i) = s/w;
+    out(i) = s/w;
   }
   return out;
 }
@@ -89,7 +89,7 @@ NumericVector epa_integral_grid(NumericMatrix x,
   int m = (n-1)/2;
   double dx = bw/m;
   for(k=0; k < n; k++) {
-    vec.at(k) = (double)(k-m) * dx;
+    vec(k) = (double)(k-m) * dx;
   }
   
   // we need all n^dim combinations
@@ -100,11 +100,11 @@ NumericVector epa_integral_grid(NumericMatrix x,
     for(i=0; i < n; i++)
       for(j=0; j < n; j++){
         idx = i*n+j;
-        mask.at(idx,0) = vec.at(i);
-        mask.at(idx,1) = vec.at(j);
-        d = sqrt(vec.at(i)*vec.at(i) + vec.at(j)*vec.at(j));
-        mask.at(idx,2) = kernel_epa(d, bw); // mask value
-        s+=mask.at(idx,2);
+        mask(idx,0) = vec(i);
+        mask(idx,1) = vec(j);
+        d = sqrt(vec(i)*vec(i) + vec(j)*vec(j));
+        mask(idx,2) = kernel_epa(d, bw); // mask value
+        s+=mask(idx,2);
       }
   }
   else if(dim==3) {
@@ -112,12 +112,12 @@ NumericVector epa_integral_grid(NumericMatrix x,
       for(j=0; j < n; j++)
         for(k=0; k < n; k++){
           idx = i*n*n + j*n + k;
-          mask.at(idx,0) = vec.at(i);
-          mask.at(idx,1) = vec.at(j);
-          mask.at(idx,2) = vec.at(k);
-          d = sqrt(vec.at(i)*vec.at(i)+vec.at(j)*vec.at(j)+vec.at(k)*vec.at(k));
-          mask.at(idx,3) = kernel_epa(d, bw);
-          s+=mask.at(idx,3);
+          mask(idx,0) = vec(i);
+          mask(idx,1) = vec(j);
+          mask(idx,2) = vec(k);
+          d = sqrt(vec(i)*vec(i)+vec(j)*vec(j)+vec(k)*vec(k));
+          mask(idx,3) = kernel_epa(d, bw);
+          s+=mask(idx,3);
       }
   }
   else {
@@ -126,7 +126,7 @@ NumericVector epa_integral_grid(NumericMatrix x,
   double tot = s;
   
   // normalize so that the mask sums to 1
-  for(i=0; i < mask.nrow(); i++) mask.at(i,dim) /= tot;
+  for(i=0; i < mask.nrow(); i++) mask(i,dim) /= tot;
   
   // run integration: Sum all values of mask inside the window
   for(i=0; i < x.nrow(); i++) {
@@ -134,17 +134,17 @@ NumericVector epa_integral_grid(NumericMatrix x,
     for(j=0; j < mask.nrow(); j++) {
       inside = true;
       for(k=0; k < dim; k++) {
-        c = x.at(i,k) + mask.at(j,k); // shifted mask point's k'th coordinate
-        if( c < bbox.at(0,k) | c > bbox.at(1,k) ) {
+        c = x(i,k) + mask(j,k); // shifted mask point's k'th coordinate
+        if( c < bbox(0,k) | c > bbox(1,k) ) {
           inside = false;
           break; // no need to check the rest of dimensions
         }
       }
       if(inside){
-        s += mask.at(j, dim);
+        s += mask(j, dim);
       }
     }
-    out.at(i) = s;
+    out(i) = s;
   }
   return out;
 }
@@ -174,11 +174,11 @@ NumericVector epa_integral_2d(NumericMatrix x,
   int i;
   int dim = x.ncol();
   double s, h = bw;
-  double h2 = h*h;
+  //double h2 = h*h;
   
   if(dim >2) {
     Rprintf("3D not implemented.\n");
-    for(i=0; i < out.size();i++) out.at(1)=1;
+    for(i=0; i < out.size();i++) out(1)=1;
     return out; 
   }
   
@@ -190,10 +190,10 @@ NumericVector epa_integral_2d(NumericMatrix x,
   //
   for(i=0; i < x.nrow(); i++) {
     // possibly hitting the edge:
-    a = fmin(h, x.at(i,0)-bbox.at(0,0))/h;
-    b = fmin(h, bbox.at(1,0)-x.at(i,0))/h;
-    c = fmin(h, x.at(i,1)-bbox.at(0,1))/h;
-    d = fmin(h, bbox.at(1,1)-x.at(i,1))/h; 
+    a = fmin(h, x(i,0)-bbox(0,0))/h;
+    b = fmin(h, bbox(1,0)-x(i,0))/h;
+    c = fmin(h, x(i,1)-bbox(0,1))/h;
+    d = fmin(h, bbox(1,1)-x(i,1))/h; 
     // not hitting the edge?
     if(a==1 & b==1 & c==1 & d==1) s=w;
     else{
@@ -210,7 +210,7 @@ NumericVector epa_integral_2d(NumericMatrix x,
       dh = fmin(vh, d);
       s+= b*(ch+dh)-b*b*b*(ch+dh)/3.0-b*(ch*ch*ch+dh*dh*dh)/3.0 + (2.0/3.0)*(IIy(-c,-ch)+IIy(dh,d));
     }
-    out.at(i) = s/w;
+    out(i) = s/w;
   }
   return out;
 }

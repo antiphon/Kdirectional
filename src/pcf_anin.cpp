@@ -19,7 +19,7 @@ NumericMatrix pcf_anin_c(NumericMatrix coord, NumericVector lambda, NumericMatri
   int i,j,l, ui, ri;
   double d, w, dot, ang;
   double k;
-  double rmax = r.at(nr-1)+r_h;
+  double rmax = r(nr-1)+r_h;
   
   for(i=0; i < pp.size()-1 ; i++) {
     for(j= i + 1; j < pp.size(); j++) {
@@ -35,7 +35,7 @@ NumericMatrix pcf_anin_c(NumericMatrix coord, NumericVector lambda, NumericMatri
           if(ang < epsilon){
             for(ri=0; ri < nr; ri++){
               k = kernel_epa(abs(d-r(ri)), r_h);
-              out.at(ri, ui) += k*w;
+              out(ri, ui) += k*w;
             }
           }
         }
@@ -61,7 +61,7 @@ NumericMatrix pcf_anin_c_d(NumericMatrix coord, NumericVector lambda, NumericMat
   int i,j,l, ui, ri;
   double d, w, dot, ang;
   double k, pd;
-  double rmax = r.at(nr-1)+r_h;
+  double rmax = r(nr-1)+r_h;
   
   for(i=0; i < pp.size()-1 ; i++) {
     for(j= i + 1; j < pp.size(); j++) {
@@ -78,7 +78,7 @@ NumericMatrix pcf_anin_c_d(NumericMatrix coord, NumericVector lambda, NumericMat
           if(ang < epsilon){
             for(ri=0; ri < nr; ri++){
               k = kernel_epa(abs(d-r(ri)), r_h);
-              out.at(ri, ui) += k*w;
+              out(ri, ui) += k*w;
             }
           }
         }
