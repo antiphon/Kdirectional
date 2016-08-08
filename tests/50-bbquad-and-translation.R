@@ -6,7 +6,7 @@ load_all(".")
 d <- 2
 
 x <- matrix(runif(d*100)-.5, ncol=d)
-b <- bbquad_default(zl=if(d==2)NA else c(-.5,.5))
+b <- bbquad_default(zl=if(d==2) NA else c(-.5,.5))
 x0 <- list(x=x, bbox=b)
 # distance to border
 bd <- bbox_distance(x, b)

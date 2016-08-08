@@ -7,13 +7,13 @@ load_all(".")
 if(!exists("z"))load("test_strauss.rda")
 
 u <- cbind(0:1,1:0)
-
+bbox <- z$bbox
 
 ###############################################
 # check the stationary isotropic case
-if(0){
+if(1){
 lambda0 <- nrow(z$x)
-out <- Kest_anin(z, u, pi/2, lambda=rep(lambda0, nrow(z$x)))
+out <- Kest_anin(z, u, pi/3, lambda=rep(lambda0, nrow(z$x)))
 
 if(!exists("k0")){
   library(spatstat)
@@ -25,6 +25,7 @@ lines(k0$r, k0$theo, col=2)
 lines(out$r, out$theo, col=3, lty=2)
 lines(out$r, out$`(1,0)`, col=4, lty=2)
 lines(out$r, out$`(0,1)`, col=5, lty=3)
+lines(out$r, out$theo, col=5, lty=3, lwd=5)
 }
 ### Works
 
@@ -92,7 +93,7 @@ if(0) {
 }
 
 # 3. Strauss + independent thinning + compression. Should differ.
-if(1) {
+if(0) {
   par(mfrow=c(2,2))
   n <- nrow(z$x)
   zv <- z

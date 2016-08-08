@@ -1,9 +1,9 @@
-#' Inhomogeneous anisotropic K function
+#' Anisotropic and Inhomogeneous K function
 #' 
 #' Estimate a Sector-K function for second order reweighted ("inhomogeneous") pattern.
 #'
 #' @param x pp, list with $x~coordinates $bbox~bounding box
-#' @param u unit vector(s) of direction, as row vectors. Default: x and y axis.
+#' @param u unit vector(s) of direction, as row vectors. Default: x and y axes, viz. c(1,0) and c(0,1).
 #' @param epsilon Central half angle for the directed sector/cone (total angle of the rotation cone is 2*epsilon). Default: pi/4.
 #' @param r radius vector at which to evaluate K
 #' @param lambda optional vector of intensity estimates at points
@@ -13,15 +13,18 @@
 #' @param ... passed on to e.g. \link{intensity_at_points}
 #' @details 
 #' 
-#' Computes a second order reweighted version of the Sector-K.
+#' Computes a second order reweighted version of the Sector-K. In short, we count how many pairs of points in the pattern 
+#' has both a) their difference vector's angle less than 'epsilon' radians from direction 'u' and 
+#' b) difference vector length less than range r. Usually r is a vector and the output is then a vector as well.
 #' 
-#' Lambda(x) at points can be given, 
-#' or else it will be estimated using Epanechnikov kernel smoothing. See 
+#' An estimate of the intensity Lambda(x) at points can be given ('lambda'). If it is a single value, the pattern is assumed to be homogeneous. 
+#' If it is a vector the same length as there are points, the pattern is taken to be second-order stationary. In this case the 
+#' the sum over the pairs (i,j) is weighted with 1/(lambda[i]*lambda[j]). If 'lambda' is missing, 'lambda_h', a single positive number, 
+#' should be given, which is then used for estimating the non-constant Lambda(x) via Epanechnikov kernel smoothing (see \link{intensity_at_points}).
+#' If 'renormalise=TRUE', we normalise the intensity estimate so that sum(1/lambda(x))=|W|. This corresponds in \code{spatstat}'s \code{Kinhom} to setting 'normpower=2'.
 #' 
-#' Border correction: If x$bbox is a a simple bounding box, use translation correction. 
-#' If bbquad-object, potentially rotated etc., use simple minus correction.
+#' About border correction: If x$bbox is a a simple bounding box, the algorithm uses the translation corrected weighting 1/area(Wx intersect Wy) with Wx=W+x. If x$bbox is a bbquad-object, for example rotated polygon, the algorithm uses simple minus border correction.
 #' 
-#' If 'renormalise=TRUE', we normalise the lambda estimate so that sum(1/lambda(x))=|W|. This corresponds in \code{spatstat}'s \code{Kinhom} to setting 'normpower=2'.
 #' 
 #' @return 
 #' Returns a dataframe.
@@ -107,7 +110,7 @@ Kest_anin <- function(x, u, epsilon, r, lambda=NULL, lambda_h,
   # direction names
   dir_names <- apply(u, 1, function(ui) paste0("(", paste0(round(ui, 3), collapse=","), ")" ))
   # theoretical
-  theo <- if(dim==2) (2*epsilon*r^2) else (4/3 * r^3 * pi * (1-cos(epsilon)))
+  theo <- if(dim==2) (2 * epsilon * r^2) else (4/3 * r^3 * pi * (1-cos(epsilon)))
   #
   Kest <- data.frame(r=r, theo=theo, out)
   names(Kest)[] <- c("r", "theo", dir_names)

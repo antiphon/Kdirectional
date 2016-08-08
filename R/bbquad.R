@@ -20,9 +20,9 @@ poly_to_bbquad <- function(x, y) {
   quads <- rbind(1:length(x))
   bbq<-list(vertices=cbind(x,y), idx=quads)
   # store the volume
-  px <- rbind(px,px[1,])
-  n <- nrow(px)
   px <- bbq$vertices
+  n <- nrow(px)
+  px <- rbind(px,px[1,])
   # Shoelace method
   bbq$volume <- 0.5 * abs( sum(px[-n,1]*px[-1,2]) - sum(px[-1,1]*px[-n,2]) )
   class(bbq) <- "bbquad"
