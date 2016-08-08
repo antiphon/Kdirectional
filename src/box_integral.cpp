@@ -36,10 +36,10 @@ NumericVector box_integral(NumericMatrix x,
   //
   for(i=0; i < x.nrow(); i++) {
     // possibly hitting the edge:
-    a = fmin(h, x.at(i,0)-bbox.at(0,0));
-    b = fmin(h, bbox.at(1,0)-x.at(i,0));
-    c = fmin(h, x.at(i,1)-bbox.at(0,1));
-    d = fmin(h, bbox.at(1,1)-x.at(i,1)); 
+    a = fmin(h, x(i,0)-bbox(0,0));
+    b = fmin(h, bbox(1,0)-x(i,0));
+    c = fmin(h, x(i,1)-bbox(0,1));
+    d = fmin(h, bbox(1,1)-x(i,1)); 
     // not hitting the edge?
     if(a==h & b==h & c==h & d==h) s=w;
     else{
@@ -56,7 +56,7 @@ NumericVector box_integral(NumericMatrix x,
       dh = fmin(vh, d);
       s+= b * (ch+dh) + Iy(-ch, h)-Iy(-c,h) + Iy(d,h)-Iy(dh,h);
     }
-    out.at(i) = s/w;
+    out(i) = s/w;
   }
   return out;
 }
@@ -87,7 +87,7 @@ NumericVector box_integral_grid(NumericMatrix x,
   int m = (n-1)/2;
   double dx = bw/m;
   for(k=0; k < n; k++) {
-    vec.at(k) = (double)(k-m) * dx;
+    vec(k) = (double)(k-m) * dx;
   }
   
   // we need all n^dim combinations
@@ -98,11 +98,11 @@ NumericVector box_integral_grid(NumericMatrix x,
     for(i=0; i < n; i++)
       for(j=0; j < n; j++){
         idx = i*n+j;
-        mask.at(idx,0) = vec.at(i);
-        mask.at(idx,1) = vec.at(j);
-        d = sqrt(vec.at(i)*vec.at(i) + vec.at(j)*vec.at(j));
-        mask.at(idx,2) = kernel_box(d, bw); // mask value
-        s+=mask.at(idx,2);
+        mask(idx,0) = vec(i);
+        mask(idx,1) = vec(j);
+        d = sqrt(vec(i)*vec(i) + vec(j)*vec(j));
+        mask(idx,2) = kernel_box(d, bw); // mask value
+        s+=mask(idx,2);
       }
   }
   else if(dim==3) {
@@ -110,12 +110,12 @@ NumericVector box_integral_grid(NumericMatrix x,
       for(j=0; j < n; j++)
         for(k=0; k < n; k++){
           idx = i*n*n + j*n + k;
-          mask.at(idx,0) = vec.at(i);
-          mask.at(idx,1) = vec.at(j);
-          mask.at(idx,2) = vec.at(k);
-          d = sqrt(vec.at(i)*vec.at(i)+vec.at(j)*vec.at(j)+vec.at(k)*vec.at(k));
-          mask.at(idx,3) = kernel_epa(d, bw);
-          s+=mask.at(idx,3);
+          mask(idx,0) = vec(i);
+          mask(idx,1) = vec(j);
+          mask(idx,2) = vec(k);
+          d = sqrt(vec(i)*vec(i)+vec(j)*vec(j)+vec(k)*vec(k));
+          mask(idx,3) = kernel_epa(d, bw);
+          s+=mask(idx,3);
         }
   }
   else {
@@ -124,7 +124,7 @@ NumericVector box_integral_grid(NumericMatrix x,
   double tot = s;
   
   // normalize so that the mask sums to 1
-  for(i=0; i < mask.nrow(); i++) mask.at(i,dim) /= tot;
+  for(i=0; i < mask.nrow(); i++) mask(i,dim) /= tot;
   
   // run integration: Sum all values of mask inside the window
   for(i=0; i < x.nrow(); i++) {
@@ -132,17 +132,17 @@ NumericVector box_integral_grid(NumericMatrix x,
     for(j=0; j < mask.nrow(); j++) {
       inside = true;
       for(k=0; k < dim; k++) {
-        c = x.at(i,k) + mask.at(j,k); // shifted mask point's k'th coordinate
-        if( c < bbox.at(0,k) | c > bbox.at(1,k) ) {
+        c = x(i,k) + mask(j,k); // shifted mask point's k'th coordinate
+        if( c < bbox(0,k) | c > bbox(1,k) ) {
           inside = false;
           break; // no need to check the rest of dimensions
         }
       }
       if(inside){
-        s += mask.at(j, dim);
+        s += mask(j, dim);
       }
     }
-    out.at(i) = s;
+    out(i) = s;
   }
   return out;
 }

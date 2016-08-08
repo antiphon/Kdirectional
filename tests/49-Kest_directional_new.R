@@ -1,11 +1,11 @@
 # test the new Kest directional
 library(devtools)
 load_all(".")
-d3 <- 1
+d3 <- 0
 source("tests/test-data.R")
 
 x <- x0 <- pp
-R <- sphere::rotationMatrix(az=pi/6)#[-3,-3]
+R <- sphere::rotationMatrix(az=pi/6)[-3,-3]
 x2 <- list(x=coord_affine(x$x, R), bbox=bbox_affine(x$bbox, R))
 #x2 <- list(x=x$x, bbox=bbox2bbquad(x$bbox))
 #plot(bbox2bbquad(x$bbox), add=F); points(x$x, cex=.4)

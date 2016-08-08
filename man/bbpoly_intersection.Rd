@@ -2,14 +2,14 @@
 % Please edit documentation in R/bbpoly-computations.R
 \name{bbpoly_intersection}
 \alias{bbpoly_intersection}
-\title{Intersection of two polytypes}
+\title{Intersection of two polytopes}
 \usage{
 bbpoly_intersection(a, b)
 }
 \arguments{
-\item{a}{Polytype a}
+\item{a}{Polytope a}
 
-\item{b}{Polytype b}
+\item{b}{Polytope b}
 }
 \description{
 Compute "a intesection b"

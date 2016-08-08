@@ -1,9 +1,9 @@
-#' Intersection of two polytypes
+#' Intersection of two polytopes
 #' 
 #' Compute "a intesection b"
 #' 
-#' @param a Polytype a
-#' @param b Polytype b
+#' @param a Polytope a
+#' @param b Polytope b
 #' 
 #' @export
 bbpoly_intersection <- function(a, b) {

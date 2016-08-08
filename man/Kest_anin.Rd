@@ -10,7 +10,7 @@ Kest_anin(x, u, epsilon, r, lambda = NULL, lambda_h, renormalise = TRUE,
 \arguments{
 \item{x}{pp, list with $x~coordinates $bbox~bounding box}
 
-\item{u}{unit vector(s) of direction, as row vectors. Default: x and y axis.}
+\item{u}{unit vector(s) of direction, as row vectors. Default: x and y axes, viz. c(1,0) and c(0,1).}
 
 \item{epsilon}{Central half angle for the directed sector/cone (total angle of the rotation cone is 2*epsilon). Default: pi/4.}
 
@@ -43,6 +43,6 @@ the sum over the pairs (i,j) is weighted with 1/(lambda[i]*lambda[j]). If 'lambd
 should be given, which is then used for estimating the non-constant Lambda(x) via Epanechnikov kernel smoothing (see \link{intensity_at_points}).
 If 'renormalise=TRUE', we normalise the intensity estimate so that sum(1/lambda(x))=|W|. This corresponds in \code{spatstat}'s \code{Kinhom} to setting 'normpower=2'.
 
-Border correction: If x$bbox is a a simple bounding box, the algorithm uses the translation corrected weighting 1/area(Wx intersect Wy) with Wx=W+x. If x$bbox is a bbquad-object, for example rotated polygon, the algorithm uses simple minus border correction.
+About border correction: If x$bbox is a a simple bounding box, the algorithm uses the translation corrected weighting 1/area(Wx intersect Wy) with Wx=W+x. If x$bbox is a bbquad-object, for example rotated polygon, the algorithm uses simple minus border correction.
 }
 
