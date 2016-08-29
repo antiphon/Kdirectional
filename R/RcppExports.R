@@ -85,6 +85,10 @@ c_knnangles <- function(x, k, from, to) {
     .Call('Kdirectional_c_knnangles', PACKAGE = 'Kdirectional', x, k, from, to)
 }
 
+markcor_anin_c <- function(coord, marks, lambda, bbox, r, directions, bw_r, bw_a, border, f, divisor_i) {
+    .Call('Kdirectional_markcor_anin_c', PACKAGE = 'Kdirectional', coord, marks, lambda, bbox, r, directions, bw_r, bw_a, border, f, divisor_i)
+}
+
 c_oh_K <- function(x, theta, r, bbox) {
     .Call('Kdirectional_c_oh_K', PACKAGE = 'Kdirectional', x, theta, r, bbox)
 }
@@ -101,8 +105,8 @@ c_pairwise_dist_angle <- function(x) {
     .Call('Kdirectional_c_pairwise_dist_angle', PACKAGE = 'Kdirectional', x)
 }
 
-pcf_anin_c <- function(coord, lambda, bbox, r, r_h, directions, epsilon, border = 1L) {
-    .Call('Kdirectional_pcf_anin_c', PACKAGE = 'Kdirectional', coord, lambda, bbox, r, r_h, directions, epsilon, border)
+pcf_anin_c <- function(coord, lambda, bbox, r, r_h, directions, epsilon, border = 1L, divisor_i = 0L) {
+    .Call('Kdirectional_pcf_anin_c', PACKAGE = 'Kdirectional', coord, lambda, bbox, r, r_h, directions, epsilon, border, divisor_i)
 }
 
 pcf_anin_c_d <- function(coord, lambda, bbox, r, r_h, directions, epsilon, border = 1L) {

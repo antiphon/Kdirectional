@@ -1,24 +1,28 @@
-#' Inhomogeneous anisotropic pcf function, sector version
+#' Inhomogeneous anisotropic mark-correlation function, sector version
 #' 
-#' Estimate a sector-pcf function for second order reweighted ("inhomogeneous") pattern.
+#' Estimate a sector-mark correlation function for second order reweighted "inhomogeneous" pattern.
 #'
 #' @param x pp, list with $x~coordinates $bbox~bounding box
+#' @param marks if x is not marked (x$marks is empty), use these marks
 #' @param u unit vector(s) of direction, as row vectors. Default: x and y axis.
 #' @param epsilon Central half angle for the directed sector/cone (total angle of the rotation cone is 2*epsilon)
-#' @param r radius vector at which to evaluate K
+#' @param r radius vector at which to evaluate 
 #' @param lambda optional vector of intensity estimates at points
 #' @param lambda_h if lambda missing, use this bandwidth in a kernel estimate of lambda(x)
+#' @param f test function of the form function(m1, m2) ..., returning a vector of length(m1). default: m1*m2
 #' @param r_h smoothing for range dimension, epanechnikov kernel
 #' @param stoyan If r_h not given, use r_h=stoyan/lambda^(1/dim). Same as 'stoyan' in spatstat's pcf.
 #' @param renormalise See details. 
+#' @param bootsize bootstrap size for estimating the normaliser if not given.
+#' @param normaliser normalising constant under independent marking. If NULL, estimated with bootstrap.
 #' @param border Use translation correction? Default=1, yes. Only for cuboidal windows.
-#' @param divisor See spatstat's pcf.ppp for this.
+#' @param divisor either "d" or "r". Divide by dist(i,j) ("d") instead of r ("r")?
 #' @param ... passed on to e.g. \link{intensity_at_points}
 #' @details 
 #' 
-#' Computes a second order reweighted version of the sector-pcf.
+#' Computes a second order reweighted version of the mark correlation function.
 #' 
-#' Lambda(x) at points can be given, 
+#' lambda(x) at points can be given, 
 #' or else it will be estimated using Epanechnikov kernel smoothing. See 
 #' 
 #' If 'renormalise=TRUE', we normalise the lambda estimate so that sum(1/lambda(x))=|W|. This corresponds in \code{spatstat}'s \code{Kinhom} to setting 'normpower=2'.
@@ -29,8 +33,11 @@
 #' @useDynLib Kdirectional
 #' @export
 
-pcf_anin <- function(x, u, epsilon, r, lambda=NULL, lambda_h, r_h, stoyan=0.15,
-                      renormalise=TRUE,  border=1, divisor = "d", ...) {
+markcorr_anin <- function(x, marks, u, epsilon, r, lambda=NULL, lambda_h, f = function(a,b) a*b,
+                          r_h, stoyan=0.15, renormalise=TRUE, bootsize = 1e5, normaliser = NULL,
+                          border=1, divisor = "d", ...) {
+  warning("markcorr_anin is experimental.")
+  marks <- parse_marks(x, marks)
   x <- check_pp(x)
   bbox <- x$bbox
   if(is.bbquad(bbox)) stop("bbquad window not yet supported.")
@@ -85,52 +92,75 @@ pcf_anin <- function(x, u, epsilon, r, lambda=NULL, lambda_h, r_h, stoyan=0.15,
   } else {
     S<-1
   }
-  # new, do it in one function
-  # check divisor
-    fun <- pcf_anin_c
+  # 
+  # new: handle both divisors in the same function
+  fun <- markcor_anin_c
   if(divisor=="r"){
     divisor_i <- 0
-    div <- 1 #r^(dim-1)
   }
   else if(divisor=="d"){
-    divisor_i <- 1  # fun <- pcf_anin_c_d
-    div <- 1 
+    divisor_i <- 1
   }
   else stop("divisor should 'r' or 'd'")
   # Run
   coord <- x$x
-  out <- fun(coord, lambda, bbox, r, r_h, u, epsilon, border)
   #
-  # scaling
+  out <- fun(coord, marks, lambda, bbox, r, u, r_h, epsilon, border, f, divisor_i)
   #
-  out <- 2  * S * out # double sum
+  # The marks under independent marking. Bootstrap average if not pre-known
+  mnorm <- if(is.null(normaliser))
+    mean(f(sample(marks, bootsize, replace=T), sample(marks, bootsize, replace=T)))
+  else normaliser
+  #
+  # sector pcf estimator normaliser
+  norm <- if(dim==2) (4*epsilon) else (4 * pi * (1-cos(epsilon)))
+  #
   # in case translation weights are not applied
-  if(border==0) out <- out/V
+  if(border==0) norm <- norm * V
   #
-  # scale
-  norm <- if(dim==2) (4*epsilon*div) else (4 * div * pi * (1-cos(epsilon)))
-  out <- out/norm
   #
-  # compile output
-  # direction names
-  dir_names <- apply(u, 1, function(ui) paste0("(", paste0(ui, collapse=","), ")" ))
+  estg <- est <- NULL
+  for(i in 1:ncol(out[[1]])) { # per direction
+    est <- cbind(est,     (out[[1]][,i]/out[[2]][,i]) / mnorm   ) # all other normalisations factors cancel
+    estg <- cbind(estg,   2 * S * out[[2]][,i] / norm  ) # pcf
+  }
+  #
   # theoretical
   theo <- rep(1, length(r)) 
   #
-  gest <- data.frame(r=r, theo=theo, out)
+  # compile a nice output object
+  #
+  # direction names
+  dir_names <- apply(u, 1, function(ui) paste0("(", paste0(ui, collapse=","), ")" ))
+  #
+  # the mark correlation
+  mest <- data.frame(r=r, theo=theo, est)
+  names(mest)[] <- c("r", "theo", dir_names)
+  rownames(mest) <- NULL
+  attr(mest, "epsilon") <- epsilon
+  attr(mest, "r_h") <- r_h
+  attr(mest, "f") <- f
+  class(mest) <- c("markcorr_anin", is(mest))
+  #
+  # the pair correlation
+  gest <- data.frame(r=r, theo=theo, estg)
   names(gest)[] <- c("r", "theo", dir_names)
   rownames(gest) <- NULL
   attr(gest, "epsilon") <- epsilon
   attr(gest, "r_h") <- r_h
-  #done
   class(gest) <- c("pcf_anin", is(gest))
-  gest
+  # put together
+  #
+  res <- list(markcorr_anin = mest, pcf_anin = gest)
+  class(res) <- c("markcorr_anin", is(res))
+  #done
+  res
 }
 
 
-#' Plot pcf_anin object
+#' Plot markcorr_anin object
 #' 
-#' @param x Output from pcf_anin
+#' @param x Output from markcor_anin
 #' @param r_scale Plot with x-axis r*r_scale
 #' @param rmax plot upto this range
 #' @param ylim optional range for y-axis
@@ -138,13 +168,14 @@ pcf_anin <- function(x, u, epsilon, r, lambda=NULL, lambda_h, r_h, stoyan=0.15,
 #' @param ... passed on to plot
 #' @export
 
-plot.pcf_anin <- function(x, r_scale=1, rmax, ylim, legpos="topright", ...) {
+plot.markcorr_anin <- function(x, r_scale=1, rmax, ylim, legpos="topright", ...) {
+  if(is.list(x)) x <- x$markcorr_anin
   # cut r
   if(!missing(rmax)) x <- x[x$r<rmax,]
   if(missing(ylim)) ylim <- c(0,2)
   #
   plot(x$r*r_scale, x$theo, col=1, xlab="r", 
-       ylab="pcf_anin", type="l", lty=3, ylim=ylim, ...)
+       ylab="markcorr_anin", type="l", lty=3, ylim=ylim, ...)
   n <- ncol(x)
   for(i in 3:n){
     lines(x$r*r_scale, x[,i], col=i-1)

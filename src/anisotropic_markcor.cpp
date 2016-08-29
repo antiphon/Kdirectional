@@ -5,22 +5,6 @@
 using namespace Rcpp;
 
 
-// double kernel_epa(double d, double bw){
-//   if(d > bw) return 0;
-//   return (1-(d/bw)*(d/bw))*3.0/(4*bw);
-// }
-
-int max(int i, int j){
-  if(i > j) return i;
-  return j;
-}
-
-int min(int i, int j){
-  if(i < j) return i;
-  return j;
-}
-
-
 // [[Rcpp::export]]
 List anisotropic_markcor_c(NumericMatrix coord, NumericVector marks, NumericMatrix bbox, 
                         NumericVector r, NumericMatrix directions,

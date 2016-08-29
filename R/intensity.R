@@ -39,7 +39,6 @@ intensity_somewhere <- function(x, loc, bw, b=0, ...) {
 #' 
 #' if b < 0 no edge correction is applied.
 #' 
-#' 
 #' @export
 
 intensity_at_points <- function(x, bw, b=0, ...) {

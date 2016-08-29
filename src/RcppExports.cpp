@@ -322,6 +322,27 @@ BEGIN_RCPP
     return __result;
 END_RCPP
 }
+// markcor_anin_c
+List markcor_anin_c(NumericMatrix coord, NumericVector marks, NumericVector lambda, NumericMatrix bbox, NumericVector r, NumericMatrix directions, double bw_r, double bw_a, int border, Function f, int divisor_i);
+RcppExport SEXP Kdirectional_markcor_anin_c(SEXP coordSEXP, SEXP marksSEXP, SEXP lambdaSEXP, SEXP bboxSEXP, SEXP rSEXP, SEXP directionsSEXP, SEXP bw_rSEXP, SEXP bw_aSEXP, SEXP borderSEXP, SEXP fSEXP, SEXP divisor_iSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject __result;
+    Rcpp::RNGScope __rngScope;
+    Rcpp::traits::input_parameter< NumericMatrix >::type coord(coordSEXP);
+    Rcpp::traits::input_parameter< NumericVector >::type marks(marksSEXP);
+    Rcpp::traits::input_parameter< NumericVector >::type lambda(lambdaSEXP);
+    Rcpp::traits::input_parameter< NumericMatrix >::type bbox(bboxSEXP);
+    Rcpp::traits::input_parameter< NumericVector >::type r(rSEXP);
+    Rcpp::traits::input_parameter< NumericMatrix >::type directions(directionsSEXP);
+    Rcpp::traits::input_parameter< double >::type bw_r(bw_rSEXP);
+    Rcpp::traits::input_parameter< double >::type bw_a(bw_aSEXP);
+    Rcpp::traits::input_parameter< int >::type border(borderSEXP);
+    Rcpp::traits::input_parameter< Function >::type f(fSEXP);
+    Rcpp::traits::input_parameter< int >::type divisor_i(divisor_iSEXP);
+    __result = Rcpp::wrap(markcor_anin_c(coord, marks, lambda, bbox, r, directions, bw_r, bw_a, border, f, divisor_i));
+    return __result;
+END_RCPP
+}
 // c_oh_K
 NumericVector c_oh_K(NumericMatrix x, List theta, NumericVector r, NumericMatrix bbox);
 RcppExport SEXP Kdirectional_c_oh_K(SEXP xSEXP, SEXP thetaSEXP, SEXP rSEXP, SEXP bboxSEXP) {
@@ -373,8 +394,8 @@ BEGIN_RCPP
 END_RCPP
 }
 // pcf_anin_c
-NumericMatrix pcf_anin_c(NumericMatrix coord, NumericVector lambda, NumericMatrix bbox, NumericVector r, double r_h, NumericMatrix directions, double epsilon, int border);
-RcppExport SEXP Kdirectional_pcf_anin_c(SEXP coordSEXP, SEXP lambdaSEXP, SEXP bboxSEXP, SEXP rSEXP, SEXP r_hSEXP, SEXP directionsSEXP, SEXP epsilonSEXP, SEXP borderSEXP) {
+NumericMatrix pcf_anin_c(NumericMatrix coord, NumericVector lambda, NumericMatrix bbox, NumericVector r, double r_h, NumericMatrix directions, double epsilon, int border, int divisor_i);
+RcppExport SEXP Kdirectional_pcf_anin_c(SEXP coordSEXP, SEXP lambdaSEXP, SEXP bboxSEXP, SEXP rSEXP, SEXP r_hSEXP, SEXP directionsSEXP, SEXP epsilonSEXP, SEXP borderSEXP, SEXP divisor_iSEXP) {
 BEGIN_RCPP
     Rcpp::RObject __result;
     Rcpp::RNGScope __rngScope;
@@ -386,7 +407,8 @@ BEGIN_RCPP
     Rcpp::traits::input_parameter< NumericMatrix >::type directions(directionsSEXP);
     Rcpp::traits::input_parameter< double >::type epsilon(epsilonSEXP);
     Rcpp::traits::input_parameter< int >::type border(borderSEXP);
-    __result = Rcpp::wrap(pcf_anin_c(coord, lambda, bbox, r, r_h, directions, epsilon, border));
+    Rcpp::traits::input_parameter< int >::type divisor_i(divisor_iSEXP);
+    __result = Rcpp::wrap(pcf_anin_c(coord, lambda, bbox, r, r_h, directions, epsilon, border, divisor_i));
     return __result;
 END_RCPP
 }

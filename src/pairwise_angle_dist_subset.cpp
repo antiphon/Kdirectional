@@ -8,7 +8,6 @@ using namespace Rcpp;
 NumericMatrix c_pairwise_dist_angle_subset(NumericMatrix x, IntegerVector from, IntegerVector to) {
   int i, j, ind, l, t, f;
   double dx, dy, dz;
-  int n = x.nrow();
   int dim = x.ncol();
   double d, ang;
   int nfrom = from.length();

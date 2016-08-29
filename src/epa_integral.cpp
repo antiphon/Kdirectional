@@ -177,7 +177,7 @@ NumericVector epa_integral_2d(NumericMatrix x,
   //double h2 = h*h;
   
   if(dim >2) {
-    Rprintf("3D not implemented.\n");
+    Rprintf("3D analytical border correction for Epanechnikov not implemented; use other border methods.\n");
     for(i=0; i < out.size();i++) out(1)=1;
     return out; 
   }
