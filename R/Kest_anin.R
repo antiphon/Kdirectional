@@ -75,6 +75,8 @@ Kest_anin <- function(x, u, epsilon, r, lambda=NULL, lambda_h,
     if(missing(lambda_h)) stop("Need lambda_h to estimate the intensity function")
     lambda <- intensity_at_points(x, bw=lambda_h, ...)
   }
+  # Check the lambda's positive
+  if(!all(lambda>0)) stop("Check your parameters. Lambda's need to be positive.")
   # if renormalisation of the intensity is in order
   if(renormalise) {
     S <- V/sum(1/lambda)
@@ -83,6 +85,7 @@ Kest_anin <- function(x, u, epsilon, r, lambda=NULL, lambda_h,
   } else {
     S<-1
   }
+  
   # 
   # we got everything, let's compute.
   coord <- x$x

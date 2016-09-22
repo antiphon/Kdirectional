@@ -72,6 +72,11 @@ pcf_anin <- function(x, u, epsilon, r, lambda=NULL, lambda_h, r_h, stoyan=0.15,
     if(missing(lambda_h)) stop("Need lambda_h to estimate the intensity function")
     lambda <- intensity_at_points(x, bw=lambda_h, ...)
   }
+  
+  # Check the lambda's positive
+  if(!all(lambda>0)) stop("Check your parameters. Lambda's need to be positive.")
+  
+  
   if(missing(r_h)) {
     lambda0 <- nrow(x$x)/V # mean lambda
     r_h <- stoyan/lambda0^(1/dim)
