@@ -9,9 +9,13 @@ bbox_make(x, expand = TRUE)
 \arguments{
 \item{x}{coordinate matrix}
 
-\item{expand}{expand a bit? (ripras)}
+\item{expand}{expand a bit? (ripras, see details)}
 }
 \description{
 compute the bounding box for coordinates
+}
+\details{
+if expand = TRUE, the bbox will be expanded using an estimate of the true window area
+as described by Ripley & Rasson (1977). The convex hull is replaced with a cuboid aligned with the axes.
 }
 

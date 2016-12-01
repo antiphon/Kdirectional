@@ -1,15 +1,33 @@
 #' compute the bounding box for coordinates
 #'
 #' @param x coordinate matrix
-#' @param expand expand a bit? (ripras)
+#' @param expand expand a bit? (ripras, see details)
+#' 
+#' @details if expand = TRUE, the bbox will be expanded using an estimate of the true window area
+#' as described by Ripley & Rasson (1977). The convex hull is replaced with a cuboid aligned with the axes.
+#' 
 #' @export
 bbox_make <- function(x, expand=TRUE) {
   bb <- apply(as.matrix(x), 2, range)
   # expand a bit
-  if(expand){n <- nrow(x)
-    m <- 2^ncol(x)
-    ex <- ( max(bb)*((n+1)/(n-1)-1) ) / sqrt( max(.01, 1-m/n ) )
-    apply(bb, 2, function(ab) {r <- diff(ab); ab + ex*c(-1,1)*r}  )
+  if(expand){
+    n <- nrow(x)
+    d <- ncol(x)
+    m <- 2^d # number of vertices
+    # Estimate the true volume
+    #Vbb <- bbox_volume(bb)
+    #Vtrue <-  Vbb / (1 - m/n)
+    # need to extend the volume
+    #ex <- Vtrue/Vbb
+    ###
+    # This if for convex hull
+    ex <- 1 / min(1, max(0.01, (1-m/n)))
+    ex_d <- ex^(1/d)
+    # per dimension
+    apply(bb, 2, function(ab) {
+        r <- diff(ab) * (ex_d-1)
+        ab + ex_d * c(-1,1) * r/2
+      }  )
   } 
   else bb
 }

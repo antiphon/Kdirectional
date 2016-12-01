@@ -23,7 +23,7 @@ spectrum <- function(x, std=TRUE, scale=TRUE, ...) {
   pgrid <- t( apply(polarv, 1, function(x) x[1]*c(cos(x[2]*pi/180), sin(x[2]*pi/180))  ) )
   #
   P <- periodogram(x, std=std, pgrid=pgrid, ...)
-  #
+  # 
   v <- P$v
   Asp <- Rsp <- NULL
   # R-spectrum:
