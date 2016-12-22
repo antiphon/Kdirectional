@@ -4,7 +4,7 @@ load_all(".")
 library(rgl)
 library(icetools)
 library(rstrauss)
-library(plotrix)
+
 set.seed(2)
 d3 <- F
 bb <- bbox.default(0:1, 0:1, if(d3) 0:1 else NULL)-0.5

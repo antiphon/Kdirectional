@@ -8,7 +8,7 @@ library(devtools)
 load_all(".")
 library(sphere)
 library(rstrauss)
-library(plotrix)
+
 bb <- cbind(0:1, 0:1)
 x <- rstrauss(1000, 0.1, 0.01, bbox=bb)
 

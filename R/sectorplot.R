@@ -7,7 +7,6 @@
 #' @param overlapfactor <1 leaves a bit of space between sectors
 #' @param ... passed to plot, mostly the "main" parameter
 #' 
-#' @import plotrix
 #' @export
 
 sectorplot <- function(x, res=4, col=rainbow, zlim, overlapfactor=0.95, ...){

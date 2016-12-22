@@ -2,7 +2,6 @@
 
 library(devtools)
 load_all(".")
-library(plotrix)
 library(rstrauss)
 library(spatstat)
 set.seed(1)
