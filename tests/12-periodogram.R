@@ -14,8 +14,8 @@ z <- list(x=as.matrix(coords(rNeymanScott(10, 0.1, nclust, radius=0.1, n=10, win
 }
 
 # Bartlett's version
-if(0){
-per <- function(x) periodogram(x, p=19)
+if(1){
+per <- function(x) periodogram(x, p=15, std=F)
 est0 <- per(y)
 est <- per(x)
 est1 <- per(z)
@@ -29,7 +29,7 @@ im(est)
 im(est1)
 }
 # Mugglestone Renshaw 2001
-if(1){
+if(0){
 per <- function(x) {
   d <- DFT(x, m=20)
   d$f <- d$A^2+d$B^2

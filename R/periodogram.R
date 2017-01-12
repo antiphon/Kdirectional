@@ -1,8 +1,8 @@
 #' Bartlett's periodogram
 #' 
 #' @param x point pattern, list of $x and $bbox
-#' @param p number of frequencies, -p:p x dim grid
-#' @param pgrid the grid of integer spectral frequencies
+#' @param p number of frequencies, (-p:p)^2 grid
+#' @param pgrid the grid of integer spectral frequencies, two column matrix.
 #' @param std Standardize coordinates?
 #' @param ... ignored
 #' 
@@ -26,14 +26,14 @@ periodogram <- function(x, p, pgrid, std=TRUE, ...) {
   }
   else{
     pv <- apply(pgrid, 2, unique)
-    p <- if(is.list(pv)) length(pv[[1]]) else nrow(pv)
+    p <- if(is.list(pv)) length(pv[[2]]) else nrow(pv)
   }
   
   omega <- sapply(1:ncol(pgrid), function(i) unique(pgrid[,i])*2 * pi/sidelengths[i])
   omegagrid <- 2*pi*t(t(pgrid)/sidelengths)
   #
   #
-  loc <- x$x 
+  loc <- as.matrix( x$x )
   # "Standardize" coordinates
   if(std){
     loc <- n * t( t( loc/sidelengths ) )
