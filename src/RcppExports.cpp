@@ -412,9 +412,9 @@ BEGIN_RCPP
     return __result;
 END_RCPP
 }
-// pcf_anin_c_d
-NumericMatrix pcf_anin_c_d(NumericMatrix coord, NumericVector lambda, NumericMatrix bbox, NumericVector r, double r_h, NumericMatrix directions, double epsilon, int border);
-RcppExport SEXP Kdirectional_pcf_anin_c_d(SEXP coordSEXP, SEXP lambdaSEXP, SEXP bboxSEXP, SEXP rSEXP, SEXP r_hSEXP, SEXP directionsSEXP, SEXP epsilonSEXP, SEXP borderSEXP) {
+// pcf_anin_cylindrical_c
+NumericMatrix pcf_anin_cylindrical_c(NumericMatrix coord, NumericVector lambda, NumericMatrix bbox, NumericVector r, double r_h, NumericMatrix directions, double epsilon, int border, int divisor_i);
+RcppExport SEXP Kdirectional_pcf_anin_cylindrical_c(SEXP coordSEXP, SEXP lambdaSEXP, SEXP bboxSEXP, SEXP rSEXP, SEXP r_hSEXP, SEXP directionsSEXP, SEXP epsilonSEXP, SEXP borderSEXP, SEXP divisor_iSEXP) {
 BEGIN_RCPP
     Rcpp::RObject __result;
     Rcpp::RNGScope __rngScope;
@@ -426,7 +426,8 @@ BEGIN_RCPP
     Rcpp::traits::input_parameter< NumericMatrix >::type directions(directionsSEXP);
     Rcpp::traits::input_parameter< double >::type epsilon(epsilonSEXP);
     Rcpp::traits::input_parameter< int >::type border(borderSEXP);
-    __result = Rcpp::wrap(pcf_anin_c_d(coord, lambda, bbox, r, r_h, directions, epsilon, border));
+    Rcpp::traits::input_parameter< int >::type divisor_i(divisor_iSEXP);
+    __result = Rcpp::wrap(pcf_anin_cylindrical_c(coord, lambda, bbox, r, r_h, directions, epsilon, border, divisor_i));
     return __result;
 END_RCPP
 }

@@ -109,8 +109,8 @@ pcf_anin_c <- function(coord, lambda, bbox, r, r_h, directions, epsilon, border 
     .Call('Kdirectional_pcf_anin_c', PACKAGE = 'Kdirectional', coord, lambda, bbox, r, r_h, directions, epsilon, border, divisor_i)
 }
 
-pcf_anin_c_d <- function(coord, lambda, bbox, r, r_h, directions, epsilon, border = 1L) {
-    .Call('Kdirectional_pcf_anin_c_d', PACKAGE = 'Kdirectional', coord, lambda, bbox, r, r_h, directions, epsilon, border)
+pcf_anin_cylindrical_c <- function(coord, lambda, bbox, r, r_h, directions, epsilon, border = 1L, divisor_i = 0L) {
+    .Call('Kdirectional_pcf_anin_cylindrical_c', PACKAGE = 'Kdirectional', coord, lambda, bbox, r, r_h, directions, epsilon, border, divisor_i)
 }
 
 c_sector_pcf <- function(x, u, theta, r, h, bbox, correction) {

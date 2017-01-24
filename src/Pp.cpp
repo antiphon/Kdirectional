@@ -60,7 +60,6 @@ double Pp::getAngle(int *i, int *j)
 double Pp::getWeight(int *i, int *j)
 {
   double wij = 1;
-  int k=0;
-  for(k=0; k < dim; k++) wij *= boxlen(k) - fabs(X(*i,k)-X(*j,k));
+  for(int k=0; k < dim; k++) wij *= boxlen(k) - fabs(X(*i,k)-X(*j,k));
   return wij;
 }

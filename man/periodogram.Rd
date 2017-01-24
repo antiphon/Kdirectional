@@ -9,9 +9,9 @@ periodogram(x, p, pgrid, std = TRUE, ...)
 \arguments{
 \item{x}{point pattern, list of $x and $bbox}
 
-\item{p}{number of frequencies, -p:p x dim grid}
+\item{p}{number of frequencies, (-p:p)^2 grid}
 
-\item{pgrid}{the grid of integer spectral frequencies}
+\item{pgrid}{the grid of integer spectral frequencies, two column matrix.}
 
 \item{std}{Standardize coordinates?}
 

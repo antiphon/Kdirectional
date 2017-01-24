@@ -8,7 +8,7 @@
   ...)
 }
 \arguments{
-\item{x}{Output from pcf_anin}
+\item{x}{Output from pcf_anin or pcf_anin_cylinder}
 
 \item{r_scale}{Plot with x-axis r*r_scale}
 

@@ -6,7 +6,7 @@ library(rstrauss)
 
 if(!exists("pp")){
   set.seed(1)
-  d3 <- T
+  d3 <- F
   comp <- 0.9
   #bb <- cbind(c(0,comp) -comp/2, c(0,1/comp)-0.5/comp)
   side <- c(1,2)
@@ -21,10 +21,10 @@ if(!exists("pp")){
   pp <- list(x=xm, bbox=bbm)
 }
 l <- rep(nrow(pp$x)/bbox_volume(pp$bbox), nrow(pp$x))
-p <- pcf_anin(pp, lambda=l, epsilon = e<-pi/4, stoyan=f<-0.3)
+p <- pcf_anin(pp, lambda=l, epsilon = e<-pi/4, divisor = "d", stoyan=f<-0.3)
 pd <- pcf_anin(pp, lambda=l, epsilon = e, divisor="r", stoyan=f)
 
 par(mfrow=c(1,2))
-plot(p, legpos="topleft")
-plot(pd)
+plot(p, main="divisor d")
+plot(pd, main =" divisor r")
 

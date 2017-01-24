@@ -35,4 +35,4 @@ int min(int i, int j){
 }
 
 double divisor_r(double r, double d){ return r; }
-double divisor_d(double r, double d){ return max(d,r); }
+double divisor_d(double r, double d){return d;};// return max(d,r); }

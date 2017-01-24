@@ -1,10 +1,10 @@
-#' Inhomogeneous anisotropic pcf function, sector version
+#' Inhomogeneous anisotropic pcf function, cylinder version
 #' 
-#' Estimate a sector-pcf function for second order reweighted ("inhomogeneous") pattern.
+#' Estimate a cylinder-pcf function for second order reweighted ("inhomogeneous") pattern.
 #'
 #' @param x pp, list with $x~coordinates $bbox~bounding box
 #' @param u unit vector(s) of direction, as row vectors. Default: x and y axis.
-#' @param epsilon Central half angle for the directed sector/cone (total angle of the rotation cone is 2*epsilon)
+#' @param epsilon The cylinder half-width
 #' @param r radius vector at which to evaluate the function
 #' @param lambda optional vector of intensity estimates at points
 #' @param lambda_h if lambda missing, use this bandwidth in a kernel estimate of lambda(x)
@@ -12,11 +12,10 @@
 #' @param stoyan If r_h not given, use r_h=stoyan/lambda^(1/dim). Same as 'stoyan' in spatstat's pcf.
 #' @param renormalise See details. 
 #' @param border Use translation correction? Default=1, yes. Only for cuboidal windows.
-#' @param divisor See spatstat's pcf.ppp for this.
 #' @param ... passed on to e.g. \link{intensity_at_points}
 #' @details 
 #' 
-#' Computes a second order reweighted version of the sector-pcf.
+#' Computes a second order reweighted version of the cylinder-pcf, defined as the function to integrate in range over [0,R] to get the cylinder-K(R) function.
 #' 
 #' Lambda(x) at points can be given, 
 #' or else it will be estimated using Epanechnikov kernel smoothing. See 
@@ -29,8 +28,9 @@
 #' @useDynLib Kdirectional
 #' @export
 
-pcf_anin <- function(x, u, epsilon, r, lambda=NULL, lambda_h, r_h, stoyan=0.15,
-                      renormalise=TRUE,  border=1, divisor = "d", ...) {
+pcf_anin_cylinder <- function(x, u, epsilon, r, lambda=NULL, lambda_h, r_h, 
+                              stoyan=0.15,
+                     renormalise=TRUE,  border=1, ...) {
   x <- check_pp(x)
   bbox <- x$bbox
   if(is.bbquad(bbox)) stop("bbquad window not yet supported.")
@@ -47,7 +47,7 @@ pcf_anin <- function(x, u, epsilon, r, lambda=NULL, lambda_h, r_h, stoyan=0.15,
   #
   # central half-angle
   if(missing(epsilon)){
-    epsilon <- pi/4 
+    epsilon <- 0.1 
   }
   if(abs(epsilon)>pi/2) stop("epsilon should be in range [0, pi/2]")
   #
@@ -92,31 +92,20 @@ pcf_anin <- function(x, u, epsilon, r, lambda=NULL, lambda_h, r_h, stoyan=0.15,
   }
   # new, do it in one function
   # check divisor
-  if(divisor=="r"){
-    divisor_i <- 0
-    div <- 1 
-  }
-  else if(divisor=="d"){
-    divisor_i <- 1  
-    div <- 1 
-  }
-  else stop("divisor should 'r' or 'd'")
+  fun <- pcf_anin_cylindrical_c
+  div <- 1
   # Run
   coord <- x$x
-  
-  fun <- pcf_anin_c # handles both divisors inside
-  
-  out <- fun(coord, lambda, bbox, r, r_h, u, epsilon, border, divisor_i)
+  out <- fun(coord, lambda, bbox, r, r_h, u, epsilon, border)
   #
   # scaling
   #
-  out <- 2  * S * out # double sum
+  out <- S * out # double sum
   # in case translation weights are not applied
   if(border==0) out <- out/V
   #
   # scale
-  norm <- if(dim==2) (4*epsilon*div) else (4 * div * pi * (1-cos(epsilon)))
-  if(dim > 3) warning("Dimension beyond 3, normalising constant unknown.")
+  norm <- pi^((dim-1)/2)/gamma((dim-1)/2+1) * epsilon^(dim-1) * div
   out <- out/norm
   #
   # compile output
@@ -130,40 +119,9 @@ pcf_anin <- function(x, u, epsilon, r, lambda=NULL, lambda_h, r_h, stoyan=0.15,
   rownames(gest) <- NULL
   attr(gest, "epsilon") <- epsilon
   attr(gest, "r_h") <- r_h
-  attr(gest, "fname") <- "pcf_anin"
+  attr(gest, "fname") <- "pcf_anin_cylinder"
   #done
   class(gest) <- c("pcf_anin", is(gest))
   gest
 }
-
-
-#' Plot pcf_anin object
-#' 
-#' @param x Output from pcf_anin or pcf_anin_cylinder
-#' @param r_scale Plot with x-axis r*r_scale
-#' @param rmax plot upto this range
-#' @param ylim optional range for y-axis
-#' @param legpos legend position
-#' @param ... passed on to plot
-#' @export
-
-plot.pcf_anin <- function(x, r_scale=1, rmax, ylim, legpos="topright", ...) {
-  # cut r
-  if(!missing(rmax)) x <- x[x$r<rmax,]
-  if(missing(ylim)) ylim <- c(0,2)
-  #
-  fname <- attr(x, "fname")
-  plot(x$r*r_scale, x$theo, col=1, xlab="r", 
-       ylab=if(is.null(fname)) "pcf_anin" else fname, type="l", lty=3, ylim=ylim, ...)
-  n <- ncol(x)
-  for(i in 3:n){
-    lines(x$r*r_scale, x[,i], col=i-1)
-  }
-  legend(legpos, names(x)[-1], lty=c(3,rep(1,n-2)), col=c(1:(n-1)))
-}
-
-
-
-
-
 
