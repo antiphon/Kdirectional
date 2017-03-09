@@ -2,7 +2,7 @@
 % Please edit documentation in R/Gsector.R
 \name{Gsector}
 \alias{Gsector}
-\title{Directional Nearest neighbour distribution}
+\title{Directional Nearest neighbour distribution(old)}
 \usage{
 Gsector(x, r, theta, unit, directions, epsilon, n_dir = 10)
 }
@@ -28,4 +28,3 @@ This is a directed sector version of the G-function in spatstat.
 Directions are angle to positive x-axis (2D) or azimuth, inclination (3D). 
 Theta should be a list of length 1 (2D) and 2 (3D) defining a grid of these angles.
 }
-

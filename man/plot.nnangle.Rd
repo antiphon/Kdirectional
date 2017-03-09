@@ -9,4 +9,3 @@
 \description{
 Plot for nnangle
 }
-

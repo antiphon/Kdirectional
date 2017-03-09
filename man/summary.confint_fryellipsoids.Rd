@@ -9,4 +9,3 @@
 \description{
 Summary method for confint_fryellipsoid
 }
-

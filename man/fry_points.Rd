@@ -17,4 +17,3 @@ Returns the lengths and direction unit vectors.
 \description{
 Pairwise difference vectors of x
 }
-

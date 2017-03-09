@@ -4,7 +4,7 @@
 \alias{nnangle_cone}
 \title{nearest neighbour angles and distances given that angles are in a cone}
 \usage{
-nnangle_cone(x, unit, theta, from, to)
+nnangle_cone(x, unit, theta, from, to, antipodal = FALSE)
 }
 \arguments{
 \item{x}{matrix of coordinates}
@@ -15,7 +15,9 @@ nnangle_cone(x, unit, theta, from, to)
 
 \item{from}{indices from which to compute}
 
-\item{to}{indices in which look for nearest neighbour
+\item{to}{indices in which look for nearest neighbour}
+
+\item{antipodal}{use antipodally symmetric vectors? default: FALSE
 
 The values in 2d are (azimuth, distance).
 The values in 3d are physical coordinate system (azimuth, inclination, distance)
@@ -25,4 +27,3 @@ The angle is inside the cone. NA if no neighbour is found.}
 \description{
 nearest neighbour angles and distances given that angles are in a cone
 }
-

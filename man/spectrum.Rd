@@ -20,4 +20,3 @@ spectrum(x, std = TRUE, scale = TRUE, ...)
 \description{
 Mugglestone and Renshaw's polar spectrums
 }
-

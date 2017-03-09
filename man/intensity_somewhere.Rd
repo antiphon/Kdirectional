@@ -29,4 +29,3 @@ Uses Epanechnikov kernel smoothing. Border corrections controlled by what b is:
 
 if b < 0 no edge correction is applied.
 }
-

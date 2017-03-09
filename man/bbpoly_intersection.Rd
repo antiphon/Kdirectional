@@ -14,4 +14,3 @@ bbpoly_intersection(a, b)
 \description{
 Compute "a intesection b"
 }
-

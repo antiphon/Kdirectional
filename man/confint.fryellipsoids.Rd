@@ -19,4 +19,3 @@ Confidence intervals for Fry ellipsoids
 \details{
 See the 'confint.ellipsoid' in 'ellipsoid' for details of ...
 }
-

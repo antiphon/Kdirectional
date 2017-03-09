@@ -12,4 +12,3 @@ bbox_dim(x)
 \description{
 Bounding box dimension
 }
-

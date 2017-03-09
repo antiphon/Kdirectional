@@ -17,4 +17,3 @@ Split a polytope to simplices.
 \details{
 Assumes convexity, will not check.
 }
-

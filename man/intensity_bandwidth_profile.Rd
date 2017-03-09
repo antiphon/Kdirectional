@@ -25,4 +25,3 @@ Find the optimal smoothing for intensity estimation kernel width
 Optimize bandwidth $h$ of the Epanechnikov kernel using loss function
 \deqn{latex}{\sum 1/\hat\lambda_h(x_i) - |W|)^2}
 }
-

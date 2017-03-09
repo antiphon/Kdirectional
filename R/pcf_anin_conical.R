@@ -1,6 +1,6 @@
 #' Inhomogeneous anisotropic pcf function, sector version
 #' 
-#' Estimate a sector-pcf function for second order reweighted ("inhomogeneous") pattern.
+#' Estimate a sector/cone pcf function for second order reweighted ("inhomogeneous") pattern.
 #'
 #' @param x pp, list with $x~coordinates $bbox~bounding box
 #' @param u unit vector(s) of direction, as row vectors. Default: x and y axis.
@@ -16,7 +16,9 @@
 #' @param ... passed on to e.g. \link{intensity_at_points}
 #' @details 
 #' 
-#' Computes a second order reweighted version of the sector-pcf.
+#' Computes a second order reweighted version of the sector-pcf. The sector pcf differs from the true anisotropic pcf
+#' by assuming that the anisotropic pcf is constant over the small arc/cap of the sector, thus averaging over that
+#' data-area and providing more stable estimates. 
 #' 
 #' Lambda(x) at points can be given, 
 #' or else it will be estimated using Epanechnikov kernel smoothing. See 
@@ -26,10 +28,12 @@
 #' @return 
 #' Returns a dataframe.
 #' 
+#' @seealso \code{\link{pcf_anin_cylinder}}
+#' 
 #' @useDynLib Kdirectional
 #' @export
 
-pcf_anin <- function(x, u, epsilon, r, lambda=NULL, lambda_h, r_h, stoyan=0.15,
+pcf_anin <- pcf_anin_conical <- function(x, u, epsilon, r, lambda=NULL, lambda_h, r_h, stoyan=0.15,
                       renormalise=TRUE,  border=1, divisor = "d", ...) {
   x <- check_pp(x)
   bbox <- x$bbox
@@ -104,7 +108,7 @@ pcf_anin <- function(x, u, epsilon, r, lambda=NULL, lambda_h, r_h, stoyan=0.15,
   # Run
   coord <- x$x
   
-  fun <- pcf_anin_c # handles both divisors inside
+  fun <- pcf_anin_conical_c # handles both divisors inside
   
   out <- fun(coord, lambda, bbox, r, r_h, u, epsilon, border, divisor_i)
   #
@@ -130,7 +134,7 @@ pcf_anin <- function(x, u, epsilon, r, lambda=NULL, lambda_h, r_h, stoyan=0.15,
   rownames(gest) <- NULL
   attr(gest, "epsilon") <- epsilon
   attr(gest, "r_h") <- r_h
-  attr(gest, "fname") <- "pcf_anin"
+  attr(gest, "fname") <- "pcf_anin_conical"
   #done
   class(gest) <- c("pcf_anin", is(gest))
   gest

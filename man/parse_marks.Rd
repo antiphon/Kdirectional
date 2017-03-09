@@ -14,4 +14,3 @@ parse_marks(x, marks)
 \description{
 Parse input for marks
 }
-

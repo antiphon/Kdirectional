@@ -15,4 +15,3 @@ Volume of a simplex
 \details{
 If x is a list, we apply the function to each element.
 }
-

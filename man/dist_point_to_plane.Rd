@@ -9,4 +9,3 @@ dist_point_to_plane(x, pl)
 \description{
 Point to plane distance
 }
-

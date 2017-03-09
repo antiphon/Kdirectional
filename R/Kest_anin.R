@@ -120,6 +120,7 @@ Kest_anin <- function(x, u, epsilon, r, lambda=NULL, lambda_h,
   rownames(Kest) <- NULL
   attr(Kest, "epsilon") <- epsilon
   attr(Kest, "fun_name") <- "Kest_anin"
+  attr(Kest, "theo_name") <- "CSR"
   #done
   class(Kest) <- c("K_anin", is(Kest))
   Kest
@@ -145,7 +146,10 @@ plot.K_anin <- function(x, r_scale=1, rmax, legpos="topleft", ...) {
   for(i in 3:n){
     lines(x$r*r_scale, x[,i], col=i-1)
   }
-  legend(legpos, names(x)[-1], lty=c(3,rep(1,n-2)), col=c(1:(n-1)))
+  nam <- names(x)[-1]
+  tn <- attr(x, "theo_name")
+  if(!is.null(tn)) nam[1] <- tn
+  legend(legpos, nam, lty=c(3,rep(1,n-2)), col=c(1:(n-1)))
 }
 
 

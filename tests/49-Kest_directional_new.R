@@ -12,8 +12,8 @@ x2 <- list(x=coord_affine(x$x, R), bbox=bbox_affine(x$bbox, R))
 #plot(x2$bbox, add=F); points(x2$x, cex=.4)
 u <- diag(1,2)
 ur <- u%*%t(R)
-k <- Kest_directional(x, u=u, epsilon=e<-pi/2, border=bo<-1)
-k2 <- Kest_directional(x2, u=ur, e=e, border=bo)
+k <- Kest_directional(x, u=u, epsilon=e<-pi/6, border=bo<-1, cylindrical = cyl <- F)
+k2 <- Kest_directional(x2, u=ur, e=e, border=bo, cylindrical = cyl)
 
 print(all.equal(bbox_distance(x$x, x$bbox), bbox_distance(x2$x, x2$bbox)))
 

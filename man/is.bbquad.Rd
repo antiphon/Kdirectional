@@ -9,4 +9,3 @@ is.bbquad(x, ...)
 \description{
 check class bbquad
 }
-

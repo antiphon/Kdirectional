@@ -9,4 +9,3 @@ bbox2bbpoly(bb)
 \description{
 Construct a bbpoly from column range matrix
 }
-

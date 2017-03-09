@@ -15,4 +15,3 @@ draw.arc(x = 1, y = NULL, radius = 1, angle1 = deg1 * pi/180,
 \description{
 (From plotrix) Draw one or more arcs using classic graphics.
 }
-

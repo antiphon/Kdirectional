@@ -9,4 +9,3 @@
 \description{
 Lines method for "anisotropyprofile"
 }
-

@@ -14,4 +14,3 @@ angles.bin(x, k = 25)
 \description{
 bin angles
 }
-

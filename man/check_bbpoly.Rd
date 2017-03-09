@@ -9,4 +9,3 @@ check_bbpoly(x)
 \description{
 Check with error
 }
-

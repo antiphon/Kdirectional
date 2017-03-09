@@ -9,4 +9,3 @@
 \description{
 print method for bbpoly, a cuboid made of quads
 }
-

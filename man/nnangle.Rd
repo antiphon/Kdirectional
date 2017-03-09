@@ -26,4 +26,3 @@ nn <- nnangle(x)
 summary(nn)
 
 }
-

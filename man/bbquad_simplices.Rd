@@ -12,4 +12,3 @@ bbquad_simplices(x)
 \description{
 Due to assuming quadrilateral polytope, we get 2 simplices (triangles/tetrahedrons)
 }
-

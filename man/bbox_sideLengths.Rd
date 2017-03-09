@@ -9,4 +9,3 @@ bbox_sideLengths(bbox)
 \description{
 Bounding box side lengths
 }
-

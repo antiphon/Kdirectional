@@ -2,11 +2,10 @@
 % Please edit documentation in R/check_directions.R
 \name{unit_2_theta}
 \alias{unit_2_theta}
-\title{unit vector to theta (angle)}
+\title{unit vector to theta (angle) list format input}
 \usage{
 unit_2_theta(unit)
 }
 \description{
-unit vector to theta (angle)
+unit vector to theta (angle) list format input
 }
-

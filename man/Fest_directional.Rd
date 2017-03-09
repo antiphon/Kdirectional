@@ -20,4 +20,3 @@ Fest_directional(x, u, theta, r, n)
 \description{
 We use toroidal
 }
-

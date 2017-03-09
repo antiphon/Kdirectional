@@ -21,4 +21,3 @@ Default output is a 3D cube with vertices in the corners of [-.5,.5]^3.
 
 See also \code{\link{poly2bbpoly}} for more flexible windows in 2D.
 }
-

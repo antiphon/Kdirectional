@@ -9,4 +9,3 @@ flower.pcf_directions(x, scale_points = TRUE, col = rainbow, zlim, ...)
 \description{
 Plot a angluar plot of the pcf_directions, 2D
 }
-

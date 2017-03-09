@@ -15,4 +15,3 @@ Volume of a bbpoly
 \details{
 splits the bbpoly into simplices and sums  their volume.
 }
-

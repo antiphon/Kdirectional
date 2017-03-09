@@ -5,7 +5,8 @@
 using namespace Rcpp;
 
 // [[Rcpp::export]]
-List c_angles_in_a_cone(NumericMatrix x, NumericVector unit, double theta, IntegerVector from, IntegerVector to) {
+List c_angles_in_a_cone(NumericMatrix x, NumericVector unit, double theta, 
+                        IntegerVector from, IntegerVector to, bool antipodal = false) {
     int i, j, l, f, t;
     int n = x.nrow();
     int dim = x.ncol();
@@ -29,6 +30,7 @@ List c_angles_in_a_cone(NumericMatrix x, NumericVector unit, double theta, Integ
           dot = 0;
           for(l=0; l < dim; l++)  dot += (x(t,l)-x(f,l)) * unit(l);
           dang = acos(dot/d);
+          if(antipodal) dang = min(dang, PI - dang);
           if (dang < theta & d < nnd){
             nn = t;
             nnd = d;

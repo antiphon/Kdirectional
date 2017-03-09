@@ -9,4 +9,3 @@
 \description{
 print for anisotropy profile
 }
-

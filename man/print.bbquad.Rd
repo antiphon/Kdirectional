@@ -9,4 +9,3 @@
 \description{
 print method for bbquad, a cuboid made of quads
 }
-

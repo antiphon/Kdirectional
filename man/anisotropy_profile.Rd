@@ -18,4 +18,3 @@ anisotropy_profile(x, i = 1, cvec, verb = TRUE, ...)
 \description{
 Given a direction i, compute the anisotropy profile for set a compressions.
 }
-

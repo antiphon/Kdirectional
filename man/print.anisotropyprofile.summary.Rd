@@ -9,4 +9,3 @@
 \description{
 Print method for "anisotropyprofile" summary
 }
-

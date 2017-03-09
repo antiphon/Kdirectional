@@ -2,7 +2,7 @@
 % Please edit documentation in R/Kest_directional.R
 \name{Kest_directional_old}
 \alias{Kest_directional_old}
-\title{Directed K function}
+\title{Directed K function, old and slow}
 \usage{
 Kest_directional_old(x, u, epsilon, r, pregraph)
 }
@@ -28,4 +28,3 @@ Compute the sector K function.
 
 Try \link{Kest_anin} for a bit better version that does also second order inhomogeneous patterns.
 }
-

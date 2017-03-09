@@ -9,4 +9,3 @@ bbquad_planes(b)
 \description{
 normal vector and a point -format. In 2D returns the surface lines.
 }
-

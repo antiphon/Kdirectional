@@ -37,4 +37,3 @@ We assume that no rotation is present, or that rotation is already corrected for
 squared difference sums of the directed sector-K functions along main axes should indicate
 the optimal v.
 }
-

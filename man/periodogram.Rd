@@ -22,4 +22,3 @@ Omega=0 value is set to NA, and returned as $zerov in the return object.}
 \description{
 Bartlett's periodogram
 }
-

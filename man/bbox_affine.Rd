@@ -19,4 +19,3 @@ Affine transformation of a bbox or bbquad
 \details{
 If A is not diagonal, bbox will be transformed into a bbquad.
 }
-

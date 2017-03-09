@@ -9,4 +9,3 @@ Gest(x, r)
 \description{
 Spatstat notation G
 }
-

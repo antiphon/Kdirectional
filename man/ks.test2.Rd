@@ -16,4 +16,3 @@ ks.test2(x, y, n)
 \description{
 Kolmogorov-Smirnov test using ecdf's
 }
-

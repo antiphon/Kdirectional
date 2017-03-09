@@ -33,4 +33,3 @@ Direction defined with a unit vector. Estimated in a cone of angle theta and dif
 \details{
 Otherwise same as default pcf in spatstat, but now with an angle.
 }
-

@@ -18,4 +18,3 @@ bbpoly_affine(bbpoly, A, s = c(0, 0, 0), center_before_A = FALSE)
 \description{
 Affine transformation of a polytope
 }
-

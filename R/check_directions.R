@@ -45,18 +45,34 @@ direction.grid <- function(n_dir=2, d=2, max=pi/2){
   else theta_2_unit(list(seq(0, max, length=n_dir)))
 }
 
-#' theta (angle) to unit vector
+#' theta (angle) to unit vector, list format input
+#' 
+#' Convert from angle to unit vector
+#' 
+#' @param list with 1 or 2 components, giving the angle(s)
 #' 
 #' @export
 
 theta_2_unit <- function(theta){
-  if(!is.list(theta)) stop("theta should be a list.") 
-  unit <- cbind( cos(theta[[1]]), sin(theta[[1]]))
+  unit <- cbind( cos(theta[1]), sin(theta[2]))
   if( length(theta)==2 ) unit <- cbind(unit*sin(theta[[2]]), cos(theta[[2]]))
   unit
 }
 
-#' unit vector to theta (angle)
+#' Angle to unit vector
+#' 
+#' @param vector of 1 or 2 components (2d or 3d)
+#' 
+#' @export
+
+angle_2_unit <- function(angle){
+  angle <- cbind(angle)
+  unit <- cbind(cos(angle[,1]), sin(angle[,1]))
+  if( ncol(angle) == 2 ) unit <- cbind(unit*sin(angle[,2]), cos(angle[,2]))
+  unit
+}
+
+#' unit vector to theta (angle) list format input
 #' 
 #' @export
 
@@ -69,3 +85,27 @@ unit_2_theta <- function(unit) {
   theta
 }
 
+#' Unit vector to angle
+#' 
+#' @param unit vector(s as matrix, cols=dimensions)
+#' 
+#' @export
+
+unit_2_angle <- function(unit){
+  if(!is.null(dim(unit))) unit <- cbind(unit)
+  dim <- ncol(unit)
+  unit <- t( apply(unit, 1, function(u) u/sqrt(sum(u^2))  ) )
+  theta <-  atan2( unit[,2], unit[,1] ) 
+  if(dim==3) theta <- cbind(theta, ang2 = acos(unit[, 3]))
+  theta
+}
+
+#' Radians to degree
+#' 
+#' @export
+rad2deg <- function(rad) rad * 180/pi
+
+#' Degree to radian
+#' 
+#' @export
+deg2rad <- function(deg) deg * pi/180

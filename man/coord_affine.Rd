@@ -16,4 +16,3 @@ coord_affine(x, A, s = c(0, 0, 0))
 \description{
 Affine transfomration of coordinates
 }
-

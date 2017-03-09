@@ -9,4 +9,3 @@
 \description{
 Plot confidence intervals
 }
-

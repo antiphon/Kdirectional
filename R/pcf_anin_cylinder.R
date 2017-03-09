@@ -49,7 +49,7 @@ pcf_anin_cylinder <- function(x, u, epsilon, r, lambda=NULL, lambda_h, r_h,
   if(missing(epsilon)){
     epsilon <- 0.1 
   }
-  if(abs(epsilon)>pi/2) stop("epsilon should be in range [0, pi/2]")
+  if(epsilon<= 0) stop("Cylinder radius epsilon should be >0")
   #
   # ranges
   if(missing(r)) {

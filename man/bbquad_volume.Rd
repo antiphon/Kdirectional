@@ -15,4 +15,3 @@ Volume of a bbquad
 \details{
 Will split the bbquad into simplices and return the sum of simplex volumes.
 }
-

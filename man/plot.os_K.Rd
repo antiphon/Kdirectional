@@ -9,4 +9,3 @@
 \description{
 method plot for O-S K-function
 }
-

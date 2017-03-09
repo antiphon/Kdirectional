@@ -9,4 +9,3 @@ bbpoly_simplex(d = 3)
 \description{
 Simplex object
 }
-

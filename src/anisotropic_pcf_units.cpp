@@ -11,7 +11,9 @@ using namespace Rcpp;
 // [[Rcpp::export]]
 List c_anisotropic_unit_pcf(NumericMatrix x,
                                      NumericMatrix r, 
-                                     NumericVector h, NumericMatrix bbox, int correction) {
+                                     NumericVector h, 
+                                     NumericMatrix bbox, 
+                                     int correction) {
     int i, j, k, l;
     double d, ang, v, w, dot, diff, W;
     int nr, nvals;
@@ -53,7 +55,7 @@ List c_anisotropic_unit_pcf(NumericMatrix x,
           for(l=0; l < dim; l++)  dot += (x(j,l)-x(i,l))*r(k,l);
           dot = dot/(d * rlength(k));
           ang = acos(dot);
-          ang = fmin(ang, PI-ang);
+          ang = fmin(ang, PI-ang); // antipodal
           diff = fabs( d - rlength(k) );
           if(ang < h(1) & diff < h(0)){
             //W = pow(rlength(k), dim-1);

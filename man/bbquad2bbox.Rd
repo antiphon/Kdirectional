@@ -9,4 +9,3 @@ bbquad2bbox(x)
 \description{
 Return the bounding box of a bbquad
 }
-

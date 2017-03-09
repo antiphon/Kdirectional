@@ -10,4 +10,3 @@ check_directions(theta, epsilon, unit, dim = 2, antipode = FALSE,
 \description{
 Sector computation directions
 }
-

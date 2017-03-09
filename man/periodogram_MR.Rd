@@ -14,4 +14,3 @@ periodogram_MR(x, ...)
 \description{
 Periodogram as in Mugglestone and Renshaw 2001
 }
-

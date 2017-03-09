@@ -41,4 +41,3 @@ Fit second order intensity ellipses or ellipsoids
 First we compute the Fry-points, then we look at the Fry-points in many directions from 
 origin and find the kth point in each, then we fit ellipsoids to the kth-points.
 }
-

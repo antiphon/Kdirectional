@@ -16,4 +16,3 @@ osK(x, r, theta, ...)
 \description{
 Ohser-Stoyan K-function
 }
-

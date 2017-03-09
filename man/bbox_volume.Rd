@@ -9,4 +9,3 @@ bbox_volume(bbox)
 \description{
 Bounding box volume
 }
-

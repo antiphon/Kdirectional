@@ -18,4 +18,3 @@ geom(x, from, to, r)
 \description{
 geometric graph
 }
-

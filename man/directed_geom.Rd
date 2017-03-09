@@ -32,4 +32,3 @@ Compute the geometric graph \deqn{x_i ~ x_j \Leftrightarrow ||x_i-x_j|| < r \& -
 \details{
 If pregraph is given, "to" is ignored.
 }
-

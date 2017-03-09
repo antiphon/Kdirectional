@@ -1,4 +1,84 @@
-#' Nearest neighbour directional distribution
+#' Nearest neighbour directional distribution (new version)
+#' 
+#' Estimate the directional distribution of Konig&Schmidt 1992
+#' with (their notation) 0-nearest neighbour i.e. nearest neighbour, the direction
+#' set being a conical wedge of the unit-sphere.
+#' 
+#' @param x point pattern, $x coords $bbox bounding box
+#' @param direction Unit vector direction
+#' @param epsilon Direction sector's opening half-angle vector. 
+#' @param r Maximum range for of nn-distances to consider. If missing, use max(nn-distances)
+#' @param antipodal Make nn-vectors antipodally symmetric? 
+#' 
+#' @details
+#' Compute the probability that a nearest neighbour of a typical point is in direction of the
+#' cone given the distance is less than r. 
+#' 
+#' Input should be one direction and many epsilons OR equal amount of directions and epsilons.
+#' 
+#' Not using a double cone.
+#' 
+#' @export
+
+nn_directional_angle_distribution <- function(x, direction, epsilon, r, antipodal = FALSE) {
+  x <- check_pp(x)
+  bbox <- x$bbox
+  dim <- ncol(bbox)
+  sidelengths <- bbox_sideLengths(bbox)
+  #
+  if(missing(direction)) {
+    direction <- c(1, rep(0,dim-1))
+  }
+  if(missing(epsilon)) epsilon <- seq(0, pi/ifelse(antipodal, 2, 1), l = 12)
+  #
+  # compute the nn-angles
+  na <- nnangle(x$x)
+  nnd <- na[,dim]
+  nnangles <- na[,-dim, drop =FALSE]
+  nnunits <- angle_2_unit(nnangles)
+  #
+  if(missing(r)) {
+    r <- max(nnd)
+  }
+  if(length(r)!=1) stop("r should be a single positive number.") 
+  #
+  # border correction:
+  bd <- bbox_distance(x$x, x$bbox)
+  bdok <- bd > nnd
+  #
+  # For each direction / epsilon:
+  u <- rbind(direction)
+  u <- u / sqrt(rowSums(u^2))
+  eu <- as.matrix( data.frame(epsilon, u, row.names = NULL) )
+  #
+  # estimate for one sector:
+  inrange <- nnd <= r
+  nnu <- nnunits[bdok & inrange, , drop  = FALSE ]
+  # the angles between nn-vector and sector directions
+  dev_one <- function(s){
+    acos(nnu %*% s[-1])
+  }
+  deviat <- apply(eu, 1, dev_one)
+  # antipodal?
+  if(antipodal) {
+    deviat <- pmin(deviat, pi-deviat)
+  }
+  # The sums
+  counts <- rowSums( t( abs(deviat) ) <= eu[,1] )
+  # Normalising constant:
+  normaliser <- nrow(nnu)
+  # estimate:
+  est <- counts / normaliser
+  # done.
+  out <- data.frame(direction = u, epsilon=epsilon, est = est, row.names = NULL)
+}
+
+
+
+
+
+
+#' Nearest neighbour directional distribution (old version)
 #' 
 #' Estimate the directional distribution of Konig&Schmidt 1992
 #' with (their notation) 0-nearest neighbour i.e. nearest neighbour.

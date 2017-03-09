@@ -12,6 +12,13 @@ double kernel_epa(double r, double h){
   return 0.75 * (1-r*r/(h*h))/h;
 }
 
+// unit bandwidth, no normalising constant, for any dimension then.
+double kernel_epa_un(double r){
+  if(r > 1) return 0;
+  return (1-r*r);
+}
+
+
 double kernel_box(double r, double h){
   if(r > h) return 0;
   return 1/(2*h);

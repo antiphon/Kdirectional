@@ -26,4 +26,3 @@ k-th nearest neighbour angles and distances
 If 2d, returns the angle in [-pi, pi]. In 3d also the angle from xy-plane in
 [0,pi]
 }
-

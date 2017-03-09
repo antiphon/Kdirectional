@@ -9,4 +9,3 @@ bbox2bbquad(bb)
 \description{
 Construct a bbquad from column range matrix
 }
-

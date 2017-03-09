@@ -9,4 +9,3 @@ plot2d.pcf_anisotropic(x, ab, ...)
 \description{
 method plot2d for anisotropic pcf-function
 }
-

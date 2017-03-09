@@ -9,4 +9,3 @@
 \description{
 Print method for confint_fryellipsoid
 }
-

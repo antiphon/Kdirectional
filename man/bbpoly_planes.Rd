@@ -15,4 +15,3 @@ Surface planes of bbpoly
 \details{
 Returns the normals of the edges (2d) or faces (3d). Assumes  that all vertices of each face are on the same plane.
 }
-

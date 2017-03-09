@@ -10,4 +10,3 @@
 \description{
 Plot bbquad object
 }
-

@@ -14,4 +14,3 @@
 \description{
 Summary method for nearest neighbour angles
 }
-

@@ -25,4 +25,3 @@ angles.flower(angles, binned, span = 0, k = 25, nums = FALSE,
 \description{
 Useful for checking e.g. nnangles- or fry_points- outputs.
 }
-

@@ -9,4 +9,3 @@ triangulate_indices_cohen_hickey(edges)
 \description{
 Chooses the first vertex of the first edge as apex
 }
-

@@ -12,4 +12,3 @@ translation_weights(x, asMatrix = FALSE)
 \description{
 Defined in a bounding box.
 }
-

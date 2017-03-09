@@ -12,4 +12,3 @@ Limiting distribution of the Kolmogorov-Smirnov test statistic
 \details{
 Will return approximately lim P(sqrt(n)Dn < x) .
 }
-

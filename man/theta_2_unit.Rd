@@ -2,11 +2,13 @@
 % Please edit documentation in R/check_directions.R
 \name{theta_2_unit}
 \alias{theta_2_unit}
-\title{theta (angle) to unit vector}
+\title{theta (angle) to unit vector, list format input}
 \usage{
 theta_2_unit(theta)
 }
-\description{
-theta (angle) to unit vector
+\arguments{
+\item{list}{with 1 or 2 components, giving the angle(s)}
 }
-
+\description{
+Convert from angle to unit vector
+}

@@ -14,4 +14,3 @@ Kest_along_axis(x, ...)
 \description{
 Compute all directed K functions along axis
 }
-

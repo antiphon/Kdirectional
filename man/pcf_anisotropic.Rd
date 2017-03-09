@@ -4,27 +4,31 @@
 \alias{pcf_anisotropic}
 \title{Anisotropic pair correlation function}
 \usage{
-pcf_anisotropic(x, r, theta, h, stoyan = 0.15, correction = "translation",
-  n_dir = 7)
+pcf_anisotropic(x, r, u, h, stoyan = 0.15, lambda, lambda_h,
+  renormalise = TRUE, border = 1, divisor = "d", ...)
 }
 \arguments{
 \item{x}{pp, list with $x~coordinates $bbox~bounding box}
 
 \item{r}{radius vector at which to estimate}
 
-\item{theta}{vector or list of vectors for for angles, see details.}
+\item{u}{direction to be converted to angles. Use \code{\link{angle_2_unit}} to transform from angles.}
 
-\item{h}{widths of epanechnicov kernels, vector of two values, for ranges and angles.}
+\item{h}{half-widths of epanechnicov kernels, vector of two values, one for ranges and and one for angles.}
 
-\item{stoyan}{If h not given, use h=c( stoyan/lambda^(1/dim), h=stoyan*pi) (cf. \code{pcf.ppp}-function in \code{spatstat}-package).}
+\item{stoyan}{If h not given, use h=c( stoyan/lambda^(1/dim), stoyan*pi) (cf. \code{pcf.ppp}-function in \code{spatstat}-package).}
 
-\item{correction}{"none" or translation. Translation only for rectangle box.}
+\item{lambda}{optional vector of intensity estimates at points}
 
-\item{n_dir}{Angle grid resolution (in case theta not given)
+\item{lambda_h}{if lambda missing and lambda_h is given, use this bandwidth in a kernel estimate of lambda(x). Otherwise lambda is set to constant.}
 
-The antipode symmetry makes it necessary to compute only on one half of the circle/sphere.}
+\item{renormalise}{Scale lambda to align with Campbell formula.}
+
+\item{border}{Use translation correction? Default=1, yes. Only for cuboidal windows.}
 }
 \description{
 Estimate the anisotropic pair correlation function (2d and 3d), as defined in f 1991, f. 5.2-5.3.
 }
-
+\details{
+The antipode symmetry makes it necessary to compute only on one half of the circle/sphere.
+}

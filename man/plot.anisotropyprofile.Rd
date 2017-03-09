@@ -10,4 +10,3 @@
 \description{
 Plot method for "anisotropyprofile"
 }
-

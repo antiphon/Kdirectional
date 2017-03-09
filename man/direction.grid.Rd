@@ -9,4 +9,3 @@ direction.grid(n_dir = 2, d = 2, max = pi/2)
 \description{
 Make a direction grid
 }
-

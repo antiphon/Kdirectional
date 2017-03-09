@@ -9,4 +9,3 @@
 \description{
 method plot for anisotropic pcf-function
 }
-

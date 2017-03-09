@@ -14,4 +14,3 @@ bbox_distance(x, bbox)
 \description{
 distance from points to bbox border
 }
-

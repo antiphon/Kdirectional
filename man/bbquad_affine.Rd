@@ -16,4 +16,3 @@ bbquad_affine(x, A, s = c(0, 0, 0))
 \description{
 Affine transformation of a bbquad
 }
-

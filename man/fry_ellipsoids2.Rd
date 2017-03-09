@@ -34,4 +34,3 @@ fry_ellipsoids2(x, nvec = 1:5, r_adjust = 1, nangles, eps = 0,
 \description{
 Difference to v1: Don't use the pseudo-Fry but true Fry.
 }
-

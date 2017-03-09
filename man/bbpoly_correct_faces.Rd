@@ -12,4 +12,3 @@ bbpoly_correct_faces(x)
 \description{
 Assumes faces with vertices on the same plane
 }
-

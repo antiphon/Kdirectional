@@ -17,4 +17,3 @@ DFT(x, m)
 \details{
 The pattern will be rescaled to unit square.
 }
-

@@ -2,7 +2,7 @@
 % Please edit documentation in R/directionalDist_Konig_Schmidt.R
 \name{dDirectional}
 \alias{dDirectional}
-\title{Nearest neighbour directional distribution}
+\title{Nearest neighbour directional distribution (old version)}
 \usage{
 dDirectional(x, r, theta, epsilon, n_dir = 10)
 }
@@ -25,4 +25,3 @@ with (their notation) 0-nearest neighbour i.e. nearest neighbour.
 Directions are angle to positive x-axis (2D) or azimuth, inclination (3D). 
 Theta should be a list of length 1 (2D) and 2 (3D) defining a grid of these angles.
 }
-

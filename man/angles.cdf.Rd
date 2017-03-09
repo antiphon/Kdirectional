@@ -16,4 +16,3 @@ angles.cdf(angles, n = 50, ...)
 \description{
 Cumulative distribution function and pointwise CI
 }
-

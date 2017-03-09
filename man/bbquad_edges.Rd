@@ -9,4 +9,3 @@ bbquad_edges(x)
 \description{
 Get the edges of the quad box
 }
-

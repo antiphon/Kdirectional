@@ -22,4 +22,3 @@ sectorplot(x, res = 4, col = rainbow, zlim, overlapfactor = 0.95, ...)
 \description{
 Plot a sector estimate
 }
-

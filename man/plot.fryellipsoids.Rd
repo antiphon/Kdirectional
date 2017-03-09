@@ -11,4 +11,3 @@
 \description{
 plot method for fryellipsoids
 }
-

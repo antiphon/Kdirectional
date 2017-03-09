@@ -16,4 +16,3 @@ Note: Will check if points are inside or outside.}
 \description{
 Distance from points to bbquad walls
 }
-

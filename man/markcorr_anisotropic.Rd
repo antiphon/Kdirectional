@@ -37,4 +37,3 @@ Estimate the anisotropic mark correlation function (2d and 3d), as defined in St
 \details{
 Default bandwidth: bw=adjust*0.15/lambda^(1/dim) for range and bw=adjust*0.15*pi for angle.
 }
-

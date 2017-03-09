@@ -9,4 +9,3 @@ cross(u, v)
 \description{
 Cross-product of two 3D vectors
 }
-

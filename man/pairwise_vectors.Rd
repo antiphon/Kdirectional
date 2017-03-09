@@ -28,4 +28,3 @@ pairwise distance and angle matrices.
 Result will have 2 or 3 columns, where first is the distance
 and 2(:3) are angle(s).
 }
-

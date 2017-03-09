@@ -9,4 +9,3 @@ poly_to_bbquad(x, y)
 \description{
 bbquad from 2d polygon
 }
-

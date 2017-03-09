@@ -4,7 +4,7 @@
 \alias{Kest_directional}
 \title{Directed K function}
 \usage{
-Kest_directional(x, u, epsilon, r, ...)
+Kest_directional(x, u, epsilon, r, ..., cylindrical = FALSE)
 }
 \arguments{
 \item{x}{pp, spatstat's ppp-object, or a coordinate matrix, or a list with $x~coordinates $bbox~bounding box}
@@ -16,6 +16,8 @@ Kest_directional(x, u, epsilon, r, ...)
 \item{r}{radius vector at which to evaluate K}
 
 \item{...}{Passed on to \code{\link{Kest_anin}}}
+
+\item{cylindrical}{If TRUE, compute the cylindrical version using \code{\link{Kest_anin_cylinder}}}
 }
 \value{
 Returns a dataframe.
@@ -24,7 +26,7 @@ Returns a dataframe.
 We use translation edge correction if we have an axis-oriented bounding box. Otherwise minus-correction.
 }
 \details{
-Compute the sector K function. This version uses the more general anisotropic-inhomonogeneous \link{Kest_anin}, by setting the intensity = constant.
+Compute the sector/cone/cylindrical K function. This version uses the more general anisotropic-inhomonogeneous \link{Kest_anin} and \code{\link{Kest_anin_cylinder}}, by setting the intensity = constant.
 }
 \examples{
 
@@ -32,4 +34,3 @@ x <- matrix(runif(200), ncol=2)
 k <- Kest_directional(x)
 plot(k, rmax = 0.1)
 }
-

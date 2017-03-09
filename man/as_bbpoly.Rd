@@ -15,4 +15,3 @@ Turn something into a bbpoloy
 \details{
 understands: matrix (bbox); bbquad; list with vertices, egdes and faces in 3d
 }
-

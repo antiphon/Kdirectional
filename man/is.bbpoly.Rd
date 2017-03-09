@@ -9,4 +9,3 @@ is.bbpoly(x, ...)
 \description{
 check class bbpoly
 }
-

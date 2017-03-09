@@ -15,4 +15,3 @@ vignette("anisotropy-example")
 }
 
 }
-

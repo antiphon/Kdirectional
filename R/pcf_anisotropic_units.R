@@ -12,7 +12,7 @@
 #' @param r In case directions not given, use these lengths for generated directions.
 #' 
 #' @details
-#' For example, in 2D the polar vector (r, theta) is now (r*cos(theta), r*sin(theta)).
+#' For example, in 2D the polar vector (r, theta) is now a vector (r*cos(theta), r*sin(theta)).
 #' 
 #' For 2d, we use a regular grid of n_dir steps on [0,pi], leaving out pi due to antipode-symmetry to 0. 
 #' n_dir=7 is the default.

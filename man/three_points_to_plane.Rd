@@ -9,4 +9,3 @@ three_points_to_plane(x)
 \description{
 Three points to a plane
 }
-

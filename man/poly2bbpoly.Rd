@@ -18,4 +18,3 @@ bbpoly from 2d polygon given by x and y coordinates
 Assuming an open polygon, meaning the last vertex is not the 
 same as the first. Will check and adapt.
 }
-

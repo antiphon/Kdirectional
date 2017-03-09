@@ -18,4 +18,3 @@ anisotropy_abs_fast(f, r, eps, antipodal, power)
 \description{
 Fast absolute anisotropy  statistic
 }
-

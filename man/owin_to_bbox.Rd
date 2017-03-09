@@ -9,4 +9,3 @@ owin_to_bbox(x)
 \description{
 Turn spatstat window object to bbox
 }
-

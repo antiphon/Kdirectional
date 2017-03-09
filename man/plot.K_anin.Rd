@@ -20,4 +20,3 @@
 \description{
 Plot Kest_anin object
 }
-

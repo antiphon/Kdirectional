@@ -14,4 +14,3 @@ angles.smooth(binned, ...)
 \description{
 smoothen an histogram of angles
 }
-

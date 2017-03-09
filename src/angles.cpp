@@ -4,6 +4,9 @@
 #include "helpers.h"
 using namespace Rcpp;
 
+
+// nearest neighbour vectors
+
 // [[Rcpp::export]]
 List c_angles(NumericMatrix x, IntegerVector from, IntegerVector to) {
     int i, j, l, f, t;

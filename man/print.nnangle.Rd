@@ -9,4 +9,3 @@
 \description{
 Print for nearest neighbour angles
 }
-

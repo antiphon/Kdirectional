@@ -9,4 +9,3 @@ getYmult()
 \description{
 From plotrix
 }
-

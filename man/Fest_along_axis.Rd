@@ -14,4 +14,3 @@ Fest_along_axis(x, ...)
 \description{
 Compute all directed F functions along axis
 }
-

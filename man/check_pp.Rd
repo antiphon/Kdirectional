@@ -12,4 +12,3 @@ check_pp(x)
 \description{
 check pattern format
 }
-

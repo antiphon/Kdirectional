@@ -45,4 +45,3 @@ If 'renormalise=TRUE', we normalise the intensity estimate so that sum(1/lambda(
 
 About border correction: If x$bbox is a a simple bounding box, the algorithm uses the translation corrected weighting 1/area(Wx intersect Wy) with Wx=W+x. If x$bbox is a bbquad-object, for example rotated polygon, the algorithm uses simple minus border correction.
 }
-
