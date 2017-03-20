@@ -2,30 +2,32 @@
 % Please edit documentation in R/intensity.R
 \name{intensity_somewhere}
 \alias{intensity_somewhere}
-\title{Estimate intensity of point pattern at given locations}
+\title{Kernel Estimate Intensity at non-Data locations}
 \usage{
-intensity_somewhere(x, loc, bw, b = 0, ...)
+intensity_somewhere(x, loc, bw, kernel = "gaussian", border = "local")
 }
 \arguments{
-\item{x}{points, list with $x and $bbox or just a matrix of coordinates.}
+\item{x}{point pattern}
 
-\item{loc}{Matrix of locations to estimate the intensity at}
+\item{loc}{coordinate matrix for non-data locations at which to estimate the intensity.}
 
-\item{bw}{bandwidth, Epanechnikov kernel domain [-bw,bw]}
+\item{bw}{bandwidth. Gaussian sd=bw, Epanechnicov domain [-bw, bw].}
 
-\item{b}{Type of border correction estimate.}
+\item{kernel}{Either 'gaussian' or 'epanenchnikov'}
 
-\item{...}{ignored}
+\item{border}{Border correction to apply.  One of 'none', 'local', 'global'.}
+
+\item{normalise}{renormalise so that inverse sum = volume}
+
+\item{loo}{leave-one-out -estimate?}
 }
 \description{
-Estimate intensity of point pattern at given locations
+Kernel Estimate Intensity at non-Data locations
 }
 \details{
-Uses Epanechnikov kernel smoothing. Border corrections controlled by what b is:
-0: 2D exact, not available for 3D atm; 
-1: Box rectangle approximation; 
-2: 2D Biased box integral, 3D none;
->3: fine grid sum with resolution b^dim (slow). 
+For border correction, the bounding box of the coordinates of x will be used, 
+so at the moment it works only for axis-aligned cuboids.
 
-if b < 0 no edge correction is applied.
+The kernel will be a product of one dimensional kernels,
+so Epanechnikov in many dimensions will not be truly isotropic but prefers diagonal directions.
 }

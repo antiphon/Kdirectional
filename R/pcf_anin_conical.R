@@ -21,7 +21,7 @@
 #' data-area and providing more stable estimates. 
 #' 
 #' Lambda(x) at points can be given, 
-#' or else it will be estimated using Epanechnikov kernel smoothing. See 
+#' or else it will be estimated using kernel smoothing. See \link{intensity_at_points}.
 #' 
 #' If 'renormalise=TRUE', we normalise the lambda estimate so that sum(1/lambda(x))=|W|. This corresponds in \code{spatstat}'s \code{Kinhom} to setting 'normpower=2'.
 #' 

@@ -60,7 +60,7 @@ bbpoly_affine <- function(bbpoly, A, s=c(0,0,0), center_before_A=FALSE){
   else{
     if(is.matrix(bbpoly)){
       d <- ncol(bbpoly)
-      bbpoly <- t(t(bboly %*% t(A)) + s[1:d])
+      bbpoly <- t(t(bbpoly %*% t(A)) + s[1:d])
     }
     else stop("Dont recognise input.")
   }

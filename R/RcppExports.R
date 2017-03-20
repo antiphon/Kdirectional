@@ -65,12 +65,16 @@ c_geom <- function(x, from, to, r) {
     .Call('Kdirectional_c_geom', PACKAGE = 'Kdirectional', x, from, to, r)
 }
 
-intensity_at_other_points_c <- function(x, other, bbox, bw_r, n = 0L) {
-    .Call('Kdirectional_intensity_at_other_points_c', PACKAGE = 'Kdirectional', x, other, bbox, bw_r, n)
+int_bw_c <- function(x, h, kernel = 0L) {
+    .Call('Kdirectional_int_bw_c', PACKAGE = 'Kdirectional', x, h, kernel)
 }
 
-intensity_at_points_c <- function(x, bbox, bw_r, b = 1L) {
-    .Call('Kdirectional_intensity_at_points_c', PACKAGE = 'Kdirectional', x, bbox, bw_r, b)
+int_at_points_c <- function(x, bbox, bw, kernel = 0L, border = 1L, loo = 0L) {
+    .Call('Kdirectional_int_at_points_c', PACKAGE = 'Kdirectional', x, bbox, bw, kernel, border, loo)
+}
+
+int_at_anywhere_c <- function(x, loc, bbox, bw, kernel = 0L, border = 1L) {
+    .Call('Kdirectional_int_at_anywhere_c', PACKAGE = 'Kdirectional', x, loc, bbox, bw, kernel, border)
 }
 
 Kest_anin_c <- function(coord, lambda, bbox, r, directions, epsilon, border = 1L) {

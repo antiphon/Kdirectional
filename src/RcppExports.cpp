@@ -245,32 +245,48 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
-// intensity_at_other_points_c
-NumericVector intensity_at_other_points_c(NumericMatrix x, NumericMatrix other, NumericMatrix bbox, double bw_r, int n);
-RcppExport SEXP Kdirectional_intensity_at_other_points_c(SEXP xSEXP, SEXP otherSEXP, SEXP bboxSEXP, SEXP bw_rSEXP, SEXP nSEXP) {
+// int_bw_c
+NumericMatrix int_bw_c(NumericMatrix x, NumericVector h, int kernel);
+RcppExport SEXP Kdirectional_int_bw_c(SEXP xSEXP, SEXP hSEXP, SEXP kernelSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
     Rcpp::traits::input_parameter< NumericMatrix >::type x(xSEXP);
-    Rcpp::traits::input_parameter< NumericMatrix >::type other(otherSEXP);
-    Rcpp::traits::input_parameter< NumericMatrix >::type bbox(bboxSEXP);
-    Rcpp::traits::input_parameter< double >::type bw_r(bw_rSEXP);
-    Rcpp::traits::input_parameter< int >::type n(nSEXP);
-    rcpp_result_gen = Rcpp::wrap(intensity_at_other_points_c(x, other, bbox, bw_r, n));
+    Rcpp::traits::input_parameter< NumericVector >::type h(hSEXP);
+    Rcpp::traits::input_parameter< int >::type kernel(kernelSEXP);
+    rcpp_result_gen = Rcpp::wrap(int_bw_c(x, h, kernel));
     return rcpp_result_gen;
 END_RCPP
 }
-// intensity_at_points_c
-NumericVector intensity_at_points_c(NumericMatrix x, NumericMatrix bbox, double bw_r, int b);
-RcppExport SEXP Kdirectional_intensity_at_points_c(SEXP xSEXP, SEXP bboxSEXP, SEXP bw_rSEXP, SEXP bSEXP) {
+// int_at_points_c
+NumericVector int_at_points_c(NumericMatrix x, NumericMatrix bbox, double bw, int kernel, int border, int loo);
+RcppExport SEXP Kdirectional_int_at_points_c(SEXP xSEXP, SEXP bboxSEXP, SEXP bwSEXP, SEXP kernelSEXP, SEXP borderSEXP, SEXP looSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
     Rcpp::traits::input_parameter< NumericMatrix >::type x(xSEXP);
     Rcpp::traits::input_parameter< NumericMatrix >::type bbox(bboxSEXP);
-    Rcpp::traits::input_parameter< double >::type bw_r(bw_rSEXP);
-    Rcpp::traits::input_parameter< int >::type b(bSEXP);
-    rcpp_result_gen = Rcpp::wrap(intensity_at_points_c(x, bbox, bw_r, b));
+    Rcpp::traits::input_parameter< double >::type bw(bwSEXP);
+    Rcpp::traits::input_parameter< int >::type kernel(kernelSEXP);
+    Rcpp::traits::input_parameter< int >::type border(borderSEXP);
+    Rcpp::traits::input_parameter< int >::type loo(looSEXP);
+    rcpp_result_gen = Rcpp::wrap(int_at_points_c(x, bbox, bw, kernel, border, loo));
+    return rcpp_result_gen;
+END_RCPP
+}
+// int_at_anywhere_c
+NumericVector int_at_anywhere_c(NumericMatrix x, NumericMatrix loc, NumericMatrix bbox, double bw, int kernel, int border);
+RcppExport SEXP Kdirectional_int_at_anywhere_c(SEXP xSEXP, SEXP locSEXP, SEXP bboxSEXP, SEXP bwSEXP, SEXP kernelSEXP, SEXP borderSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< NumericMatrix >::type x(xSEXP);
+    Rcpp::traits::input_parameter< NumericMatrix >::type loc(locSEXP);
+    Rcpp::traits::input_parameter< NumericMatrix >::type bbox(bboxSEXP);
+    Rcpp::traits::input_parameter< double >::type bw(bwSEXP);
+    Rcpp::traits::input_parameter< int >::type kernel(kernelSEXP);
+    Rcpp::traits::input_parameter< int >::type border(borderSEXP);
+    rcpp_result_gen = Rcpp::wrap(int_at_anywhere_c(x, loc, bbox, bw, kernel, border));
     return rcpp_result_gen;
 END_RCPP
 }

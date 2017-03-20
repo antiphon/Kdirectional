@@ -4,24 +4,41 @@
 \alias{intensity_bandwidth_profile}
 \title{Find the optimal smoothing for intensity estimation kernel width}
 \usage{
-intensity_bandwidth_profile(x, bw_vector, keep_min = FALSE, ...)
+intensity_bandwidth_profile(x, bw_vector, kernel = "gaussian", ...)
 }
 \arguments{
 \item{x}{point pattern}
 
 \item{bw_vector}{Vector of bandwidth values to optimize over}
 
-\item{keep_min}{if true, keep the intensity_at_points for the best bw}
+\item{kernel}{Either 'gaussian' or 'epanenchnikov'}
 
-\item{...}{passed on to \code{intensity_at_points}}
+\item{...}{ignored.}
 }
 \value{
-Vector of losses, or if keep_min=TRUE, list with vector of losses and vector of intensity values with the bw that gives the minimum loss.
+list with elements: 
+
+* opt: the optimal bandwidth, given the inputs
+
+* iopt: index of optimal bandwidth in input vector
+
+* loss: the squared loss function (given above)
+
+* statistic: the statistic which root is to be found 
+
+* area: window area |W| used for optimisation.
 }
 \description{
 Find the optimal smoothing for intensity estimation kernel width
 }
 \details{
-Optimize bandwidth $h$ of the Epanechnikov kernel using loss function
+Optimize bandwidth $h$ using the Cronie & van Lieshout method [1]. In short, optimise the loss function
 \deqn{latex}{\sum 1/\hat\lambda_h(x_i) - |W|)^2}
+with a kernel intensity estimator. See Reference for the paper. 
+
+Note: The optimisation is done without border correction and without leave-one-out, as suggested in [1].
+}
+\references{
+1. Cronie O, van Lieshout MNM. Bandwidth selection for kernel estimators of the spatial intensity function. 
+2016;1–20. Available from: http://arxiv.org/abs/1611.10221
 }
