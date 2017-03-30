@@ -53,6 +53,19 @@ double bfun_none(double a, double b){
 
 /* end utility functions */
 
+// predefine
+NumericVector int_at_anywhere_toroidal_c(NumericMatrix x,
+                                         NumericMatrix loc,
+                                         NumericMatrix bbox,
+                                         double bw,
+                                         int kernel);
+
+NumericVector int_at_points_toroidal_c(NumericMatrix x,
+                                       NumericMatrix bbox,
+                                       double bw,
+                                       int kernel,
+                                       int loo);
+  
 
 /*
 intensity at data points for several bandwidths. no edge correction, no leave one out.
@@ -109,7 +122,7 @@ NumericVector int_at_points_c(NumericMatrix x,
                               NumericMatrix bbox,
                               double bw,
                               int kernel = 0, //0 gauss, 1 prod epa
-                              int border = 1, // 0 none, 1 local, 2 global
+                              int border = 1, // 0 none, 1 local, 2 global 3 toroidal
                               int loo = 0){ // 1 leave one out, 0 not
   
   NumericVector out(x.nrow());
@@ -119,6 +132,19 @@ NumericVector int_at_points_c(NumericMatrix x,
   double dim = x.ncol();
   double w, wbi, wbj;
   double a, b;
+  
+  double (*bcf)(double ai, double bi) = bfun_none;
+  // border = 0 no edge correction
+  if(border == 1){
+    bcf = bfun_local;
+  }
+  else if(border == 2){
+    bcf = bfun_global;
+  }
+  else if(border == 3){ // toroidal
+    return int_at_points_toroidal_c(x, bbox, bw, kernel, loo);
+  }
+  
   double (*kernCumu)(double d) = &gaussCumu;
   double (*kern)(double d) = &gausskern;
   double (*kernRange)(double d) = &gaussRange;
@@ -126,14 +152,6 @@ NumericVector int_at_points_c(NumericMatrix x,
     kernCumu = &epaCumu;
     kern = &epakern;
     kernRange = &epaRange;
-  }
-  
-  double (*bcf)(double ai, double bi) = bfun_none;
-  if(border == 1){
-    bcf = bfun_local;
-  }
-  else if(border == 2){
-    bcf = bfun_global;
   }
   
   double bwd = pow(bw, dim);
@@ -145,8 +163,8 @@ NumericVector int_at_points_c(NumericMatrix x,
       b = bbox(1,k)-x(i,k);
       wbi *= kernCumu(b/bw) - kernCumu(a/bw);
     }
-    for(j=i; j < x.nrow(); j++) {
-      if(i < j || !loo){
+    for(j=i+loo; j < x.nrow(); j++) {
+      {
         wbj = 1;
         w = 1/bwd;
         for(k=0; k < dim; k++){
@@ -167,6 +185,50 @@ NumericVector int_at_points_c(NumericMatrix x,
 }
 
 
+
+NumericVector int_at_points_toroidal_c(NumericMatrix x,
+                                       NumericMatrix bbox,
+                                       double bw,
+                                       int kernel = 0, //0 gauss 1 prod epa
+                                       int loo = 0){ // leave one out
+  
+  NumericVector out(x.nrow());
+  
+  int i,j,k;
+  
+  double dim = x.ncol();
+  double w;
+  double a, b;
+  double (*kern)(double d) = &gausskern;
+  if(kernel == 1) {
+    kern = &epakern;
+  }
+  NumericVector blen(dim);
+  for(k = 0; k < dim; k++) blen(k) = bbox(1,k) - bbox(0,k);
+  
+  double bwd = pow(bw, dim);
+  
+  for(i=0; i < x.nrow(); i++) {
+    for(j=i+loo; j < x.nrow(); j++) {
+      w = 1.0/bwd;
+      for(k=0; k < dim; k++){
+        a = abs(x(i,k)-x(j,k));
+        b = min(blen(k)-a, a);
+        w *= kern(b/bw);
+      }
+      out(i) += w;
+      if(i<j) out(j) += w;
+      
+    }
+  }
+  
+  return out;
+  
+}
+
+
+
+
 /* Kernel intensity estimation at non-data points */
 
 // [[Rcpp::export]]
@@ -175,7 +237,7 @@ NumericVector int_at_anywhere_c(NumericMatrix x,
                                 NumericMatrix bbox,
                                 double bw,
                                 int kernel = 0, //0 gauss, 1 prod epa
-                                int border = 1){ // 0 none, 1 local, 2 global
+                                int border = 1){ // 0 none, 1 local, 2 global 3 toroidal
   
   NumericVector out(loc.nrow());
   
@@ -184,6 +246,18 @@ NumericVector int_at_anywhere_c(NumericMatrix x,
   double dim = x.ncol();
   double w, wbi, wbj;
   double a, b;
+  
+  double (*bcf)(double ai, double bi) = bfun_none;
+  if(border == 1){
+    bcf = bfun_local;
+  }
+  else if(border == 2){
+    bcf = bfun_global;
+  }
+  else if(border == 3){
+    return int_at_anywhere_toroidal_c(x, loc, bbox, bw, kernel);
+  }
+  
   double (*kernCumu)(double d) = &gaussCumu;
   double (*kern)(double d) = &gausskern;
   double (*kernRange)(double d) = &gaussRange;
@@ -193,16 +267,7 @@ NumericVector int_at_anywhere_c(NumericMatrix x,
     kernRange = &epaRange;
   }
   
-  double dmax2 = kernRange(bw)*kernRange(bw);
-  
-  double (*bcf)(double ai, double bi) = bfun_none;
-  if(border == 1){
-    bcf = bfun_local;
-  }
-  else if(border == 2){
-    bcf = bfun_global;
-  }
-  
+
   double bwd = pow(bw, dim);
   
   for(i=0; i < loc.nrow(); i++) {
@@ -226,6 +291,50 @@ NumericVector int_at_anywhere_c(NumericMatrix x,
     }
   }
   return out;
+}
+
+
+
+// toroidal case separately
+
+NumericVector int_at_anywhere_toroidal_c(NumericMatrix x,
+                                         NumericMatrix loc,
+                                         NumericMatrix bbox,
+                                         double bw,
+                                         int kernel){
+  
+  NumericVector out(loc.nrow());
+  
+  int i,j,k;
+  
+  double dim = x.ncol();
+  double w;
+  double a, b;
+  // kernel 0 = gaussian
+  double (*kern)(double d) = &gausskern;
+  if(kernel == 1) {
+    kern = &epakern;
+  }
+  
+  NumericVector blen(dim);
+  for(k = 0; k < dim; k++) blen(k) = bbox(1,k) - bbox(0,k);
+  
+  double bwd = pow(bw, dim); // kernel h^d
+  
+  for(i = 0; i < loc.nrow(); i++) {
+    for(j = 0; j < x.nrow(); j++) {
+      w = 1.0/bwd;
+      for(k=0; k < dim; k++){
+        a = abs(loc(i,k)-x(j,k));
+        b = min(blen(k)-a, a);
+        w *= kern(b/bw);
+      }
+      out(i) += w;
+    }
+  }
+  
+  return out;
+  
 }
 
 

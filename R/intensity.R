@@ -3,9 +3,9 @@
 #' @param x point pattern
 #' @param bw bandwidth. Gaussian sd=bw, Epanechnicov domain [-bw, bw].
 #' @param kernel Either 'gaussian' or 'epanenchnikov' (partial matching)
-#' @param border Border correction to apply.  One of 'none', 'local', 'global'.
+#' @param border Border correction to apply.  One of 'none', 'local', 'global', 'toroidal'.
 #' @param normalise renormalise so that inverse sum = volume
-#' @param loo leave-one-out -estimate?
+#' @param loo leave-one-out -estimate? Don't include point i for estimation of int(i)
 #'
 #' @details
 #' For border correction, the bounding box of the coordinates of x will be used, 
@@ -19,11 +19,11 @@
 intensity_at_points <- function(x, bw, kernel = "gaussian", border = "local", normalise = FALSE, loo = FALSE){
   
   kernel_i <- pmatch(kernel, c("gaussian", "epanechnikov")) - 1
-  border_i <- pmatch(border, c("none", "local","global")) - 1
+  border_i <- pmatch(border, c("none", "local","global", "toroidal")) - 1
   
   if(! kernel_i %in% 0:1) stop("kernel input failure")
-  if(! border_i %in% 0:2) stop("border input failure")
-  
+  if(! border_i %in% 0:3) stop("border input failure")
+  if(! as.integer(loo) %in% 0:1) stop("loo input failure")
   x <- check_pp(x)
   xy <- x$x
   bbox <- x$bbox
@@ -64,8 +64,8 @@ intensity_somewhere <- function(x, loc, bw, kernel = "gaussian", border = "local
   #
   kernel_i <- pmatch(kernel, c("gaussian", "epanechnikov")) - 1
   if(! kernel_i %in% 0:1) stop("kernel input failure")
-  border_i <- pmatch(border, c("none", "local", "global")) - 1
-  if(! border_i %in% 0:2) stop("border input failure")
+  border_i <- pmatch(border, c("none", "local", "global", "toroidal")) - 1
+  if(! border_i %in% 0:3) stop("border input failure")
   if(missing(loc)) stop("loc should be a coordinate matrix")
   #
   x <- check_pp(x)

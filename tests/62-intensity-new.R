@@ -4,7 +4,7 @@ load_all(".")
 
 ########################################
 # 2D: basic
-if(0){
+if(1){
 
 load("test_strauss.rda")
 
@@ -98,7 +98,7 @@ if(0){
 }
 
 # inputs 2d
-if(1){
+if(0){
   load("test_strauss.rda")
   # thin
   X <- z
