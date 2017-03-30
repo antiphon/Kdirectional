@@ -23,9 +23,9 @@ x <- compr(x)
 z <- compr(z)
 }
 
-per <- function(x) bartletts_spectral_density(x, 
-                                              k = seq(-36,36,l=100),#seq(-3000, 3000, l=100),#c(-16:16), 
-                                              std=T)
+omega <- seq(-36,36,l=50)
+
+per <- function(x) bartletts_spectral_density(x, omega = omega)
 est0 <- per(y)
 est <- per(x)
 est1 <- per(z)

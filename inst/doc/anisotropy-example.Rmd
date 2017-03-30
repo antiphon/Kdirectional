@@ -92,6 +92,7 @@ plot(f, zoom=.3, used_points = FALSE)
 Oval shape is visible, some ambiguity of rotation. Check the ellipticity with a contrast $axis_x-axis_y=0$:
 
 ```{r, fig.width=5, fig.height=5}
+options(warn = -1)
 ci <- confint(f, nsim=500)
 print(summary(ci)[1:5,], digits=2)
 plot(ci, ylim = c(-1,1)*.1)

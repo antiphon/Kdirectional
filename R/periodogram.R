@@ -58,9 +58,6 @@ periodogram <- function(x, p, pgrid, std=TRUE, ...) {
 }
 
 
-
-
-
 #' Periodogram as in Mugglestone and Renshaw 2001
 #' 
 #' @param x point pattern, list of $x and $bbox

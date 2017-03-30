@@ -3,24 +3,32 @@
 #' Periodogram estimator
 #' 
 #' @param x point pattern, list of $x and $bbox
-#' @param k The frequencies in integers from -n to n. See details.
-#' @param std scale to unit window?
+#' @param omega The frequencies
 #' @param ... ignored
 #' 
-#' @details We estimate the spectral density using a periodogram as suggested by Bartlett 1964.
-#' The frequencies that the spectrum is estimated are omega = 2*pi*k/n, 
-#' where k is a d-dimensional signed integer, (=integer frequency).
-#' The k as input therefore should be either 1) a vector such as -16:16 (default) 
-#' which will be expanded to integer frequencies by taking all pairs using expand.grid or 
-#' 2) column matrix of dimension m x d, each row giving one integer frequency. 
+#' @details We estimate the spectral density using a periodogram as suggested by Bartlett 1964,
 #' 
-#' No edge correction is applied. 
+#' \deqn{\mathcal{F}(\omega) = \lambda + \lambda^2\int_{R^d}[g(z)-1]e^{-i\omega^T z}dz}
 #' 
-#' If std = TRUE, the pattern is first scaled to unit cube.
+#' where we assume that the process is stationary with intensity $\lambda$ and pair correlation function $g$. 
+#' Isotropy is not assumed.
+#' 
+#' This function deliberately does not scale or assume a form for the frequencies (such as 2kpi/n, k integer), as 
+#' there is no consensus on the best form. 
+#' 
+#' Additionally, no scaling or other transformation of the pattern is conducted. 
+#' 
+#' The frequencies that the spectrum is estimated are given by omega: 
+#' 
+#' 1) If omega is a vector, we expand it to d-dimensional frequencies using expand.grid.
+#' 
+#' 2) If omega is a column matrix of dimension m x d, each row is interpreted as a frequency. 
+#' 
+#' No edge correction is applied as none is known. The 
 #' 
 #' @export
 
-bartletts_spectral_density <- function(x, k = -16:16, std = FALSE, ...) {
+bartletts_spectral_density <- function(x, omega, ...) {
   x <- check_pp(x)
   if(is.null(x$bbox)) stop("x should be list(x=coordinates-matrix, bbox=bounding-box), or something that can be interpreted as such.")
   #
@@ -29,53 +37,39 @@ bartletts_spectral_density <- function(x, k = -16:16, std = FALSE, ...) {
   dim <- ncol(bbox)
   n <- nrow(loc)
   #
-  if(missing(k)) {
-    k <- -16:16
+  if(missing(omega)) {
+    stop("omega is missing.")
   }
-  if(is(k,"vector")){
-    kv <- k
-    k <- as.matrix( expand.grid(k, k) )
-    if(dim == 3) k <- as.matrix( expand.grid(kv, k) )
+  o <- omega
+  if(is(o, "vector")){
+    ov <- o
+    o <- as.matrix( expand.grid(ov, ov) )
+    if(dim == 3) o <- as.matrix( expand.grid(o, ov) )
   }
   else{
-    if(ncol(k) != dim) stop("k should be a vector or a m x d matrix, d=dimension, m=n. of frequencies to compute.")
+    if(ncol(o) != dim) stop("omega should be a vector or a m x d matrix, d=dimension, m=n. of frequencies to compute.")
   }
   #
-  #
-  sl <- bbox_sideLengths(bbox)
-  omega <- 2 * pi * t(t(k)/sl)
-  #
-  # shift to origin
-  loc <- t(t(loc) - bbox[1,])
-  bbox <- t(t(bbox) - bbox[1,])
-  #
-  # Scaling voodoo
-  if(std){
-    loc <- n * t(t(loc) / sl) # this weird scaling
-    bbox <- t(t(bbox) / sl) #* n^dim
-    omega <- t(t(omega)/sl)
-  }
   V <- bbox_volume(bbox)
   #
   # Compute:
-  J <- colSums(exp( -1i * loc %*% t(omega)))
+  J <- colSums(exp( -1i * loc %*% t(o)))
   sdf <- (Re(J)^2 + Im(J)^2)  / V
   #
   #
   # Drop (0,0,..) value
-  zero <- which( apply(k==0, 1, all) )
+  zero <- which( apply(o==0, 1, all) )
   zerov <- sdf[zero]
   sdf[ zero ] <- NA
-  #zerov <- NULL
-  
-  # correct for bias?
-  #sdf <- sdf - n^2/V
   #
-  stops <- lapply(1:dim, function(d) unique(omega[,d]))
+  stops <- lapply(1:dim, function(d) unique(o[,d]))
   #
-  list(sdf_estimate=sdf, sdf_matrix = matrix(sdf, nrow = length(stops[[1]]) ), 
+  list(sdf_estimate=sdf, 
+       sdf_matrix = matrix(sdf, nrow = length(stops[[1]]) ), 
+       omega = o,
        stops = stops, 
-       bbox=bbox, zerov=zerov)
+       bbox=bbox, 
+       zerov=zerov)
 }
 
 

@@ -4,14 +4,12 @@
 \alias{bartletts_spectral_density}
 \title{Bartlett's spectral density}
 \usage{
-bartletts_spectral_density(x, k = -16:16, std = FALSE, ...)
+bartletts_spectral_density(x, omega, ...)
 }
 \arguments{
 \item{x}{point pattern, list of $x and $bbox}
 
-\item{k}{The frequencies in integers from -n to n. See details.}
-
-\item{std}{scale to unit window?}
+\item{omega}{The frequencies}
 
 \item{...}{ignored}
 }
@@ -19,14 +17,23 @@ bartletts_spectral_density(x, k = -16:16, std = FALSE, ...)
 Periodogram estimator
 }
 \details{
-We estimate the spectral density using a periodogram as suggested by Bartlett 1964.
-The frequencies that the spectrum is estimated are omega = 2*pi*k/n, 
-where k is a d-dimensional signed integer, (=integer frequency).
-The k as input therefore should be either 1) a vector such as -16:16 (default) 
-which will be expanded to integer frequencies by taking all pairs using expand.grid or 
-2) column matrix of dimension m x d, each row giving one integer frequency. 
+We estimate the spectral density using a periodogram as suggested by Bartlett 1964,
 
-No edge correction is applied. 
+\deqn{\mathcal{F}(\omega) = \lambda + \lambda^2\int_{R^d}[g(z)-1]e^{-i\omega^T z}dz}
 
-If std = TRUE, the pattern is first scaled to unit cube.
+where we assume that the process is stationary with intensity $\lambda$ and pair correlation function $g$. 
+Isotropy is not assumed.
+
+This function deliberately does not scale or assume a form for the frequencies (such as 2kpi/n, k integer), as 
+there is no consensus on the best form. 
+
+Additionally, no scaling or other transformation of the pattern is conducted. 
+
+The frequencies that the spectrum is estimated are given by omega: 
+
+1) If omega is a vector, we expand it to d-dimensional frequencies using expand.grid.
+
+2) If omega is a column matrix of dimension m x d, each row is interpreted as a frequency. 
+
+No edge correction is applied as none is known. The
 }

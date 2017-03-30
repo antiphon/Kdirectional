@@ -132,7 +132,9 @@ plot(nn_local$Poisson_linear, main="local G, clustered", legpos = F)
 legend("bottomright", lty=1:4, col=1:4, expression(0, pi/4, pi, 3*pi/4))
 ```
 
+# Second order summaries
 
+To be continued...
 
 ### References
 

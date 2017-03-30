@@ -48,7 +48,8 @@ osK <- function(x, r, theta, ...) {
   }
   #
   #
-  res <- list(Z=z, K_iso=K_iso, v=K, total_orientation=tot_ori, theta=theta, r=r, grid=grid)
+  res <- list(Z=z, K_iso=K_iso, v=K, #total_orientation=tot_ori, 
+              theta=theta, r=r, grid=grid)
   class(res) <- "os_K"
   res
 }
