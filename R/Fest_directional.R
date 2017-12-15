@@ -32,7 +32,7 @@ Fest_directional <- function(x, u, theta, r, n) {
   #
   
   # make sure unit vector
-  u <- u/sqrt(t(u)%*%u)
+  u <- u/sqrt(c(t(u)%*%u))
   # start:
   xc <- as.matrix( rbind(as.matrix(x$x), dummies) )
   from <- 1:nDummies + N

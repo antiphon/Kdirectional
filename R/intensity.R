@@ -47,7 +47,7 @@ intensity_at_points <- function(x, bw, kernel = "gaussian", border = "local", no
 #' @param loc coordinate matrix for non-data locations at which to estimate the intensity.
 #' @param bw bandwidth. Gaussian sd=bw, Epanechnicov domain [-bw, bw].
 #' @param kernel Either 'gaussian' or 'epanenchnikov'
-#' @param border Border correction to apply.  One of 'none', 'local', 'global'.
+#' @param border Border correction to apply.  One of 'none', 'local', 'global', 'toroidal'.
 #' @param normalise renormalise so that inverse sum = volume
 #' @param loo leave-one-out -estimate?
 #'

@@ -47,7 +47,7 @@ bartletts_spectral_density <- function(x, omega, ...) {
     if(dim == 3) o <- as.matrix( expand.grid(o, ov) )
   }
   else{
-    if(ncol(o) != dim) stop("omega should be a vector or a m x d matrix, d=dimension, m=n. of frequencies to compute.")
+    if(ncol(o) != dim) stop("omega should be a vector or a m x d matrix, d=dimension, m=number of frequencies to compute.")
   }
   #
   V <- bbox_volume(bbox)

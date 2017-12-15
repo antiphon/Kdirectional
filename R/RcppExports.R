@@ -2,138 +2,138 @@
 # Generator token: 10BE3573-1514-4C36-9D1C-5A225CD40393
 
 c_angles_in_a_cone <- function(x, unit, theta, from, to, antipodal = FALSE) {
-    .Call('Kdirectional_c_angles_in_a_cone', PACKAGE = 'Kdirectional', x, unit, theta, from, to, antipodal)
+    .Call('_Kdirectional_c_angles_in_a_cone', PACKAGE = 'Kdirectional', x, unit, theta, from, to, antipodal)
 }
 
 c_angles <- function(x, from, to) {
-    .Call('Kdirectional_c_angles', PACKAGE = 'Kdirectional', x, from, to)
+    .Call('_Kdirectional_c_angles', PACKAGE = 'Kdirectional', x, from, to)
 }
 
 anisotropic_markcor_c <- function(coord, marks, bbox, r, directions, bw_r, bw_a, f) {
-    .Call('Kdirectional_anisotropic_markcor_c', PACKAGE = 'Kdirectional', coord, marks, bbox, r, directions, bw_r, bw_a, f)
+    .Call('_Kdirectional_anisotropic_markcor_c', PACKAGE = 'Kdirectional', coord, marks, bbox, r, directions, bw_r, bw_a, f)
 }
 
 anisotropic_markcor_c_d <- function(coord, marks, bbox, r, directions, bw_r, bw_a, f) {
-    .Call('Kdirectional_anisotropic_markcor_c_d', PACKAGE = 'Kdirectional', coord, marks, bbox, r, directions, bw_r, bw_a, f)
+    .Call('_Kdirectional_anisotropic_markcor_c_d', PACKAGE = 'Kdirectional', coord, marks, bbox, r, directions, bw_r, bw_a, f)
 }
 
 c_anisotropic_unit_pcf <- function(x, r, h, bbox, correction) {
-    .Call('Kdirectional_c_anisotropic_unit_pcf', PACKAGE = 'Kdirectional', x, r, h, bbox, correction)
+    .Call('_Kdirectional_c_anisotropic_unit_pcf', PACKAGE = 'Kdirectional', x, r, h, bbox, correction)
 }
 
 c_anisotropic_pcf <- function(x, theta, r, h, bbox, correction) {
-    .Call('Kdirectional_c_anisotropic_pcf', PACKAGE = 'Kdirectional', x, theta, r, h, bbox, correction)
+    .Call('_Kdirectional_c_anisotropic_pcf', PACKAGE = 'Kdirectional', x, theta, r, h, bbox, correction)
 }
 
 box_integral <- function(x, bbox, bw, n = 0L) {
-    .Call('Kdirectional_box_integral', PACKAGE = 'Kdirectional', x, bbox, bw, n)
+    .Call('_Kdirectional_box_integral', PACKAGE = 'Kdirectional', x, bbox, bw, n)
 }
 
 box_integral_grid <- function(x, bbox, bw, n) {
-    .Call('Kdirectional_box_integral_grid', PACKAGE = 'Kdirectional', x, bbox, bw, n)
+    .Call('_Kdirectional_box_integral_grid', PACKAGE = 'Kdirectional', x, bbox, bw, n)
 }
 
 c_cutgeom <- function(x, nlist, r) {
-    .Call('Kdirectional_c_cutgeom', PACKAGE = 'Kdirectional', x, nlist, r)
+    .Call('_Kdirectional_c_cutgeom', PACKAGE = 'Kdirectional', x, nlist, r)
 }
 
 c_directed_geom_by_cut <- function(x, u, pregraph, theta, r, from, to) {
-    .Call('Kdirectional_c_directed_geom_by_cut', PACKAGE = 'Kdirectional', x, u, pregraph, theta, r, from, to)
+    .Call('_Kdirectional_c_directed_geom_by_cut', PACKAGE = 'Kdirectional', x, u, pregraph, theta, r, from, to)
 }
 
 c_directed_geom <- function(x, u, theta, r, from, to) {
-    .Call('Kdirectional_c_directed_geom', PACKAGE = 'Kdirectional', x, u, theta, r, from, to)
+    .Call('_Kdirectional_c_directed_geom', PACKAGE = 'Kdirectional', x, u, theta, r, from, to)
 }
 
 epa_integral <- function(x, bbox, bw, n = 0L) {
-    .Call('Kdirectional_epa_integral', PACKAGE = 'Kdirectional', x, bbox, bw, n)
+    .Call('_Kdirectional_epa_integral', PACKAGE = 'Kdirectional', x, bbox, bw, n)
 }
 
 epa_integral_biased <- function(x, bbox, bw, n = 21L) {
-    .Call('Kdirectional_epa_integral_biased', PACKAGE = 'Kdirectional', x, bbox, bw, n)
+    .Call('_Kdirectional_epa_integral_biased', PACKAGE = 'Kdirectional', x, bbox, bw, n)
 }
 
 epa_integral_grid <- function(x, bbox, bw, n) {
-    .Call('Kdirectional_epa_integral_grid', PACKAGE = 'Kdirectional', x, bbox, bw, n)
+    .Call('_Kdirectional_epa_integral_grid', PACKAGE = 'Kdirectional', x, bbox, bw, n)
 }
 
 epa_integral_2d <- function(x, bbox, bw, n = 0L) {
-    .Call('Kdirectional_epa_integral_2d', PACKAGE = 'Kdirectional', x, bbox, bw, n)
+    .Call('_Kdirectional_epa_integral_2d', PACKAGE = 'Kdirectional', x, bbox, bw, n)
 }
 
 c_geom <- function(x, from, to, r) {
-    .Call('Kdirectional_c_geom', PACKAGE = 'Kdirectional', x, from, to, r)
+    .Call('_Kdirectional_c_geom', PACKAGE = 'Kdirectional', x, from, to, r)
 }
 
 int_bw_c <- function(x, h, kernel = 0L) {
-    .Call('Kdirectional_int_bw_c', PACKAGE = 'Kdirectional', x, h, kernel)
+    .Call('_Kdirectional_int_bw_c', PACKAGE = 'Kdirectional', x, h, kernel)
 }
 
 int_at_points_c <- function(x, bbox, bw, kernel = 0L, border = 1L, loo = 0L) {
-    .Call('Kdirectional_int_at_points_c', PACKAGE = 'Kdirectional', x, bbox, bw, kernel, border, loo)
+    .Call('_Kdirectional_int_at_points_c', PACKAGE = 'Kdirectional', x, bbox, bw, kernel, border, loo)
 }
 
 int_at_anywhere_c <- function(x, loc, bbox, bw, kernel = 0L, border = 1L) {
-    .Call('Kdirectional_int_at_anywhere_c', PACKAGE = 'Kdirectional', x, loc, bbox, bw, kernel, border)
+    .Call('_Kdirectional_int_at_anywhere_c', PACKAGE = 'Kdirectional', x, loc, bbox, bw, kernel, border)
 }
 
 Kest_anin_c <- function(coord, lambda, bbox, r, directions, epsilon, border = 1L) {
-    .Call('Kdirectional_Kest_anin_c', PACKAGE = 'Kdirectional', coord, lambda, bbox, r, directions, epsilon, border)
+    .Call('_Kdirectional_Kest_anin_c', PACKAGE = 'Kdirectional', coord, lambda, bbox, r, directions, epsilon, border)
 }
 
 Kest_anin_border_c <- function(coord, lambda, bbox, bdist, r, directions, epsilon, border = 1L) {
-    .Call('Kdirectional_Kest_anin_border_c', PACKAGE = 'Kdirectional', coord, lambda, bbox, bdist, r, directions, epsilon, border)
+    .Call('_Kdirectional_Kest_anin_border_c', PACKAGE = 'Kdirectional', coord, lambda, bbox, bdist, r, directions, epsilon, border)
 }
 
 Kest_anin_cylinder_c <- function(coord, lambda, bbox, r, directions, epsilon, border = 1L) {
-    .Call('Kdirectional_Kest_anin_cylinder_c', PACKAGE = 'Kdirectional', coord, lambda, bbox, r, directions, epsilon, border)
+    .Call('_Kdirectional_Kest_anin_cylinder_c', PACKAGE = 'Kdirectional', coord, lambda, bbox, r, directions, epsilon, border)
 }
 
 Kest_anin_cylinder_border_c <- function(coord, lambda, bbox, bdist, r, directions, epsilon, border = 1L) {
-    .Call('Kdirectional_Kest_anin_cylinder_border_c', PACKAGE = 'Kdirectional', coord, lambda, bbox, bdist, r, directions, epsilon, border)
+    .Call('_Kdirectional_Kest_anin_cylinder_border_c', PACKAGE = 'Kdirectional', coord, lambda, bbox, bdist, r, directions, epsilon, border)
 }
 
 c_knnangles <- function(x, k, from, to) {
-    .Call('Kdirectional_c_knnangles', PACKAGE = 'Kdirectional', x, k, from, to)
+    .Call('_Kdirectional_c_knnangles', PACKAGE = 'Kdirectional', x, k, from, to)
 }
 
 markcor_anin_c <- function(coord, marks, lambda, bbox, r, directions, bw_r, bw_a, border, f, divisor_i) {
-    .Call('Kdirectional_markcor_anin_c', PACKAGE = 'Kdirectional', coord, marks, lambda, bbox, r, directions, bw_r, bw_a, border, f, divisor_i)
+    .Call('_Kdirectional_markcor_anin_c', PACKAGE = 'Kdirectional', coord, marks, lambda, bbox, r, directions, bw_r, bw_a, border, f, divisor_i)
 }
 
 c_oh_K <- function(x, theta, r, bbox) {
-    .Call('Kdirectional_c_oh_K', PACKAGE = 'Kdirectional', x, theta, r, bbox)
+    .Call('_Kdirectional_c_oh_K', PACKAGE = 'Kdirectional', x, theta, r, bbox)
 }
 
 c_p_of_KStest <- function(n, d) {
-    .Call('Kdirectional_c_p_of_KStest', PACKAGE = 'Kdirectional', n, d)
+    .Call('_Kdirectional_c_p_of_KStest', PACKAGE = 'Kdirectional', n, d)
 }
 
 c_pairwise_dist_angle_subset <- function(x, from, to) {
-    .Call('Kdirectional_c_pairwise_dist_angle_subset', PACKAGE = 'Kdirectional', x, from, to)
+    .Call('_Kdirectional_c_pairwise_dist_angle_subset', PACKAGE = 'Kdirectional', x, from, to)
 }
 
 c_pairwise_dist_angle <- function(x) {
-    .Call('Kdirectional_c_pairwise_dist_angle', PACKAGE = 'Kdirectional', x)
+    .Call('_Kdirectional_c_pairwise_dist_angle', PACKAGE = 'Kdirectional', x)
 }
 
 pcf_anin_fry_c <- function(coord, lambda, bbox, r, bw, directions, border = 1L) {
-    .Call('Kdirectional_pcf_anin_fry_c', PACKAGE = 'Kdirectional', coord, lambda, bbox, r, bw, directions, border)
+    .Call('_Kdirectional_pcf_anin_fry_c', PACKAGE = 'Kdirectional', coord, lambda, bbox, r, bw, directions, border)
 }
 
 pcf_anin_conical_c <- function(coord, lambda, bbox, r, r_h, directions, epsilon, border = 1L, divisor_i = 0L, ang_kernel = 0L) {
-    .Call('Kdirectional_pcf_anin_conical_c', PACKAGE = 'Kdirectional', coord, lambda, bbox, r, r_h, directions, epsilon, border, divisor_i, ang_kernel)
+    .Call('_Kdirectional_pcf_anin_conical_c', PACKAGE = 'Kdirectional', coord, lambda, bbox, r, r_h, directions, epsilon, border, divisor_i, ang_kernel)
 }
 
 pcf_anin_cylindrical_c <- function(coord, lambda, bbox, r, r_h, directions, epsilon, border = 1L, divisor_i = 0L) {
-    .Call('Kdirectional_pcf_anin_cylindrical_c', PACKAGE = 'Kdirectional', coord, lambda, bbox, r, r_h, directions, epsilon, border, divisor_i)
+    .Call('_Kdirectional_pcf_anin_cylindrical_c', PACKAGE = 'Kdirectional', coord, lambda, bbox, r, r_h, directions, epsilon, border, divisor_i)
 }
 
 c_sector_pcf <- function(x, u, theta, r, h, bbox, correction) {
-    .Call('Kdirectional_c_sector_pcf', PACKAGE = 'Kdirectional', x, u, theta, r, h, bbox, correction)
+    .Call('_Kdirectional_c_sector_pcf', PACKAGE = 'Kdirectional', x, u, theta, r, h, bbox, correction)
 }
 
 c_translation_weights <- function(x, bbox) {
-    .Call('Kdirectional_c_translation_weights', PACKAGE = 'Kdirectional', x, bbox)
+    .Call('_Kdirectional_c_translation_weights', PACKAGE = 'Kdirectional', x, bbox)
 }
 

@@ -77,7 +77,7 @@ angle_2_unit <- function(angle){
 #' @export
 
 unit_2_theta <- function(unit) {
-  if(!is.null(dim(unit))) unit <- cbind(unit)
+  if(is.null(dim(unit))) unit <- rbind(unit)
   dim <- ncol(unit)
   unit <- t( apply(unit, 1, function(u) u/sqrt(sum(u^2))  ) )
   theta <- list(ang = atan2( unit[,2], unit[,1] )  )
@@ -92,7 +92,7 @@ unit_2_theta <- function(unit) {
 #' @export
 
 unit_2_angle <- function(unit){
-  if(!is.null(dim(unit))) unit <- cbind(unit)
+  if(is.null(dim(unit))) unit <- rbind(unit)
   dim <- ncol(unit)
   unit <- t( apply(unit, 1, function(u) u/sqrt(sum(u^2))  ) )
   theta <-  atan2( unit[,2], unit[,1] ) 

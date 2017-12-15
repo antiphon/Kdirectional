@@ -1,7 +1,7 @@
 library(rstrauss)
 set.seed(1)
 if(!exists("d3"))d3 <- F
-comp <- 1
+comp <- .8
 M <- if(d3) diag(c(1/sqrt(comp), comp, comp)) else diag(c(1/comp, comp))
 bb <- cbind(0:1,0:1)*2-1
 if(d3) bb <- cbind(bb, 0:1)

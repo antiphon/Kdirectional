@@ -15,7 +15,7 @@ intensity_somewhere(x, loc, bw, kernel = "gaussian", border = "local")
 
 \item{kernel}{Either 'gaussian' or 'epanenchnikov'}
 
-\item{border}{Border correction to apply.  One of 'none', 'local', 'global'.}
+\item{border}{Border correction to apply.  One of 'none', 'local', 'global', 'toroidal'.}
 
 \item{normalise}{renormalise so that inverse sum = volume}
 

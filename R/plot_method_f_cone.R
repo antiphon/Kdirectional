@@ -11,7 +11,7 @@
 #' 
 #' @export
 
-plot.f_cone <- function(x, r_scale=1, rmax, ylim, legpos="topright", ...) {
+plot.f_cone <- function(x, r_scale=1, rmax, ylim, legpos="topright", lwd = 1, ...) {
   # cut r
   if(!missing(rmax)) x <- x[x$r<rmax,]
   if(missing(ylim)) ylim <- range(x[,-which(names(x)=="r")], na.rm=T)
@@ -19,10 +19,10 @@ plot.f_cone <- function(x, r_scale=1, rmax, ylim, legpos="topright", ...) {
   #
   fname <- attr(x, "fname")
   plot(x$r*r_scale, x[,2], col=1, xlab="r", 
-       ylab=if(is.null(fname)) "pcf_anin" else fname, type="l", lty=1, ylim=ylim, ...)
+       ylab=if(is.null(fname)) "pcf_anin" else fname, type="l", lty=1, ylim=ylim, lwd = lwd, ...)
   n <- ncol(x)
   for(i in 3:n){
-    lines(x$r*r_scale, x[,i], col=i-1, lty = i-1)
+    lines(x$r*r_scale, x[,i], col=i-1, lty = i-1, lwd = lwd)
   }
   legend(legpos, names(x)[-1], lty=1:(n-1), col=1:(n-1))
 }

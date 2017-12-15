@@ -46,7 +46,7 @@ Kest_anin <- function(x, u, epsilon, r, lambda=NULL, lambda_h,
   #
   # make sure unit vectors
   u <- rbind(u)
-  u <- t(apply(u, 1, function(ui) ui/sqrt(t(ui)%*%ui)))
+  u <- t(apply(u, 1, function(ui) ui/c(sqrt(t(ui)%*%ui))))
   #
   # central half-angle
   if(missing(epsilon)){
@@ -136,20 +136,20 @@ Kest_anin <- function(x, u, epsilon, r, lambda=NULL, lambda_h,
 #' @param ... passed on to plot
 #' @export
 
-plot.K_anin <- function(x, r_scale=1, rmax, legpos="topleft", ...) {
+plot.K_anin <- function(x, r_scale=1, rmax, legpos="topleft", lwd = 1, ...) {
   # cut r
   if(!missing(rmax)) x <- x[x$r<rmax,]
   #
   plot(x$r*r_scale, x$theo, col=1, xlab="r", 
-       ylab=attr(x, "fun_name"), type="l", lty=3, ...)
+       ylab=attr(x, "fun_name"), type="l", lty=3, lwd = lwd, ...)
   n <- ncol(x)
   for(i in 3:n){
-    lines(x$r*r_scale, x[,i], col=i-1)
+    lines(x$r*r_scale, x[,i], col=i-1, lwd = lwd)
   }
   nam <- names(x)[-1]
   tn <- attr(x, "theo_name")
   if(!is.null(tn)) nam[1] <- tn
-  legend(legpos, nam, lty=c(3,rep(1,n-2)), col=c(1:(n-1)))
+  legend(legpos, nam, lty=c(3,rep(1,n-2)), col=c(1:(n-1)), lwd = lwd)
 }
 
 

@@ -43,7 +43,7 @@ pcf_anin_cylinder <- function(x, u, epsilon, r, lambda=NULL, lambda_h, r_h,
   #
   # make sure unit vectors
   u <- rbind(u)
-  u <- t(apply(u, 1, function(ui) ui/sqrt(t(ui)%*%ui)))
+  u <- t(apply(u, 1, function(ui) ui/c(sqrt(t(ui)%*%ui) )))
   #
   # central half-angle
   if(missing(epsilon)){

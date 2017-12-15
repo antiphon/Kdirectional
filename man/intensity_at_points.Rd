@@ -14,11 +14,11 @@ intensity_at_points(x, bw, kernel = "gaussian", border = "local",
 
 \item{kernel}{Either 'gaussian' or 'epanenchnikov' (partial matching)}
 
-\item{border}{Border correction to apply.  One of 'none', 'local', 'global'.}
+\item{border}{Border correction to apply.  One of 'none', 'local', 'global', 'toroidal'.}
 
 \item{normalise}{renormalise so that inverse sum = volume}
 
-\item{loo}{leave-one-out -estimate?}
+\item{loo}{leave-one-out -estimate? Don't include point i for estimation of int(i)}
 }
 \description{
 Kernel Estimate Intensity at Data Points

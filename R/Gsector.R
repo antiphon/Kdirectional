@@ -26,7 +26,7 @@ nn_directional_distance_distribution <- function(x, r, direction, epsilon, type 
   #
   # make sure unit vectors
   u <- rbind(u)
-  u <- t(apply(u, 1, function(ui) ui/sqrt(t(ui)%*%ui)))
+  u <- t(apply(u, 1, function(ui) ui/c(sqrt(t(ui)%*%ui))))
   #
   # central half-angle
   if(missing(epsilon)){

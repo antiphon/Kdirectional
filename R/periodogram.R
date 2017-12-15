@@ -66,6 +66,7 @@ periodogram <- function(x, p, pgrid, std=TRUE, ...) {
 #' @export
 
 periodogram_MR <- function(x, ...) {
+  x <- check_pp(x)
   if(is.null(x$bbox)) stop("x should be list(x=coordinates-matrix, bbox=bounding-box)")
   bbox <- x$bbox
   dim <- ncol(bbox)

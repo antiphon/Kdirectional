@@ -46,7 +46,7 @@ pcf_anin_fry <- function(x, u, r, lambda=NULL, lambda_h, bw, stoyan=.35,
   #
   # make sure unit vectors
   u <- rbind(u)
-  u <- t(apply(u, 1, function(ui) ui/sqrt(t(ui)%*%ui)))
+  u <- t(apply(u, 1, function(ui) ui/c(sqrt(t(ui)%*%ui))))
   #
   # ranges
   if(missing(r)) {
