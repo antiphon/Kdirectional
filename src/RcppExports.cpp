@@ -5,19 +5,73 @@
 
 using namespace Rcpp;
 
-// c_angles_in_a_cone
-List c_angles_in_a_cone(NumericMatrix x, NumericVector unit, double theta, IntegerVector from, IntegerVector to, bool antipodal);
-RcppExport SEXP _Kdirectional_c_angles_in_a_cone(SEXP xSEXP, SEXP unitSEXP, SEXP thetaSEXP, SEXP fromSEXP, SEXP toSEXP, SEXP antipodalSEXP) {
+// Kest_anin_c
+NumericMatrix Kest_anin_c(NumericMatrix coord, NumericVector lambda, NumericMatrix bbox, NumericVector r, NumericMatrix directions, double epsilon, int border);
+RcppExport SEXP _Kdirectional_Kest_anin_c(SEXP coordSEXP, SEXP lambdaSEXP, SEXP bboxSEXP, SEXP rSEXP, SEXP directionsSEXP, SEXP epsilonSEXP, SEXP borderSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< NumericMatrix >::type x(xSEXP);
-    Rcpp::traits::input_parameter< NumericVector >::type unit(unitSEXP);
-    Rcpp::traits::input_parameter< double >::type theta(thetaSEXP);
-    Rcpp::traits::input_parameter< IntegerVector >::type from(fromSEXP);
-    Rcpp::traits::input_parameter< IntegerVector >::type to(toSEXP);
-    Rcpp::traits::input_parameter< bool >::type antipodal(antipodalSEXP);
-    rcpp_result_gen = Rcpp::wrap(c_angles_in_a_cone(x, unit, theta, from, to, antipodal));
+    Rcpp::traits::input_parameter< NumericMatrix >::type coord(coordSEXP);
+    Rcpp::traits::input_parameter< NumericVector >::type lambda(lambdaSEXP);
+    Rcpp::traits::input_parameter< NumericMatrix >::type bbox(bboxSEXP);
+    Rcpp::traits::input_parameter< NumericVector >::type r(rSEXP);
+    Rcpp::traits::input_parameter< NumericMatrix >::type directions(directionsSEXP);
+    Rcpp::traits::input_parameter< double >::type epsilon(epsilonSEXP);
+    Rcpp::traits::input_parameter< int >::type border(borderSEXP);
+    rcpp_result_gen = Rcpp::wrap(Kest_anin_c(coord, lambda, bbox, r, directions, epsilon, border));
+    return rcpp_result_gen;
+END_RCPP
+}
+// Kest_anin_border_c
+NumericMatrix Kest_anin_border_c(NumericMatrix coord, NumericVector lambda, NumericMatrix bbox, NumericVector bdist, NumericVector r, NumericMatrix directions, double epsilon, int border);
+RcppExport SEXP _Kdirectional_Kest_anin_border_c(SEXP coordSEXP, SEXP lambdaSEXP, SEXP bboxSEXP, SEXP bdistSEXP, SEXP rSEXP, SEXP directionsSEXP, SEXP epsilonSEXP, SEXP borderSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< NumericMatrix >::type coord(coordSEXP);
+    Rcpp::traits::input_parameter< NumericVector >::type lambda(lambdaSEXP);
+    Rcpp::traits::input_parameter< NumericMatrix >::type bbox(bboxSEXP);
+    Rcpp::traits::input_parameter< NumericVector >::type bdist(bdistSEXP);
+    Rcpp::traits::input_parameter< NumericVector >::type r(rSEXP);
+    Rcpp::traits::input_parameter< NumericMatrix >::type directions(directionsSEXP);
+    Rcpp::traits::input_parameter< double >::type epsilon(epsilonSEXP);
+    Rcpp::traits::input_parameter< int >::type border(borderSEXP);
+    rcpp_result_gen = Rcpp::wrap(Kest_anin_border_c(coord, lambda, bbox, bdist, r, directions, epsilon, border));
+    return rcpp_result_gen;
+END_RCPP
+}
+// Kest_anin_cylinder_c
+NumericMatrix Kest_anin_cylinder_c(NumericMatrix coord, NumericVector lambda, NumericMatrix bbox, NumericVector r, NumericMatrix directions, double epsilon, int border);
+RcppExport SEXP _Kdirectional_Kest_anin_cylinder_c(SEXP coordSEXP, SEXP lambdaSEXP, SEXP bboxSEXP, SEXP rSEXP, SEXP directionsSEXP, SEXP epsilonSEXP, SEXP borderSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< NumericMatrix >::type coord(coordSEXP);
+    Rcpp::traits::input_parameter< NumericVector >::type lambda(lambdaSEXP);
+    Rcpp::traits::input_parameter< NumericMatrix >::type bbox(bboxSEXP);
+    Rcpp::traits::input_parameter< NumericVector >::type r(rSEXP);
+    Rcpp::traits::input_parameter< NumericMatrix >::type directions(directionsSEXP);
+    Rcpp::traits::input_parameter< double >::type epsilon(epsilonSEXP);
+    Rcpp::traits::input_parameter< int >::type border(borderSEXP);
+    rcpp_result_gen = Rcpp::wrap(Kest_anin_cylinder_c(coord, lambda, bbox, r, directions, epsilon, border));
+    return rcpp_result_gen;
+END_RCPP
+}
+// Kest_anin_cylinder_border_c
+NumericMatrix Kest_anin_cylinder_border_c(NumericMatrix coord, NumericVector lambda, NumericMatrix bbox, NumericVector bdist, NumericVector r, NumericMatrix directions, double epsilon, int border);
+RcppExport SEXP _Kdirectional_Kest_anin_cylinder_border_c(SEXP coordSEXP, SEXP lambdaSEXP, SEXP bboxSEXP, SEXP bdistSEXP, SEXP rSEXP, SEXP directionsSEXP, SEXP epsilonSEXP, SEXP borderSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< NumericMatrix >::type coord(coordSEXP);
+    Rcpp::traits::input_parameter< NumericVector >::type lambda(lambdaSEXP);
+    Rcpp::traits::input_parameter< NumericMatrix >::type bbox(bboxSEXP);
+    Rcpp::traits::input_parameter< NumericVector >::type bdist(bdistSEXP);
+    Rcpp::traits::input_parameter< NumericVector >::type r(rSEXP);
+    Rcpp::traits::input_parameter< NumericMatrix >::type directions(directionsSEXP);
+    Rcpp::traits::input_parameter< double >::type epsilon(epsilonSEXP);
+    Rcpp::traits::input_parameter< int >::type border(borderSEXP);
+    rcpp_result_gen = Rcpp::wrap(Kest_anin_cylinder_border_c(coord, lambda, bbox, bdist, r, directions, epsilon, border));
     return rcpp_result_gen;
 END_RCPP
 }
@@ -31,6 +85,22 @@ BEGIN_RCPP
     Rcpp::traits::input_parameter< IntegerVector >::type from(fromSEXP);
     Rcpp::traits::input_parameter< IntegerVector >::type to(toSEXP);
     rcpp_result_gen = Rcpp::wrap(c_angles(x, from, to));
+    return rcpp_result_gen;
+END_RCPP
+}
+// c_angles_in_a_cone
+List c_angles_in_a_cone(NumericMatrix x, NumericVector unit, double theta, IntegerVector from, IntegerVector to, bool antipodal);
+RcppExport SEXP _Kdirectional_c_angles_in_a_cone(SEXP xSEXP, SEXP unitSEXP, SEXP thetaSEXP, SEXP fromSEXP, SEXP toSEXP, SEXP antipodalSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< NumericMatrix >::type x(xSEXP);
+    Rcpp::traits::input_parameter< NumericVector >::type unit(unitSEXP);
+    Rcpp::traits::input_parameter< double >::type theta(thetaSEXP);
+    Rcpp::traits::input_parameter< IntegerVector >::type from(fromSEXP);
+    Rcpp::traits::input_parameter< IntegerVector >::type to(toSEXP);
+    Rcpp::traits::input_parameter< bool >::type antipodal(antipodalSEXP);
+    rcpp_result_gen = Rcpp::wrap(c_angles_in_a_cone(x, unit, theta, from, to, antipodal));
     return rcpp_result_gen;
 END_RCPP
 }
@@ -70,21 +140,6 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
-// c_anisotropic_unit_pcf
-List c_anisotropic_unit_pcf(NumericMatrix x, NumericMatrix r, NumericVector h, NumericMatrix bbox, int correction);
-RcppExport SEXP _Kdirectional_c_anisotropic_unit_pcf(SEXP xSEXP, SEXP rSEXP, SEXP hSEXP, SEXP bboxSEXP, SEXP correctionSEXP) {
-BEGIN_RCPP
-    Rcpp::RObject rcpp_result_gen;
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< NumericMatrix >::type x(xSEXP);
-    Rcpp::traits::input_parameter< NumericMatrix >::type r(rSEXP);
-    Rcpp::traits::input_parameter< NumericVector >::type h(hSEXP);
-    Rcpp::traits::input_parameter< NumericMatrix >::type bbox(bboxSEXP);
-    Rcpp::traits::input_parameter< int >::type correction(correctionSEXP);
-    rcpp_result_gen = Rcpp::wrap(c_anisotropic_unit_pcf(x, r, h, bbox, correction));
-    return rcpp_result_gen;
-END_RCPP
-}
 // c_anisotropic_pcf
 NumericVector c_anisotropic_pcf(NumericMatrix x, List theta, NumericVector r, NumericVector h, NumericMatrix bbox, int correction);
 RcppExport SEXP _Kdirectional_c_anisotropic_pcf(SEXP xSEXP, SEXP thetaSEXP, SEXP rSEXP, SEXP hSEXP, SEXP bboxSEXP, SEXP correctionSEXP) {
@@ -98,6 +153,21 @@ BEGIN_RCPP
     Rcpp::traits::input_parameter< NumericMatrix >::type bbox(bboxSEXP);
     Rcpp::traits::input_parameter< int >::type correction(correctionSEXP);
     rcpp_result_gen = Rcpp::wrap(c_anisotropic_pcf(x, theta, r, h, bbox, correction));
+    return rcpp_result_gen;
+END_RCPP
+}
+// c_anisotropic_unit_pcf
+List c_anisotropic_unit_pcf(NumericMatrix x, NumericMatrix r, NumericVector h, NumericMatrix bbox, int correction);
+RcppExport SEXP _Kdirectional_c_anisotropic_unit_pcf(SEXP xSEXP, SEXP rSEXP, SEXP hSEXP, SEXP bboxSEXP, SEXP correctionSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< NumericMatrix >::type x(xSEXP);
+    Rcpp::traits::input_parameter< NumericMatrix >::type r(rSEXP);
+    Rcpp::traits::input_parameter< NumericVector >::type h(hSEXP);
+    Rcpp::traits::input_parameter< NumericMatrix >::type bbox(bboxSEXP);
+    Rcpp::traits::input_parameter< int >::type correction(correctionSEXP);
+    rcpp_result_gen = Rcpp::wrap(c_anisotropic_unit_pcf(x, r, h, bbox, correction));
     return rcpp_result_gen;
 END_RCPP
 }
@@ -142,6 +212,22 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// c_directed_geom
+List c_directed_geom(NumericMatrix x, NumericVector u, double theta, double r, IntegerVector from, IntegerVector to);
+RcppExport SEXP _Kdirectional_c_directed_geom(SEXP xSEXP, SEXP uSEXP, SEXP thetaSEXP, SEXP rSEXP, SEXP fromSEXP, SEXP toSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< NumericMatrix >::type x(xSEXP);
+    Rcpp::traits::input_parameter< NumericVector >::type u(uSEXP);
+    Rcpp::traits::input_parameter< double >::type theta(thetaSEXP);
+    Rcpp::traits::input_parameter< double >::type r(rSEXP);
+    Rcpp::traits::input_parameter< IntegerVector >::type from(fromSEXP);
+    Rcpp::traits::input_parameter< IntegerVector >::type to(toSEXP);
+    rcpp_result_gen = Rcpp::wrap(c_directed_geom(x, u, theta, r, from, to));
+    return rcpp_result_gen;
+END_RCPP
+}
 // c_directed_geom_by_cut
 List c_directed_geom_by_cut(NumericMatrix x, NumericVector u, List pregraph, double theta, double r, IntegerVector from, IntegerVector to);
 RcppExport SEXP _Kdirectional_c_directed_geom_by_cut(SEXP xSEXP, SEXP uSEXP, SEXP pregraphSEXP, SEXP thetaSEXP, SEXP rSEXP, SEXP fromSEXP, SEXP toSEXP) {
@@ -156,22 +242,6 @@ BEGIN_RCPP
     Rcpp::traits::input_parameter< IntegerVector >::type from(fromSEXP);
     Rcpp::traits::input_parameter< IntegerVector >::type to(toSEXP);
     rcpp_result_gen = Rcpp::wrap(c_directed_geom_by_cut(x, u, pregraph, theta, r, from, to));
-    return rcpp_result_gen;
-END_RCPP
-}
-// c_directed_geom
-List c_directed_geom(NumericMatrix x, NumericVector u, double theta, double r, IntegerVector from, IntegerVector to);
-RcppExport SEXP _Kdirectional_c_directed_geom(SEXP xSEXP, SEXP uSEXP, SEXP thetaSEXP, SEXP rSEXP, SEXP fromSEXP, SEXP toSEXP) {
-BEGIN_RCPP
-    Rcpp::RObject rcpp_result_gen;
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< NumericMatrix >::type x(xSEXP);
-    Rcpp::traits::input_parameter< NumericVector >::type u(uSEXP);
-    Rcpp::traits::input_parameter< double >::type theta(thetaSEXP);
-    Rcpp::traits::input_parameter< double >::type r(rSEXP);
-    Rcpp::traits::input_parameter< IntegerVector >::type from(fromSEXP);
-    Rcpp::traits::input_parameter< IntegerVector >::type to(toSEXP);
-    rcpp_result_gen = Rcpp::wrap(c_directed_geom(x, u, theta, r, from, to));
     return rcpp_result_gen;
 END_RCPP
 }
@@ -290,76 +360,6 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
-// Kest_anin_c
-NumericMatrix Kest_anin_c(NumericMatrix coord, NumericVector lambda, NumericMatrix bbox, NumericVector r, NumericMatrix directions, double epsilon, int border);
-RcppExport SEXP _Kdirectional_Kest_anin_c(SEXP coordSEXP, SEXP lambdaSEXP, SEXP bboxSEXP, SEXP rSEXP, SEXP directionsSEXP, SEXP epsilonSEXP, SEXP borderSEXP) {
-BEGIN_RCPP
-    Rcpp::RObject rcpp_result_gen;
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< NumericMatrix >::type coord(coordSEXP);
-    Rcpp::traits::input_parameter< NumericVector >::type lambda(lambdaSEXP);
-    Rcpp::traits::input_parameter< NumericMatrix >::type bbox(bboxSEXP);
-    Rcpp::traits::input_parameter< NumericVector >::type r(rSEXP);
-    Rcpp::traits::input_parameter< NumericMatrix >::type directions(directionsSEXP);
-    Rcpp::traits::input_parameter< double >::type epsilon(epsilonSEXP);
-    Rcpp::traits::input_parameter< int >::type border(borderSEXP);
-    rcpp_result_gen = Rcpp::wrap(Kest_anin_c(coord, lambda, bbox, r, directions, epsilon, border));
-    return rcpp_result_gen;
-END_RCPP
-}
-// Kest_anin_border_c
-NumericMatrix Kest_anin_border_c(NumericMatrix coord, NumericVector lambda, NumericMatrix bbox, NumericVector bdist, NumericVector r, NumericMatrix directions, double epsilon, int border);
-RcppExport SEXP _Kdirectional_Kest_anin_border_c(SEXP coordSEXP, SEXP lambdaSEXP, SEXP bboxSEXP, SEXP bdistSEXP, SEXP rSEXP, SEXP directionsSEXP, SEXP epsilonSEXP, SEXP borderSEXP) {
-BEGIN_RCPP
-    Rcpp::RObject rcpp_result_gen;
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< NumericMatrix >::type coord(coordSEXP);
-    Rcpp::traits::input_parameter< NumericVector >::type lambda(lambdaSEXP);
-    Rcpp::traits::input_parameter< NumericMatrix >::type bbox(bboxSEXP);
-    Rcpp::traits::input_parameter< NumericVector >::type bdist(bdistSEXP);
-    Rcpp::traits::input_parameter< NumericVector >::type r(rSEXP);
-    Rcpp::traits::input_parameter< NumericMatrix >::type directions(directionsSEXP);
-    Rcpp::traits::input_parameter< double >::type epsilon(epsilonSEXP);
-    Rcpp::traits::input_parameter< int >::type border(borderSEXP);
-    rcpp_result_gen = Rcpp::wrap(Kest_anin_border_c(coord, lambda, bbox, bdist, r, directions, epsilon, border));
-    return rcpp_result_gen;
-END_RCPP
-}
-// Kest_anin_cylinder_c
-NumericMatrix Kest_anin_cylinder_c(NumericMatrix coord, NumericVector lambda, NumericMatrix bbox, NumericVector r, NumericMatrix directions, double epsilon, int border);
-RcppExport SEXP _Kdirectional_Kest_anin_cylinder_c(SEXP coordSEXP, SEXP lambdaSEXP, SEXP bboxSEXP, SEXP rSEXP, SEXP directionsSEXP, SEXP epsilonSEXP, SEXP borderSEXP) {
-BEGIN_RCPP
-    Rcpp::RObject rcpp_result_gen;
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< NumericMatrix >::type coord(coordSEXP);
-    Rcpp::traits::input_parameter< NumericVector >::type lambda(lambdaSEXP);
-    Rcpp::traits::input_parameter< NumericMatrix >::type bbox(bboxSEXP);
-    Rcpp::traits::input_parameter< NumericVector >::type r(rSEXP);
-    Rcpp::traits::input_parameter< NumericMatrix >::type directions(directionsSEXP);
-    Rcpp::traits::input_parameter< double >::type epsilon(epsilonSEXP);
-    Rcpp::traits::input_parameter< int >::type border(borderSEXP);
-    rcpp_result_gen = Rcpp::wrap(Kest_anin_cylinder_c(coord, lambda, bbox, r, directions, epsilon, border));
-    return rcpp_result_gen;
-END_RCPP
-}
-// Kest_anin_cylinder_border_c
-NumericMatrix Kest_anin_cylinder_border_c(NumericMatrix coord, NumericVector lambda, NumericMatrix bbox, NumericVector bdist, NumericVector r, NumericMatrix directions, double epsilon, int border);
-RcppExport SEXP _Kdirectional_Kest_anin_cylinder_border_c(SEXP coordSEXP, SEXP lambdaSEXP, SEXP bboxSEXP, SEXP bdistSEXP, SEXP rSEXP, SEXP directionsSEXP, SEXP epsilonSEXP, SEXP borderSEXP) {
-BEGIN_RCPP
-    Rcpp::RObject rcpp_result_gen;
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< NumericMatrix >::type coord(coordSEXP);
-    Rcpp::traits::input_parameter< NumericVector >::type lambda(lambdaSEXP);
-    Rcpp::traits::input_parameter< NumericMatrix >::type bbox(bboxSEXP);
-    Rcpp::traits::input_parameter< NumericVector >::type bdist(bdistSEXP);
-    Rcpp::traits::input_parameter< NumericVector >::type r(rSEXP);
-    Rcpp::traits::input_parameter< NumericMatrix >::type directions(directionsSEXP);
-    Rcpp::traits::input_parameter< double >::type epsilon(epsilonSEXP);
-    Rcpp::traits::input_parameter< int >::type border(borderSEXP);
-    rcpp_result_gen = Rcpp::wrap(Kest_anin_cylinder_border_c(coord, lambda, bbox, bdist, r, directions, epsilon, border));
-    return rcpp_result_gen;
-END_RCPP
-}
 // c_knnangles
 List c_knnangles(NumericMatrix x, int k, IntegerVector from, IntegerVector to);
 RcppExport SEXP _Kdirectional_c_knnangles(SEXP xSEXP, SEXP kSEXP, SEXP fromSEXP, SEXP toSEXP) {
@@ -421,6 +421,17 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// c_pairwise_dist_angle
+NumericMatrix c_pairwise_dist_angle(NumericMatrix x);
+RcppExport SEXP _Kdirectional_c_pairwise_dist_angle(SEXP xSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< NumericMatrix >::type x(xSEXP);
+    rcpp_result_gen = Rcpp::wrap(c_pairwise_dist_angle(x));
+    return rcpp_result_gen;
+END_RCPP
+}
 // c_pairwise_dist_angle_subset
 NumericMatrix c_pairwise_dist_angle_subset(NumericMatrix x, IntegerVector from, IntegerVector to);
 RcppExport SEXP _Kdirectional_c_pairwise_dist_angle_subset(SEXP xSEXP, SEXP fromSEXP, SEXP toSEXP) {
@@ -431,17 +442,6 @@ BEGIN_RCPP
     Rcpp::traits::input_parameter< IntegerVector >::type from(fromSEXP);
     Rcpp::traits::input_parameter< IntegerVector >::type to(toSEXP);
     rcpp_result_gen = Rcpp::wrap(c_pairwise_dist_angle_subset(x, from, to));
-    return rcpp_result_gen;
-END_RCPP
-}
-// c_pairwise_dist_angle
-NumericMatrix c_pairwise_dist_angle(NumericMatrix x);
-RcppExport SEXP _Kdirectional_c_pairwise_dist_angle(SEXP xSEXP) {
-BEGIN_RCPP
-    Rcpp::RObject rcpp_result_gen;
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< NumericMatrix >::type x(xSEXP);
-    rcpp_result_gen = Rcpp::wrap(c_pairwise_dist_angle(x));
     return rcpp_result_gen;
 END_RCPP
 }
@@ -532,17 +532,21 @@ END_RCPP
 }
 
 static const R_CallMethodDef CallEntries[] = {
-    {"_Kdirectional_c_angles_in_a_cone", (DL_FUNC) &_Kdirectional_c_angles_in_a_cone, 6},
+    {"_Kdirectional_Kest_anin_c", (DL_FUNC) &_Kdirectional_Kest_anin_c, 7},
+    {"_Kdirectional_Kest_anin_border_c", (DL_FUNC) &_Kdirectional_Kest_anin_border_c, 8},
+    {"_Kdirectional_Kest_anin_cylinder_c", (DL_FUNC) &_Kdirectional_Kest_anin_cylinder_c, 7},
+    {"_Kdirectional_Kest_anin_cylinder_border_c", (DL_FUNC) &_Kdirectional_Kest_anin_cylinder_border_c, 8},
     {"_Kdirectional_c_angles", (DL_FUNC) &_Kdirectional_c_angles, 3},
+    {"_Kdirectional_c_angles_in_a_cone", (DL_FUNC) &_Kdirectional_c_angles_in_a_cone, 6},
     {"_Kdirectional_anisotropic_markcor_c", (DL_FUNC) &_Kdirectional_anisotropic_markcor_c, 8},
     {"_Kdirectional_anisotropic_markcor_c_d", (DL_FUNC) &_Kdirectional_anisotropic_markcor_c_d, 8},
-    {"_Kdirectional_c_anisotropic_unit_pcf", (DL_FUNC) &_Kdirectional_c_anisotropic_unit_pcf, 5},
     {"_Kdirectional_c_anisotropic_pcf", (DL_FUNC) &_Kdirectional_c_anisotropic_pcf, 6},
+    {"_Kdirectional_c_anisotropic_unit_pcf", (DL_FUNC) &_Kdirectional_c_anisotropic_unit_pcf, 5},
     {"_Kdirectional_box_integral", (DL_FUNC) &_Kdirectional_box_integral, 4},
     {"_Kdirectional_box_integral_grid", (DL_FUNC) &_Kdirectional_box_integral_grid, 4},
     {"_Kdirectional_c_cutgeom", (DL_FUNC) &_Kdirectional_c_cutgeom, 3},
-    {"_Kdirectional_c_directed_geom_by_cut", (DL_FUNC) &_Kdirectional_c_directed_geom_by_cut, 7},
     {"_Kdirectional_c_directed_geom", (DL_FUNC) &_Kdirectional_c_directed_geom, 6},
+    {"_Kdirectional_c_directed_geom_by_cut", (DL_FUNC) &_Kdirectional_c_directed_geom_by_cut, 7},
     {"_Kdirectional_epa_integral", (DL_FUNC) &_Kdirectional_epa_integral, 4},
     {"_Kdirectional_epa_integral_biased", (DL_FUNC) &_Kdirectional_epa_integral_biased, 4},
     {"_Kdirectional_epa_integral_grid", (DL_FUNC) &_Kdirectional_epa_integral_grid, 4},
@@ -551,16 +555,12 @@ static const R_CallMethodDef CallEntries[] = {
     {"_Kdirectional_int_bw_c", (DL_FUNC) &_Kdirectional_int_bw_c, 3},
     {"_Kdirectional_int_at_points_c", (DL_FUNC) &_Kdirectional_int_at_points_c, 6},
     {"_Kdirectional_int_at_anywhere_c", (DL_FUNC) &_Kdirectional_int_at_anywhere_c, 6},
-    {"_Kdirectional_Kest_anin_c", (DL_FUNC) &_Kdirectional_Kest_anin_c, 7},
-    {"_Kdirectional_Kest_anin_border_c", (DL_FUNC) &_Kdirectional_Kest_anin_border_c, 8},
-    {"_Kdirectional_Kest_anin_cylinder_c", (DL_FUNC) &_Kdirectional_Kest_anin_cylinder_c, 7},
-    {"_Kdirectional_Kest_anin_cylinder_border_c", (DL_FUNC) &_Kdirectional_Kest_anin_cylinder_border_c, 8},
     {"_Kdirectional_c_knnangles", (DL_FUNC) &_Kdirectional_c_knnangles, 4},
     {"_Kdirectional_markcor_anin_c", (DL_FUNC) &_Kdirectional_markcor_anin_c, 11},
     {"_Kdirectional_c_oh_K", (DL_FUNC) &_Kdirectional_c_oh_K, 4},
     {"_Kdirectional_c_p_of_KStest", (DL_FUNC) &_Kdirectional_c_p_of_KStest, 2},
-    {"_Kdirectional_c_pairwise_dist_angle_subset", (DL_FUNC) &_Kdirectional_c_pairwise_dist_angle_subset, 3},
     {"_Kdirectional_c_pairwise_dist_angle", (DL_FUNC) &_Kdirectional_c_pairwise_dist_angle, 1},
+    {"_Kdirectional_c_pairwise_dist_angle_subset", (DL_FUNC) &_Kdirectional_c_pairwise_dist_angle_subset, 3},
     {"_Kdirectional_pcf_anin_fry_c", (DL_FUNC) &_Kdirectional_pcf_anin_fry_c, 7},
     {"_Kdirectional_pcf_anin_conical_c", (DL_FUNC) &_Kdirectional_pcf_anin_conical_c, 10},
     {"_Kdirectional_pcf_anin_cylindrical_c", (DL_FUNC) &_Kdirectional_pcf_anin_cylindrical_c, 9},

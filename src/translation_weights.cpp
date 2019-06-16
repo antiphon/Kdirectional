@@ -28,7 +28,7 @@ NumericVector c_translation_weights(NumericMatrix x, NumericMatrix bbox) {
     for(i=0; i < n-1; i++) {
       for(j=i+1; j < n; j++) {
         wij = 1;
-        for(k=0; k < dim; k++) wij *= boxlen(k) - abs(x(i,k)-x(j,k));
+        for(k=0; k < dim; k++) wij *= boxlen(k) - fabs(x(i,k)-x(j,k));
         w(ind) = wij;
         ind ++ ; 
         }

@@ -1,6 +1,6 @@
 double min(double, double);
 double max(double, double);
-double abs(double x);
+double fabs(double x);
 double kernel_epa(double r, double h);
 double kernel_epa_un(double r);
 double kernel_box(double r, double h);

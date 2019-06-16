@@ -212,7 +212,7 @@ NumericVector int_at_points_toroidal_c(NumericMatrix x,
     for(j=i+loo; j < x.nrow(); j++) {
       w = 1.0/bwd;
       for(k=0; k < dim; k++){
-        a = abs(x(i,k)-x(j,k));
+        a = fabs(x(i,k)-x(j,k));
         b = min(blen(k)-a, a);
         w *= kern(b/bw);
       }
@@ -325,7 +325,7 @@ NumericVector int_at_anywhere_toroidal_c(NumericMatrix x,
     for(j = 0; j < x.nrow(); j++) {
       w = 1.0/bwd;
       for(k=0; k < dim; k++){
-        a = abs(loc(i,k)-x(j,k));
+        a = fabs(loc(i,k)-x(j,k));
         b = min(blen(k)-a, a);
         w *= kern(b/bw);
       }

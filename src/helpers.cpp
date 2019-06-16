@@ -25,7 +25,7 @@ double kernel_box(double r, double h){
 }
 
 
-double abs(double x){
+double fabs(double x){
   if(x < 0) return -x;
   return x;
 }

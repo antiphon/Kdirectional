@@ -123,7 +123,7 @@ NumericMatrix Kest_anin_cylinder_c(NumericMatrix coord,
             dif[l] = pp.getCoord(&j,&l)-pp.getCoord(&i,&l);
             dot += dif[l] * directions(ui, l);
           }
-          d = abs(dot); 
+          d = fabs(dot); 
           // distance from the line in direction u
           dist  = 0;
           for(l = 0; l < dim; l++) dist += pow( dif[l] - dot*directions(ui,l), 2);
@@ -172,7 +172,7 @@ NumericMatrix Kest_anin_cylinder_border_c(NumericMatrix coord, NumericVector lam
               dif[l] = pp.getCoord(&j,&l)-pp.getCoord(&i,&l);
               dot += dif[l] * directions(ui, l);
             }
-            d = abs(dot); 
+            d = fabs(dot); 
             // distance from the line in direction u
             dist  = 0;
             for(l = 0; l < dim; l++) dist += pow( dif[l] - dot*directions(ui,l), 2);

@@ -106,7 +106,7 @@ NumericMatrix pcf_anin_conical_c(NumericMatrix coord, NumericVector lambda, Nume
             ka = ang_kern(ang, epsilon);
             for(ri=0; ri < nr; ri++){
               div  = pow(divisorf(r(ri), d), dim-1);
-              kd =  kernel_epa(abs(d-r(ri)), r_h);
+              kd =  kernel_epa(fabs(d-r(ri)), r_h);
               out(ri, ui) += ka * kd * w / div;
             }
           }
@@ -162,7 +162,7 @@ NumericMatrix pcf_anin_cylindrical_c(NumericMatrix coord,
           dist = sqrt(dist);
           if(dist < epsilon){ // inside the infinite cylinder
             for(ri=0; ri < nr; ri++){
-              k = kernel_epa(abs(d-r(ri)), r_h);
+              k = kernel_epa(fabs(d-r(ri)), r_h);
               out(ri, ui) += k*w / div;
             }
           }
@@ -211,7 +211,7 @@ NumericMatrix pcf_anin_c_d(NumericMatrix coord, NumericVector lambda, NumericMat
           ang = fmin(ang, PI-ang);
           if(ang < epsilon){
             for(ri=0; ri < nr; ri++){
-              k = kernel_epa(abs(d-r(ri)), r_h);
+              k = kernel_epa(fabs(d-r(ri)), r_h);
               out(ri, ui) += k*w;
             }
           }
