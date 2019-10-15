@@ -4,7 +4,7 @@
 \alias{print.intensity_bw}
 \title{Print for intensity bw object}
 \usage{
-\method{print}{intensity_bw}(x, ...)
+print.intensity_bw(x, ...)
 }
 \arguments{
 \item{x}{output of \link{intensity_bandwidth_profile}}

@@ -91,7 +91,7 @@ Kest_anin <- function(x, u, epsilon, r, lambda=NULL, lambda_h,
   coord <- x$x
   if(trans){
     out <- Kest_anin_c(coord, lambda, bbox, r, u, epsilon, border)
-    S <- 2 * S # double sum
+    out <- out * 2 # double sum
   }
   if(!trans){ # minus border correction
     bd <- bbox_distance(coord, bbox)

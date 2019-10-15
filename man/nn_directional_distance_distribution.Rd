@@ -4,8 +4,8 @@
 \alias{nn_directional_distance_distribution}
 \title{Directional nearest neighbour distribution}
 \usage{
-nn_directional_distance_distribution(x, r, direction, epsilon, type = "local",
-  antipodal = TRUE)
+nn_directional_distance_distribution(x, r, direction, epsilon,
+  type = "local", antipodal = TRUE)
 }
 \arguments{
 \item{x}{point pattern}

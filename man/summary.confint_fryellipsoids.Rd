@@ -4,7 +4,7 @@
 \alias{summary.confint_fryellipsoids}
 \title{Summary method for confint_fryellipsoid}
 \usage{
-\method{summary}{confint_fryellipsoids}(x, ...)
+summary.confint_fryellipsoids(x, ...)
 }
 \description{
 Summary method for confint_fryellipsoid

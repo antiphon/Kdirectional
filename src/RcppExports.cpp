@@ -75,6 +75,23 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// Kest_gaussian_c
+NumericMatrix Kest_gaussian_c(NumericMatrix coord, NumericVector lambda, NumericMatrix bbox, NumericVector r, NumericMatrix directions, double kappa, int border);
+RcppExport SEXP _Kdirectional_Kest_gaussian_c(SEXP coordSEXP, SEXP lambdaSEXP, SEXP bboxSEXP, SEXP rSEXP, SEXP directionsSEXP, SEXP kappaSEXP, SEXP borderSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< NumericMatrix >::type coord(coordSEXP);
+    Rcpp::traits::input_parameter< NumericVector >::type lambda(lambdaSEXP);
+    Rcpp::traits::input_parameter< NumericMatrix >::type bbox(bboxSEXP);
+    Rcpp::traits::input_parameter< NumericVector >::type r(rSEXP);
+    Rcpp::traits::input_parameter< NumericMatrix >::type directions(directionsSEXP);
+    Rcpp::traits::input_parameter< double >::type kappa(kappaSEXP);
+    Rcpp::traits::input_parameter< int >::type border(borderSEXP);
+    rcpp_result_gen = Rcpp::wrap(Kest_gaussian_c(coord, lambda, bbox, r, directions, kappa, border));
+    return rcpp_result_gen;
+END_RCPP
+}
 // c_angles
 List c_angles(NumericMatrix x, IntegerVector from, IntegerVector to);
 RcppExport SEXP _Kdirectional_c_angles(SEXP xSEXP, SEXP fromSEXP, SEXP toSEXP) {
@@ -536,6 +553,7 @@ static const R_CallMethodDef CallEntries[] = {
     {"_Kdirectional_Kest_anin_border_c", (DL_FUNC) &_Kdirectional_Kest_anin_border_c, 8},
     {"_Kdirectional_Kest_anin_cylinder_c", (DL_FUNC) &_Kdirectional_Kest_anin_cylinder_c, 7},
     {"_Kdirectional_Kest_anin_cylinder_border_c", (DL_FUNC) &_Kdirectional_Kest_anin_cylinder_border_c, 8},
+    {"_Kdirectional_Kest_gaussian_c", (DL_FUNC) &_Kdirectional_Kest_gaussian_c, 7},
     {"_Kdirectional_c_angles", (DL_FUNC) &_Kdirectional_c_angles, 3},
     {"_Kdirectional_c_angles_in_a_cone", (DL_FUNC) &_Kdirectional_c_angles_in_a_cone, 6},
     {"_Kdirectional_anisotropic_markcor_c", (DL_FUNC) &_Kdirectional_anisotropic_markcor_c, 8},

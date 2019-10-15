@@ -4,7 +4,8 @@
 \alias{nn_directional_angle_distribution}
 \title{Nearest neighbour directional distribution (new version)}
 \usage{
-nn_directional_angle_distribution(x, direction, epsilon, r, antipodal = FALSE)
+nn_directional_angle_distribution(x, direction, epsilon, r,
+  antipodal = FALSE)
 }
 \arguments{
 \item{x}{point pattern, $x coords $bbox bounding box}

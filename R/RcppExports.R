@@ -17,6 +17,10 @@ Kest_anin_cylinder_border_c <- function(coord, lambda, bbox, bdist, r, direction
     .Call('_Kdirectional_Kest_anin_cylinder_border_c', PACKAGE = 'Kdirectional', coord, lambda, bbox, bdist, r, directions, epsilon, border)
 }
 
+Kest_gaussian_c <- function(coord, lambda, bbox, r, directions, kappa, border = 1L) {
+    .Call('_Kdirectional_Kest_gaussian_c', PACKAGE = 'Kdirectional', coord, lambda, bbox, r, directions, kappa, border)
+}
+
 c_angles <- function(x, from, to) {
     .Call('_Kdirectional_c_angles', PACKAGE = 'Kdirectional', x, from, to)
 }

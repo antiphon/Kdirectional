@@ -4,7 +4,7 @@
 \alias{print.bbpoly}
 \title{print method for bbpoly, a cuboid made of quads}
 \usage{
-\method{print}{bbpoly}(x, ...)
+print.bbpoly(x, ...)
 }
 \description{
 print method for bbpoly, a cuboid made of quads

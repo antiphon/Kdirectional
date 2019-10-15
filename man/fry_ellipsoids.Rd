@@ -6,8 +6,8 @@
 \usage{
 fry_ellipsoids(x, nvec = 1:5, r_adjust = 1, nangles, eps = 0,
   cylindric = FALSE, double = FALSE, border = TRUE, origin = TRUE,
-  verbose = FALSE, keep_data = TRUE, double2 = FALSE, data, ALS = FALSE,
-  ...)
+  verbose = FALSE, keep_data = TRUE, double2 = FALSE, data,
+  ALS = FALSE, ...)
 }
 \arguments{
 \item{x}{point pattern}

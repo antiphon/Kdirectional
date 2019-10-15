@@ -40,5 +40,5 @@ Note: The optimisation is done without border correction and without leave-one-o
 }
 \references{
 1. Cronie O, van Lieshout MNM. Bandwidth selection for kernel estimators of the spatial intensity function. 
-2016;1–20. Available from: http://arxiv.org/abs/1611.10221
+2016;1-20. Available from: http://arxiv.org/abs/1611.10221
 }

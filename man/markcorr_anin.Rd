@@ -6,7 +6,8 @@
 \usage{
 markcorr_anin(x, marks, u, epsilon, r, lambda = NULL, lambda_h,
   f = function(a, b) a * b, r_h, stoyan = 0.15, renormalise = TRUE,
-  bootsize = 1e+05, normaliser = NULL, border = 1, divisor = "d", ...)
+  bootsize = 1e+05, normaliser = NULL, border = 1, divisor = "d",
+  ...)
 }
 \arguments{
 \item{x}{pp, list with $x~coordinates $bbox~bounding box}

@@ -4,7 +4,7 @@
 \alias{print.fryellipsoids}
 \title{Print method for fryellipsoids}
 \usage{
-\method{print}{fryellipsoids}(x, ...)
+print.fryellipsoids(x, ...)
 }
 \description{
 Print method for fryellipsoids

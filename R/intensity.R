@@ -81,7 +81,6 @@ intensity_somewhere <- function(x, loc, bw, kernel = "gaussian", border = "local
 }
 
 
-
 #' Find the optimal smoothing for intensity estimation kernel width
 #' 
 #' @param x point pattern
@@ -112,11 +111,10 @@ intensity_somewhere <- function(x, loc, bw, kernel = "gaussian", border = "local
 #' 
 #' @references 
 #' 1. Cronie O, van Lieshout MNM. Bandwidth selection for kernel estimators of the spatial intensity function. 
-#' 2016;1–20. Available from: http://arxiv.org/abs/1611.10221
+#' 2016;1-20. Available from: http://arxiv.org/abs/1611.10221
 #' 
 #' @export
 intensity_bandwidth_profile <- function(x, bw_vector, kernel = "gaussian", ...){
-  
   kernel_i <- pmatch(kernel, kerns <- c("gaussian", "epanechnikov")) - 1
   if(! kernel_i %in% 0:1) stop("kernel input failure")
   

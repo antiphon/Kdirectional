@@ -2,14 +2,13 @@
 % Please edit documentation in R/pcf_anin_conical.R, R/pcf_anin_fry.R
 \name{plot.pcf_anin}
 \alias{plot.pcf_anin}
-\alias{plot.pcf_anin}
 \title{Plot pcf_anin object}
 \usage{
-\method{plot}{pcf_anin}(x, r_scale = 1, rmax, ylim, legpos = "topright",
-  ...)
+\method{plot}{pcf_anin}(x, r_scale = 1, rmax, ylim,
+  legpos = "topright", ...)
 
-\method{plot}{pcf_anin}(x, r_scale = 1, rmax, ylim, legpos = "topright",
-  ...)
+\method{plot}{pcf_anin}(x, r_scale = 1, rmax, ylim,
+  legpos = "topright", ...)
 }
 \arguments{
 \item{x}{Output from pcf_anin or pcf_anin_cylinder}

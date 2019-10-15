@@ -4,7 +4,8 @@
 \alias{plot.K_anin}
 \title{Plot Kest_anin object}
 \usage{
-\method{plot}{K_anin}(x, r_scale = 1, rmax, legpos = "topleft", ...)
+\method{plot}{K_anin}(x, r_scale = 1, rmax, legpos = "topleft",
+  lwd = 1, ...)
 }
 \arguments{
 \item{x}{Output from Kest_anin}
