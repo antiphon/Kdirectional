@@ -4,7 +4,7 @@
 \alias{dist_point_to_plane}
 \title{Point to plane distance}
 \usage{
-dist_point_to_plane(x, pl)
+dist_point_to_plane(x, pl, absit = TRUE)
 }
 \description{
 Point to plane distance

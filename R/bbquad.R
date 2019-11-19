@@ -164,20 +164,24 @@ bbquad_planes <- function(b){
 #' Distance from points to bbquad walls
 #' 
 #' @param x n x 3 matrix of locations
-#' @param b quadrilateral bound box 
+#' @param b quadrilateral bounding box 
+#' @param warn Emit a warning for points outside box? (default: TRUE)
 #' 
-#' Note: Will check if points are inside or outside.
+#' Note: Returned distance will be negative if point outside the box.
 #' 
 #' @export
 
-bbquad_distance <- function(x, b){
+bbquad_distance <- function(x, b, warn = TRUE){
   # form all planes/lines
   planes <- bbquad_planes(b)
   # compute distance from each point to each plane
-  dists <- apply(planes, 2, dist_point_to_plane, x=x)
+  dists <- apply(planes, 2, dist_point_to_plane, x=x, absit = FALSE)
   # check every point inside
-  neg <- which(apply(dists, 1, function(d) any(d<0)))
-  if(length(neg)) warning(paste0("Points (", paste0(neg, collapse=","), ") outside the box."))
+  if(warn){
+    neg <- which(apply(dists, 1, function(d) any(d<0)))
+    nn <- length(neg)
+    if(nn) warning(paste0(nn, " points ", ifelse(nn<5, paste0("(idx: ", paste0(neg, collapse=","), ") "), ""), "outside the box."))
+  }
   apply(dists, 1, min)
 }
 
@@ -208,13 +212,13 @@ three_points_to_plane <- function(x){
 #' Point to plane distance
 #' 
 #' @export
-dist_point_to_plane <- function(x, pl){
+dist_point_to_plane <- function(x, pl, absit = TRUE){
   x <- rbind(x)
   d <- ncol(x)
   n <- pl[1:d]
   p0 <- pl[1:d+d]
   d <- apply(x, 1, function(p) t(p-p0)%*%n )
-  abs(d)
+  if(absit) abs(d) else d
 }
 
 #' Get the edges of the quad box

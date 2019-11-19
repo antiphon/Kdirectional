@@ -4,14 +4,16 @@
 \alias{bbquad_distance}
 \title{Distance from points to bbquad walls}
 \usage{
-bbquad_distance(x, b)
+bbquad_distance(x, b, warn = TRUE)
 }
 \arguments{
 \item{x}{n x 3 matrix of locations}
 
-\item{b}{quadrilateral bound box 
+\item{b}{quadrilateral bounding box}
 
-Note: Will check if points are inside or outside.}
+\item{warn}{Emit a warning for points outside box? (default: TRUE)
+
+Note: Returned distance will be negative if point outside the box.}
 }
 \description{
 Distance from points to bbquad walls
