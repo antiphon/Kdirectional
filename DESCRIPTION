@@ -10,11 +10,9 @@ Description: Tools for analysing linear transformations of 2D and 3D point
     using Fry points.
 License: GPL
 Depends:
-    Rcpp (>= 0.10.6),
-    sphere,
-    ellipsoid
+    Rcpp (>= 0.10.6)
 LinkingTo: Rcpp
 Suggests:
     knitr
 VignetteBuilder: knitr
-RoxygenNote: 6.1.1
+RoxygenNote: 7.0.2

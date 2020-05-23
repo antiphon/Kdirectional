@@ -4,9 +4,19 @@
 \alias{markcorr_anisotropic}
 \title{Anisotropic mark correlation function, direction vector formulation}
 \usage{
-markcorr_anisotropic(x, marks = NULL, r, f = function(a, b) a * b,
-  directions, bw, adjust = c(1, 1), correction = "translation",
-  bootsize = 1e+05, divisor = "d", normaliser = NULL)
+markcorr_anisotropic(
+  x,
+  marks = NULL,
+  r,
+  f = function(a, b) a * b,
+  directions,
+  bw,
+  adjust = c(1, 1),
+  correction = "translation",
+  bootsize = 1e+05,
+  divisor = "d",
+  normaliser = NULL
+)
 }
 \arguments{
 \item{x}{pp, list with $x~coordinates $bbox~bounding box}

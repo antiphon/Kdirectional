@@ -9,7 +9,6 @@
 #' 
 #' See the 'confint.ellipsoid' in 'ellipsoid' for details of ...
 #' 
-#' @import ellipsoid
 #' @exportMethod confint
 #' @export
 

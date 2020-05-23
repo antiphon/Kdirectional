@@ -4,8 +4,17 @@
 \alias{Kest_anin}
 \title{Anisotropic and Inhomogeneous K function}
 \usage{
-Kest_anin(x, u, epsilon, r, lambda = NULL, lambda_h,
-  renormalise = TRUE, border = 1, ...)
+Kest_anin(
+  x,
+  u,
+  epsilon,
+  r,
+  lambda = NULL,
+  lambda_h,
+  renormalise = TRUE,
+  border = 1,
+  ...
+)
 }
 \arguments{
 \item{x}{pp, list with $x~coordinates $bbox~bounding box}

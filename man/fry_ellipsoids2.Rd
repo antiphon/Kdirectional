@@ -4,9 +4,21 @@
 \alias{fry_ellipsoids2}
 \title{Fit second order intensity ellipses or ellipsoids}
 \usage{
-fry_ellipsoids2(x, nvec = 1:5, r_adjust = 1, nangles, eps = 0,
-  cylindric = FALSE, double = FALSE, border = TRUE, origin = TRUE,
-  verbose = FALSE, keep_data = FALSE, data, ...)
+fry_ellipsoids2(
+  x,
+  nvec = 1:5,
+  r_adjust = 1,
+  nangles,
+  eps = 0,
+  cylindric = FALSE,
+  double = FALSE,
+  border = TRUE,
+  origin = TRUE,
+  verbose = FALSE,
+  keep_data = FALSE,
+  data,
+  ...
+)
 }
 \arguments{
 \item{x}{point pattern}

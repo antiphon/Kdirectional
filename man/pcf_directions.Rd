@@ -4,8 +4,15 @@
 \alias{pcf_directions}
 \title{Anisotropic pair correlation function, direction vector formulation}
 \usage{
-pcf_directions(x, directions, h, f = 0.15, correction = "translation",
-  n_dir, r)
+pcf_directions(
+  x,
+  directions,
+  h,
+  f = 0.15,
+  correction = "translation",
+  n_dir,
+  r
+)
 }
 \arguments{
 \item{x}{pp, list with $x~coordinates $bbox~bounding box}

@@ -132,8 +132,8 @@ Then compute the anisotropy profile:
 ```{r}
 r <- seq(0, 0.2, length=50)
 eps <- pi/10
-ani <- anisotropy_profile_fast(xr, grid = grid, r=r, eps=eps, power=2)
-ani0 <- anisotropy_profile_fast(x, grid = grid, r=r, eps=eps, power=2)
+ani <- anisotropy_profile(xr, grid = grid, r=r, eps=eps, power=2)
+ani0 <- anisotropy_profile(x, grid = grid, r=r, eps=eps, power=2)
 ```
 
 We set the sector-K angle with `eps` and use integral of squared differences (`power=2`) as the distance.

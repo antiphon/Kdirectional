@@ -4,8 +4,20 @@
 \alias{pcf_anin}
 \title{Inhomogeneous anisotropic pcf function, sector version}
 \usage{
-pcf_anin(x, u, epsilon, r, lambda = NULL, lambda_h, r_h, stoyan = 0.15,
-  renormalise = TRUE, border = 1, divisor = "d", ...)
+pcf_anin(
+  x,
+  u,
+  epsilon,
+  r,
+  lambda = NULL,
+  lambda_h,
+  r_h,
+  stoyan = 0.15,
+  renormalise = TRUE,
+  border = 1,
+  divisor = "d",
+  ...
+)
 }
 \arguments{
 \item{x}{pp, list with $x~coordinates $bbox~bounding box}

@@ -8,8 +8,7 @@ xc<-matrix(runif(300,-.5,.5) , ncol=3)
 bb <- bbq <- bbquad_default(c(-.5,.5))
 
 # rotate
-library(sphere)
-R <- sphere::rotationMatrix(ax=pi/4, az=pi/4)
+R <- rotationMatrix3(ax=pi/4, az=pi/4)
 bbR<-bbox_affine(bb, R)
 xcR <- xc%*%t(R)
 

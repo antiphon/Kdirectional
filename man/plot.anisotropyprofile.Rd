@@ -4,8 +4,13 @@
 \alias{plot.anisotropyprofile}
 \title{Plot method for "anisotropyprofile"}
 \usage{
-\method{plot}{anisotropyprofile}(x, ..., xlab = "first grid component",
-  ylab = "anisotropy profile", scale = TRUE)
+\method{plot}{anisotropyprofile}(
+  x,
+  ...,
+  xlab = "first grid component",
+  ylab = "anisotropy profile",
+  scale = TRUE
+)
 }
 \description{
 Plot method for "anisotropyprofile"

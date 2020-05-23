@@ -4,8 +4,17 @@
 \alias{Kest_anin_cylinder}
 \title{Anisotropic and Inhomogeneous K function, cylinder version}
 \usage{
-Kest_anin_cylinder(x, u, epsilon, r, lambda = NULL, lambda_h,
-  renormalise = TRUE, border = 1, ...)
+Kest_anin_cylinder(
+  x,
+  u,
+  epsilon,
+  r,
+  lambda = NULL,
+  lambda_h,
+  renormalise = TRUE,
+  border = 1,
+  ...
+)
 }
 \arguments{
 \item{x}{pp, list with $x~coordinates $bbox~bounding box}

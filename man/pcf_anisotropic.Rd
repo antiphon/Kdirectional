@@ -4,8 +4,19 @@
 \alias{pcf_anisotropic}
 \title{Anisotropic pair correlation function}
 \usage{
-pcf_anisotropic(x, r, u, h, stoyan = 0.15, lambda, lambda_h,
-  renormalise = TRUE, border = 1, divisor = "d", ...)
+pcf_anisotropic(
+  x,
+  r,
+  u,
+  h,
+  stoyan = 0.15,
+  lambda,
+  lambda_h,
+  renormalise = TRUE,
+  border = 1,
+  divisor = "d",
+  ...
+)
 }
 \arguments{
 \item{x}{pp, list with $x~coordinates $bbox~bounding box}

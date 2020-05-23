@@ -4,8 +4,18 @@
 \alias{pcf_anin_fry}
 \title{Inhomogeneous anisotropic pcf function, non-spherical version}
 \usage{
-pcf_anin_fry(x, u, r, lambda = NULL, lambda_h, bw, stoyan = 0.35,
-  renormalise = TRUE, border = 1, ...)
+pcf_anin_fry(
+  x,
+  u,
+  r,
+  lambda = NULL,
+  lambda_h,
+  bw,
+  stoyan = 0.35,
+  renormalise = TRUE,
+  border = 1,
+  ...
+)
 }
 \arguments{
 \item{x}{pp, list with $x~coordinates $bbox~bounding box}

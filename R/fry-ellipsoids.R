@@ -18,11 +18,11 @@
 #' First we compute the Fry-points, then we look at the Fry-points in many directions from 
 #' origin and find the kth point in each, then we fit ellipsoids to the kth-points.
 #' 
-#' @import sphere ellipsoid
 #' @export
 
 fry_ellipsoids <- function(x, nvec=1:5, r_adjust=1, nangles, eps=0, 
-                            cylindric=FALSE, double=FALSE, border=TRUE, origin=TRUE, verbose=FALSE,
+                            cylindric=FALSE, double=FALSE, 
+                            border=TRUE, origin=TRUE, verbose=FALSE,
                             keep_data=TRUE, double2=FALSE,
                             data, ALS=FALSE, ...) {
   x <- check_pp(x)

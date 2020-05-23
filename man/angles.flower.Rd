@@ -4,8 +4,7 @@
 \alias{angles.flower}
 \title{Plot a rose of directions for a set of angles}
 \usage{
-angles.flower(angles, binned, span = 0, k = 25, nums = FALSE,
-  ci = FALSE, ...)
+angles.flower(angles, binned, span = 0, k = 25, nums = FALSE, ci = FALSE, ...)
 }
 \arguments{
 \item{angles}{observed angles , -pi to pi}

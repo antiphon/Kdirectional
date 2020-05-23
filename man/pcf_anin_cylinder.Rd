@@ -4,8 +4,19 @@
 \alias{pcf_anin_cylinder}
 \title{Inhomogeneous anisotropic pcf function, cylinder version}
 \usage{
-pcf_anin_cylinder(x, u, epsilon, r, lambda = NULL, lambda_h, r_h,
-  stoyan = 0.15, renormalise = TRUE, border = 1, ...)
+pcf_anin_cylinder(
+  x,
+  u,
+  epsilon,
+  r,
+  lambda = NULL,
+  lambda_h,
+  r_h,
+  stoyan = 0.15,
+  renormalise = TRUE,
+  border = 1,
+  ...
+)
 }
 \arguments{
 \item{x}{pp, list with $x~coordinates $bbox~bounding box}

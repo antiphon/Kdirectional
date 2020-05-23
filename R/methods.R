@@ -9,7 +9,6 @@ plot.os_K <- function(x, ...){
 
 #' method plot for anisotropic pcf-function
 #' 
-#' @import sphere
 #' @export
 #' @exportMethod plot
 
@@ -38,7 +37,6 @@ plot.pcf_anisotropic <- function(x, ab, ...){
 
 #' method plot2d for anisotropic pcf-function
 #' 
-#' @import sphere
 #' @export
 #' @exportMethod plot2d
 

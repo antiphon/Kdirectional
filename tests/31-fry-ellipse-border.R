@@ -1,9 +1,8 @@
 #
 library(devtools)
-library(sphere)
 load_all(".")
 
-#source("test/test-data.R")
+source("tests/test-data.R")
 ff <- fry_ellipsoids(pp, nvec=1:50, )
 # f0 <- fry_ellipsoids(pp, nvec=nv<-(1:120)*3,r_adjust=ra<-10, double=FALSE)
 # f1 <- fry_ellipsoids(pp, nvec=nv, r_adjust = ra, border=TRUE)

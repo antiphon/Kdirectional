@@ -4,8 +4,7 @@
 \alias{check_directions}
 \title{Sector computation directions}
 \usage{
-check_directions(theta, epsilon, unit, dim = 2, antipode = FALSE,
-  n_dir = 12)
+check_directions(theta, epsilon, unit, dim = 2, antipode = FALSE, n_dir = 12)
 }
 \description{
 Sector computation directions

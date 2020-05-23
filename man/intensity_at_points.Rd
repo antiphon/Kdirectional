@@ -4,8 +4,14 @@
 \alias{intensity_at_points}
 \title{Kernel Estimate Intensity at Data Points}
 \usage{
-intensity_at_points(x, bw, kernel = "gaussian", border = "local",
-  normalise = FALSE, loo = FALSE)
+intensity_at_points(
+  x,
+  bw,
+  kernel = "gaussian",
+  border = "local",
+  normalise = FALSE,
+  loo = FALSE
+)
 }
 \arguments{
 \item{x}{point pattern}

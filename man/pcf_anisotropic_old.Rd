@@ -4,8 +4,15 @@
 \alias{pcf_anisotropic_old}
 \title{Anisotropic pair correlation function, old version}
 \usage{
-pcf_anisotropic_old(x, r, theta, h, stoyan = 0.15,
-  correction = "translation", n_dir = 7)
+pcf_anisotropic_old(
+  x,
+  r,
+  theta,
+  h,
+  stoyan = 0.15,
+  correction = "translation",
+  n_dir = 7
+)
 }
 \arguments{
 \item{x}{pp, list with $x~coordinates $bbox~bounding box}

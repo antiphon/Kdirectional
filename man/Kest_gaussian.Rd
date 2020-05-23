@@ -4,8 +4,17 @@
 \alias{Kest_gaussian}
 \title{Gaussian Weighted Sum of Pairwise Vectors}
 \usage{
-Kest_gaussian(x, u, kappa, r, lambda = NULL, lambda_h,
-  renormalise = TRUE, border = 1, ...)
+Kest_gaussian(
+  x,
+  u,
+  kappa,
+  r,
+  lambda = NULL,
+  lambda_h,
+  renormalise = TRUE,
+  border = 1,
+  ...
+)
 }
 \arguments{
 \item{x}{pp, list with $x~coordinates $bbox~bounding box}

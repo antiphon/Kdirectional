@@ -4,8 +4,15 @@
 \alias{nn_orientation_density}
 \title{Nearest neighbour angle density}
 \usage{
-nn_orientation_density(x, bw = 0.35, antipodal = TRUE, avec, ..., data,
-  justData = FALSE)
+nn_orientation_density(
+  x,
+  bw = 0.35,
+  antipodal = TRUE,
+  avec,
+  ...,
+  data,
+  justData = FALSE
+)
 }
 \arguments{
 \item{x}{point pattern}

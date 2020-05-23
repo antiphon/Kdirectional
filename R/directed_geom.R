@@ -27,7 +27,9 @@ directed_geom <- function(x, u, theta, r, from, to, double=TRUE, pregraph) {
   if(missing(theta)) stop("theta needed")
   if(!double) stop("Not implemented.")
   # make sure unit vector
-  u <- u/sqrt(t(u)%*%u)
+  u <- rbind(u)
+  u <- t(apply(u, 1, function(ui) ui/c(sqrt(t(ui)%*%ui) )))
+  
   if(missing(pregraph)) c_directed_geom(x, u, theta, r, from, to) 
   else c_directed_geom_by_cut(x, u, pregraph, theta, r, from, to) 
 }

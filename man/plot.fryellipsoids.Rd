@@ -4,9 +4,18 @@
 \alias{plot.fryellipsoids}
 \title{plot method for fryellipsoids}
 \usage{
-\method{plot}{fryellipsoids}(x, ellipsoids = TRUE, used_points = TRUE,
-  sectors = NULL, xlim = NULL, ylim = NULL, zoom = NULL, pch = 1,
-  cex = 0.8, ...)
+\method{plot}{fryellipsoids}(
+  x,
+  ellipsoids = TRUE,
+  used_points = TRUE,
+  sectors = NULL,
+  xlim = NULL,
+  ylim = NULL,
+  zoom = NULL,
+  pch = 1,
+  cex = 0.8,
+  ...
+)
 }
 \description{
 plot method for fryellipsoids

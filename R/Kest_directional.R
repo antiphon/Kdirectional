@@ -78,7 +78,8 @@ Kest_directional_old <- function(x, u, epsilon, r, pregraph) {
     r <- seq(0, b, length=50)
   }
   # make sure unit vector
-  u <- u/sqrt(t(u)%*%u)
+  u <- rbind(u)
+  u <- t(apply(u, 1, function(ui) ui/c(sqrt(t(ui)%*%ui) )))
   # start:
   xc <- as.matrix(x$x)
   from <- 1:nrow(xc)

@@ -3,7 +3,6 @@
 \docType{package}
 \name{Kdirectional}
 \alias{Kdirectional}
-\alias{Kdirectional-package}
 \title{Some tools for analysing the isotropy of spatial point patterns}
 \description{
 See the vignette for an example.

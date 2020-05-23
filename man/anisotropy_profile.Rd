@@ -4,8 +4,17 @@
 \alias{anisotropy_profile}
 \title{Anisotropy profile for given diagonal transformations}
 \usage{
-anisotropy_profile(x, grid, r, verb = FALSE, eps = pi/4,
-  border = TRUE, antipodal = TRUE, power = 2, ...)
+anisotropy_profile(
+  x,
+  grid,
+  r,
+  verb = FALSE,
+  eps = pi/4,
+  border = TRUE,
+  antipodal = TRUE,
+  power = 2,
+  ...
+)
 }
 \arguments{
 \item{x}{point pattern}

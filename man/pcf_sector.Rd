@@ -4,8 +4,17 @@
 \alias{pcf_sector}
 \title{Sector pair correlation function}
 \usage{
-pcf_sector(x, r, theta, unit, epsilon, h, stoyan = 0.15,
-  correction = "translation", n_dir = 12)
+pcf_sector(
+  x,
+  r,
+  theta,
+  unit,
+  epsilon,
+  h,
+  stoyan = 0.15,
+  correction = "translation",
+  n_dir = 12
+)
 }
 \arguments{
 \item{x}{pp, list with $x~coordinates $bbox~bounding box}

@@ -4,8 +4,7 @@
 \alias{sectorplot}
 \title{Plot a sector estimate}
 \usage{
-sectorplot(x, res = 4, col = rainbow, zlim, overlapfactor = 0.95,
-  ...)
+sectorplot(x, res = 4, col = rainbow, zlim, overlapfactor = 0.95, ...)
 }
 \arguments{
 \item{x}{result object from one of the directed summaries}
