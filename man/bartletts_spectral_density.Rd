@@ -21,7 +21,7 @@ We estimate the spectral density using a periodogram as suggested by Bartlett 19
 
 \deqn{\mathcal{F}(\omega) = \lambda + \lambda^2\int_{R^d}[g(z)-1]e^{-i\omega^T z}dz}
 
-where we assume that the process is stationary with intensity $\lambda$ and pair correlation function $g$. 
+where we assume that the process is stationary with intensity lambda and pair correlation function $g$. 
 Isotropy is not assumed.
 
 This function deliberately does not scale or assume a form for the frequencies (such as 2kpi/n, k integer), as 
