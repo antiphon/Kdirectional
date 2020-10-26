@@ -4,11 +4,31 @@
 \alias{rosenberg}
 \title{Rosenberg Wavelet Transform}
 \usage{
-rosenberg(x)
+rosenberg(
+  x,
+  theta = seq(0, pi, l = 50),
+  scales = 1:45/180 * pi,
+  steps = 180,
+  include = 0.5
+)
 }
 \arguments{
 \item{x}{pp, list with $x~coordinates $bbox~bounding box}
+
+\item{theta}{directions to estimate the wavelet variance at}
+
+\item{scales}{angular scales to average over, in radians.}
+
+\item{steps}{divide the half-circle into this many sectors around each point (default: 180)}
+
+\item{include}{Only estimate the variance from points in the central region, area fraction given by 'include'. default: 0.5.}
 }
 \description{
-Estimate the wavelet variance suggested by Rosenberg 2004. 2D only.
+Estimate the wavelet variance suggested by Rosenberg 2004. 2D only, rectangular box only.
+}
+\details{
+Compute the estimator given in Rosenberg 2004.
+}
+\references{
+Rosenberg M S, Wavelet analysis for detecting anisotropy in point patterns, J of Veg Sci 2004
 }

@@ -133,6 +133,14 @@ pcf_anin_cylindrical_c <- function(coord, lambda, bbox, r, r_h, directions, epsi
     .Call('_Kdirectional_pcf_anin_cylindrical_c', PACKAGE = 'Kdirectional', coord, lambda, bbox, r, r_h, directions, epsilon, border, divisor_i)
 }
 
+line_hit_planes <- function(line, planes) {
+    .Call('_Kdirectional_line_hit_planes', PACKAGE = 'Kdirectional', line, planes)
+}
+
+c_rosenberg_intensities <- function(x, bbox, steps = 180L) {
+    .Call('_Kdirectional_c_rosenberg_intensities', PACKAGE = 'Kdirectional', x, bbox, steps)
+}
+
 c_sector_pcf <- function(x, u, theta, r, h, bbox, correction) {
     .Call('_Kdirectional_c_sector_pcf', PACKAGE = 'Kdirectional', x, u, theta, r, h, bbox, correction)
 }

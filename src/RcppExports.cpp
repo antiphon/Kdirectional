@@ -518,6 +518,31 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// line_hit_planes
+NumericMatrix line_hit_planes(NumericVector line, NumericMatrix planes);
+RcppExport SEXP _Kdirectional_line_hit_planes(SEXP lineSEXP, SEXP planesSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< NumericVector >::type line(lineSEXP);
+    Rcpp::traits::input_parameter< NumericMatrix >::type planes(planesSEXP);
+    rcpp_result_gen = Rcpp::wrap(line_hit_planes(line, planes));
+    return rcpp_result_gen;
+END_RCPP
+}
+// c_rosenberg_intensities
+NumericMatrix c_rosenberg_intensities(NumericMatrix x, NumericMatrix bbox, int steps);
+RcppExport SEXP _Kdirectional_c_rosenberg_intensities(SEXP xSEXP, SEXP bboxSEXP, SEXP stepsSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< NumericMatrix >::type x(xSEXP);
+    Rcpp::traits::input_parameter< NumericMatrix >::type bbox(bboxSEXP);
+    Rcpp::traits::input_parameter< int >::type steps(stepsSEXP);
+    rcpp_result_gen = Rcpp::wrap(c_rosenberg_intensities(x, bbox, steps));
+    return rcpp_result_gen;
+END_RCPP
+}
 // c_sector_pcf
 NumericVector c_sector_pcf(NumericMatrix x, NumericVector u, double theta, NumericVector r, double h, NumericMatrix bbox, int correction);
 RcppExport SEXP _Kdirectional_c_sector_pcf(SEXP xSEXP, SEXP uSEXP, SEXP thetaSEXP, SEXP rSEXP, SEXP hSEXP, SEXP bboxSEXP, SEXP correctionSEXP) {
@@ -582,6 +607,8 @@ static const R_CallMethodDef CallEntries[] = {
     {"_Kdirectional_pcf_anin_fry_c", (DL_FUNC) &_Kdirectional_pcf_anin_fry_c, 7},
     {"_Kdirectional_pcf_anin_conical_c", (DL_FUNC) &_Kdirectional_pcf_anin_conical_c, 10},
     {"_Kdirectional_pcf_anin_cylindrical_c", (DL_FUNC) &_Kdirectional_pcf_anin_cylindrical_c, 9},
+    {"_Kdirectional_line_hit_planes", (DL_FUNC) &_Kdirectional_line_hit_planes, 2},
+    {"_Kdirectional_c_rosenberg_intensities", (DL_FUNC) &_Kdirectional_c_rosenberg_intensities, 3},
     {"_Kdirectional_c_sector_pcf", (DL_FUNC) &_Kdirectional_c_sector_pcf, 7},
     {"_Kdirectional_c_translation_weights", (DL_FUNC) &_Kdirectional_c_translation_weights, 2},
     {NULL, NULL, 0}

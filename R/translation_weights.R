@@ -3,6 +3,10 @@
 #' Defined in a bounding box.
 #' 
 #' @param x Pattern, $x coordinate matrix, $bbox bounding box.
+#' @param asMatrix Return a square symmetric matrix? Otherwise only the upper triangle row by row.
+#' 
+#' @return if asMatrix=FALSE, the vector gives the weights in order 
+#' (1,2), (1,3), ..., (1,n), (2,3), (2,4), ... (n-2, n-1), (n-2,n), (n-1, n)
 #' 
 #' @export
 
