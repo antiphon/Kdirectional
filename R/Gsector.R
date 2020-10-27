@@ -114,7 +114,10 @@ nn_directional_distance_distribution_local <- function(x, u, epsilon, r, antipod
     # New border correction:
     bds <- redenbach_border_term(nnd[has_nn], x$bbox, u[1,], epsilon)
     bok <- apply((bd[has_nn] - bds) >= 0, 1, all)
-    w <- apply(sapply(1:dim, function(k) bbox0[2,k] - 2 * bds[bok, k] ), 1, prod)
+    if(sum(bok))
+      w <- apply(sapply(1:dim, function(k) bbox0[2, k] - 2 * bds[bok, k] ), 1, prod)
+    else 
+      w <- NA
     d <- nnd[has_nn][bok]
     # counts per range:
     counts <- sapply(r2, function(ri) sum( 1/w[d <= ri] ) )
