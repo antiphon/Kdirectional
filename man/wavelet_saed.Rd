@@ -4,15 +4,22 @@
 \alias{wavelet_saed}
 \title{Scale-angle-energy-density}
 \usage{
+<<<<<<< HEAD
 wavelet_saed(x, theta = seq(0, pi, l = 30), scales, shift_res = 20, ...)
+=======
+wavelet_saed(x, theta = seq(0, pi, l = 30), shift_res = 20, scales)
+>>>>>>> 54d8d261ae6316813e0785d6526721333fbcdf47
 }
 \arguments{
 \item{x}{point pattern, list of $x and $bbox}
 
 \item{theta}{angles}
 
+<<<<<<< HEAD
 \item{scales}{scales}
 
+=======
+>>>>>>> 54d8d261ae6316813e0785d6526721333fbcdf47
 \item{shift_res}{resolution of the shift-grid}
 
 \item{...}{ignored}
