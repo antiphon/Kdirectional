@@ -7,23 +7,39 @@ Rot <- Kdirectional::rotationMatrix3(az=pi/2)[-3,-3]
 #x <- pp
 
 nn <- 100
-x <- check_pp( cbind(runif(nn), runif(nn)) )
+x <-  cbind(runif(nn), runif(nn))  * 60
+#x[,2] <- round(x[,2])
 
+
+
+source("~/Sync/Aka/julkaisut/anisotropy-review-overleaf/examples/synthetic-examples/generate-stripe.R")
+x <- stripes
+
+
+x <- check_pp(x)
 bb <- x$bbox
-
 
 res <- 180
 
-b <- rosenberg(x, steps = res)
-b0 <- rosenberg(x, steps = res, include = 1)
+# End results
+if(1){
 
-## 
-par(mfrow = c(2,2))
-plot(x$x, asp = 1)
-plot(b, type="b", xaxt="n")
-lines(b0, col = 2)
-axis(1, at = seq(0, pi, l = 5), labels = expression(0, pi/4, pi/2, 3*pi/4, pi))
-plot(pcf_anisotropic(x))
+  b <- rosenberg(x, steps = res, include = 0.8, theta = seq(0,pi, l = 180))
+  b0 <- rosenberg(x, steps = res, include = 1, theta = b[,1])
+  ##
+  par(mfrow = c(2,2))
+  plot(x$x, asp = 1)
+  plot(b, type="l", xaxt="n")
+  lines(b0, col = 2)
+  axis(1, at = seq(0, pi, l = 5), labels = expression(0, pi/4, pi/2, 3*pi/4, pi))
+  plot(pcf_anisotropic(x))
+}
+
+## Check the counts per direction, something wrong with along-the-x-axis
+if(0){
+  co <- c_rosenberg_intensities(x$x, x$bbox, res)
+    
+}
 
 
 # envelope?
@@ -64,19 +80,21 @@ if(0){
 # check counts and "sector area inside box" approximation
 #OK  OBSOLETE
 if(0){
-  i <- 14
+  i <- 10
   z<-x$x[i,,drop=FALSE]
+  b <- c_rosenberg_intensities(x$x, x$bbox, res)
   plot.bbquad(bbox2bbquad(bb), add = FALSE, asp = 1)
   for(ai in 0:(res-1) ){
-    ang <- ai/res * pi
-    # sectors of size 1deg
     d <- 1/res * pi 
+    ang <- ai/res * pi #- d/2
+    # sectors of size 1deg
     p0 <- cbind(cos(ang), sin(ang))*100
     p1 <- cbind(cos(ang+d), sin(ang+d)) * 100
     pol <- rbind(z, p0, p1, z, -p0, -p1)
     #col <- b[i,ai+1]+1  
     col <- rgb(0,0,b[i,ai+1] / max(b[i,]))
-    polygon(pol , col = col, border="gray90" )
+    polygon(pol , col = col, 
+            border=NA )
   }
   plot.bbquad(bbox2bbquad(bb), add = TRUE, asp = 1, ecol =  "white")
   points(z, pch=19, col = "yellow")

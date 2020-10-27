@@ -17,36 +17,46 @@
 #' @export
 
 rosenberg <- function(x, theta = seq(0, pi, l = 50), scales = 1:45 / 180 * pi, 
-                      steps = 180, include = .5) {
+                      steps = 180, include = .75) {
   x <- check_pp(x)
   if(ncol(x$x) != 2) stop("Use only for 2D data")
   if( include > 1 || include < 0 ) stop("'include' needs to be between 0 and 1.")
   #
   loc <- x$x
   bb <- x$bbox
+  
   # pointwise directional densities
   etas <- c_rosenberg_intensities(loc, bb, steps)
-  step <- pi/steps
-  thetai <- seq(0, pi-step, by = step) + step/2
-  # 
   
   # Wavelet to use
-  french_hat <- function(v) {
+  french_top_hat <- function(v) {
     o <- 0 * v
     a <- abs(v)
-    o[a < 3/2] <- -1
-    o[a < 1/2] <- 2
+    o[a < 1.5] <- -1
+    o[a < 0.5] <-  2
     o
   }
   
-  # cyclic distance?
-  #arg <- pmin(outer(thetai, theta, "-"), outer(thetai, pi-theta, "-"))
-  #browser()
+  # To avoid edge effects:
+  step <- pi/steps
+  thetai0 <- seq(0, pi-step , by = step) # actual interesting
+  thetai <- seq(-max(scales), pi - step + max(scales), by = step)  # buffered
+  thetaij <- thetai 
+  thetaij[ thetaij < 0]  <- thetaij[thetaij < 0 ]  + pi
+  thetaij[ thetaij > pi] <- thetaij[thetaij > pi ] - pi
+  # find match
+  ij <- match( round(thetaij, 9), round(thetai0, 9)) 
+  if(any(is.na(ij))) ij <- sapply(thetaij, function(v) which.min(abs(v-thetai0))) # rounding errors again
+  # wrap
   arg <- outer(thetai, theta, "-")
+  etass  <-  etas[,ij]
+  #arg <- pmin(outer(thetai, theta, "-"), outer(thetai, pi-theta, "-"))
+  # 
+#  browser()
   
-  bk <- scales
-  WM <- simplify2array( lapply( scales, function(bk){ etas %*% french_hat( arg / bk ) / bk } )  )
+  WM <- simplify2array( lapply( scales, function(bk){ etass %*% french_top_hat( arg / bk ) / bk } )  ) 
   # pointwise "variance"
+  #browser()
   Px <- apply(WM^2, c(1,2), mean)
   # Edge correction
   bb_inc <-  t( (t(bb) - colMeans(bb)) * sqrt(include) + colMeans(bb)  ) 

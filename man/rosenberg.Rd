@@ -9,7 +9,7 @@ rosenberg(
   theta = seq(0, pi, l = 50),
   scales = 1:45/180 * pi,
   steps = 180,
-  include = 0.5
+  include = 0.75
 )
 }
 \arguments{

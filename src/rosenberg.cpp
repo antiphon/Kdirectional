@@ -64,7 +64,7 @@ NumericMatrix line_hit_planes(NumericVector line, NumericMatrix planes) {
     dx = planes(2,i) - line(0);
     dy = planes(3,i) - line(1);
     s  = line(2) * planes(0,i) + line(3) * planes(1,i);
-    t  = 0.9999999 * ( dx * planes(0,i) + dy * planes(1,i) )/s;
+    t  = 0.9999999 * ( dx * planes(0,i) + dy * planes(1,i) )/s; // rounding errors? Fix properly? How?
     hit(i,0) = line(0) + t * line(2);
     hit(i,1) = line(1) + t * line(3);
   }
@@ -77,13 +77,15 @@ NumericMatrix line_hit_planes(NumericVector line, NumericMatrix planes) {
 NumericMatrix c_rosenberg_intensities(NumericMatrix x, NumericMatrix bbox, int steps = 180) {
   NumericMatrix counts(x.nrow(), steps);
   NumericMatrix areas( x.nrow(), steps);
+  //NumericMatrix sectorhits(steps, 1);
   // 1st, compute local directional intensities
   int i, j, k, n;
   double ang = 0, dx = 0, dy = 0, r2 = 0;
-  //double angb = 0; 
-  double halfwidth  = PI / (2.0 * steps);
   
-  double base = atan(PI/(2.0 * steps));
+  double width =  PI / (double)steps;
+  double halfwidth  = width / 2.0;
+  
+  double base =  atan(PI/(2.0 * steps)); // sector triangle base, for approximation
   
   NumericMatrix hits;
   NumericVector line(4);
@@ -93,46 +95,47 @@ NumericMatrix c_rosenberg_intensities(NumericMatrix x, NumericMatrix bbox, int s
     for(j = i + 1; j < x.nrow(); j++) {
       dx = x(i, 0) - x(j, 0);
       dy = x(i, 1) - x(j, 1);
-      ang = atan2(dy, dx);
-      if(ang<0) ang = ang + PI;
-      if(ang>PI)ang = ang - PI;
-      k = floor(ang / PI * steps); // slot
-      if(k == steps) k--;
+      ang = atan2(dy, dx) + halfwidth;
+      if(ang < 0 )  ang = ang + PI;
+      if(ang >= PI)  ang = ang - PI;
+      k = (int)(ang / width); // slot
       counts(i, k)+= 1;
       counts(j, k)+= 1;
-      //Rprintf("%4.2f,", ang);
+      //sectorhits(k,0)+=1;
     }
     //
-      // approximation of the double-cone - window area
-      // use rosenberg's triangle approxiamtion
+    // approximation of the double-cone cap window area
+    // use rosenberg's triangle approxiamtion
     line(0) = x(i,0);
     line(1) = x(i,1);
     for(k = 0; k < steps; k++) {
-      ang = halfwidth * (2 * k + 1);
+      ang = halfwidth * (2 * k); // central-direction of the cone, upper half
       line(2) = cos(ang);
       line(3) = sin(ang);
       // first get hit points
       n = 0; // check
       hits = line_hit_planes(line, planes);
+      areas(i,k) = 0;
       for(j = 0; j < hits.nrow(); j++) {
         // check which actually hit the box
-        //if( hits(0,j) >=  bbox(0,0) && hits(0,j) <= bbox(1,0) && hits(1,j) >= bbox(0,1) && hits(1,j) <= bbox(1,1)) {n++;}
         if( hits(j,0) <  bbox(0,0) || hits(j,0) > bbox(1,0) || hits(j,1) < bbox(0,1) || hits(j,1) > bbox(1,1)) {}
         else{
           // we should have two of these
           n++;
           dx = hits(j,0) - x(i,0);
           dy = hits(j,1) - x(i,1);
-          r2 = dx*dx + dy*dy;
-          areas(i, k) += base * r2; // area of the triangle
+          r2 = dx*dx + dy*dy; // distance from point to edge, ^2
+          areas(i, k) += base * r2; // area of the isosceles triangle
         }
       }
-      if(n != 2) Rprintf("%i,%f:%i\n", i, ang, n);
+      if(n != 2) Rprintf("%i,%f:%i\n", i, ang, n); // rounding error or something happenedd...
       // normalise the count
       counts(i,k) /= areas(i,k);
     }
   }
   //return bbquad_planes( bbox2bbquad(bbox) );
   //return  bbox2bbquad(bbox) ;
+  //return areas;
+  //return sectorhits;
   return counts;
 }
