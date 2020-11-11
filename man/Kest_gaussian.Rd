@@ -23,7 +23,7 @@ Kest_gaussian(
 
 \item{kappa}{The ratio of the secondary axis to the main axis going along 'u'.}
 
-\item{r}{radius vector at which to evaluate. Corresponds to the radii of the 95\% iso-sphere when kappa = 1.}
+\item{r}{radius vector at which to evaluate. Corresponds to the radii of the 95\% quantile in x-axis, before rotation in directions u.}
 
 \item{lambda}{optional vector of intensity estimates at points}
 

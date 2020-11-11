@@ -9,9 +9,13 @@ double gkern(double d) {
 }
 
 // [[Rcpp::export]]
-NumericMatrix Kest_gaussian_c(NumericMatrix coord, NumericVector lambda, NumericMatrix bbox, 
-                              NumericVector r, NumericMatrix directions,
-                              double kappa, int border=1) {
+NumericMatrix Kest_gaussian_c(NumericMatrix coord, 
+                              NumericVector lambda, 
+                              NumericMatrix bbox, 
+                              NumericVector r, 
+                              NumericMatrix directions,
+                              double kappa, 
+                              int border=1) {
   
   Pp pp(coord, lambda, bbox); // mark with lambda
   
@@ -24,12 +28,13 @@ NumericMatrix Kest_gaussian_c(NumericMatrix coord, NumericVector lambda, Numeric
   int i,j,l, ui, ri;
   double d, w, dot, dot2, v, a;
   double rmax, normaliser;
+  double quan = 2.0; // corresponds to about 95% reach in x-direction
   // the compression diagonal matrix. We have Sigma = TT^T, with T=RC. u defines R; kappa defines C.
   NumericVector C(dim);
-  C(0) = 1/kappa;
-  for(i=1; i < dim; i++) C(i) = pow(kappa, 1.0/(dim-1.0)); // in case 1D.
+  C(0) = 1; // sqrt of diagonal of the covariance of the axis-oriented kernel, major axis longer
+  for(i=1; i < dim; i++) C(i) = pow(kappa, 1.0/(dim-1.0)); // in case 1D or.
   //
-  normaliser = 1.0 / ( sqrt(pow(2*PI, dim))  ); // basic gaussian constant + compression assumed to have || = 1
+  normaliser = 1.0 / ( sqrt(pow(2*PI, dim))  ); // basic gaussian constant
   // max relevant range is in direction u 
   rmax =  C(0) * r(nr-1) * 2  ; 
   //
@@ -48,12 +53,9 @@ NumericMatrix Kest_gaussian_c(NumericMatrix coord, NumericVector lambda, Numeric
           dot2 = sqrt(d*d - dot*dot); // length of fry in any direction perp to u
           if(dot < rmax && dot2 < rmax){
             for(ri=0; ri < nr; ri++){
-              a = r(ri) * 0.5;
-               v =       gkern( dot / (a * C(0)) ); // major axis 
-               v *= pow( gkern(dot2 / (a * C(1)) ), dim-1); // minor axes
-               v /= ( pow(a, dim) )  ; // normalise
-              //v = -0.5 * ( pow(dot/( a * C(0)), 2) + (dim-1) * pow(dot2/(a*C(1)), 2) ) - dim * log(a); 
-              //v = exp(v);// no change
+              a = r(ri) / quan;
+              v =       gkern( dot / (a*C(0)) ) / (a*C(0)) ; // major axis 
+              v *= pow( gkern(dot2 / (a*C(1)) ) / (a*C(1)) , dim-1); // minor axes
               v *= w;
               out(ri, ui) += v;
               //Rprintf("d1:%f, d2:%f: v:%f\n", dot, dot2, v);

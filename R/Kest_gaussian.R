@@ -5,7 +5,7 @@
 #' @param x pp, list with $x~coordinates $bbox~bounding box
 #' @param u unit vector(s) of direction, as row vectors. Default: x and y axes, viz. c(1,0) and c(0,1). This gives the major axis of the ellipsoid (direction of largest variance in the Gaussian density).
 #' @param kappa The ratio of the secondary axis to the main axis going along 'u'.
-#' @param r radius vector at which to evaluate. Corresponds to the radii of the 95\% iso-sphere when kappa = 1.
+#' @param r radius vector at which to evaluate. Corresponds to the radii of the 95\% quantile in x-axis, before rotation in directions u.
 #' @param lambda optional vector of intensity estimates at points
 #' @param lambda_h if lambda missing, use this bandwidth in a kernel estimate of lambda(x)
 #' @param renormalise See details. 
@@ -19,8 +19,9 @@
 #' 
 #' @useDynLib Kdirectional
 #' @export
-Kest_gaussian <- function(x, u, kappa, r, lambda=NULL, lambda_h, 
-                      renormalise=TRUE,  border=1, ...) {
+Kest_gaussian <- function(x, u, kappa, r, lambda=NULL, 
+                          lambda_h, 
+                          renormalise=TRUE,  border=1, ...) {
   x <- check_pp(x)
   bbox <- x$bbox
   trans <- !is.bbquad(bbox)
@@ -73,7 +74,6 @@ Kest_gaussian <- function(x, u, kappa, r, lambda=NULL, lambda_h,
     S <- 1
   }
   #
-  
   # 
   # we got everything, let's compute.
   coord <- x$x

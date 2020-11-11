@@ -11,6 +11,8 @@
 wavelet_saed <- function(x, theta = seq(0, pi, l = 30), 
                             scales, 
                             shift_res = 20,
+                            D = 0.1,
+                            k0 = 5.5,
                             ...) {
   x <- check_pp(x)
   loc <- t( x$x )
@@ -21,8 +23,7 @@ wavelet_saed <- function(x, theta = seq(0, pi, l = 30),
   if(missing(scales)) scales <- seq(0, max(sl), length.out = 20)
   # wavelet
   # mother wavelet, fixed
-  D <- 0.1
-  k0 <- cbind(0, 5.5)
+  k0 <- cbind(0, k0[1])
   con <- sqrt(D/pi) 
   
   wave <- function(a, b, ang) {

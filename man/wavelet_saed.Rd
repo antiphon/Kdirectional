@@ -4,7 +4,15 @@
 \alias{wavelet_saed}
 \title{Scale-angle-energy-density}
 \usage{
-wavelet_saed(x, theta = seq(0, pi, l = 30), scales, shift_res = 20, ...)
+wavelet_saed(
+  x,
+  theta = seq(0, pi, l = 30),
+  scales,
+  shift_res = 20,
+  D = 0.1,
+  k0 = 5.5,
+  ...
+)
 }
 \arguments{
 \item{x}{point pattern, list of $x and $bbox}

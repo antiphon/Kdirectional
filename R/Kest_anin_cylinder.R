@@ -48,11 +48,6 @@ Kest_anin_cylinder <- function(x, u, epsilon, r, lambda=NULL, lambda_h,
   u <- rbind(u)
   u <- t(apply(u, 1, function(ui) ui/c(sqrt(t(ui)%*%ui) )))
   #
-  # central half-angle
-  if(missing(epsilon)){
-    epsilon <- 0.1
-  }
-  if(epsilon <= 0) stop("Cylinder radius epsilon should >0")
   #
   # ranges
   if(missing(r)) {
@@ -60,6 +55,12 @@ Kest_anin_cylinder <- function(x, u, epsilon, r, lambda=NULL, lambda_h,
     bl <- min(sidelengths)*0.3
     r <- seq(0, bl, length=50)
   }
+  # central half-angle
+  if(missing(epsilon)){
+    stop("cylinder half-width epsilon missing, and no default available.")
+  }
+  if(epsilon <= 0) stop("Cylinder radius epsilon should >0")
+  #
   # check intensity 
   if(!missing(lambda)){
     err <- paste("lambda should be a single positive number or a vector of length", nrow(x$x))
