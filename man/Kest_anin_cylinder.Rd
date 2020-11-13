@@ -13,6 +13,7 @@ Kest_anin_cylinder(
   lambda_h,
   renormalise = TRUE,
   border = 1,
+  aspect = NULL,
   ...
 )
 }
@@ -21,7 +22,7 @@ Kest_anin_cylinder(
 
 \item{u}{unit vector(s) of direction, as row vectors. Default: x and y axes, viz. c(1,0) and c(0,1).}
 
-\item{epsilon}{The cylinder half-width}
+\item{epsilon}{The cylinder half-width. Will be extended to the length of r, so can be given per r.}
 
 \item{r}{radius vector at which to evaluate K}
 
@@ -32,6 +33,8 @@ Kest_anin_cylinder(
 \item{renormalise}{See details.}
 
 \item{border}{Use border correction? Default=1, yes.}
+
+\item{aspect}{If given, instead of using a fixed halfwidth (epsilon) take the halfwidth to be r/(2*aspect) (so an increasing vector)}
 
 \item{...}{passed on to e.g. \link{intensity_at_points}}
 }

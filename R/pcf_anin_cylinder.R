@@ -12,6 +12,7 @@
 #' @param stoyan If r_h not given, use r_h=stoyan/lambda^(1/dim). Same as 'stoyan' in spatstat's pcf.
 #' @param renormalise See details. 
 #' @param border Use translation correction? Default=1, yes. Only for cuboidal windows.
+#' @param aspect If given, instead of using a fixed halfwidth (epsilon) take the halfwidth to be r/(2*aspect)
 #' @param ... passed on to e.g. \link{intensity_at_points}
 #' @details 
 #' 
@@ -30,7 +31,10 @@
 
 pcf_anin_cylinder <- function(x, u, epsilon, r, lambda=NULL, lambda_h, r_h, 
                               stoyan=0.15,
-                     renormalise=TRUE,  border=1, ...) {
+                     renormalise=TRUE,  
+                     border=1, 
+                     aspect = NULL,
+                     ...) {
   x <- check_pp(x)
   bbox <- x$bbox
   if(is.bbquad(bbox)) stop("bbquad window not yet supported.")
@@ -45,18 +49,26 @@ pcf_anin_cylinder <- function(x, u, epsilon, r, lambda=NULL, lambda_h, r_h,
   u <- rbind(u)
   u <- t(apply(u, 1, function(ui) ui/c(sqrt(t(ui)%*%ui) )))
   #
-  # central half-angle
-  if(missing(epsilon)){
-    epsilon <- 0.1 
-  }
-  if(epsilon<= 0) stop("Cylinder radius epsilon should be >0")
-  #
   # ranges
   if(missing(r)) {
     sidelengths <- apply(bbox, 2, diff)
     bl <- min(sidelengths)*0.3
     r <- seq(0, bl, length=50)
   }
+  # central half-angle
+  if(!is.null(aspect)) {
+    epsilon <- r / (2 * aspect)
+  }
+  else{
+    if(missing(epsilon)){
+      stop("cylinder half-width epsilon missing, and no default available.")
+    }
+    if(length(epsilon) == 1) epsilon <- rep(epsilon, length(r)) 
+    else if( length(epsilon) == length(r)) {}
+    else stop("epsilon should be length 1 or length(r).") 
+  }
+  if(any(epsilon < 0)) stop("epsilon should >0")
+  
   # check intensity 
   if(!missing(lambda)){
     err <- paste("lambda should be a single positive number or a vector of length", nrow(x$x))
@@ -118,6 +130,7 @@ pcf_anin_cylinder <- function(x, u, epsilon, r, lambda=NULL, lambda_h, r_h,
   names(gest)[] <- c("r", "theo", dir_names)
   rownames(gest) <- NULL
   attr(gest, "epsilon") <- epsilon
+  attr(gest, "aspect")  <- aspect
   attr(gest, "r_h") <- r_h
   attr(gest, "fname") <- "pcf_anin_cylinder"
   #done

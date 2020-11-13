@@ -124,7 +124,7 @@ NumericMatrix pcf_anin_cylindrical_c(NumericMatrix coord,
                                      NumericVector r, 
                                      double r_h, 
                                      NumericMatrix directions,
-                                    double epsilon, // half width of cylinder (radius)
+                                    NumericVector epsilon, // half width of cylinder (radius)
                                     int border=1, int divisor_i = 0) {
   
   Pp pp(coord, lambda, bbox); 
@@ -160,10 +160,12 @@ NumericMatrix pcf_anin_cylindrical_c(NumericMatrix coord,
           dist  = 0;
           for(l = 0; l < dim; l++) dist += pow( dif[l] - dot*directions(ui,l), 2);
           dist = sqrt(dist);
-          if(dist < epsilon){ // inside the infinite cylinder
+          { // inside the infinite cylinder
             for(ri=0; ri < nr; ri++){
-              k = kernel_epa(fabs(d-r(ri)), r_h);
-              out(ri, ui) += k*w / div;
+              if(dist < epsilon(ri)){
+                k = kernel_epa(fabs(d-r(ri)), r_h);
+                out(ri, ui) += k*w / div;
+              }
             }
           }
         }

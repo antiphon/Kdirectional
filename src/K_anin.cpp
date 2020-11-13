@@ -95,7 +95,7 @@ NumericMatrix Kest_anin_cylinder_c(NumericMatrix coord,
                                    NumericVector lambda,
                                    NumericMatrix bbox, 
                                    NumericVector r, NumericMatrix directions,
-                                   double epsilon, int border=1) {
+                                   NumericVector epsilon, int border=1) {
   
   Pp pp(coord, lambda, bbox); 
   
@@ -128,9 +128,10 @@ NumericMatrix Kest_anin_cylinder_c(NumericMatrix coord,
           dist  = 0;
           for(l = 0; l < dim; l++) dist += pow( dif[l] - dot*directions(ui,l), 2);
           dist = sqrt(dist);
-          if(dist < epsilon){ // inside the infinite cylinder
+          //if(dist < epsilon){ // inside the infinite cylinder
+          {
             for(ri=0; ri < nr; ri++){
-              if(d < r(ri)) out(ri, ui) += w;
+              if(d < r(ri) & dist < epsilon(ri)) out(ri, ui) += w;
             }
           }
         }
@@ -144,7 +145,7 @@ NumericMatrix Kest_anin_cylinder_c(NumericMatrix coord,
 NumericMatrix Kest_anin_cylinder_border_c(NumericMatrix coord, NumericVector lambda, 
                                  NumericMatrix bbox, NumericVector bdist, 
                                  NumericVector r, NumericMatrix directions,
-                                 double epsilon, int border=1) {
+                                 NumericVector epsilon, int border=1) {
   
   Pp pp(coord, lambda, bbox); 
   
@@ -177,9 +178,9 @@ NumericMatrix Kest_anin_cylinder_border_c(NumericMatrix coord, NumericVector lam
             dist  = 0;
             for(l = 0; l < dim; l++) dist += pow( dif[l] - dot*directions(ui,l), 2);
             dist = sqrt(dist);
-            if(dist < epsilon){ // inside the infinite cylinder
+            { 
               for(ri=0; ri < nr; ri++){
-                if(d < r(ri) && (bdist(i) > r(ri) | border==0) ) out(ri, ui) += w;
+                if(dist < epsilon(ri) && d < r(ri) && (bdist(i) > r(ri) | border==0) ) out(ri, ui) += w;
               }
             }
           }

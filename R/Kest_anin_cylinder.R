@@ -4,12 +4,13 @@
 #'
 #' @param x pp, list with $x~coordinates $bbox~bounding box
 #' @param u unit vector(s) of direction, as row vectors. Default: x and y axes, viz. c(1,0) and c(0,1).
-#' @param epsilon The cylinder half-width
+#' @param epsilon The cylinder half-width. Will be extended to the length of r, so can be given per r.
 #' @param r radius vector at which to evaluate K
 #' @param lambda optional vector of intensity estimates at points
 #' @param lambda_h if lambda missing, use this bandwidth in a kernel estimate of lambda(x)
 #' @param renormalise See details. 
 #' @param border Use border correction? Default=1, yes. 
+#' @param aspect If given, instead of using a fixed halfwidth (epsilon) take the halfwidth to be r/(2*aspect) (so an increasing vector)
 #' @param ... passed on to e.g. \link{intensity_at_points}
 #' @details 
 #' 
@@ -33,7 +34,7 @@
 #' @export
 
 Kest_anin_cylinder <- function(x, u, epsilon, r, lambda=NULL, lambda_h, 
-                      renormalise=TRUE,  border=1, ...) {
+                      renormalise=TRUE,  border=1, aspect = NULL, ...) {
   x <- check_pp(x)
   bbox <- x$bbox
   trans <- !is.bbquad(bbox)
@@ -55,11 +56,20 @@ Kest_anin_cylinder <- function(x, u, epsilon, r, lambda=NULL, lambda_h,
     bl <- min(sidelengths)*0.3
     r <- seq(0, bl, length=50)
   }
+  
   # central half-angle
-  if(missing(epsilon)){
-    stop("cylinder half-width epsilon missing, and no default available.")
+  if(!is.null(aspect)) {
+    epsilon <- r / (2 * aspect)
   }
-  if(epsilon <= 0) stop("Cylinder radius epsilon should >0")
+  else{
+    if(missing(epsilon)){
+      stop("cylinder half-width epsilon missing, and no default available.")
+    }
+    if(length(epsilon) == 1) epsilon <- rep(epsilon, length(r)) 
+    else if( length(epsilon) == length(r)) {}
+    else stop("epsilon should be length 1 or length(r).") 
+  }
+  if(any(epsilon < 0)) stop("epsilon should >0")
   #
   # check intensity 
   if(!missing(lambda)){
@@ -120,6 +130,7 @@ Kest_anin_cylinder <- function(x, u, epsilon, r, lambda=NULL, lambda_h,
   names(Kest)[] <- c("r", "theo", dir_names)
   rownames(Kest) <- NULL
   attr(Kest, "epsilon") <- epsilon
+  attr(gest, "aspect")  <- aspect
   attr(Kest, "fun_name") <- "Kest_anin_cylinder"
   attr(Kest, "theo_name") <- "CSR"
   

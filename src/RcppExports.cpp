@@ -41,7 +41,7 @@ BEGIN_RCPP
 END_RCPP
 }
 // Kest_anin_cylinder_c
-NumericMatrix Kest_anin_cylinder_c(NumericMatrix coord, NumericVector lambda, NumericMatrix bbox, NumericVector r, NumericMatrix directions, double epsilon, int border);
+NumericMatrix Kest_anin_cylinder_c(NumericMatrix coord, NumericVector lambda, NumericMatrix bbox, NumericVector r, NumericMatrix directions, NumericVector epsilon, int border);
 RcppExport SEXP _Kdirectional_Kest_anin_cylinder_c(SEXP coordSEXP, SEXP lambdaSEXP, SEXP bboxSEXP, SEXP rSEXP, SEXP directionsSEXP, SEXP epsilonSEXP, SEXP borderSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
@@ -51,14 +51,14 @@ BEGIN_RCPP
     Rcpp::traits::input_parameter< NumericMatrix >::type bbox(bboxSEXP);
     Rcpp::traits::input_parameter< NumericVector >::type r(rSEXP);
     Rcpp::traits::input_parameter< NumericMatrix >::type directions(directionsSEXP);
-    Rcpp::traits::input_parameter< double >::type epsilon(epsilonSEXP);
+    Rcpp::traits::input_parameter< NumericVector >::type epsilon(epsilonSEXP);
     Rcpp::traits::input_parameter< int >::type border(borderSEXP);
     rcpp_result_gen = Rcpp::wrap(Kest_anin_cylinder_c(coord, lambda, bbox, r, directions, epsilon, border));
     return rcpp_result_gen;
 END_RCPP
 }
 // Kest_anin_cylinder_border_c
-NumericMatrix Kest_anin_cylinder_border_c(NumericMatrix coord, NumericVector lambda, NumericMatrix bbox, NumericVector bdist, NumericVector r, NumericMatrix directions, double epsilon, int border);
+NumericMatrix Kest_anin_cylinder_border_c(NumericMatrix coord, NumericVector lambda, NumericMatrix bbox, NumericVector bdist, NumericVector r, NumericMatrix directions, NumericVector epsilon, int border);
 RcppExport SEXP _Kdirectional_Kest_anin_cylinder_border_c(SEXP coordSEXP, SEXP lambdaSEXP, SEXP bboxSEXP, SEXP bdistSEXP, SEXP rSEXP, SEXP directionsSEXP, SEXP epsilonSEXP, SEXP borderSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
@@ -69,7 +69,7 @@ BEGIN_RCPP
     Rcpp::traits::input_parameter< NumericVector >::type bdist(bdistSEXP);
     Rcpp::traits::input_parameter< NumericVector >::type r(rSEXP);
     Rcpp::traits::input_parameter< NumericMatrix >::type directions(directionsSEXP);
-    Rcpp::traits::input_parameter< double >::type epsilon(epsilonSEXP);
+    Rcpp::traits::input_parameter< NumericVector >::type epsilon(epsilonSEXP);
     Rcpp::traits::input_parameter< int >::type border(borderSEXP);
     rcpp_result_gen = Rcpp::wrap(Kest_anin_cylinder_border_c(coord, lambda, bbox, bdist, r, directions, epsilon, border));
     return rcpp_result_gen;
@@ -500,7 +500,7 @@ BEGIN_RCPP
 END_RCPP
 }
 // pcf_anin_cylindrical_c
-NumericMatrix pcf_anin_cylindrical_c(NumericMatrix coord, NumericVector lambda, NumericMatrix bbox, NumericVector r, double r_h, NumericMatrix directions, double epsilon, int border, int divisor_i);
+NumericMatrix pcf_anin_cylindrical_c(NumericMatrix coord, NumericVector lambda, NumericMatrix bbox, NumericVector r, double r_h, NumericMatrix directions, NumericVector epsilon, int border, int divisor_i);
 RcppExport SEXP _Kdirectional_pcf_anin_cylindrical_c(SEXP coordSEXP, SEXP lambdaSEXP, SEXP bboxSEXP, SEXP rSEXP, SEXP r_hSEXP, SEXP directionsSEXP, SEXP epsilonSEXP, SEXP borderSEXP, SEXP divisor_iSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
@@ -511,7 +511,7 @@ BEGIN_RCPP
     Rcpp::traits::input_parameter< NumericVector >::type r(rSEXP);
     Rcpp::traits::input_parameter< double >::type r_h(r_hSEXP);
     Rcpp::traits::input_parameter< NumericMatrix >::type directions(directionsSEXP);
-    Rcpp::traits::input_parameter< double >::type epsilon(epsilonSEXP);
+    Rcpp::traits::input_parameter< NumericVector >::type epsilon(epsilonSEXP);
     Rcpp::traits::input_parameter< int >::type border(borderSEXP);
     Rcpp::traits::input_parameter< int >::type divisor_i(divisor_iSEXP);
     rcpp_result_gen = Rcpp::wrap(pcf_anin_cylindrical_c(coord, lambda, bbox, r, r_h, directions, epsilon, border, divisor_i));
