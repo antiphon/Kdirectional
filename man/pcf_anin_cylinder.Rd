@@ -15,7 +15,7 @@ pcf_anin_cylinder(
   stoyan = 0.15,
   renormalise = TRUE,
   border = 1,
-  aspect = NULL,
+  aspect = 1/3,
   ...
 )
 }
@@ -40,7 +40,7 @@ pcf_anin_cylinder(
 
 \item{border}{Use translation correction? Default=1, yes. Only for cuboidal windows.}
 
-\item{aspect}{If given, instead of using a fixed halfwidth (epsilon) take the halfwidth to be r/(2*aspect)}
+\item{aspect}{If given, instead of using a fixed halfwidth (epsilon) take the halfwidth to be r/(2*aspect). Default : 1/3}
 
 \item{...}{passed on to e.g. \link{intensity_at_points}}
 }

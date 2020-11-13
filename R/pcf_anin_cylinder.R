@@ -12,7 +12,7 @@
 #' @param stoyan If r_h not given, use r_h=stoyan/lambda^(1/dim). Same as 'stoyan' in spatstat's pcf.
 #' @param renormalise See details. 
 #' @param border Use translation correction? Default=1, yes. Only for cuboidal windows.
-#' @param aspect If given, instead of using a fixed halfwidth (epsilon) take the halfwidth to be r/(2*aspect)
+#' @param aspect If given, instead of using a fixed halfwidth (epsilon) take the halfwidth to be r/(2*aspect). Default : 1/3
 #' @param ... passed on to e.g. \link{intensity_at_points}
 #' @details 
 #' 
@@ -33,7 +33,7 @@ pcf_anin_cylinder <- function(x, u, epsilon, r, lambda=NULL, lambda_h, r_h,
                               stoyan=0.15,
                      renormalise=TRUE,  
                      border=1, 
-                     aspect = NULL,
+                     aspect = 1/3,
                      ...) {
   x <- check_pp(x)
   bbox <- x$bbox
@@ -57,7 +57,7 @@ pcf_anin_cylinder <- function(x, u, epsilon, r, lambda=NULL, lambda_h, r_h,
   }
   # central half-angle
   if(!is.null(aspect)) {
-    epsilon <- r / (2 * aspect)
+    epsilon <- aspect * r / 2
   }
   else{
     if(missing(epsilon)){

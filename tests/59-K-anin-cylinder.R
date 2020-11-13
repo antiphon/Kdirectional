@@ -41,7 +41,7 @@ if(1) {
   l <- rep(nrow(pp$x)/bbox_volume(pp$bbox), nrow(pp$x))
   
   p  <- Kest_anin(pp, lambda=l)
-  pa <- Kest_anin_cylinder(pp, lambda=l, aspect = 3)
+  pa <- Kest_anin_cylinder(pp, lambda=l, aspect = 1/3)
   
   par(mfrow=c(2,1))
   plot(p, log = "y")

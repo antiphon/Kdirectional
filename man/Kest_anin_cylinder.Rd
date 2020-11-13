@@ -13,7 +13,7 @@ Kest_anin_cylinder(
   lambda_h,
   renormalise = TRUE,
   border = 1,
-  aspect = NULL,
+  aspect = 1/3,
   ...
 )
 }
@@ -34,7 +34,7 @@ Kest_anin_cylinder(
 
 \item{border}{Use border correction? Default=1, yes.}
 
-\item{aspect}{If given, instead of using a fixed halfwidth (epsilon) take the halfwidth to be r/(2*aspect) (so an increasing vector)}
+\item{aspect}{Instead of using a fixed halfwidth (epsilon) take the halfwidth to be 'aspect * r/2' (so an increasing vector). Default : 1/3}
 
 \item{...}{passed on to e.g. \link{intensity_at_points}}
 }
@@ -48,6 +48,8 @@ Estimate a cylinder-K function for second order reweighted ("inhomogeneous") pat
 Computes a second order reweighted version of the cylinder-K. In short, we count how many pairs of points in the pattern 
 has both a) their difference vector inside a cylinder with major-axial direction 'u' and radius epsilon,  and 
 b) difference vector length less than range r. Usually r is a vector and the output is then a vector as well.
+
+Note the default behaviour is to use a fixed aspect ratio cylinder with aspect = 2*epsilon/range = 1/3.
 
 An estimate of the intensity Lambda(x) at points can be given ('lambda'). If it is a single value, the pattern is assumed to be homogeneous. 
 If it is a vector the same length as there are points, the pattern is taken to be second-order stationary. In this case the 
