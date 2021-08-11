@@ -6,7 +6,7 @@
 check_pp <- function(x){
   if("ppp"%in%is(x)){
     window <- x$window
-    x <- list(x=as.matrix(spatstat::coords(x)))
+    x <- list(x=as.matrix( cbind(x$x, x$y) ))
     x$bbox <- owin_to_bbox(window)
   }
   if(!is(x,"list")){

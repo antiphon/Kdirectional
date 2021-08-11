@@ -5,6 +5,11 @@
 
 using namespace Rcpp;
 
+#ifdef RCPP_USE_GLOBAL_ROSTREAM
+Rcpp::Rostream<true>&  Rcpp::Rcout = Rcpp::Rcpp_cout_get();
+Rcpp::Rostream<false>& Rcpp::Rcerr = Rcpp::Rcpp_cerr_get();
+#endif
+
 // Kest_anin_c
 NumericMatrix Kest_anin_c(NumericMatrix coord, NumericVector lambda, NumericMatrix bbox, NumericVector r, NumericMatrix directions, double epsilon, int border);
 RcppExport SEXP _Kdirectional_Kest_anin_c(SEXP coordSEXP, SEXP lambdaSEXP, SEXP bboxSEXP, SEXP rSEXP, SEXP directionsSEXP, SEXP epsilonSEXP, SEXP borderSEXP) {

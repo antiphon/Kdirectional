@@ -2,7 +2,7 @@
 
 library(devtools)
 load_all(".")
-library(rstrauss)
+#library(rstrauss)
 library(spatstat)
 set.seed(1)
 

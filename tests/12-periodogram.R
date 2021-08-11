@@ -15,7 +15,7 @@ z <- list(x=as.matrix(coords(rNeymanScott(10, 0.1, nclust, radius=0.1, n=10, win
 
 # Bartlett's version
 if(1){
-per <- function(x) periodogram(x, p=15, std=F)
+per <- function(x) periodogram(x, p=35, std=F)
 est0 <- per(y)
 est <- per(x)
 est1 <- per(z)
