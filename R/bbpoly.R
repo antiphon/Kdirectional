@@ -245,7 +245,6 @@ bbpoly_planes <- function(x) {
 
 #' Plot bbpoly object
 #' 
-#' @exportMethod plot
 #' @export
 #' @import rgl
 

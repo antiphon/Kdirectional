@@ -16,6 +16,7 @@
 #' nn <- nnangle(x)
 #' summary(nn)
 #' 
+#' @useDynLib Kdirectional 
 #' @export
 nnangle <- function(x, from, to){
   x <- as.matrix(x)

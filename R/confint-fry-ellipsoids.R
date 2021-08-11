@@ -1,4 +1,15 @@
+
+#' Constructor
+#' @export
+setClass("fryellipsoids")
+
+#'
+#'@export
+setClass("confint_fryellipsoids")
+
+
 ############################################################
+
 #' Confidence intervals for Fry ellipsoids
 #' 
 #' @param x Fitted Fry-ellipsoids object
@@ -9,7 +20,7 @@
 #' 
 #' See the 'confint.ellipsoid' in 'ellipsoid' for details of ...
 #' 
-#' @exportMethod confint
+#'
 #' @export
 
 confint.fryellipsoids <- function(x, fun, ...) {
@@ -24,8 +35,15 @@ confint.fryellipsoids <- function(x, fun, ...) {
 
 
 #' Summary method for confint_fryellipsoid
+#' 
+#' @param Fitted Fry-ellipsoids object
+#' @param ... ignored
+#' 
+#' @details 
+#' 
+#' Extracts the CI-table.
+#' 
 #' @export
-#' @exportMethod summary
 
 summary.confint_fryellipsoids <- function(x, ...) {
   ci <- x$ci
@@ -37,7 +55,7 @@ summary.confint_fryellipsoids <- function(x, ...) {
 
 #' Print method for confint_fryellipsoid
 #' 
-#' @exportMethod print
+#' @export
 
 print.confint_fryellipsoids <- function(x, ...) {
   nvec <- x$nvec

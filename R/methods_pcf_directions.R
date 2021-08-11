@@ -1,6 +1,5 @@
 #' Plot for pcf_directions
 #' 
-#' @exportMethod plot
 #' @export
 plot.pcf_directions <- function(x, ymax=2,  ...) {
   # 2D
@@ -21,11 +20,11 @@ plot.pcf_directions <- function(x, ymax=2,  ...) {
   else{#' 3D
     
   }
+  warning("obsolete function.")
 }
 
 #' Plot a angluar plot of the pcf_directions, 2D
 #' 
-#' @exportMethod flower
 #' @export
 flower.pcf_directions <- function(x, scale_points=TRUE, col=rainbow, zlim, ...) {
   co <- values2colors(x$est, col=col, zlim=zlim, ...)

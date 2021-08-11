@@ -1,8 +1,9 @@
+#' @export 
+setClass("pcf_anisotropic")
+
 #' method plot for O-S K-function
 #' 
 #' @export
-#' @exportMethod plot
-
 plot.os_K <- function(x, ...){
   image(z=x$Z, x=x$r, y=x$theta[[1]], xlab="range", ylab="angle", ...)
 }
@@ -10,8 +11,6 @@ plot.os_K <- function(x, ...){
 #' method plot for anisotropic pcf-function
 #' 
 #' @export
-#' @exportMethod plot
-
 plot.pcf_anisotropic <- function(x, ab, ...){
   s <- NULL
   # 2d:
@@ -38,8 +37,6 @@ plot.pcf_anisotropic <- function(x, ab, ...){
 #' method plot2d for anisotropic pcf-function
 #' 
 #' @export
-#' @exportMethod plot2d
-
 plot2d.pcf_anisotropic <- function(x, ab, ...){
   s <- NULL
   # 2d:

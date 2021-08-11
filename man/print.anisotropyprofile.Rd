@@ -4,7 +4,7 @@
 \alias{print.anisotropyprofile}
 \title{print for anisotropy profile}
 \usage{
-print.anisotropyprofile(x, ...)
+\method{print}{anisotropyprofile}(x, ...)
 }
 \description{
 print for anisotropy profile

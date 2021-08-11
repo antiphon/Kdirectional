@@ -161,11 +161,10 @@ fry_ellipsoids <- function(x, nvec=1:5, r_adjust=1, nangles, eps=0,
 }
 
 #############################################################
+
 #' plot method for fryellipsoids
 #' 
-#' @exportMethod plot
 #' @export
-
 plot.fryellipsoids <- function(x, ellipsoids=TRUE, used_points=TRUE, sectors=NULL, xlim=NULL, ylim=NULL, zoom = NULL, pch = 1, cex=0.8, ...) {
   
   

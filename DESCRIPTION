@@ -1,7 +1,7 @@
 Package: Kdirectional
 Type: Package
 Title: Analysis of anisotropy in point patterns using second order statistics
-Version: 1.4-1
+Version: 1.4-2
 Date: 2021-08-11
 Author: Tuomas Rajala
 Maintainer: Tuomas Rajala <tuomas.rajala@iki.fi>
@@ -13,6 +13,7 @@ Depends:
     Rcpp (>= 0.10.6)
 LinkingTo: Rcpp
 Suggests:
-    knitr
+    knitr,
+    rmarkdown
 VignetteBuilder: knitr
 RoxygenNote: 7.1.1

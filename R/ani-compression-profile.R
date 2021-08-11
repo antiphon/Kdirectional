@@ -1,3 +1,10 @@
+#'
+#' @export
+setClass("anisotropyprofile")
+
+#' @export
+setClass("anisotropyprofile.summary")
+#'
 #' Anisotropy profile for given diagonal transformations
 #' 
 #' Compares the directed sector-K functions along main axes.

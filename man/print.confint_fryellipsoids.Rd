@@ -4,7 +4,7 @@
 \alias{print.confint_fryellipsoids}
 \title{Print method for confint_fryellipsoid}
 \usage{
-print.confint_fryellipsoids(x, ...)
+\method{print}{confint_fryellipsoids}(x, ...)
 }
 \description{
 Print method for confint_fryellipsoid

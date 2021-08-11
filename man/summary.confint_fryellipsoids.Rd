@@ -4,8 +4,16 @@
 \alias{summary.confint_fryellipsoids}
 \title{Summary method for confint_fryellipsoid}
 \usage{
-summary.confint_fryellipsoids(x, ...)
+\method{summary}{confint_fryellipsoids}(x, ...)
+}
+\arguments{
+\item{...}{ignored}
+
+\item{Fitted}{Fry-ellipsoids object}
 }
 \description{
 Summary method for confint_fryellipsoid
+}
+\details{
+Extracts the CI-table.
 }

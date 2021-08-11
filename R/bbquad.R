@@ -98,7 +98,6 @@ is.bbquad <- function(x, ...){
 
 #' Plot bbquad object
 #' 
-#' @exportMethod plot
 #' @export
 #' @import rgl
 
