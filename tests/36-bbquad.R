@@ -36,10 +36,10 @@ bb0 <- cbind(l,l,l)
 bd0 <- bbox_distance(xc, bb0)
 
 bd1 <- bbquad_distance(xc, bb)
-bdq <- bbquad_distance(xcR, bbq)
+bdq <- bbquad_distance(xcR, bbR)
 
 cbind(bd0, bd1, bdq)
-all.equal(bd0,bd1, bdq)
+all.equal(bd0, bd1)  & isTRUE(all.equal(bd0, bdq))
 
 ###########################################################
 
@@ -69,11 +69,11 @@ grid <- cbind(so,so,co)
 ppz <- list(x=xc%*%M, bbox=bbox_affine(bb, M))
 pp0 <- list(x=xc%*%M, bbox=bb0%*%t(M))
 pp00 <- list(x=xc, bbox=bb0)
-ap<-anisotropy_profile_fast(ppz, grid, r=seq(0,0.2, length=40))
-ap0<-anisotropy_profile_fast(pp0, grid, r=seq(0,0.2, length=40))
-ap00<-anisotropy_profile_fast(pp00, grid, r=seq(0,0.2, length=40))
-plot(ap$profile[,-c(1:2)])
-points(ap0$profile[,-c(1:2)],col=2)
+ap<-anisotropy_profile(ppz, grid, r=seq(0,0.2, length=40))
+ap0<-anisotropy_profile(pp0, grid, r=seq(0,0.2, length=40))
+ap00<-anisotropy_profile(pp00, grid, r=seq(0,0.2, length=40))
+plot(ap$profile)
+points(ap0$profile,col=2)
 
 
 

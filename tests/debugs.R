@@ -30,4 +30,4 @@ load_all(".")
 x <- z <- readRDS("debug_profile.rds")
 grid <- z$grid
 r <- z$r
-p <- anisotropy_profile_fast(z, grid, r = r)
+p <- anisotropy_profile(z, grid, r = r)

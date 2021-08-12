@@ -31,7 +31,7 @@ setClass("anisotropyprofile.summary")
 #' @export
 #' 
 
-anisotropy_profile <- anisotropy_profile_fast <- function(x, grid, r, verb=FALSE, eps=pi/4, border=TRUE, antipodal=TRUE, power=2, ...) {
+anisotropy_profile <- function(x, grid, r, verb=FALSE, eps=pi/4, border=TRUE, antipodal=TRUE, power=2, ...) {
   x <- check_pp(x)
   
   if(!is.bbquad(x$bbox)) x$bbox <- bbox2bbquad(x$bbox)

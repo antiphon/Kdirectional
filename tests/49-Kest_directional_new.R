@@ -1,8 +1,8 @@
 # test the new Kest directional
 library(devtools)
-load_all(".")
-d3 <- 0
 source("tests/test-data.R")
+load_all(".") # note order, rstrauss overwrites bbox_distance !
+d3 <- 0
 
 x <- x0 <- pp
 R <- rotationMatrix3(az=pi/6)[-3,-3]

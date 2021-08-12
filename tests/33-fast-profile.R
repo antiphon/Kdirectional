@@ -1,5 +1,7 @@
 # tes fast profiling
-
+# OBSOLETE dev version. "fast" became default.
+#
+#
 #' test
 library(devtools)
 load_all(".")

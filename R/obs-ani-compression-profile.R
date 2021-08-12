@@ -10,7 +10,6 @@
 # # 
 # 
 # anisotropy_profile <- function(x, i=1, cvec, verb=TRUE, ...) {
-#   stop("obsolete function, use anisotropy_profile_fast")
 #   profile <- NULL
 #   cat2 <- if(verb) cat else function(...)NULL
 #   if(is.null(x$bbox)) stop("x should be list(x=coords, bbox=bounding-box)")
