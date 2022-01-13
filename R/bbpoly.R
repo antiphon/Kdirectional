@@ -98,7 +98,6 @@ poly2bbpoly <- function(x, y) {
   bbp
 }
 
-####################################
 #' Turn something into a bbpoloy
 #'
 #' @param x input
@@ -175,24 +174,6 @@ bbpoly_default <- function(xl=c(-.5,.5), yl=xl, zl=xl){
   }
   class(bbp) <- "bbpoly"
   bbp
-}
-
-#' print method for bbpoly, a cuboid made of quads
-#' 
-#' @exportMethod print
-#' @export
-
-print.bbpoly <- function(x, ...){
-  d <- ncol(x$vertices)
-  cat(d, "D polytopy, ", sep="")
-  cat(nrow(x$vertices), "vertices")
-  if(!is.null(x$edges))
-    cat(",", nrow(x$edges), "edges")
-  if(!is.null(x$faces)) 
-    cat(",", length(x$faces$vertices), "faces")
-    
-  cat("\nVolume:", x$volume)
-  cat("\n")
 }
 
 #' check class bbpoly
@@ -276,3 +257,23 @@ plot.bbpoly <- function(x, normals=FALSE, faces = FALSE,
   }
 }
 
+
+#' print method for bbpoly, a cuboid made of quads
+#'
+#' @param x object
+#' @param ... ignored
+#'
+#' @export
+
+print.bbpoly <- function(x, ...){
+  d <- ncol(x$vertices)
+  cat(d, "D polytopy, ", sep="")
+  cat(nrow(x$vertices), "vertices")
+  if(!is.null(x$edges))
+    cat(",", nrow(x$edges), "edges")
+  if(!is.null(x$faces)) 
+    cat(",", length(x$faces$vertices), "faces")
+  
+  cat("\nVolume:", x$volume)
+  cat("\n")
+}

@@ -6,6 +6,11 @@
 \usage{
 \method{print}{bbpoly}(x, ...)
 }
+\arguments{
+\item{x}{object}
+
+\item{...}{ignored}
+}
 \description{
 print method for bbpoly, a cuboid made of quads
 }

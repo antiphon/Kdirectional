@@ -9,6 +9,7 @@
 .Rproj.user
 # c-objects
 src/*o
+src/*dll
 # produced vignettes
 vignettes/*.html
 vignettes/*.pdf

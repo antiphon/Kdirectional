@@ -8,7 +8,7 @@
 #' @return 
 #' 
 #' Returns the lengths and direction unit vectors.
-#' 
+#' @import Rcpp
 #' @export
 fry_points <- function(x, double=FALSE, border=TRUE){
   x <- check_pp(x)
