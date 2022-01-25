@@ -32,35 +32,38 @@ A <- rbind(u, ut)
 
 # Check, 2D
 if(0) {
-  a <- seq(0, 2*pi, l = 100)
-  x <- cbind(cos(a), sin(a))
-  plot(x*r, asp=1, xlim = c(-1,1)*2*r, ylim = c(-1,1)*2*r, type="l")
-  points(u*r, col=4, pch=19)
+  # Circle of radius r:
+  a <- seq(0, 2*pi, l = 100)#
+  x <- cbind(cos(a), sin(a))#
+  plot(x*r, asp=1, xlim = c(-1,1)*2*r, ylim = c(-1,1)*2*r, type="l", col = "goldenrod") # circle
+  #
+  points(u*r, col=4, pch=15) # direction at r-circle 
   # Project to major axis space:
-  z <- c(10,20)
+  z <- c(10, 20)
   v <- u*100
   uu <-cbind(-u[2],u[1]) # 2D 
   vv <- uu * 100
   lines(c(0,v[1]),c(0,v[2]), col=4) ;arrows(0,0,vv[1],vv[2], col=4, lty=2) # only 2D plot ok.
   arrows(0,0,z[1],z[2], col=2)
+  text(z[1], z[2], "z")
   # length in direction u, for major axis density:
-  d1 <- sum(u*z)
-  points(d1*u, col=2)
+  d1 <- sum(u*z) # dot-product
+  points(d1*u, col=z)
   # length in perpendicular direction, any:
   d2 <- sum(uu*z) # this needs the perpendicular vector
   points(uu*d2, col=2)
   d2 <- sqrt( sum(z^2) - d1^2 )
-  points(uu*d2, col=2, pch=20)
+  points(uu*d2, col=3, pch=20)
   if(0){
-  # Simulate gaussian:
-  # scale range:
-  y<- mvtnorm::rmvnorm(5000, c(0,0), sigma = Sig)
-  points(y, col=3, cex=.3)
-  zy <- y%*%t(solve(S))
-  print( mean(rowMeans(zy^2) < r^2) ) # 95%
-  #
+    # Simulate gaussian:
+    # scale range:
+    y<- mvtnorm::rmvnorm(5000, c(0,0), sigma = Sig)
+    points(y, col=3, cex=.3)
+    zy <- y%*%t(solve(S))
+    print( mean(rowMeans(zy^2) < r^2) ) # 95%
+    #
   }
-  points(x%*%t(S) * r, col=2)
+  points(x%*%t(S) * r, col=5)
 }
 # Check, 3D:
 if(0) {

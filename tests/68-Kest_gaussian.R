@@ -7,10 +7,10 @@ load_all(".")
 if(!exists("z")){
   load("test_strauss.rda")
   #z$x <- cbind( runif(100), runif(100) )
+  bbox <- z$bbox
 }
 
 u <- cbind(0:1,1:0)
-bbox <- z$bbox
 r <- seq(0, .3, l = 20)[-1]
 
 ###############################################
@@ -164,7 +164,7 @@ if(0){
 }
 
 # 6. look at the average of compressed strauss
-if(1){
+if(0){
   library(rstrauss)
   ka <- 1.5
   C <- diag(c(1/ka, ka))
@@ -177,4 +177,53 @@ if(1){
   plot(kl[[1]]$r, rowMeans(del), ylim = c(-1,1)*.3)
   apply(del, 2, lines, x = kl[[1]]$r)
 }
+
+# 7. check the dot-product and covariance notation
+if(1){
+  u <- c(1,2)
+  u <- rbind( u/sqrt(sum(u^2)) )
+  
+  r <- 14
+  
+  # Circle of radius r:
+  a <- seq(0, 2*pi, l = 100)#
+  x <- cbind(cos(a), sin(a))#
+  plot(x*r, asp=1, xlim = c(-1,1)*1.5*r, ylim = c(-1,1)*1.5*r, type="l", col = "goldenrod") # circle
+  #
+  points(u*r, col=4, pch=15) # direction projected on the r-circle 
+  #
+  # Major and minor axis:
+  vmaj <- u*2*r # big number to draw outside
+  uu <-cbind(-u[2],u[1]) # 2D 90deg rotation
+  vmin <- uu * 2 *r
+  arrows(0, 0, vmaj[1], vmaj[2], col=4) 
+  arrows(0, 0, vmin[1], vmin[2], col=4, lty=2) # only 2D plot ok.
+  
+  # now the normal distribution: With 95% prob-interval along major axis at distance r:
+  R <- rotationMatrix3(az = unit_2_angle(u))[-3,-3]
+  # check
+  u1 <- cbind(1,0) * r/2
+  points(u1%*%t(R), col=3, pch=3)
+  
+  Q <- (r/2) * diag(c(1, .5)) %*% t(R)
+  Sigma <- t(Q) %*% Q
+  L <- chol(Sigma)
+  # what happens to a unit circle:
+  points(2*x%*%L)
+  
+  
+  # length in direction u, for major axis density:
+  # d1 <- sum(u*z) # dot-product
+  # points(d1*u, col=z)
+  # # length in perpendicular direction, any:
+  # d2 <- sum(uu*z) # this needs the perpendicular vector
+  # points(uu*d2, col=2)
+  # d2 <- sqrt( sum(z^2) - d1^2 )
+  # points(uu*d2, col=3, pch=20)
+  # points(x%*%t(S) * r, col=5)
+
+  
+}
+
+
 
