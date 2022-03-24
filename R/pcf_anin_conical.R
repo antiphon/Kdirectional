@@ -141,32 +141,6 @@ pcf_anin <- pcf_anin_conical <- function(x, u, epsilon, r, lambda=NULL, lambda_h
 }
 
 
-#' Plot pcf_anin object
-#' 
-#' @param x Output from pcf_anin or pcf_anin_cylinder
-#' @param r_scale Plot with x-axis r*r_scale
-#' @param rmax plot upto this range
-#' @param ylim optional range for y-axis
-#' @param legpos legend position
-#' @param ... passed on to plot
-#' @export
-
-plot.pcf_anin <- function(x, r_scale=1, rmax, ylim, legpos="topright", lwd = lwd, ...) {
-  # cut r
-  if(!missing(rmax)) x <- x[x$r<rmax,]
-  if(missing(ylim)) ylim <- c(0,2)
-  #
-  fname <- attr(x, "fname")
-  plot(x$r*r_scale, x$theo, col=1, xlab="r", 
-       ylab=if(is.null(fname)) "pcf_anin" else fname, type="l", lty=3, ylim=ylim, lwd = lwd, ...)
-  n <- ncol(x)
-  for(i in 3:n){
-    lines(x$r*r_scale, x[,i], col=i-1, lwd = lwd)
-  }
-  legend(legpos, names(x)[-1], lty=c(3,rep(1,n-2)), col=c(1:(n-1)), lwd = lwd)
-}
-
-
 
 
 

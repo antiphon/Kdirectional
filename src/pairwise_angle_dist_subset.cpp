@@ -26,7 +26,7 @@ NumericMatrix c_pairwise_dist_angle_subset(NumericMatrix x, IntegerVector from, 
         dx = x(f,0) - x(t,0);
         dy = x(f,1) - x(t,1);
         ang = atan2(dy, dx);
-        if(ang<0) ang = 2*PI+ang;
+        if(ang<0) ang = 2*M_PI+ang;
         // upper triangle location      
         val(ind,0) = d;
         val(ind,1) = ang;

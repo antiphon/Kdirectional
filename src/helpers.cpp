@@ -1,4 +1,5 @@
 #include "helpers.h"
+
 double min(double a, double b){
   if(a < b ) return a;
   return b;

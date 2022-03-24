@@ -55,7 +55,7 @@ NumericVector c_oh_K(NumericMatrix x, List theta, NumericVector r, NumericMatrix
         if(dim==3){
           ang2 = acos( (x(i,2) - x(j,2)) /d);
         }
-        if(ang < 0) ang = PI+ang;
+        if(ang < 0) ang = M_PI+ang;
         //
         // Then attribute to correct grid slot
         // range:

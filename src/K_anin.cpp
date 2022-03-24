@@ -31,7 +31,7 @@ NumericMatrix Kest_anin_c(NumericMatrix coord, NumericVector lambda, NumericMatr
           dot = 0;
           for(l=0; l < dim; l++)  dot += (pp.getCoord(&j,&l)-pp.getCoord(&i,&l)) * directions(ui, l);
           ang = acos(dot/d);
-          ang = fmin(ang, PI-ang);
+          ang = fmin(ang, M_PI-ang);
           if(ang < epsilon){
             for(ri=0; ri < nr; ri++){
               if(d < r(ri)) out(ri, ui) += w;
@@ -72,7 +72,7 @@ NumericMatrix Kest_anin_border_c(NumericMatrix coord, NumericVector lambda,
             dot = 0;
             for(l=0; l < dim; l++)  dot += (pp.getCoord(&j,&l)-pp.getCoord(&i,&l)) * directions(ui, l);
             ang = acos(dot/d);
-            ang = fmin(ang, PI-ang);
+            ang = fmin(ang, M_PI-ang);
             if(ang < epsilon){
               for(ri=0; ri < nr; ri++){
                 if(d < r(ri) && (bdist(i) > r(ri) | border==0) ) out(ri, ui) += w;

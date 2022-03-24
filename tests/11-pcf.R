@@ -11,7 +11,7 @@ k <- pcf(p, r=seq(0, 0.2, length=50))
 #'
 pp <- list(x=cbind(p$x, p$y), bbox=cbind(c(0,1),c(0,1)))
 
-k2 <- pcf_sector(pp,  r=k$r, theta=list(pi), epsilon=pi)
+k2 <- pcf_sector(pp,  r=k$r, theta=(pi), epsilon=pi)
 
 k3 <- pcf_sector(pp, r=k$r, theta=k2$theta, epsilon=k2$epsilon, correction="none")
 

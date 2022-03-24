@@ -55,7 +55,7 @@ List c_anisotropic_unit_pcf(NumericMatrix x,
           for(l=0; l < dim; l++)  dot += (x(j,l)-x(i,l))*r(k,l);
           dot = dot/(d * rlength(k));
           ang = acos(dot);
-          ang = fmin(ang, PI-ang); // antipodal
+          ang = fmin(ang, M_PI-ang); // antipodal
           diff = fabs( d - rlength(k) );
           if(ang < h(1) & diff < h(0)){
             //W = pow(rlength(k), dim-1);

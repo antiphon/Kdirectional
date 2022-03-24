@@ -184,7 +184,7 @@ NumericVector epa_integral_2d(NumericMatrix x,
   
   // 2D only.
   
-  double w =  PI/2.0;
+  double w =  M_PI/2.0;
   double a, b, c, d;
   double vh, ch, dh;
   //

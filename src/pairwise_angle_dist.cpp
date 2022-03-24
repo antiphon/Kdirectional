@@ -22,7 +22,7 @@ NumericMatrix c_pairwise_dist_angle(NumericMatrix x) {
       dx = x(j,0) - x(i,0);
       dy = x(j,1) - x(i,1);
       ang = atan2(dy, dx);
-      if(ang<0) ang = 2*PI+ang;
+      if(ang<0) ang = 2*M_PI+ang;
       // upper triangle location      
       val(ind,0) = d;
       val(ind,1) = ang;

@@ -54,12 +54,12 @@ NumericVector c_anisotropic_pcf(NumericMatrix x, List theta,
         // angle
         ang = atan2(x(i,1)-x(j,1), x(i,0)-x(j,0));
         if(dim==2){
-          if(ang < 0) ang = PI + ang;
+          if(ang < 0) ang = M_PI + ang;
           // contribute
           for(k=0; k < nr; k++){
             for(l=0; l < nang; l++){
              v = kernell(abss_a(d-r[k]), h(0)) * kernell(abss_a(ang - angs(l)), h(1));
-             v += kernell(abss_a(d-r[k]), h(0)) * kernell(abss_a(PI - ang - angs(l)), h(1));
+             v += kernell(abss_a(d-r[k]), h(0)) * kernell(abss_a(M_PI - ang - angs(l)), h(1));
              ind = k + l*nr;
              val[ind] += 0.5*v/w; 
             }
@@ -68,15 +68,15 @@ NumericVector c_anisotropic_pcf(NumericMatrix x, List theta,
         else{
           ang2 = acos( (x(i,2) - x(j,2)) /d);
           if(ang < 0){ // flip to positive side other side
-            ang = PI + ang;
-            ang2 = PI - ang2;
+            ang = M_PI + ang;
+            ang2 = M_PI - ang2;
           }
           // contribute
           for(k=0; k < nr; k++){
             for(l=0; l < nang; l++){
               for(m=0; m < nang2; m++){
                 v = kernell(abss_a(d-r(k)), h(0)) * kernell(abss_a(ang-angs(l)), h(1)) *  kernell(abss_a(ang2-angs2(m)), h(1));
-                v += kernell(abss_a(d-r(k)), h(0)) * kernell(abss_a(PI + ang-angs(l)), h(1)) *  kernell(abss_a(PI-ang2-angs2(m)), h(1));
+                v += kernell(abss_a(d-r(k)), h(0)) * kernell(abss_a(M_PI + ang-angs(l)), h(1)) *  kernell(abss_a(M_PI-ang2-angs2(m)), h(1));
                 ind = k + l*nr + m * nr * nang;
                 val[ind] += 0.5*v/w;
               }

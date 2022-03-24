@@ -1,4 +1,4 @@
-#' anisotropic inhomogeneous pcf, raw fry point smoothing version
+#' anisotropic inhomogeneous pcf, raw fry point smoothing version (rubbish)
 
 library(devtools)
 load_all(".")

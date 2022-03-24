@@ -37,7 +37,7 @@ NumericVector c_sector_pcf(NumericMatrix x, NumericVector u, double theta,
         dot = 0;
         for(l=0; l < dim; l++)  dot += (x(i,l)-x(j,l))*u[l];
         ang = acos(dot/d);
-        ang = min(ang, PI-ang);
+        ang = min(ang, M_PI-ang);
         if(ang < theta){ // this pair is aligned
           // translation correction?
           w = 1;

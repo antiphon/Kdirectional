@@ -37,7 +37,7 @@ List c_angles(NumericMatrix x, IntegerVector from, IntegerVector to) {
       dx = x(t,0) - x(f,0);
       dy = x(t,1) - x(f,1);
       ang = atan2(dy, dx);
-      if(ang<0) ang = 2*PI+ang;
+      if(ang<0) ang = 2*M_PI+ang;
       angles[f] = ang;
       nndists[f] = nnd;
       if(dim==3){

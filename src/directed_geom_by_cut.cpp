@@ -33,7 +33,7 @@ List c_directed_geom_by_cut(NumericMatrix x, NumericVector u, List pregraph, dou
             dot = 0;
             for(l=0; l < dim; l++)  dot += (x(t,l)-x(f,l))*u[l];
             ang = acos(dot/d);
-            ang = min(ang, PI-ang);
+            ang = min(ang, M_PI-ang);
             if(ang < theta)
               neighs.push_back(t+1); 
           }

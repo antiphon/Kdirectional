@@ -48,7 +48,7 @@ List markcor_anin_c(NumericMatrix coord,
           dot = 0;
           for(l=0; l < dim; l++)  dot += (pp.getCoord(&j,&l)-pp.getCoord(&i,&l)) * directions(ui, l);
           ang = acos(dot/d);
-          ang = fmin(ang, PI-ang);
+          ang = fmin(ang, M_PI-ang);
           rc =  floor(d/rmax * nr);
           //ka = kernel_epa(ang, bw_a);
           ka = 1;

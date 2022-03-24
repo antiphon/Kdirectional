@@ -30,7 +30,7 @@ NumericVector box_integral(NumericMatrix x,
   
   // 2D only.
   
-  double w =  PI * h2;
+  double w =  M_PI * h2;
   double a, b, c, d;
   double vh, ch, dh;
   //

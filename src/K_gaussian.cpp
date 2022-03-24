@@ -34,7 +34,7 @@ NumericMatrix Kest_gaussian_c(NumericMatrix coord,
   C(0) = 1; // sqrt of diagonal of the covariance of the axis-oriented kernel, major axis longer
   for(i=1; i < dim; i++) C(i) = pow(kappa, 1.0/(dim-1.0)); // in case 1D or.
   //
-  normaliser = 1.0 / ( sqrt(pow(2*PI, dim))  ); // basic gaussian constant
+  normaliser = 1.0 / ( sqrt(pow(2*M_PI, dim))  ); // basic gaussian constant
   // max relevant range is in direction u 
   rmax =  C(0) * r(nr-1) * 2  ; 
   //

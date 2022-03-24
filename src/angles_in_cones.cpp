@@ -30,7 +30,7 @@ List c_angles_in_a_cone(NumericMatrix x, NumericVector unit, double theta,
           dot = 0;
           for(l=0; l < dim; l++)  dot += (x(t,l)-x(f,l)) * unit(l);
           dang = acos(dot/d);
-          if(antipodal) dang = min(dang, PI - dang);
+          if(antipodal) dang = min(dang, M_PI - dang);
           if (dang < theta & d < nnd){
             nn = t;
             nnd = d;
@@ -43,7 +43,7 @@ List c_angles_in_a_cone(NumericMatrix x, NumericVector unit, double theta,
         dx = x(t,0) - x(f,0);
         dy = x(t,1) - x(f,1);
         ang = atan2(dy, dx);
-        if(ang<0) ang = 2*PI+ang;
+        if(ang<0) ang = 2*M_PI+ang;
         angles[f] = ang;
         nndists[f] = nnd;
         if(dim==3){

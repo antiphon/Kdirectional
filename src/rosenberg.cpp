@@ -82,10 +82,10 @@ NumericMatrix c_rosenberg_intensities(NumericMatrix x, NumericMatrix bbox, int s
   int i, j, k, n;
   double ang = 0, dx = 0, dy = 0, r2 = 0;
   
-  double width =  PI / (double)steps;
+  double width =  M_PI / (double)steps;
   double halfwidth  = width / 2.0;
   
-  double base =  atan(PI/(2.0 * steps)); // sector triangle base, for approximation
+  double base =  atan(M_PI/(2.0 * steps)); // sector triangle base, for approximation
   
   NumericMatrix hits;
   NumericVector line(4);
@@ -96,8 +96,8 @@ NumericMatrix c_rosenberg_intensities(NumericMatrix x, NumericMatrix bbox, int s
       dx = x(i, 0) - x(j, 0);
       dy = x(i, 1) - x(j, 1);
       ang = atan2(dy, dx) + halfwidth;
-      if(ang < 0 )  ang = ang + PI;
-      if(ang >= PI)  ang = ang - PI;
+      if(ang < 0 )  ang = ang + M_PI;
+      if(ang >= M_PI)  ang = ang - M_PI;
       k = (int)(ang / width); // slot
       counts(i, k)+= 1;
       counts(j, k)+= 1;

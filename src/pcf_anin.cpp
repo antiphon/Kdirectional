@@ -100,7 +100,7 @@ NumericMatrix pcf_anin_conical_c(NumericMatrix coord, NumericVector lambda, Nume
           dot = 0;
           for(l=0; l < dim; l++)  dot += (pp.getCoord(&j,&l)-pp.getCoord(&i,&l)) * directions(ui, l);
           ang = acos(dot/d);
-          ang = fmin(ang, PI-ang);
+          ang = fmin(ang, M_PI-ang);
           // check cone inclusion or kernel range
           if(ang < epsilon){
             ka = ang_kern(ang, epsilon);
@@ -210,7 +210,7 @@ NumericMatrix pcf_anin_c_d(NumericMatrix coord, NumericVector lambda, NumericMat
           dot = 0;
           for(l=0; l < dim; l++)  dot += (pp.getCoord(&j,&l)-pp.getCoord(&i,&l)) * directions(ui, l);
           ang = acos(dot/d);
-          ang = fmin(ang, PI-ang);
+          ang = fmin(ang, M_PI-ang);
           if(ang < epsilon){
             for(ri=0; ri < nr; ri++){
               k = kernel_epa(fabs(d-r(ri)), r_h);
