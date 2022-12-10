@@ -1,597 +1,597 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://antiphon.github.io/Kdirectional/404.html</loc>
+    <loc>http://antiphon.github.io/Kdirectional/404.html</loc>
   </url>
   <url>
-    <loc>https://antiphon.github.io/Kdirectional/articles/anisotropy-example.html</loc>
+    <loc>http://antiphon.github.io/Kdirectional/articles/anisotropy-example.html</loc>
   </url>
   <url>
-    <loc>https://antiphon.github.io/Kdirectional/articles/index.html</loc>
+    <loc>http://antiphon.github.io/Kdirectional/articles/index.html</loc>
   </url>
   <url>
-    <loc>https://antiphon.github.io/Kdirectional/authors.html</loc>
+    <loc>http://antiphon.github.io/Kdirectional/authors.html</loc>
   </url>
   <url>
-    <loc>https://antiphon.github.io/Kdirectional/index.html</loc>
+    <loc>http://antiphon.github.io/Kdirectional/index.html</loc>
   </url>
   <url>
-    <loc>https://antiphon.github.io/Kdirectional/reference/add_ellipsoid2persp.html</loc>
+    <loc>http://antiphon.github.io/Kdirectional/reference/add_ellipsoid2persp.html</loc>
   </url>
   <url>
-    <loc>https://antiphon.github.io/Kdirectional/reference/ai2ll.html</loc>
+    <loc>http://antiphon.github.io/Kdirectional/reference/ai2ll.html</loc>
   </url>
   <url>
-    <loc>https://antiphon.github.io/Kdirectional/reference/ai2xyz.html</loc>
+    <loc>http://antiphon.github.io/Kdirectional/reference/ai2xyz.html</loc>
   </url>
   <url>
-    <loc>https://antiphon.github.io/Kdirectional/reference/angles.bin.html</loc>
+    <loc>http://antiphon.github.io/Kdirectional/reference/angles.bin.html</loc>
   </url>
   <url>
-    <loc>https://antiphon.github.io/Kdirectional/reference/angles.cdf.html</loc>
+    <loc>http://antiphon.github.io/Kdirectional/reference/angles.cdf.html</loc>
   </url>
   <url>
-    <loc>https://antiphon.github.io/Kdirectional/reference/angles.flower.html</loc>
+    <loc>http://antiphon.github.io/Kdirectional/reference/angles.flower.html</loc>
   </url>
   <url>
-    <loc>https://antiphon.github.io/Kdirectional/reference/angles.smooth.html</loc>
+    <loc>http://antiphon.github.io/Kdirectional/reference/angles.smooth.html</loc>
   </url>
   <url>
-    <loc>https://antiphon.github.io/Kdirectional/reference/angle_2_unit.html</loc>
+    <loc>http://antiphon.github.io/Kdirectional/reference/angle_2_unit.html</loc>
   </url>
   <url>
-    <loc>https://antiphon.github.io/Kdirectional/reference/anisotropy_abs_fast.html</loc>
+    <loc>http://antiphon.github.io/Kdirectional/reference/anisotropy_abs_fast.html</loc>
   </url>
   <url>
-    <loc>https://antiphon.github.io/Kdirectional/reference/anisotropy_profile.html</loc>
+    <loc>http://antiphon.github.io/Kdirectional/reference/anisotropy_profile.html</loc>
   </url>
   <url>
-    <loc>https://antiphon.github.io/Kdirectional/reference/antipode.html</loc>
+    <loc>http://antiphon.github.io/Kdirectional/reference/antipode.html</loc>
   </url>
   <url>
-    <loc>https://antiphon.github.io/Kdirectional/reference/as_bbpoly.html</loc>
+    <loc>http://antiphon.github.io/Kdirectional/reference/as_bbpoly.html</loc>
   </url>
   <url>
-    <loc>https://antiphon.github.io/Kdirectional/reference/as_ellipsoid.html</loc>
+    <loc>http://antiphon.github.io/Kdirectional/reference/as_ellipsoid.html</loc>
   </url>
   <url>
-    <loc>https://antiphon.github.io/Kdirectional/reference/azi2lon.html</loc>
+    <loc>http://antiphon.github.io/Kdirectional/reference/azi2lon.html</loc>
   </url>
   <url>
-    <loc>https://antiphon.github.io/Kdirectional/reference/aziinc2rotationMatrix.html</loc>
+    <loc>http://antiphon.github.io/Kdirectional/reference/aziinc2rotationMatrix.html</loc>
   </url>
   <url>
-    <loc>https://antiphon.github.io/Kdirectional/reference/bartletts_spectral_density.html</loc>
+    <loc>http://antiphon.github.io/Kdirectional/reference/bartletts_spectral_density.html</loc>
   </url>
   <url>
-    <loc>https://antiphon.github.io/Kdirectional/reference/bbox2bbpoly.html</loc>
+    <loc>http://antiphon.github.io/Kdirectional/reference/bbox2bbpoly.html</loc>
   </url>
   <url>
-    <loc>https://antiphon.github.io/Kdirectional/reference/bbox2bbquad.html</loc>
+    <loc>http://antiphon.github.io/Kdirectional/reference/bbox2bbquad.html</loc>
   </url>
   <url>
-    <loc>https://antiphon.github.io/Kdirectional/reference/bbox_affine.html</loc>
+    <loc>http://antiphon.github.io/Kdirectional/reference/bbox_affine.html</loc>
   </url>
   <url>
-    <loc>https://antiphon.github.io/Kdirectional/reference/bbox_dim.html</loc>
+    <loc>http://antiphon.github.io/Kdirectional/reference/bbox_dim.html</loc>
   </url>
   <url>
-    <loc>https://antiphon.github.io/Kdirectional/reference/bbox_distance.html</loc>
+    <loc>http://antiphon.github.io/Kdirectional/reference/bbox_distance.html</loc>
   </url>
   <url>
-    <loc>https://antiphon.github.io/Kdirectional/reference/bbox_make.html</loc>
+    <loc>http://antiphon.github.io/Kdirectional/reference/bbox_make.html</loc>
   </url>
   <url>
-    <loc>https://antiphon.github.io/Kdirectional/reference/bbox_sideLengths.html</loc>
+    <loc>http://antiphon.github.io/Kdirectional/reference/bbox_sideLengths.html</loc>
   </url>
   <url>
-    <loc>https://antiphon.github.io/Kdirectional/reference/bbox_volume.html</loc>
+    <loc>http://antiphon.github.io/Kdirectional/reference/bbox_volume.html</loc>
   </url>
   <url>
-    <loc>https://antiphon.github.io/Kdirectional/reference/bbpoly2bbox.html</loc>
+    <loc>http://antiphon.github.io/Kdirectional/reference/bbpoly2bbox.html</loc>
   </url>
   <url>
-    <loc>https://antiphon.github.io/Kdirectional/reference/bbpoly_affine.html</loc>
+    <loc>http://antiphon.github.io/Kdirectional/reference/bbpoly_affine.html</loc>
   </url>
   <url>
-    <loc>https://antiphon.github.io/Kdirectional/reference/bbpoly_correct_faces.html</loc>
+    <loc>http://antiphon.github.io/Kdirectional/reference/bbpoly_correct_faces.html</loc>
   </url>
   <url>
-    <loc>https://antiphon.github.io/Kdirectional/reference/bbpoly_default.html</loc>
+    <loc>http://antiphon.github.io/Kdirectional/reference/bbpoly_default.html</loc>
   </url>
   <url>
-    <loc>https://antiphon.github.io/Kdirectional/reference/bbpoly_intersection.html</loc>
+    <loc>http://antiphon.github.io/Kdirectional/reference/bbpoly_intersection.html</loc>
   </url>
   <url>
-    <loc>https://antiphon.github.io/Kdirectional/reference/bbpoly_planes.html</loc>
+    <loc>http://antiphon.github.io/Kdirectional/reference/bbpoly_planes.html</loc>
   </url>
   <url>
-    <loc>https://antiphon.github.io/Kdirectional/reference/bbpoly_simplex.html</loc>
+    <loc>http://antiphon.github.io/Kdirectional/reference/bbpoly_simplex.html</loc>
   </url>
   <url>
-    <loc>https://antiphon.github.io/Kdirectional/reference/bbpoly_simplices.html</loc>
+    <loc>http://antiphon.github.io/Kdirectional/reference/bbpoly_simplices.html</loc>
   </url>
   <url>
-    <loc>https://antiphon.github.io/Kdirectional/reference/bbpoly_volume.html</loc>
+    <loc>http://antiphon.github.io/Kdirectional/reference/bbpoly_volume.html</loc>
   </url>
   <url>
-    <loc>https://antiphon.github.io/Kdirectional/reference/bbquad2bbox.html</loc>
+    <loc>http://antiphon.github.io/Kdirectional/reference/bbquad2bbox.html</loc>
   </url>
   <url>
-    <loc>https://antiphon.github.io/Kdirectional/reference/bbquad_affine.html</loc>
+    <loc>http://antiphon.github.io/Kdirectional/reference/bbquad_affine.html</loc>
   </url>
   <url>
-    <loc>https://antiphon.github.io/Kdirectional/reference/bbquad_default.html</loc>
+    <loc>http://antiphon.github.io/Kdirectional/reference/bbquad_default.html</loc>
   </url>
   <url>
-    <loc>https://antiphon.github.io/Kdirectional/reference/bbquad_distance.html</loc>
+    <loc>http://antiphon.github.io/Kdirectional/reference/bbquad_distance.html</loc>
   </url>
   <url>
-    <loc>https://antiphon.github.io/Kdirectional/reference/bbquad_edges.html</loc>
+    <loc>http://antiphon.github.io/Kdirectional/reference/bbquad_edges.html</loc>
   </url>
   <url>
-    <loc>https://antiphon.github.io/Kdirectional/reference/bbquad_planes.html</loc>
+    <loc>http://antiphon.github.io/Kdirectional/reference/bbquad_planes.html</loc>
   </url>
   <url>
-    <loc>https://antiphon.github.io/Kdirectional/reference/bbquad_simplices.html</loc>
+    <loc>http://antiphon.github.io/Kdirectional/reference/bbquad_simplices.html</loc>
   </url>
   <url>
-    <loc>https://antiphon.github.io/Kdirectional/reference/bbquad_volume.html</loc>
+    <loc>http://antiphon.github.io/Kdirectional/reference/bbquad_volume.html</loc>
   </url>
   <url>
-    <loc>https://antiphon.github.io/Kdirectional/reference/check_bbpoly.html</loc>
+    <loc>http://antiphon.github.io/Kdirectional/reference/check_bbpoly.html</loc>
   </url>
   <url>
-    <loc>https://antiphon.github.io/Kdirectional/reference/check_directions.html</loc>
+    <loc>http://antiphon.github.io/Kdirectional/reference/check_directions.html</loc>
   </url>
   <url>
-    <loc>https://antiphon.github.io/Kdirectional/reference/check_pp.html</loc>
+    <loc>http://antiphon.github.io/Kdirectional/reference/check_pp.html</loc>
   </url>
   <url>
-    <loc>https://antiphon.github.io/Kdirectional/reference/check_vector_passes_triangle.html</loc>
+    <loc>http://antiphon.github.io/Kdirectional/reference/check_vector_passes_triangle.html</loc>
   </url>
   <url>
-    <loc>https://antiphon.github.io/Kdirectional/reference/confint.ellipsoid.html</loc>
+    <loc>http://antiphon.github.io/Kdirectional/reference/confint.ellipsoid.html</loc>
   </url>
   <url>
-    <loc>https://antiphon.github.io/Kdirectional/reference/confint.ellipsoid_old.html</loc>
+    <loc>http://antiphon.github.io/Kdirectional/reference/confint.ellipsoid_old.html</loc>
   </url>
   <url>
-    <loc>https://antiphon.github.io/Kdirectional/reference/confint.fryellipsoids.html</loc>
+    <loc>http://antiphon.github.io/Kdirectional/reference/confint.fryellipsoids.html</loc>
   </url>
   <url>
-    <loc>https://antiphon.github.io/Kdirectional/reference/coord_affine.html</loc>
+    <loc>http://antiphon.github.io/Kdirectional/reference/coord_affine.html</loc>
   </url>
   <url>
-    <loc>https://antiphon.github.io/Kdirectional/reference/cross.html</loc>
+    <loc>http://antiphon.github.io/Kdirectional/reference/cross.html</loc>
   </url>
   <url>
-    <loc>https://antiphon.github.io/Kdirectional/reference/dDirectional.html</loc>
+    <loc>http://antiphon.github.io/Kdirectional/reference/dDirectional.html</loc>
   </url>
   <url>
-    <loc>https://antiphon.github.io/Kdirectional/reference/deg2rad.html</loc>
+    <loc>http://antiphon.github.io/Kdirectional/reference/deg2rad.html</loc>
   </url>
   <url>
-    <loc>https://antiphon.github.io/Kdirectional/reference/DFT.html</loc>
+    <loc>http://antiphon.github.io/Kdirectional/reference/DFT.html</loc>
   </url>
   <url>
-    <loc>https://antiphon.github.io/Kdirectional/reference/directed_geom.html</loc>
+    <loc>http://antiphon.github.io/Kdirectional/reference/directed_geom.html</loc>
   </url>
   <url>
-    <loc>https://antiphon.github.io/Kdirectional/reference/direction.grid.html</loc>
+    <loc>http://antiphon.github.io/Kdirectional/reference/direction.grid.html</loc>
   </url>
   <url>
-    <loc>https://antiphon.github.io/Kdirectional/reference/dist_point_to_plane.html</loc>
+    <loc>http://antiphon.github.io/Kdirectional/reference/dist_point_to_plane.html</loc>
   </url>
   <url>
-    <loc>https://antiphon.github.io/Kdirectional/reference/draw.arc.html</loc>
+    <loc>http://antiphon.github.io/Kdirectional/reference/draw.arc.html</loc>
   </url>
   <url>
-    <loc>https://antiphon.github.io/Kdirectional/reference/ellipse_contrast_2d.html</loc>
+    <loc>http://antiphon.github.io/Kdirectional/reference/ellipse_contrast_2d.html</loc>
   </url>
   <url>
-    <loc>https://antiphon.github.io/Kdirectional/reference/ellipse_form.html</loc>
+    <loc>http://antiphon.github.io/Kdirectional/reference/ellipse_form.html</loc>
   </url>
   <url>
-    <loc>https://antiphon.github.io/Kdirectional/reference/ellipse_solve_rota.html</loc>
+    <loc>http://antiphon.github.io/Kdirectional/reference/ellipse_solve_rota.html</loc>
   </url>
   <url>
-    <loc>https://antiphon.github.io/Kdirectional/reference/ellipsoid_ALS.html</loc>
+    <loc>http://antiphon.github.io/Kdirectional/reference/ellipsoid_ALS.html</loc>
   </url>
   <url>
-    <loc>https://antiphon.github.io/Kdirectional/reference/ellipsoid_contrast_3d.html</loc>
+    <loc>http://antiphon.github.io/Kdirectional/reference/ellipsoid_contrast_3d.html</loc>
   </url>
   <url>
-    <loc>https://antiphon.github.io/Kdirectional/reference/ellipsoid_from_beta.html</loc>
+    <loc>http://antiphon.github.io/Kdirectional/reference/ellipsoid_from_beta.html</loc>
   </url>
   <url>
-    <loc>https://antiphon.github.io/Kdirectional/reference/ellipsoid_OLS.html</loc>
+    <loc>http://antiphon.github.io/Kdirectional/reference/ellipsoid_OLS.html</loc>
   </url>
   <url>
-    <loc>https://antiphon.github.io/Kdirectional/reference/ellipsoid_shape.html</loc>
+    <loc>http://antiphon.github.io/Kdirectional/reference/ellipsoid_shape.html</loc>
   </url>
   <url>
-    <loc>https://antiphon.github.io/Kdirectional/reference/Euler2quaternion.html</loc>
+    <loc>http://antiphon.github.io/Kdirectional/reference/Euler2quaternion.html</loc>
   </url>
   <url>
-    <loc>https://antiphon.github.io/Kdirectional/reference/Euler2rotationMatrix.html</loc>
+    <loc>http://antiphon.github.io/Kdirectional/reference/Euler2rotationMatrix.html</loc>
   </url>
   <url>
-    <loc>https://antiphon.github.io/Kdirectional/reference/EulerAngles2quaternion.html</loc>
+    <loc>http://antiphon.github.io/Kdirectional/reference/EulerAngles2quaternion.html</loc>
   </url>
   <url>
-    <loc>https://antiphon.github.io/Kdirectional/reference/EulerAngles2rotationMatrix.html</loc>
+    <loc>http://antiphon.github.io/Kdirectional/reference/EulerAngles2rotationMatrix.html</loc>
   </url>
   <url>
-    <loc>https://antiphon.github.io/Kdirectional/reference/Fest_along_axis.html</loc>
+    <loc>http://antiphon.github.io/Kdirectional/reference/Fest_along_axis.html</loc>
   </url>
   <url>
-    <loc>https://antiphon.github.io/Kdirectional/reference/Fest_directional.html</loc>
+    <loc>http://antiphon.github.io/Kdirectional/reference/Fest_directional.html</loc>
   </url>
   <url>
-    <loc>https://antiphon.github.io/Kdirectional/reference/flower.pcf_directions.html</loc>
+    <loc>http://antiphon.github.io/Kdirectional/reference/flower.pcf_directions.html</loc>
   </url>
   <url>
-    <loc>https://antiphon.github.io/Kdirectional/reference/fryellipsoids-class.html</loc>
+    <loc>http://antiphon.github.io/Kdirectional/reference/fryellipsoids-class.html</loc>
   </url>
   <url>
-    <loc>https://antiphon.github.io/Kdirectional/reference/fry_ellipsoids.html</loc>
+    <loc>http://antiphon.github.io/Kdirectional/reference/fry_ellipsoids.html</loc>
   </url>
   <url>
-    <loc>https://antiphon.github.io/Kdirectional/reference/fry_ellipsoids2.html</loc>
+    <loc>http://antiphon.github.io/Kdirectional/reference/fry_ellipsoids2.html</loc>
   </url>
   <url>
-    <loc>https://antiphon.github.io/Kdirectional/reference/fry_orientation_density.html</loc>
+    <loc>http://antiphon.github.io/Kdirectional/reference/fry_orientation_density.html</loc>
   </url>
   <url>
-    <loc>https://antiphon.github.io/Kdirectional/reference/fry_points.html</loc>
+    <loc>http://antiphon.github.io/Kdirectional/reference/fry_points.html</loc>
   </url>
   <url>
-    <loc>https://antiphon.github.io/Kdirectional/reference/geom.html</loc>
+    <loc>http://antiphon.github.io/Kdirectional/reference/geom.html</loc>
   </url>
   <url>
-    <loc>https://antiphon.github.io/Kdirectional/reference/Gest.html</loc>
+    <loc>http://antiphon.github.io/Kdirectional/reference/Gest.html</loc>
   </url>
   <url>
-    <loc>https://antiphon.github.io/Kdirectional/reference/getYmult.html</loc>
+    <loc>http://antiphon.github.io/Kdirectional/reference/getYmult.html</loc>
   </url>
   <url>
-    <loc>https://antiphon.github.io/Kdirectional/reference/Gsector.html</loc>
+    <loc>http://antiphon.github.io/Kdirectional/reference/Gsector.html</loc>
   </url>
   <url>
-    <loc>https://antiphon.github.io/Kdirectional/reference/inc2lat.html</loc>
+    <loc>http://antiphon.github.io/Kdirectional/reference/inc2lat.html</loc>
   </url>
   <url>
-    <loc>https://antiphon.github.io/Kdirectional/reference/index.html</loc>
+    <loc>http://antiphon.github.io/Kdirectional/reference/index.html</loc>
   </url>
   <url>
-    <loc>https://antiphon.github.io/Kdirectional/reference/intensity_at_points.html</loc>
+    <loc>http://antiphon.github.io/Kdirectional/reference/intensity_at_points.html</loc>
   </url>
   <url>
-    <loc>https://antiphon.github.io/Kdirectional/reference/intensity_bandwidth_profile.html</loc>
+    <loc>http://antiphon.github.io/Kdirectional/reference/intensity_bandwidth_profile.html</loc>
   </url>
   <url>
-    <loc>https://antiphon.github.io/Kdirectional/reference/intensity_somewhere.html</loc>
+    <loc>http://antiphon.github.io/Kdirectional/reference/intensity_somewhere.html</loc>
   </url>
   <url>
-    <loc>https://antiphon.github.io/Kdirectional/reference/is.bbpoly.html</loc>
+    <loc>http://antiphon.github.io/Kdirectional/reference/is.bbpoly.html</loc>
   </url>
   <url>
-    <loc>https://antiphon.github.io/Kdirectional/reference/is.bbquad.html</loc>
+    <loc>http://antiphon.github.io/Kdirectional/reference/is.bbquad.html</loc>
   </url>
   <url>
-    <loc>https://antiphon.github.io/Kdirectional/reference/Kdirectional.html</loc>
+    <loc>http://antiphon.github.io/Kdirectional/reference/Kdirectional.html</loc>
   </url>
   <url>
-    <loc>https://antiphon.github.io/Kdirectional/reference/Kest_along_axis.html</loc>
+    <loc>http://antiphon.github.io/Kdirectional/reference/Kest_along_axis.html</loc>
   </url>
   <url>
-    <loc>https://antiphon.github.io/Kdirectional/reference/Kest_anin.html</loc>
+    <loc>http://antiphon.github.io/Kdirectional/reference/Kest_anin.html</loc>
   </url>
   <url>
-    <loc>https://antiphon.github.io/Kdirectional/reference/Kest_anin_cylinder.html</loc>
+    <loc>http://antiphon.github.io/Kdirectional/reference/Kest_anin_cylinder.html</loc>
   </url>
   <url>
-    <loc>https://antiphon.github.io/Kdirectional/reference/Kest_directional.html</loc>
+    <loc>http://antiphon.github.io/Kdirectional/reference/Kest_directional.html</loc>
   </url>
   <url>
-    <loc>https://antiphon.github.io/Kdirectional/reference/Kest_directional_old.html</loc>
+    <loc>http://antiphon.github.io/Kdirectional/reference/Kest_directional_old.html</loc>
   </url>
   <url>
-    <loc>https://antiphon.github.io/Kdirectional/reference/Kest_gaussian.html</loc>
+    <loc>http://antiphon.github.io/Kdirectional/reference/Kest_gaussian.html</loc>
   </url>
   <url>
-    <loc>https://antiphon.github.io/Kdirectional/reference/knnangle.html</loc>
+    <loc>http://antiphon.github.io/Kdirectional/reference/knnangle.html</loc>
   </url>
   <url>
-    <loc>https://antiphon.github.io/Kdirectional/reference/ks.test2.html</loc>
+    <loc>http://antiphon.github.io/Kdirectional/reference/ks.test2.html</loc>
   </url>
   <url>
-    <loc>https://antiphon.github.io/Kdirectional/reference/lat2inc.html</loc>
+    <loc>http://antiphon.github.io/Kdirectional/reference/lat2inc.html</loc>
   </url>
   <url>
-    <loc>https://antiphon.github.io/Kdirectional/reference/lines.anisotropyprofile.html</loc>
+    <loc>http://antiphon.github.io/Kdirectional/reference/lines.anisotropyprofile.html</loc>
   </url>
   <url>
-    <loc>https://antiphon.github.io/Kdirectional/reference/ll2ai.html</loc>
+    <loc>http://antiphon.github.io/Kdirectional/reference/ll2ai.html</loc>
   </url>
   <url>
-    <loc>https://antiphon.github.io/Kdirectional/reference/ll2xyz.html</loc>
+    <loc>http://antiphon.github.io/Kdirectional/reference/ll2xyz.html</loc>
   </url>
   <url>
-    <loc>https://antiphon.github.io/Kdirectional/reference/lon2azi.html</loc>
+    <loc>http://antiphon.github.io/Kdirectional/reference/lon2azi.html</loc>
   </url>
   <url>
-    <loc>https://antiphon.github.io/Kdirectional/reference/markcorr_anin.html</loc>
+    <loc>http://antiphon.github.io/Kdirectional/reference/markcorr_anin.html</loc>
   </url>
   <url>
-    <loc>https://antiphon.github.io/Kdirectional/reference/markcorr_anisotropic.html</loc>
+    <loc>http://antiphon.github.io/Kdirectional/reference/markcorr_anisotropic.html</loc>
   </url>
   <url>
-    <loc>https://antiphon.github.io/Kdirectional/reference/mean_ellipse.html</loc>
+    <loc>http://antiphon.github.io/Kdirectional/reference/mean_ellipse.html</loc>
   </url>
   <url>
-    <loc>https://antiphon.github.io/Kdirectional/reference/mean_ellipsoids.html</loc>
+    <loc>http://antiphon.github.io/Kdirectional/reference/mean_ellipsoids.html</loc>
   </url>
   <url>
-    <loc>https://antiphon.github.io/Kdirectional/reference/mean_rotation_quat.html</loc>
+    <loc>http://antiphon.github.io/Kdirectional/reference/mean_rotation_quat.html</loc>
   </url>
   <url>
-    <loc>https://antiphon.github.io/Kdirectional/reference/nnangle.html</loc>
+    <loc>http://antiphon.github.io/Kdirectional/reference/nnangle.html</loc>
   </url>
   <url>
-    <loc>https://antiphon.github.io/Kdirectional/reference/nnangle_cone.html</loc>
+    <loc>http://antiphon.github.io/Kdirectional/reference/nnangle_cone.html</loc>
   </url>
   <url>
-    <loc>https://antiphon.github.io/Kdirectional/reference/nn_directional_angle_distribution.html</loc>
+    <loc>http://antiphon.github.io/Kdirectional/reference/nn_directional_angle_distribution.html</loc>
   </url>
   <url>
-    <loc>https://antiphon.github.io/Kdirectional/reference/nn_directional_distance_distribution.html</loc>
+    <loc>http://antiphon.github.io/Kdirectional/reference/nn_directional_distance_distribution.html</loc>
   </url>
   <url>
-    <loc>https://antiphon.github.io/Kdirectional/reference/nn_directional_distance_distribution_global.html</loc>
+    <loc>http://antiphon.github.io/Kdirectional/reference/nn_directional_distance_distribution_global.html</loc>
   </url>
   <url>
-    <loc>https://antiphon.github.io/Kdirectional/reference/nn_directional_distance_distribution_local.html</loc>
+    <loc>http://antiphon.github.io/Kdirectional/reference/nn_directional_distance_distribution_local.html</loc>
   </url>
   <url>
-    <loc>https://antiphon.github.io/Kdirectional/reference/nn_orientation_density.html</loc>
+    <loc>http://antiphon.github.io/Kdirectional/reference/nn_orientation_density.html</loc>
   </url>
   <url>
-    <loc>https://antiphon.github.io/Kdirectional/reference/osK.html</loc>
+    <loc>http://antiphon.github.io/Kdirectional/reference/osK.html</loc>
   </url>
   <url>
-    <loc>https://antiphon.github.io/Kdirectional/reference/owin_to_bbox.html</loc>
+    <loc>http://antiphon.github.io/Kdirectional/reference/owin_to_bbox.html</loc>
   </url>
   <url>
-    <loc>https://antiphon.github.io/Kdirectional/reference/pairwise_vectors.html</loc>
+    <loc>http://antiphon.github.io/Kdirectional/reference/pairwise_vectors.html</loc>
   </url>
   <url>
-    <loc>https://antiphon.github.io/Kdirectional/reference/parse_marks.html</loc>
+    <loc>http://antiphon.github.io/Kdirectional/reference/parse_marks.html</loc>
   </url>
   <url>
-    <loc>https://antiphon.github.io/Kdirectional/reference/pcf_anin.html</loc>
+    <loc>http://antiphon.github.io/Kdirectional/reference/pcf_anin.html</loc>
   </url>
   <url>
-    <loc>https://antiphon.github.io/Kdirectional/reference/pcf_anin_cylinder.html</loc>
+    <loc>http://antiphon.github.io/Kdirectional/reference/pcf_anin_cylinder.html</loc>
   </url>
   <url>
-    <loc>https://antiphon.github.io/Kdirectional/reference/pcf_anin_fry.html</loc>
+    <loc>http://antiphon.github.io/Kdirectional/reference/pcf_anin_fry.html</loc>
   </url>
   <url>
-    <loc>https://antiphon.github.io/Kdirectional/reference/pcf_anisotropic.html</loc>
+    <loc>http://antiphon.github.io/Kdirectional/reference/pcf_anisotropic.html</loc>
   </url>
   <url>
-    <loc>https://antiphon.github.io/Kdirectional/reference/pcf_anisotropic_old.html</loc>
+    <loc>http://antiphon.github.io/Kdirectional/reference/pcf_anisotropic_old.html</loc>
   </url>
   <url>
-    <loc>https://antiphon.github.io/Kdirectional/reference/pcf_directional.html</loc>
+    <loc>http://antiphon.github.io/Kdirectional/reference/pcf_directional.html</loc>
   </url>
   <url>
-    <loc>https://antiphon.github.io/Kdirectional/reference/pcf_directions.html</loc>
+    <loc>http://antiphon.github.io/Kdirectional/reference/pcf_directions.html</loc>
   </url>
   <url>
-    <loc>https://antiphon.github.io/Kdirectional/reference/pcf_sector.html</loc>
+    <loc>http://antiphon.github.io/Kdirectional/reference/pcf_sector.html</loc>
   </url>
   <url>
-    <loc>https://antiphon.github.io/Kdirectional/reference/periodogram.html</loc>
+    <loc>http://antiphon.github.io/Kdirectional/reference/periodogram.html</loc>
   </url>
   <url>
-    <loc>https://antiphon.github.io/Kdirectional/reference/periodogram_MR.html</loc>
+    <loc>http://antiphon.github.io/Kdirectional/reference/periodogram_MR.html</loc>
   </url>
   <url>
-    <loc>https://antiphon.github.io/Kdirectional/reference/persp.ellipsoid.html</loc>
+    <loc>http://antiphon.github.io/Kdirectional/reference/persp.ellipsoid.html</loc>
   </url>
   <url>
-    <loc>https://antiphon.github.io/Kdirectional/reference/pKolmogorov.html</loc>
+    <loc>http://antiphon.github.io/Kdirectional/reference/pKolmogorov.html</loc>
   </url>
   <url>
-    <loc>https://antiphon.github.io/Kdirectional/reference/plot.anisotropyprofile.html</loc>
+    <loc>http://antiphon.github.io/Kdirectional/reference/plot.anisotropyprofile.html</loc>
   </url>
   <url>
-    <loc>https://antiphon.github.io/Kdirectional/reference/plot.bbpoly.html</loc>
+    <loc>http://antiphon.github.io/Kdirectional/reference/plot.bbpoly.html</loc>
   </url>
   <url>
-    <loc>https://antiphon.github.io/Kdirectional/reference/plot.bbquad.html</loc>
+    <loc>http://antiphon.github.io/Kdirectional/reference/plot.bbquad.html</loc>
   </url>
   <url>
-    <loc>https://antiphon.github.io/Kdirectional/reference/plot.confint_fryellipsoids.html</loc>
+    <loc>http://antiphon.github.io/Kdirectional/reference/plot.confint_fryellipsoids.html</loc>
   </url>
   <url>
-    <loc>https://antiphon.github.io/Kdirectional/reference/plot.ellipsoid.html</loc>
+    <loc>http://antiphon.github.io/Kdirectional/reference/plot.ellipsoid.html</loc>
   </url>
   <url>
-    <loc>https://antiphon.github.io/Kdirectional/reference/plot.fryellipsoids.html</loc>
+    <loc>http://antiphon.github.io/Kdirectional/reference/plot.fryellipsoids.html</loc>
   </url>
   <url>
-    <loc>https://antiphon.github.io/Kdirectional/reference/plot.f_cone.html</loc>
+    <loc>http://antiphon.github.io/Kdirectional/reference/plot.f_cone.html</loc>
   </url>
   <url>
-    <loc>https://antiphon.github.io/Kdirectional/reference/plot.intensity_bw.html</loc>
+    <loc>http://antiphon.github.io/Kdirectional/reference/plot.intensity_bw.html</loc>
   </url>
   <url>
-    <loc>https://antiphon.github.io/Kdirectional/reference/plot.K_anin.html</loc>
+    <loc>http://antiphon.github.io/Kdirectional/reference/plot.K_anin.html</loc>
   </url>
   <url>
-    <loc>https://antiphon.github.io/Kdirectional/reference/plot.markcorr_anin.html</loc>
+    <loc>http://antiphon.github.io/Kdirectional/reference/plot.markcorr_anin.html</loc>
   </url>
   <url>
-    <loc>https://antiphon.github.io/Kdirectional/reference/plot.nnangle.html</loc>
+    <loc>http://antiphon.github.io/Kdirectional/reference/plot.nnangle.html</loc>
   </url>
   <url>
-    <loc>https://antiphon.github.io/Kdirectional/reference/plot.os_K.html</loc>
+    <loc>http://antiphon.github.io/Kdirectional/reference/plot.os_K.html</loc>
   </url>
   <url>
-    <loc>https://antiphon.github.io/Kdirectional/reference/plot.pcf_anin.html</loc>
+    <loc>http://antiphon.github.io/Kdirectional/reference/plot.pcf_anin.html</loc>
   </url>
   <url>
-    <loc>https://antiphon.github.io/Kdirectional/reference/plot.pcf_anisotropic.html</loc>
+    <loc>http://antiphon.github.io/Kdirectional/reference/plot.pcf_anisotropic.html</loc>
   </url>
   <url>
-    <loc>https://antiphon.github.io/Kdirectional/reference/plot.pcf_directions.html</loc>
+    <loc>http://antiphon.github.io/Kdirectional/reference/plot.pcf_directions.html</loc>
   </url>
   <url>
-    <loc>https://antiphon.github.io/Kdirectional/reference/plot2d.pcf_anisotropic.html</loc>
+    <loc>http://antiphon.github.io/Kdirectional/reference/plot2d.pcf_anisotropic.html</loc>
   </url>
   <url>
-    <loc>https://antiphon.github.io/Kdirectional/reference/poly2bbpoly.html</loc>
+    <loc>http://antiphon.github.io/Kdirectional/reference/poly2bbpoly.html</loc>
   </url>
   <url>
-    <loc>https://antiphon.github.io/Kdirectional/reference/poly_to_bbquad.html</loc>
+    <loc>http://antiphon.github.io/Kdirectional/reference/poly_to_bbquad.html</loc>
   </url>
   <url>
-    <loc>https://antiphon.github.io/Kdirectional/reference/predict.ellipsoid.html</loc>
+    <loc>http://antiphon.github.io/Kdirectional/reference/predict.ellipsoid.html</loc>
   </url>
   <url>
-    <loc>https://antiphon.github.io/Kdirectional/reference/print.anisotropyprofile.html</loc>
+    <loc>http://antiphon.github.io/Kdirectional/reference/print.anisotropyprofile.html</loc>
   </url>
   <url>
-    <loc>https://antiphon.github.io/Kdirectional/reference/print.anisotropyprofile.summary.html</loc>
+    <loc>http://antiphon.github.io/Kdirectional/reference/print.anisotropyprofile.summary.html</loc>
   </url>
   <url>
-    <loc>https://antiphon.github.io/Kdirectional/reference/print.bbpoly.html</loc>
+    <loc>http://antiphon.github.io/Kdirectional/reference/print.bbpoly.html</loc>
   </url>
   <url>
-    <loc>https://antiphon.github.io/Kdirectional/reference/print.bbquad.html</loc>
+    <loc>http://antiphon.github.io/Kdirectional/reference/print.bbquad.html</loc>
   </url>
   <url>
-    <loc>https://antiphon.github.io/Kdirectional/reference/print.confint_fryellipsoids.html</loc>
+    <loc>http://antiphon.github.io/Kdirectional/reference/print.confint_fryellipsoids.html</loc>
   </url>
   <url>
-    <loc>https://antiphon.github.io/Kdirectional/reference/print.ellipsoid.html</loc>
+    <loc>http://antiphon.github.io/Kdirectional/reference/print.ellipsoid.html</loc>
   </url>
   <url>
-    <loc>https://antiphon.github.io/Kdirectional/reference/print.fryellipsoids.html</loc>
+    <loc>http://antiphon.github.io/Kdirectional/reference/print.fryellipsoids.html</loc>
   </url>
   <url>
-    <loc>https://antiphon.github.io/Kdirectional/reference/print.intensity_bw.html</loc>
+    <loc>http://antiphon.github.io/Kdirectional/reference/print.intensity_bw.html</loc>
   </url>
   <url>
-    <loc>https://antiphon.github.io/Kdirectional/reference/print.nnangle.html</loc>
+    <loc>http://antiphon.github.io/Kdirectional/reference/print.nnangle.html</loc>
   </url>
   <url>
-    <loc>https://antiphon.github.io/Kdirectional/reference/quaternion2Euler.html</loc>
+    <loc>http://antiphon.github.io/Kdirectional/reference/quaternion2Euler.html</loc>
   </url>
   <url>
-    <loc>https://antiphon.github.io/Kdirectional/reference/quaternion2EulerAngles.html</loc>
+    <loc>http://antiphon.github.io/Kdirectional/reference/quaternion2EulerAngles.html</loc>
   </url>
   <url>
-    <loc>https://antiphon.github.io/Kdirectional/reference/quaternion2rotationMatrix.html</loc>
+    <loc>http://antiphon.github.io/Kdirectional/reference/quaternion2rotationMatrix.html</loc>
   </url>
   <url>
-    <loc>https://antiphon.github.io/Kdirectional/reference/rad2deg.html</loc>
+    <loc>http://antiphon.github.io/Kdirectional/reference/rad2deg.html</loc>
   </url>
   <url>
-    <loc>https://antiphon.github.io/Kdirectional/reference/redenbach_border_term.html</loc>
+    <loc>http://antiphon.github.io/Kdirectional/reference/redenbach_border_term.html</loc>
   </url>
   <url>
-    <loc>https://antiphon.github.io/Kdirectional/reference/rellipsoid.html</loc>
+    <loc>http://antiphon.github.io/Kdirectional/reference/rellipsoid.html</loc>
   </url>
   <url>
-    <loc>https://antiphon.github.io/Kdirectional/reference/rellipsoid_dev.html</loc>
+    <loc>http://antiphon.github.io/Kdirectional/reference/rellipsoid_dev.html</loc>
   </url>
   <url>
-    <loc>https://antiphon.github.io/Kdirectional/reference/rosenberg.html</loc>
+    <loc>http://antiphon.github.io/Kdirectional/reference/rosenberg.html</loc>
   </url>
   <url>
-    <loc>https://antiphon.github.io/Kdirectional/reference/rotationMatrix2Euler.html</loc>
+    <loc>http://antiphon.github.io/Kdirectional/reference/rotationMatrix2Euler.html</loc>
   </url>
   <url>
-    <loc>https://antiphon.github.io/Kdirectional/reference/rotationMatrix2EulerAngles.html</loc>
+    <loc>http://antiphon.github.io/Kdirectional/reference/rotationMatrix2EulerAngles.html</loc>
   </url>
   <url>
-    <loc>https://antiphon.github.io/Kdirectional/reference/rotationMatrix2quaternion.html</loc>
+    <loc>http://antiphon.github.io/Kdirectional/reference/rotationMatrix2quaternion.html</loc>
   </url>
   <url>
-    <loc>https://antiphon.github.io/Kdirectional/reference/rotationMatrix3.html</loc>
+    <loc>http://antiphon.github.io/Kdirectional/reference/rotationMatrix3.html</loc>
   </url>
   <url>
-    <loc>https://antiphon.github.io/Kdirectional/reference/sample_ellipse_beta.html</loc>
+    <loc>http://antiphon.github.io/Kdirectional/reference/sample_ellipse_beta.html</loc>
   </url>
   <url>
-    <loc>https://antiphon.github.io/Kdirectional/reference/sectorplot.html</loc>
+    <loc>http://antiphon.github.io/Kdirectional/reference/sectorplot.html</loc>
   </url>
   <url>
-    <loc>https://antiphon.github.io/Kdirectional/reference/simplex_volume.html</loc>
+    <loc>http://antiphon.github.io/Kdirectional/reference/simplex_volume.html</loc>
   </url>
   <url>
-    <loc>https://antiphon.github.io/Kdirectional/reference/solve_S0.html</loc>
+    <loc>http://antiphon.github.io/Kdirectional/reference/solve_S0.html</loc>
   </url>
   <url>
-    <loc>https://antiphon.github.io/Kdirectional/reference/spectrum.html</loc>
+    <loc>http://antiphon.github.io/Kdirectional/reference/spectrum.html</loc>
   </url>
   <url>
-    <loc>https://antiphon.github.io/Kdirectional/reference/sphere.grid.html</loc>
+    <loc>http://antiphon.github.io/Kdirectional/reference/sphere.grid.html</loc>
   </url>
   <url>
-    <loc>https://antiphon.github.io/Kdirectional/reference/summary.anisotropyprofile.html</loc>
+    <loc>http://antiphon.github.io/Kdirectional/reference/summary.anisotropyprofile.html</loc>
   </url>
   <url>
-    <loc>https://antiphon.github.io/Kdirectional/reference/summary.confint_fryellipsoids.html</loc>
+    <loc>http://antiphon.github.io/Kdirectional/reference/summary.confint_fryellipsoids.html</loc>
   </url>
   <url>
-    <loc>https://antiphon.github.io/Kdirectional/reference/summary.ellipsoid.html</loc>
+    <loc>http://antiphon.github.io/Kdirectional/reference/summary.ellipsoid.html</loc>
   </url>
   <url>
-    <loc>https://antiphon.github.io/Kdirectional/reference/summary.nnangle.html</loc>
+    <loc>http://antiphon.github.io/Kdirectional/reference/summary.nnangle.html</loc>
   </url>
   <url>
-    <loc>https://antiphon.github.io/Kdirectional/reference/Test_anin.html</loc>
+    <loc>http://antiphon.github.io/Kdirectional/reference/Test_anin.html</loc>
   </url>
   <url>
-    <loc>https://antiphon.github.io/Kdirectional/reference/theta_2_unit.html</loc>
+    <loc>http://antiphon.github.io/Kdirectional/reference/theta_2_unit.html</loc>
   </url>
   <url>
-    <loc>https://antiphon.github.io/Kdirectional/reference/three_points_to_plane.html</loc>
+    <loc>http://antiphon.github.io/Kdirectional/reference/three_points_to_plane.html</loc>
   </url>
   <url>
-    <loc>https://antiphon.github.io/Kdirectional/reference/translation_weights.html</loc>
+    <loc>http://antiphon.github.io/Kdirectional/reference/translation_weights.html</loc>
   </url>
   <url>
-    <loc>https://antiphon.github.io/Kdirectional/reference/triangulate_indices_cohen_hickey.html</loc>
+    <loc>http://antiphon.github.io/Kdirectional/reference/triangulate_indices_cohen_hickey.html</loc>
   </url>
   <url>
-    <loc>https://antiphon.github.io/Kdirectional/reference/unit.vecs.html</loc>
+    <loc>http://antiphon.github.io/Kdirectional/reference/unit.vecs.html</loc>
   </url>
   <url>
-    <loc>https://antiphon.github.io/Kdirectional/reference/unit_2_angle.html</loc>
+    <loc>http://antiphon.github.io/Kdirectional/reference/unit_2_angle.html</loc>
   </url>
   <url>
-    <loc>https://antiphon.github.io/Kdirectional/reference/unit_2_theta.html</loc>
+    <loc>http://antiphon.github.io/Kdirectional/reference/unit_2_theta.html</loc>
   </url>
   <url>
-    <loc>https://antiphon.github.io/Kdirectional/reference/wavelet_saed.html</loc>
+    <loc>http://antiphon.github.io/Kdirectional/reference/wavelet_saed.html</loc>
   </url>
   <url>
-    <loc>https://antiphon.github.io/Kdirectional/reference/xyz2ai.html</loc>
+    <loc>http://antiphon.github.io/Kdirectional/reference/xyz2ai.html</loc>
   </url>
   <url>
-    <loc>https://antiphon.github.io/Kdirectional/reference/xyz2globe.html</loc>
+    <loc>http://antiphon.github.io/Kdirectional/reference/xyz2globe.html</loc>
   </url>
   <url>
-    <loc>https://antiphon.github.io/Kdirectional/reference/xyz2ll.html</loc>
+    <loc>http://antiphon.github.io/Kdirectional/reference/xyz2ll.html</loc>
   </url>
   <url>
-    <loc>https://antiphon.github.io/Kdirectional/reference/xyzrotate.html</loc>
+    <loc>http://antiphon.github.io/Kdirectional/reference/xyzrotate.html</loc>
   </url>
 </urlset>
