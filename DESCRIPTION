@@ -17,3 +17,4 @@ Suggests:
     rmarkdown
 VignetteBuilder: knitr
 RoxygenNote: 7.2.1
+URL: https://antiphon.github.io/Kdirectional/, https://github.com/antiphon/Kdirectional/

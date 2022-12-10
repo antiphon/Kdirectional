@@ -1,5 +1,5 @@
 ---
-title: "Example anisotropy analysis using Kdirectional"
+title: "Example 2D anisotropy analysis using Kdirectional"
 author: "Tuomas Rajala"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
@@ -8,6 +8,8 @@ vignette: >
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
+
+Originally written around 2014. Updated 10.12.2022.
 
 ## Introduction
 The package `Kdirectional` is a collection of tools for analysing the isotropy of 2- and 3-dimensional point patterns. This document shows how to use some of these tools by analysing an synthetic example pattern.
@@ -61,14 +63,19 @@ The pattern on the left is what we want to estimate.
 
 
 ## Nearest neighbour vectors
-Check the distribution of nearest neighbours vectors:
-```{r, fig.height=5, fig.width=5}
+
+Check for starters the distribution of nearest neighbours vectors.
+
+```{r, fig.height=4, fig.width=8}
 nna <- nnangle(coords(x))
 ang <- nna[,1]-pi
-angles.flower(ang, ci = T, k=12)
+par(mfrow=c(1,2))
+angles.flower(ang, ci = T, k=24, bty = "n")
+# Compare to spatstat
+rose(ang, unit = "rad", nclass = 24+1, main = "")
 ```
 
-The blue rings give approximate 95% pointwise confidence intervals. Some structure seems to be visible. Nearest neighbours are however not very informative, lets analyse the full set of pairwise vectors.
+The blue rings give approximate 95% pointwise confidence intervals. Hard to see anything definite, perhaps some peakyness at the 2:30'oclock axis. Nearest neighbours are not very informative, so let's analyse the full set of pairwise vectors.
 
 ## Fry-points and ellipsoids
 As in the paper [1], the Fry-points tell us interesting things about the isotropy. 
