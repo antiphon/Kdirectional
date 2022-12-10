@@ -14,7 +14,6 @@
 #' @param keep_data Keep the data for each ellipsoid, inside each ellipsoids? Helps with averaging.
 #' @param data The vectors to which fit ellipses. Default is missing, and we compute Fry-points.
 #'
-#' @import ellipsoid
 #' @export
 
 fry_ellipsoids2 <- function(x, nvec=1:5, r_adjust=1, nangles, eps=0, 

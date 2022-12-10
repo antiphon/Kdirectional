@@ -36,7 +36,7 @@ pcf_sector(
 \item{n_dir}{If unit missing, compute on a grid with resolution n_dir}
 }
 \description{
-This is the same as "sector pair correlation function" in Stoyan 1991.
+[DEFUNC] This is the same as "sector pair correlation function" in Stoyan 1991.
 Direction defined with a unit vector. Estimated in a cone of angle theta and different radii.
 }
 \details{

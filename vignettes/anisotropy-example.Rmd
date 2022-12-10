@@ -16,15 +16,11 @@ In this vignette we use the following packages:
 ```{r, include=FALSE}
 library(spatstat)
 library(Kdirectional)
-library(ellipsoid)
-library(sphere)
 ```
 
 ```{r, eval=FALSE}
 library(spatstat)
 library(Kdirectional)
-library(ellipsoid)
-library(sphere)
 ```
 
 
@@ -36,7 +32,7 @@ We simulate Strauss process and transform it. Assume the transformation is
 comp <- 0.7
 D <- diag( c(comp, 1/comp))
 angle <- pi/8
-R <- sphere::rotationMatrix(az=angle)[-3,-3]
+R <- rotationMatrix3(az=angle)[-3,-3] # internal, not rgl one
 C <- R%*%D
 ```
 
@@ -115,7 +111,7 @@ c(true=angle, est=mean_e$rot_angle + pi)
 Backrotate the pattern:
 
 ```{r}
-Rhat <- sphere::rotationMatrix(az=pi)[-3,-3]%*%mean_e$rot 
+Rhat <- rotationMatrix3(az=pi)[-3,-3]%*%mean_e$rot 
 xr <- affine(x, solve(Rhat))
 ```
 

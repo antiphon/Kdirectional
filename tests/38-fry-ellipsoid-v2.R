@@ -28,3 +28,8 @@ pp(el)
 pp(ell)
 pp(el2)
 pp(ell2)
+
+
+# check methods
+print(el2)
+z <- confint.fryellipsoids(el2)

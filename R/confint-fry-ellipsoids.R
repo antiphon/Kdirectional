@@ -22,7 +22,6 @@ setClass("confint_fryellipsoids")
 #' 
 #'
 #' @export
-
 confint.fryellipsoids <- function(x, fun, ...) {
   els <- x$ellipsoids
   nvec <- x$n
@@ -44,7 +43,6 @@ confint.fryellipsoids <- function(x, fun, ...) {
 #' Extracts the CI-table.
 #' 
 #' @export
-
 summary.confint_fryellipsoids <- function(x, ...) {
   ci <- x$ci
   r <- nrow(ci[[1]])
@@ -56,7 +54,6 @@ summary.confint_fryellipsoids <- function(x, ...) {
 #' Print method for confint_fryellipsoid
 #' 
 #' @export
-
 print.confint_fryellipsoids <- function(x, ...) {
   nvec <- x$nvec
   cat("Confidence intervals for", length(nvec), "cumulative count contours estimated from Fry points.\n")
@@ -74,7 +71,6 @@ print.confint_fryellipsoids <- function(x, ...) {
 #' 
 #' 
 #' @export
-
 plot.confint_fryellipsoids <- function(x, ylim, ...) {
   tab <- summary(x, ...)
   nvec <- x$nvec
