@@ -39,10 +39,8 @@ install_github('antiphon/Kdirectional', build_vignettes = TRUE)
 The documentation should be available also as a `{pkgdown}` site.
 
 
-## References
+[^ice]: T. Rajala, A. Särkkä, C. Redenbach, and M. Sormani. ‘Estimating Geometric Anisotropy in Spatial Point Patterns’. Spatial Statistics 15 (February 2016): 100–114. https://doi.org/10.1016/j.spasta.2015.12.005.
 
-[^ice]: Rajala, Tuomas A., Aila Särkkä, Claudia Redenbach, and Martina Sormani. ‘Estimating Geometric Anisotropy in Spatial Point Patterns’. Spatial Statistics 15 (February 2016): 100–114. https://doi.org/10.1016/j.spasta.2015.12.005.
+[^rev]: T. Rajala, C. Redenbach, A. Särkkä, and M. Sormani. ‘A Review on Anisotropy Analysis of Spatial Point Patterns’. Spatial Statistics 28 (December 2018): 141–68. https://doi.org/10.1016/j.spasta.2018.04.005.
 
-[^rev]: Rajala, T., C. Redenbach, A. Särkkä, and M. Sormani. ‘A Review on Anisotropy Analysis of Spatial Point Patterns’. Spatial Statistics 28 (December 2018): 141–68. https://doi.org/10.1016/j.spasta.2018.04.005.
-
-[^rev2]: Rajala, T., C. Redenbach, A. Särkkä, and M. Sormani. ‘Tests for Isotropy in Spatial Point Patterns – A Comparison of Statistical Indices’. Spatial Statistics 52 (December 2022): 100716. https://doi.org/10.1016/j.spasta.2022.100716.
+[^rev2]: T. Rajala, C. Redenbach, A. Särkkä, and M. Sormani. ‘Tests for Isotropy in Spatial Point Patterns – A Comparison of Statistical Indices’. Spatial Statistics 52 (December 2022): 100716. https://doi.org/10.1016/j.spasta.2022.100716.
