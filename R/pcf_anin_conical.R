@@ -33,7 +33,7 @@
 #' @useDynLib Kdirectional
 #' @export
 
-pcf_anin <- pcf_anin_conical <- function(x, u, epsilon, r, lambda=NULL, lambda_h, r_h, stoyan=0.15,
+pcf_anin <- function(x, u, epsilon, r, lambda=NULL, lambda_h, r_h, stoyan=0.15,
                       renormalise=TRUE,  border=1, divisor = "d", ...) {
   x <- check_pp(x)
   bbox <- x$bbox
@@ -141,7 +141,8 @@ pcf_anin <- pcf_anin_conical <- function(x, u, epsilon, r, lambda=NULL, lambda_h
 }
 
 
-
-
+#' @rdname pcf_anin
+#' @export
+pcf_anin_conical <- pcf_anin
 
 

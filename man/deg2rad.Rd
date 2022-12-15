@@ -6,6 +6,9 @@
 \usage{
 deg2rad(deg)
 }
+\arguments{
+\item{deg}{degrees}
+}
 \description{
 Degree to radian
 }

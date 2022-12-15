@@ -6,6 +6,9 @@
 \usage{
 aziinc2rotationMatrix(rot_ai = c(0, 0))
 }
+\arguments{
+\item{rot_ai}{angles}
+}
 \description{
 Rotation using azimuth-inclination.
 }

@@ -6,6 +6,9 @@
 \usage{
 ll2xyz(latlon)
 }
+\arguments{
+\item{latlon}{latitude-longitude}
+}
 \description{
 latlon to 3d coordinates
 }

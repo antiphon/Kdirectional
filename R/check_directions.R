@@ -1,7 +1,15 @@
 #' Sector computation directions
 #' 
-#' @export
-
+#' Internal use only. Check input or generate directions.
+#' 
+#' @param theta angles
+#' @param epsilon opening
+#' @param unit unit vecs
+#' @param dim dimension
+#' @param antipode include antipodal directions
+#' @param n_dir resolution of generated directions
+#' 
+#' 
 check_directions <- function(theta, epsilon, unit, dim=2, antipode=FALSE, n_dir=12) {
   if(missing(theta) & missing(unit)){
     LIM <- if(antipode) 2*pi else pi
@@ -61,10 +69,9 @@ theta_2_unit <- function(theta){
 
 #' Angle to unit vector
 #' 
-#' @param vector of 1 or 2 components (2d or 3d)
+#' @param angle angle, 2d or 3d
 #' 
 #' @export
-
 angle_2_unit <- function(angle){
   angle <- cbind(angle)
   unit <- cbind(cos(angle[,1]), sin(angle[,1]))
@@ -74,8 +81,9 @@ angle_2_unit <- function(angle){
 
 #' unit vector to theta (angle) list format input
 #' 
+#' @param unit vector(s as matrix, cols=dimensions)
+#' 
 #' @export
-
 unit_2_theta <- function(unit) {
   if(is.null(dim(unit))) unit <- rbind(unit)
   dim <- ncol(unit)
@@ -90,7 +98,6 @@ unit_2_theta <- function(unit) {
 #' @param unit vector(s as matrix, cols=dimensions)
 #' 
 #' @export
-
 unit_2_angle <- function(unit){
   if(is.null(dim(unit))) unit <- rbind(unit)
   dim <- ncol(unit)
@@ -102,10 +109,14 @@ unit_2_angle <- function(unit){
 
 #' Radians to degree
 #' 
+#' @param rad radians
+#' 
 #' @export
 rad2deg <- function(rad) rad * 180/pi
 
 #' Degree to radian
+#' 
+#' @param deg degrees
 #' 
 #' @export
 deg2rad <- function(deg) deg * pi/180

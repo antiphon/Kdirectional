@@ -7,6 +7,8 @@
 rotationMatrix3(ax = 0, ay = 0, az = 0, order = c(3, 2, 1))
 }
 \arguments{
+\item{ax, ay, az}{radians around each axis}
+
 \item{order}{Order in which to to the product. Aimed for pre-product
 Default: 3-2-1 i.e. around z, then around y, then around x.}
 }

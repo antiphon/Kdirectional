@@ -163,6 +163,7 @@ redenbach_border_term <- function(d, bbox, u, epsilon) {
 #' @param unit Alternative to theta, a matrix of direction vectors.
 #' @param epsilon Direction sector width angles
 #' @param n_dir If theta not given, greate a grid with this resolution.
+#' @param directions alternative to theta, unit vectors
 #' @details
 #' 
 #' This is a directed sector version of the G-function in spatstat.
@@ -170,8 +171,6 @@ redenbach_border_term <- function(d, bbox, u, epsilon) {
 #' Directions are angle to positive x-axis (2D) or azimuth, inclination (3D). 
 #' Theta should be a list of length 1 (2D) and 2 (3D) defining a grid of these angles.
 #' 
-#' @export
-
 Gsector <- function(x, r, theta, unit, directions, epsilon, n_dir=10) {
   x <- check_pp(x)
   bbox <- x$bbox

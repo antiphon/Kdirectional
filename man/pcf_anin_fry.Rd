@@ -54,5 +54,5 @@ or else it will be estimated using Epanechnikov kernel smoothing. See
 If 'renormalise=TRUE', we normalise the lambda estimate so that sum(1/lambda(x))=|W|. This corresponds in \code{spatstat}'s \code{Kinhom} to setting 'normpower=2'.
 }
 \seealso{
-\code{\link{pcf_anin_sector}}, \code{\link{pcf_anin_cylinder}}
+\code{\link{pcf_anin}}
 }

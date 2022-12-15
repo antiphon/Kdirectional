@@ -2,10 +2,12 @@
 % Please edit documentation in R/from_ellipsoid_methods.R
 \name{print.ellipsoid}
 \alias{print.ellipsoid}
-\title{Print ellipsoid}
+\title{###########################################################
+Print ellipsoid}
 \usage{
 \method{print}{ellipsoid}(x, ...)
 }
 \description{
+###########################################################
 Print ellipsoid
 }

@@ -6,6 +6,11 @@
 \usage{
 Euler2rotationMatrix(v, proper = TRUE)
 }
+\arguments{
+\item{v}{euler vector}
+
+\item{proper}{proper}
+}
 \description{
 Euler axis-angle to Rotation matrix
 }

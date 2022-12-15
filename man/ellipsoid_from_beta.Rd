@@ -2,7 +2,8 @@
 % Please edit documentation in R/from_ellipsoid_methods.R
 \name{ellipsoid_from_beta}
 \alias{ellipsoid_from_beta}
-\title{convert beta vector to ellipsoid object}
+\title{####################################################################################
+convert beta vector to ellipsoid object}
 \usage{
 ellipsoid_from_beta(beta, d, ...)
 }
@@ -14,5 +15,6 @@ ellipsoid_from_beta(beta, d, ...)
 \item{...}{passed on to 'ellipse_solve_rota'}
 }
 \description{
+####################################################################################
 convert beta vector to ellipsoid object
 }

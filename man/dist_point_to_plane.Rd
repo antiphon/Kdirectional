@@ -6,6 +6,13 @@
 \usage{
 dist_point_to_plane(x, pl, absit = TRUE)
 }
+\arguments{
+\item{x}{vector of 3 coordinates}
+
+\item{pl}{plane in norm-point format}
+
+\item{absit}{take abs? Otherwise sign gives side}
+}
 \description{
 Point to plane distance
 }

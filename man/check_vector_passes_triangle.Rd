@@ -6,6 +6,11 @@
 \usage{
 check_vector_passes_triangle(u, triangle)
 }
+\arguments{
+\item{u}{unit vector}
+
+\item{triangle}{triangle coordinates}
+}
 \description{
 Check if a vector (or vectors), multiplied by inf, go(es) through a triangle in 3D
 }

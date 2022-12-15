@@ -6,6 +6,9 @@
 \usage{
 azi2lon(azi)
 }
+\arguments{
+\item{azi}{azimuth}
+}
 \description{
 azimuth to longitude
 }

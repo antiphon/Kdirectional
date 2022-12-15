@@ -6,6 +6,9 @@
 \usage{
 three_points_to_plane(x)
 }
+\arguments{
+\item{x}{vector of 3 coordinates}
+}
 \description{
 Three points to a plane
 }

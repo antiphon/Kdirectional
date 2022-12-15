@@ -6,6 +6,9 @@
 \usage{
 ai2ll(aziinc)
 }
+\arguments{
+\item{aziinc}{azi incl}
+}
 \description{
 azi-inc to lat lon
 }

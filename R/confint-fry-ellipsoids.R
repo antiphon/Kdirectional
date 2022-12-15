@@ -1,8 +1,14 @@
 
-#' Constructor
+#' Fry-Ellipsoids
+#' 
+#' Estimate of the ellipsoid fitted to Fry-points.
+#'
 #' @export
 setClass("fryellipsoids")
 
+#' Fry-Ellipsoid Circularity Test result
+#' 
+#' Check circularity of ellipses, result object.
 #'
 #'@export
 setClass("confint_fryellipsoids")
@@ -14,6 +20,8 @@ setClass("confint_fryellipsoids")
 #' 
 #' @param x Fitted Fry-ellipsoids object
 #' @param fun contrast function, passed on to confint.ellipsoid
+#' @param parm not used
+#' @param level not used
 #' @param ... Passed to confint.ellipsoid
 #' 
 #' @details 
@@ -22,7 +30,9 @@ setClass("confint_fryellipsoids")
 #' 
 #'
 #' @export
-confint.fryellipsoids <- function(x, fun, ...) {
+confint.fryellipsoids <- function(object, parm, level = 0.95, fun, ...) {
+  
+  x <- object
   els <- x$ellipsoids
   nvec <- x$n
   # compute the confidence intervals
@@ -43,7 +53,8 @@ confint.fryellipsoids <- function(x, fun, ...) {
 #' Extracts the CI-table.
 #' 
 #' @export
-summary.confint_fryellipsoids <- function(x, ...) {
+summary.confint_fryellipsoids <- function(object, ...) {
+  x <- object
   ci <- x$ci
   r <- nrow(ci[[1]])
   tab <- t(sapply(ci,  function(ta) ta[r,]  ))

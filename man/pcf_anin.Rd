@@ -2,9 +2,25 @@
 % Please edit documentation in R/pcf_anin_conical.R
 \name{pcf_anin}
 \alias{pcf_anin}
+\alias{pcf_anin_conical}
 \title{Inhomogeneous anisotropic pcf function, sector version}
 \usage{
 pcf_anin(
+  x,
+  u,
+  epsilon,
+  r,
+  lambda = NULL,
+  lambda_h,
+  r_h,
+  stoyan = 0.15,
+  renormalise = TRUE,
+  border = 1,
+  divisor = "d",
+  ...
+)
+
+pcf_anin_conical(
   x,
   u,
   epsilon,

@@ -135,7 +135,7 @@ NumericVector epa_integral_grid(NumericMatrix x,
       inside = true;
       for(k=0; k < dim; k++) {
         c = x(i,k) + mask(j,k); // shifted mask point's k'th coordinate
-        if( c < bbox(0,k) | c > bbox(1,k) ) {
+        if( (c < bbox(0,k)) | (c > bbox(1,k)) ) {
           inside = false;
           break; // no need to check the rest of dimensions
         }
@@ -195,7 +195,7 @@ NumericVector epa_integral_2d(NumericMatrix x,
     c = fmin(h, x(i,1)-bbox(0,1))/h;
     d = fmin(h, bbox(1,1)-x(i,1))/h; 
     // not hitting the edge?
-    if(a==1 & b==1 & c==1 & d==1) s=w;
+    if((a==1) & (b==1) & (c==1) & (d==1)) s=w;
     else{
       s=0;
       // hit edge

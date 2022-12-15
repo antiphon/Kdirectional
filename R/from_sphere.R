@@ -1,13 +1,34 @@
+#' Sample unit sphere uniformly
+#' 
+#' @param n sample size
+#' @param spherical Return azimuth-inclination? (Def: FALSE)
+#' @details
+#' Default is to return unit vectors.
+#' @export
+runifsphere <- function(n, spherical=FALSE){
+  u <- runif(n)
+  v <- runif(n)
+  a <- u * 2 * pi
+  i <- acos(2*v - 1)
+  ai<- cbind(azi=a, inc=i)
+  if(spherical) ai
+  else ai2xyz(ai)
+}
+
+
 # This from sphere-package, file coords.R
 
 #' OLD for plotting on the globe, we need to trasform as the texture is fuckd up
-#' @export
+#' 
 xyz2globe <- function(xyz) {
   xyzrotate(xyz, ax=pi/2, ay=-pi/2)
 }
 
 
 #' latlon to 3d coordinates
+#' 
+#' @param latlon latitude-longitude 
+#' 
 #' @export
 ll2xyz <- function(latlon) {
   latlon <- rbind(latlon)
@@ -17,6 +38,9 @@ ll2xyz <- function(latlon) {
 }
 
 #' (azi,incl) to 3d coordinates
+#' 
+#' @param aziinc azi, directions
+#' 
 #' @export
 ai2xyz <- function(aziinc) {
   aziinc <- rbind(aziinc)
@@ -29,16 +53,25 @@ ai2xyz <- function(aziinc) {
 }
 
 #' latitude to inclination
+#' 
+#' @param lat latitude
+#' 
 #' @export
 lat2inc <- function(lat) {
   pi/2 - lat
 }
 #' inclination to latitude
+#' 
+#' @param inc inclination
+#' 
 #' @export
 inc2lat <- function(inc){
   pi/2 - inc
 }
 #' azimuth to longitude
+#' 
+#' @param azi azimuth
+#' 
 #' @export
 azi2lon <- function(azi){
   lon <- azi
@@ -46,6 +79,9 @@ azi2lon <- function(azi){
   lon
 }
 #' longitude to azimuth
+#' 
+#' @param lon longitude
+#' 
 #' @export
 lon2azi <- function(lon){
   azi <- lon
@@ -54,6 +90,9 @@ lon2azi <- function(lon){
 }
 
 #' antipode lat and lon
+#' 
+#' @param latlon lat lon
+#' 
 #' @export
 antipode <- function(latlon){
   latlon<-rbind(latlon)
@@ -61,6 +100,9 @@ antipode <- function(latlon){
 }
 
 #' xyz to lat lon
+#' 
+#' @param xyz unit vector
+#' 
 #' @export
 xyz2ll <- function(xyz) {
   ai <- xyz2ai(xyz)
@@ -70,6 +112,9 @@ xyz2ll <- function(xyz) {
 }
 
 #' azi-inc to lat lon
+#' 
+#' @param aziinc azi incl 
+#'
 #' @export
 ai2ll <- function(aziinc){
   aziinc <- rbind(aziinc)
@@ -77,6 +122,9 @@ ai2ll <- function(aziinc){
 }
 
 #'latlon to aziinc
+#'
+#' @param latlon lat lon
+#' 
 #' @export
 ll2ai <- function(latlon){
   latlon <- rbind(latlon)
@@ -85,6 +133,9 @@ ll2ai <- function(latlon){
 
 
 #' xyz to azi inc
+#'
+#' @param xyz unit vector 3D
+#' 
 #' @export
 xyz2ai <- function(xyz) {
   xyz <- rbind(xyz)
@@ -96,6 +147,10 @@ xyz2ai <- function(xyz) {
 
 
 #' rotate xyz coordinates
+#'
+#' @param xyz coordinates
+#' @param ... passed to rotationMatrix3
+#' 
 #' @export 
 xyzrotate <- function(xyz, ...) {
   R <- rotationMatrix3(...)
@@ -103,7 +158,7 @@ xyzrotate <- function(xyz, ...) {
 }
 
 #' Product of elementary rotation matrices in 3D
-#' 
+#' @param ax,ay,az radians around each axis 
 #' @param order Order in which to to the product. Aimed for pre-product
 #' Default: 3-2-1 i.e. around z, then around y, then around x. 
 #' 
@@ -118,13 +173,17 @@ rotationMatrix3 <- function(ax=0, ay=0, az=0, order=c(3,2,1)) {
 
 #' Rotation using azimuth-inclination.
 #' 
+#' @param rot_ai angles
+#' 
 #' @export
 aziinc2rotationMatrix <- function(rot_ai=c(0,0)){
-  xyzrotationMatrix(az=rot_ai[1])%*%(xyzrotationMatrix(ay=rot_ai[2]))
+  rotationMatrix3(az=rot_ai[1])%*%(rotationMatrix3(ay=rot_ai[2]))
 }
 
 
 #' Rotation matrix to quaternion
+#' 
+#' @param R matrix
 #' 
 #' @export
 rotationMatrix2quaternion <- function(R){
@@ -164,6 +223,8 @@ rotationMatrix2quaternion <- function(R){
 
 #' Quaternion to rotation matrix
 #' 
+#' @param q quartenion vector
+#' 
 #' @export
 quaternion2rotationMatrix <- function(q){
   q3 <- q[-4]
@@ -172,6 +233,9 @@ quaternion2rotationMatrix <- function(q){
 }
 
 #' Quaternion to Euler axis/angle
+#' 
+#' @param q quartenion vector
+#' 
 #' @export
 quaternion2Euler <- function(q){
   e <- q[-4]/sqrt(sum(q[-4]^2))
@@ -181,6 +245,7 @@ quaternion2Euler <- function(q){
 
 
 #' Euler axis/angle to quaternion
+#'
 #' @param euler c(e1,e2,e3,angle) where e* is the unit axis of rotation
 #' 
 #' @export
@@ -192,7 +257,10 @@ Euler2quaternion <- function(euler){
 
 #' Quaternion to Euler angles
 #' 
-#' from euclideanspace.com,
+#' from euclideanspace.com
+#' 
+#' 
+#' @param q quartenion vector
 #' 
 #' @details
 #' 
@@ -213,6 +281,9 @@ quaternion2EulerAngles <- function(q){
 }
 
 #' Euler angles to quaternions
+#'
+#' @param angle Euler angle vector
+#'
 #' @export
 EulerAngles2quaternion <- function(angle){
   cc <- cos(angle/2)
@@ -226,6 +297,8 @@ EulerAngles2quaternion <- function(angle){
 
 
 #' Rotation matrix (prop or improp) to Euler axis-angle
+#' 
+#' @param R Rotation matrix
 #' 
 #' @export
 rotationMatrix2Euler <- function(R){ 
@@ -264,6 +337,9 @@ rotationMatrix2Euler <- function(R){
 
 #' Euler axis-angle to Rotation matrix
 #' 
+#' @param v euler vector
+#' @param proper proper
+#' 
 #' @export
 Euler2rotationMatrix <- function(v, proper=TRUE){
   n <- v[1:3]
@@ -286,6 +362,8 @@ Euler2rotationMatrix <- function(v, proper=TRUE){
 
 #' Rotation matrix to Euler angles
 #' 
+#' @param R rotation matrix
+#' 
 #' @return
 #' (Heading, Attitude, Bank)
 #' 
@@ -295,6 +373,9 @@ rotationMatrix2EulerAngles <- function(R){
 }
 
 #' Euler angles to Rotation matrix
+#' 
+#' @param angle Euler angle vector
+#' 
 #' @export
 EulerAngles2rotationMatrix <- function(angle){
   quaternion2rotationMatrix(EulerAngles2quaternion(angle))

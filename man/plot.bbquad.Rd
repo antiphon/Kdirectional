@@ -6,6 +6,23 @@
 \usage{
 \method{plot}{bbquad}(x, edges = FALSE, normals = FALSE, ecol = 2, ncol = 4, add = TRUE, ...)
 }
+\arguments{
+\item{x}{bbquad}
+
+\item{edges}{draw edges}
+
+\item{normals}{draw normals}
+
+\item{ecol}{edge color}
+
+\item{ncol}{normal color}
+
+\item{add}{add or not}
+
+\item{...}{passsed to shade3d or lines (2d)}
+
+\item{faces}{draw faces}
+}
 \description{
 Plot bbquad object
 }

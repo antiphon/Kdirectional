@@ -6,6 +6,11 @@
 \usage{
 Gest(x, r)
 }
+\arguments{
+\item{x}{point pattern}
+
+\item{r}{vector of ranges}
+}
 \description{
-Spatstat notation G
+Spatstat notation G.
 }

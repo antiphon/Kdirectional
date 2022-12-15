@@ -2,7 +2,8 @@
 % Please edit documentation in R/from_ellipsoid_methods.R
 \name{sample_ellipse_beta}
 \alias{sample_ellipse_beta}
-\title{Sample from the OLS estimate of the beta parameters}
+\title{#########################################################################
+Sample from the OLS estimate of the beta parameters}
 \usage{
 sample_ellipse_beta(x, nsim = 100, tol = 0, maxiter = 500)
 }

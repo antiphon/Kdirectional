@@ -1,4 +1,6 @@
-#' Plot an ellipsoid
+#' Plot an Ellipsoid Object
+#' 
+#' Internal ellipsoid plotter.
 #' 
 #' @param x ellipsoid
 #' @param add logical
@@ -14,6 +16,7 @@
 #' @details 
 #' #' For 3D ellipsoid, if i=1,2 or 3, plot 2D intersection of 
 #' plane:  i = 1 yz-plane; i = 2 xz-plane; i = 3 xy-plane. 
+#' 
 #' @import rgl
 #'@export
 plot.ellipsoid <- function(x,
@@ -50,7 +53,7 @@ plot.ellipsoid <- function(x,
         cent <- p$center3d[-i]
         # rotation
         ang <- atan2(r[2],r[1])
-        R <- sphere::rotationMatrix(az=ang)[-3,-3]
+        R <- rotationMatrix3(az=ang)[-3,-3]
         # here we have the ellipse
         el2 <- as_ellipsoid(p$semi_axes, R, center=cent)
         ### plot it
@@ -67,14 +70,18 @@ plot.ellipsoid <- function(x,
   }
 }
 
-####################################################################
+#' ##################################################################
 #' Predict i.e. give the length of a direction to be on the ellipsoid
 #'
-#' Returns the distance from ellipsoid center to the ellipsoid surface in
+#' @param object ellipsoid 
+#' @param u direction into which predict the distance to the surface of ellipsoid
+#'
+#' @returns  Returns the distance from ellipsoid center to the ellipsoid surface in
 #' the given directions.
 #'
 #'@export
-predict.ellipsoid <- function(x, u, ...){
+predict.ellipsoid <- function(object, u, ...){
+  x <- object
   if(missing(u)) stop("direction(s) u needed")
   d <- 1 / diag(u %*% x$A %*% t(u) )
   r <- sqrt(abs(d))
@@ -82,8 +89,6 @@ predict.ellipsoid <- function(x, u, ...){
 }
 
 
-
-####################################################################
 #' Ellipsoid shape for 3d plotting
 #'
 #' Refine an icosahedron, then transform
@@ -92,7 +97,6 @@ predict.ellipsoid <- function(x, u, ...){
 #'
 #' @import rgl
 #' @export
-
 ellipsoid_shape <- function(N=2, axes=c(1,1,1), R=NULL, center=c(0,0,0)){
   ico <- rgl::icosahedron3d()
   for(i in 1:N) ico <- rgl::subdivision3d(ico)
@@ -108,7 +112,7 @@ ellipsoid_shape <- function(N=2, axes=c(1,1,1), R=NULL, center=c(0,0,0)){
 }
 
 
-############################################################
+#' ###########################################################
 #' Print ellipsoid
 #' 
 #' @export
@@ -120,7 +124,7 @@ print.ellipsoid <- function(x, ...){
   else cat(type, "\n")
 }
 
-####################################################################
+#' ###################################################################
 #' Ellipse center and matrix from general parameter form
 #' 
 #' @param beta OLS estimates
@@ -155,7 +159,7 @@ ellipse_form <- function(beta, d, check=FALSE){
   list(c=chat, A=Ahat)
 }
 
-#########################################################################
+#' ########################################################################
 #' Solve rotation and semi-axes from general transform
 #' 
 #' @param A the trasformation matrix in an ellipsoid equation
@@ -181,7 +185,7 @@ ellipse_solve_rota <- function(A, eps = 0){
 }
 
 
-##########################################################################
+#' #########################################################################
 #' Sample from the OLS estimate of the beta parameters
 #' 
 #' Simulate the beta parameters, approximately normal conditional on ||beta||^2=1
@@ -223,7 +227,7 @@ sample_ellipse_beta <- function(x, nsim=100, tol=0, maxiter=500){
 }
 
 
-#####################################################################################
+#' ####################################################################################
 #' convert beta vector to ellipsoid object
 #' 
 #' @param beta beta vector, the coefficients in quadratic form
@@ -281,7 +285,7 @@ as_ellipsoid <- function(semi_axes=c(1,1,1),
     f <- R %*% c(1,0)
     angles <- atan2(f[2],f[1])
   }else if(d==3){
-    angles <- sphere::rotationMatrix2EulerAngles(R)
+    angles <- rotationMatrix2EulerAngles(R)
   }
   
   # check if we got a valid fit
@@ -302,11 +306,12 @@ as_ellipsoid <- function(semi_axes=c(1,1,1),
 }
 
 
-#############################################################
+#' ############################################################
 #' Summarise an ellipsoid
 #' 
 #' @export
-summary.ellipsoid <- function(x, ...){
+summary.ellipsoid <- function(object, ...){
+  x <- object
   print(x)
   ang <- round(x$rot_angle, 3)
   angd <- round(x$rot_angle * 180/pi, 1)
@@ -369,7 +374,13 @@ persp.ellipsoid <- function(x, add=FALSE, theta=25, phi=30,
 
 #' add ellipse to persp plot
 #' 
-#'
+#' @param x ellipsoid
+#' @param N refining iterations
+#' @param colmap function to generate colors from values
+#' @param pmat camera projection matrix
+#' @param ... passed on to polygon
+#' 
+#' @import grDevices
 add_ellipsoid2persp <- function(x, N=2, colmap=values2colors, pmat, ...){
   s <- ellipsoid_shape(N, x$semi_axes, x$rot)
   w <- s$vb[4,]
@@ -382,7 +393,7 @@ add_ellipsoid2persp <- function(x, N=2, colmap=values2colors, pmat, ...){
   cols <- colmap(zm)
   # ah the problem is plotting of behind after front:
   # order according to camera position:
-  camera <- c(unlist(trans3d(0,0,0, pmat)),100)
+  camera <- c(unlist(trans3d(0, 0, 0, pmat)),100)
   # distance surface
   mini <- apply(s$it, 2, function(n) 
   {d<-t(t(coords[n,]) - camera); n[which.min(diag(d%*%t(d)))]}  )

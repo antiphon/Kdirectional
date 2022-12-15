@@ -6,6 +6,9 @@
 \usage{
 EulerAngles2rotationMatrix(angle)
 }
+\arguments{
+\item{angle}{Euler angle vector}
+}
 \description{
 Euler angles to Rotation matrix
 }

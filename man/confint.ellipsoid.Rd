@@ -4,10 +4,19 @@
 \alias{confint.ellipsoid}
 \title{Confidence interval for ellipsoid parameters using simulation}
 \usage{
-\method{confint}{ellipsoid}(x, fun, nsim = 1000, probs = c(0.025, 0.975), Asolve.eps = 0.01, ...)
+\method{confint}{ellipsoid}(
+  object,
+  parm,
+  level,
+  fun,
+  nsim = 1000,
+  probs = c(0.025, 0.975),
+  Asolve.eps = 0.01,
+  ...
+)
 }
 \arguments{
-\item{x}{Fitted ellipsoid}
+\item{object}{Fitted ellipsoid}
 
 \item{fun}{Optional contrast function. See ellipse_contrast_2d for an example.}
 

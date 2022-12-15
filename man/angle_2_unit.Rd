@@ -7,7 +7,7 @@
 angle_2_unit(angle)
 }
 \arguments{
-\item{vector}{of 1 or 2 components (2d or 3d)}
+\item{angle}{angle, 2d or 3d}
 }
 \description{
 Angle to unit vector

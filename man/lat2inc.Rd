@@ -6,6 +6,9 @@
 \usage{
 lat2inc(lat)
 }
+\arguments{
+\item{lat}{latitude}
+}
 \description{
 latitude to inclination
 }

@@ -4,10 +4,10 @@
 \alias{summary.nnangle}
 \title{Summary method for nearest neighbour angles}
 \usage{
-\method{summary}{nnangle}(x, ...)
+\method{summary}{nnangle}(object, ...)
 }
 \arguments{
-\item{x}{object from nnangle-function}
+\item{object}{from nnangle-function}
 
 \item{...}{passed on to ks.test for testing uniformity of the angles}
 }

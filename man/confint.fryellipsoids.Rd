@@ -4,14 +4,18 @@
 \alias{confint.fryellipsoids}
 \title{Confidence intervals for Fry ellipsoids}
 \usage{
-\method{confint}{fryellipsoids}(x, fun, ...)
+\method{confint}{fryellipsoids}(object, parm, level = 0.95, fun, ...)
 }
 \arguments{
-\item{x}{Fitted Fry-ellipsoids object}
+\item{parm}{not used}
+
+\item{level}{not used}
 
 \item{fun}{contrast function, passed on to confint.ellipsoid}
 
 \item{...}{Passed to confint.ellipsoid}
+
+\item{x}{Fitted Fry-ellipsoids object}
 }
 \description{
 Confidence intervals for Fry ellipsoids

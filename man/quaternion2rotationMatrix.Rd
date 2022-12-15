@@ -6,6 +6,9 @@
 \usage{
 quaternion2rotationMatrix(q)
 }
+\arguments{
+\item{q}{quartenion vector}
+}
 \description{
 Quaternion to rotation matrix
 }

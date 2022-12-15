@@ -2,7 +2,7 @@
 % Please edit documentation in R/from_ellipsoid_methods.R
 \name{plot.ellipsoid}
 \alias{plot.ellipsoid}
-\title{Plot an ellipsoid}
+\title{Plot an Ellipsoid Object}
 \usage{
 \method{plot}{ellipsoid}(
   x,
@@ -39,7 +39,7 @@
 \item{...}{passed on to lines or rgl::shade3d}
 }
 \description{
-Plot an ellipsoid
+Internal ellipsoid plotter.
 }
 \details{
 #' For 3D ellipsoid, if i=1,2 or 3, plot 2D intersection of 

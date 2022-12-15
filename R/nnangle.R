@@ -33,12 +33,13 @@ nnangle <- function(x, from, to){
 
 #' Summary method for nearest neighbour angles
 #' 
-#' @param x object from nnangle-function
+#' @param object from nnangle-function
 #' @param ... passed on to ks.test for testing uniformity of the angles
 #' 
 #' @export
 
-summary.nnangle <- function(x, ...) {
+summary.nnangle <- function(object, ...) {
+  x <- object
   dim <- ncol(x)
   ranges <- round(apply(x, 2, range), 5)
   if(dim==2) {

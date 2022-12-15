@@ -25,7 +25,7 @@
 #' @return 
 #' Returns a dataframe.
 #' 
-#' @seealso \code{\link{pcf_anin_sector}}, \code{\link{pcf_anin_cylinder}}
+#' @seealso \code{\link{pcf_anin}}
 #' 
 #' @useDynLib Kdirectional
 #' @export

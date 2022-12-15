@@ -6,8 +6,11 @@
 \usage{
 quaternion2EulerAngles(q)
 }
+\arguments{
+\item{q}{quartenion vector}
+}
 \description{
-from euclideanspace.com,
+from euclideanspace.com
 }
 \details{
 Convention: Euler is (Heading, Attitude, Bank) so that

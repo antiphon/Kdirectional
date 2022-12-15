@@ -1,5 +1,7 @@
 #' Construct a bbpoly from column range matrix
 #' 
+#' @param bb bbox
+#' 
 #' @export
 bbox2bbpoly  <- function(bb){
   if(ncol(bb)==3) bbpoly_default(bb[,1],bb[,2],bb[,3])
@@ -8,12 +10,18 @@ bbox2bbpoly  <- function(bb){
 
 #' Return the bounding box of a bbpoly
 #' 
+#' @param x bbpoly
+#' 
 #' @export
 bbpoly2bbox <- function(x) {
   apply(x$vertices, 2, range)
 }
 
 #' Simplex object
+#' 
+#' create a simplex (triangle)
+#' 
+#' @param d dimension, 2 or 3
 #' 
 #' @export
 bbpoly_simplex <- function(d=3){
@@ -39,7 +47,7 @@ bbpoly_simplex <- function(d=3){
 #' 
 #' @param bbpoly bbpoly object
 #' @param A linear transformation
-#' @param shift shift vector
+#' @param s shift vector
 #' @param center_before_A Center the polygon to mass centrum before applying A? Reversed after A and before shift.
 #' 
 #' 
@@ -184,6 +192,8 @@ is.bbpoly <- function(x, ...){
 
 #' Check with error
 #' 
+#' @param x object to check for bbpoly class
+#' 
 #' @export
 check_bbpoly <- function(x) if(!is.bbpoly(x)) stop("x not a bbpoly-object.")
 
@@ -226,6 +236,14 @@ bbpoly_planes <- function(x) {
 
 #' Plot bbpoly object
 #' 
+#' @param x bbpoly object
+#' @param normals draw normals
+#' @param faces draw faces
+#' @param ecol edge color
+#' @param ncol normal color
+#' @param add add or not
+#' @param ... passsed to shade3d or lines (2d)
+#' 
 #' @export
 #' @import rgl
 
@@ -236,7 +254,7 @@ plot.bbpoly <- function(x, normals=FALSE, faces = FALSE,
     plot3d(x$vertices, aspect = FALSE, add=add, ..., col=ecol)
     if(faces) {
       null <- lapply(x$faces$vertices, function(f)
-      shade3d(qmesh3d(t(x$vert), f, homog=F), ... ))
+      shade3d(qmesh3d(t(x$vert), f, homogeneous = FALSE ), ... ))
     }
     edgs <- cbind(x$vertices[x$edges[,1],],x$vertices[x$edges[,2],])
     null<-apply(edgs, 1, function(z)

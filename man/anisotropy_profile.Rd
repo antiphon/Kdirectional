@@ -32,6 +32,8 @@ anisotropy_profile(
 \item{antipodal}{Use antipodally symmetric estimation of sector-K?}
 
 \item{power}{Power of the differences, absolute value for power=1.}
+
+\item{...}{not used}
 }
 \description{
 Compares the directed sector-K functions along main axes.

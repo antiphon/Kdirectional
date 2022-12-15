@@ -8,12 +8,16 @@ bbox2bbquad  <- function(bb){
 
 #' Return the bounding box of a bbquad
 #' 
+#' @param x bbquad
+#' 
 #' @export
 bbquad2bbox <- function(x) {
   apply(x$vertices, 2, range)
 }
 
 #' bbquad from 2d polygon
+#' 
+#' @param x,y polygon coordinates
 #' 
 #' @export
 poly_to_bbquad <- function(x, y) {
@@ -78,6 +82,9 @@ bbquad_default <- function(xl=c(-.5,.5), yl=xl, zl=xl){
 
 #' print method for bbquad, a cuboid made of quads
 #' 
+#' @param x bbquad
+#' @param ... ignored
+#' 
 #' @exportMethod print
 #' @export
 
@@ -91,12 +98,25 @@ print.bbquad <- function(x, ...){
 }
 
 #' check class bbquad
+#'
+#' @param x object to check
+#' @param ... ignored
+#' 
 #' @export
 is.bbquad <- function(x, ...){
   "bbquad"%in%is(x)
 }
 
 #' Plot bbquad object
+#'
+#' @param x bbquad
+#' @param edges draw edges
+#' @param normals draw normals
+#' @param faces draw faces
+#' @param ecol edge color
+#' @param ncol normal color
+#' @param add add or not
+#' @param ... passsed to shade3d or lines (2d)
 #' 
 #' @export
 #' @import rgl
@@ -106,7 +126,7 @@ plot.bbquad <- function(x, edges = FALSE,
                         ecol=2, ncol=4, add=TRUE, ...){
   d <- ncol(x$vertices)
   if(d==3){
-    m<-qmesh3d(t(x$vert), x$idx, homog=F)
+    m<-qmesh3d(t(x$vert), x$idx, homogeneous = FALSE)
     shade3d(m, ...)
     if(edges){
       edgs <- bbquad_edges(x)
@@ -129,6 +149,8 @@ plot.bbquad <- function(x, edges = FALSE,
 #' Surface planes
 #' 
 #' normal vector and a point -format. In 2D returns the surface lines.
+#' 
+#' @param b bbquad
 #' 
 #' 
 #' @export
@@ -196,6 +218,8 @@ cross <- function(u, v){
 
 #' Three points to a plane
 #' 
+#' @param x vector of 3 coordinates
+#' 
 #' @export
 three_points_to_plane <- function(x){
   x <- rbind(x)
@@ -210,6 +234,10 @@ three_points_to_plane <- function(x){
 
 #' Point to plane distance
 #' 
+#' @param x vector of 3 coordinates
+#' @param pl plane in norm-point format
+#' @param absit take abs? Otherwise sign gives side
+#' 
 #' @export
 dist_point_to_plane <- function(x, pl, absit = TRUE){
   x <- rbind(x)
@@ -221,6 +249,8 @@ dist_point_to_plane <- function(x, pl, absit = TRUE){
 }
 
 #' Get the edges of the quad box
+#' 
+#' @param x bbquad
 #' 
 #' @export
 bbquad_edges <- function(x){
@@ -241,6 +271,7 @@ bbquad_edges <- function(x){
 #' Due to assuming quadrilateral polytope, we get 2 simplices (triangles/tetrahedrons)
 #' 
 #' @param x bbquad object
+#'
 #' @export
 
 bbquad_simplices <- function(x) {

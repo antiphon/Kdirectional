@@ -15,6 +15,8 @@ Gsector(x, r, theta, unit, directions, epsilon, n_dir = 10)
 
 \item{unit}{Alternative to theta, a matrix of direction vectors.}
 
+\item{directions}{alternative to theta, unit vectors}
+
 \item{epsilon}{Direction sector width angles}
 
 \item{n_dir}{If theta not given, greate a grid with this resolution.}

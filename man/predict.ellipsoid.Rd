@@ -2,11 +2,21 @@
 % Please edit documentation in R/from_ellipsoid_methods.R
 \name{predict.ellipsoid}
 \alias{predict.ellipsoid}
-\title{Predict i.e. give the length of a direction to be on the ellipsoid}
+\title{##################################################################
+Predict i.e. give the length of a direction to be on the ellipsoid}
 \usage{
-\method{predict}{ellipsoid}(x, u, ...)
+\method{predict}{ellipsoid}(object, u, ...)
 }
-\description{
+\arguments{
+\item{object}{ellipsoid}
+
+\item{u}{direction into which predict the distance to the surface of ellipsoid}
+}
+\value{
 Returns the distance from ellipsoid center to the ellipsoid surface in
 the given directions.
+}
+\description{
+##################################################################
+Predict i.e. give the length of a direction to be on the ellipsoid
 }

@@ -6,6 +6,9 @@
 \usage{
 bbquad_edges(x)
 }
+\arguments{
+\item{x}{bbquad}
+}
 \description{
 Get the edges of the quad box
 }

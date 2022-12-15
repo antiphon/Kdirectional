@@ -6,6 +6,11 @@
 \usage{
 xyzrotate(xyz, ...)
 }
+\arguments{
+\item{xyz}{coordinates}
+
+\item{...}{passed to rotationMatrix3}
+}
 \description{
 rotate xyz coordinates
 }

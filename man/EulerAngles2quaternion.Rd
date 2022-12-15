@@ -6,6 +6,9 @@
 \usage{
 EulerAngles2quaternion(angle)
 }
+\arguments{
+\item{angle}{Euler angle vector}
+}
 \description{
 Euler angles to quaternions
 }

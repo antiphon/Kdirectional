@@ -2,10 +2,12 @@
 % Please edit documentation in R/from_ellipsoid_methods.R
 \name{summary.ellipsoid}
 \alias{summary.ellipsoid}
-\title{Summarise an ellipsoid}
+\title{############################################################
+Summarise an ellipsoid}
 \usage{
-\method{summary}{ellipsoid}(x, ...)
+\method{summary}{ellipsoid}(object, ...)
 }
 \description{
+############################################################
 Summarise an ellipsoid
 }

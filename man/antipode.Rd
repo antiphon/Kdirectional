@@ -6,6 +6,9 @@
 \usage{
 antipode(latlon)
 }
+\arguments{
+\item{latlon}{lat lon}
+}
 \description{
 antipode lat and lon
 }

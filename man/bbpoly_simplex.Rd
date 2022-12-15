@@ -6,6 +6,9 @@
 \usage{
 bbpoly_simplex(d = 3)
 }
+\arguments{
+\item{d}{dimension, 2 or 3}
+}
 \description{
-Simplex object
+create a simplex (triangle)
 }

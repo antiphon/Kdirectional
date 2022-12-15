@@ -1,8 +1,9 @@
 
 #' bin angles
 #' 
-#' @param a vector of angles, from -pi to pi
+#' @param x vector of angles, from -pi to pi
 #' @param k number of bins
+#' 
 #' @export
 angles.bin <- function(x, k=25){
   #if(ncol(x)>1) stop("Only for 2D.")
@@ -29,7 +30,6 @@ angles.bin <- function(x, k=25){
 #' 
 #' 
 #' @export
-
 angles.flower <- function(angles, binned, span=0, k=25, nums=FALSE, ci=FALSE, ...){
   if(missing(angles) & missing(binned)) stop("angles or binned data needed.")
   if(!missing(angles) & missing(binned)) binned <- angles.bin(angles, k) 

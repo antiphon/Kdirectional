@@ -184,6 +184,9 @@ rellipsoid_dev <- function(n, axes=c(1,1,1), noise.sd=0, R=NULL, method=1, rej=F
 
 #' Check if a vector (or vectors), multiplied by inf, go(es) through a triangle in 3D
 #' 
+#' @param u unit vector
+#' @param triangle triangle coordinates
+#' 
 #' @import sp
 #' @export
 
@@ -193,7 +196,8 @@ check_vector_passes_triangle <- function(u, triangle){
   
   proj <- project_to_plane(u, pl[1:3])
   tproj <- project_to_plane(triangle, pl[1:3])
-  point.in.polygon(proj[,1], proj[,2], tproj[,1], tproj[,2])==1
+  # check
+  ( point.in.polygon(proj[,1], proj[,2], tproj[,1], tproj[,2]) == 1 )
 }
 
 

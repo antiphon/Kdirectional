@@ -28,7 +28,6 @@
 #' 
 #' @useDynLib Kdirectional
 #' @export
-
 pcf_anin_cylinder <- function(x, u, epsilon, r, lambda=NULL, lambda_h, r_h, 
                               stoyan=0.15,
                      renormalise=TRUE,  

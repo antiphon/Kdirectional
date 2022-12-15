@@ -6,6 +6,9 @@
 \usage{
 bbpoly2bbox(x)
 }
+\arguments{
+\item{x}{bbpoly}
+}
 \description{
 Return the bounding box of a bbpoly
 }

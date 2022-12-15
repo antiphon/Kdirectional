@@ -6,6 +6,17 @@
 \usage{
 add_ellipsoid2persp(x, N = 2, colmap = values2colors, pmat, ...)
 }
+\arguments{
+\item{x}{ellipsoid}
+
+\item{N}{refining iterations}
+
+\item{colmap}{function to generate colors from values}
+
+\item{pmat}{camera projection matrix}
+
+\item{...}{passed on to polygon}
+}
 \description{
 add ellipse to persp plot
 }

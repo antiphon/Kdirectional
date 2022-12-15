@@ -11,9 +11,9 @@ bbpoly_affine(bbpoly, A, s = c(0, 0, 0), center_before_A = FALSE)
 
 \item{A}{linear transformation}
 
-\item{center_before_A}{Center the polygon to mass centrum before applying A? Reversed after A and before shift.}
+\item{s}{shift vector}
 
-\item{shift}{shift vector}
+\item{center_before_A}{Center the polygon to mass centrum before applying A? Reversed after A and before shift.}
 }
 \description{
 Affine transformation of a polytope

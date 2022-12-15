@@ -3,7 +3,7 @@
 \docType{class}
 \name{fryellipsoids-class}
 \alias{fryellipsoids-class}
-\title{Constructor}
+\title{Fry-Ellipsoids}
 \description{
-Constructor
+Estimate of the ellipsoid fitted to Fry-points.
 }

@@ -6,6 +6,9 @@
 \usage{
 rotationMatrix2EulerAngles(R)
 }
+\arguments{
+\item{R}{rotation matrix}
+}
 \value{
 (Heading, Attitude, Bank)
 }

@@ -1,3 +1,7 @@
+#' Anisotropic pcf object
+#' 
+#' Estimate of the anisotropic pcf.
+#'
 #' @export 
 setClass("pcf_anisotropic")
 

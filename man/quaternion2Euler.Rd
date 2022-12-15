@@ -6,6 +6,9 @@
 \usage{
 quaternion2Euler(q)
 }
+\arguments{
+\item{q}{quartenion vector}
+}
 \description{
 Quaternion to Euler axis/angle
 }

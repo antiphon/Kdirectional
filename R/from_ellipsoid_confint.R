@@ -3,7 +3,7 @@
 #' 
 #' Assuming normality of errors.
 #' 
-#' @param x Fitted ellipsoid
+#' @param object Fitted ellipsoid 
 #' @param fun Optional contrast function. See ellipse_contrast_2d for an example.
 #' @param probs The quantiles for the CI. Default is c(0.025, 0.975)
 #' @param tol tolerance for absolute  deviation in the ||beta||=1 constraint.
@@ -12,9 +12,13 @@
 #' 
 #' @import mvtnorm
 #' @export
-
-confint.ellipsoid <- function(x, fun, nsim=1000, probs=c(0.025, 0.975),  
+confint.ellipsoid <- function(object, 
+                              parm, level, 
+                              fun, 
+                              nsim=1000, 
+                              probs=c(0.025, 0.975),  
                               Asolve.eps=0.01, ...){
+  x <- object
   S <- x$ols_fit$varcov
   if(is.null(S)) stop("Ellipsoid object does not contain varcov matrix. (ALS not supported)")
   m <- x$ols_fit$beta_est

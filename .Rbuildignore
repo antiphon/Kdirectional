@@ -6,3 +6,6 @@
 ^docs$
 ^pkgdown$
 ^\.github$
+test_strauss_3d.rda
+test_strauss.rda
+test*

@@ -6,6 +6,9 @@
 \usage{
 bbquad_planes(b)
 }
+\arguments{
+\item{b}{bbquad}
+}
 \description{
 normal vector and a point -format. In 2D returns the surface lines.
 }

@@ -6,6 +6,11 @@
 \usage{
 \method{print}{bbquad}(x, ...)
 }
+\arguments{
+\item{x}{bbquad}
+
+\item{...}{ignored}
+}
 \description{
 print method for bbquad, a cuboid made of quads
 }

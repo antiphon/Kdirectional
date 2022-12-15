@@ -6,6 +6,9 @@
 \usage{
 ll2ai(latlon)
 }
+\arguments{
+\item{latlon}{lat lon}
+}
 \description{
 latlon to aziinc
 }

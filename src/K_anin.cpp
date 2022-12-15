@@ -75,7 +75,7 @@ NumericMatrix Kest_anin_border_c(NumericMatrix coord, NumericVector lambda,
             ang = fmin(ang, M_PI-ang);
             if(ang < epsilon){
               for(ri=0; ri < nr; ri++){
-                if(d < r(ri) && (bdist(i) > r(ri) | border==0) ) out(ri, ui) += w;
+                if((d < r(ri)) && ( (bdist(i) > r(ri)) | (border==0)) ) out(ri, ui) += w;
               }
             }
           }
@@ -131,7 +131,7 @@ NumericMatrix Kest_anin_cylinder_c(NumericMatrix coord,
           //if(dist < epsilon){ // inside the infinite cylinder
           {
             for(ri=0; ri < nr; ri++){
-              if(d < r(ri) & dist < epsilon(ri)) out(ri, ui) += w;
+              if((d < r(ri)) & (dist < epsilon(ri))) out(ri, ui) += w;
             }
           }
         }
@@ -180,7 +180,7 @@ NumericMatrix Kest_anin_cylinder_border_c(NumericMatrix coord, NumericVector lam
             dist = sqrt(dist);
             { 
               for(ri=0; ri < nr; ri++){
-                if(dist < epsilon(ri) && d < r(ri) && (bdist(i) > r(ri) | border==0) ) out(ri, ui) += w;
+                if((dist < epsilon(ri)) && (d < r(ri)) && ( (bdist(i) > r(ri)) | (border==0) ) ) out(ri, ui) += w;
               }
             }
           }

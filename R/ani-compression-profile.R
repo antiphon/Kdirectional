@@ -1,9 +1,17 @@
+#' Anisotropy profile
+#' 
+#' Estimate of the anisotropy profile.
 #'
 #' @export
 setClass("anisotropyprofile")
 
+
+#' Summary of Anisotropy profile
+#' 
+#' Information about the anisotropy-profile.
+#'
 #' @export
-setClass("anisotropyprofile.summary")
+setClass("anisotropyprofile_summary")
 #'
 #' Anisotropy profile for given diagonal transformations
 #' 
@@ -17,6 +25,7 @@ setClass("anisotropyprofile.summary")
 #' @param eps Sector angle
 #' @param border Border correction? Should use this unless the data is large.
 #' @param antipodal Use antipodally symmetric estimation of sector-K?
+#' @param ... not used
 #' 
 #' @details
 #' For each v in grid, transform x -> T(v)x and summarize anisotropy by
@@ -107,19 +116,19 @@ print.anisotropyprofile <- function(x, ...) {
 #' Summary for anisotropy profile
 #' 
 #' @export
-summary.anisotropyprofile <- function(x, ...) {
-  y <- x
+summary.anisotropyprofile <- function(object, ...) {
+  x <- object
   tab <- x$profile
   i <- which.min(tab)
   x$estimate <- diag(x$grid[i,])
-  class(x) <- "anisotropyprofile.summary"
+  class(x) <- "anisotropyprofile_summary"
   x
 }
 
 #' Print method for "anisotropyprofile" summary
 #' 
 #' @export
-print.anisotropyprofile.summary <- function(x, ...){
+print.anisotropyprofile_summary <- function(x, ...){
   cat("Anisotropy profile\n")
   cat("Range of integration: [", min(x$r), ",", max(x$r), "]\n")
   cat("Difference power:", x$power, "\n")
@@ -165,6 +174,7 @@ lines.anisotropyprofile <- function(x, ..., scale=TRUE) {
 #' @param r range of integration
 #' @param eps width of cone angle
 #' @param antipodal If TRUE, antipodes are equated
+#' @param power power of metric
 #'
 anisotropy_abs_fast <- function(f, r, eps, antipodal, power){
   Fr <- sqrt(rowSums(f^2))

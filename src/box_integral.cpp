@@ -41,7 +41,7 @@ NumericVector box_integral(NumericMatrix x,
     c = fmin(h, x(i,1)-bbox(0,1));
     d = fmin(h, bbox(1,1)-x(i,1)); 
     // not hitting the edge?
-    if(a==h & b==h & c==h & d==h) s=w;
+    if( (a==h) & (b==h) & (c==h) & (d==h) ) s=w;
     else{
       s=0;
       // hit edge
@@ -133,7 +133,7 @@ NumericVector box_integral_grid(NumericMatrix x,
       inside = true;
       for(k=0; k < dim; k++) {
         c = x(i,k) + mask(j,k); // shifted mask point's k'th coordinate
-        if( c < bbox(0,k) | c > bbox(1,k) ) {
+        if( (c < bbox(0,k)) | (c > bbox(1,k)) ) {
           inside = false;
           break; // no need to check the rest of dimensions
         }

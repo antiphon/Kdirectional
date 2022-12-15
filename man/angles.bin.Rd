@@ -7,9 +7,9 @@
 angles.bin(x, k = 25)
 }
 \arguments{
-\item{k}{number of bins}
+\item{x}{vector of angles, from -pi to pi}
 
-\item{a}{vector of angles, from -pi to pi}
+\item{k}{number of bins}
 }
 \description{
 bin angles

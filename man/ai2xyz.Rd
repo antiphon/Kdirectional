@@ -6,6 +6,9 @@
 \usage{
 ai2xyz(aziinc)
 }
+\arguments{
+\item{aziinc}{azi, directions}
+}
 \description{
 (azi,incl) to 3d coordinates
 }

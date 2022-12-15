@@ -6,6 +6,9 @@
 \usage{
 xyz2ai(xyz)
 }
+\arguments{
+\item{xyz}{unit vector 3D}
+}
 \description{
 xyz to azi inc
 }

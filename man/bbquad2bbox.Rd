@@ -6,6 +6,9 @@
 \usage{
 bbquad2bbox(x)
 }
+\arguments{
+\item{x}{bbquad}
+}
 \description{
 Return the bounding box of a bbquad
 }

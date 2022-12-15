@@ -1,9 +1,11 @@
 #' Estimate the nearest neighbour distance distribution
 #' 
-#' Spatstat notation G
+#' Spatstat notation G. 
+#'  
+#' @param x point pattern
+#' @param r vector of ranges
 #' 
-#' @export
-
+#' 
 Gest <- function(x, r){
   warning("Not properly tested.")
   x <- check_pp(x)

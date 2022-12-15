@@ -6,6 +6,9 @@
 \usage{
 poly_to_bbquad(x, y)
 }
+\arguments{
+\item{x, y}{polygon coordinates}
+}
 \description{
 bbquad from 2d polygon
 }

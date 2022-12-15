@@ -6,6 +6,9 @@
 \usage{
 rad2deg(rad)
 }
+\arguments{
+\item{rad}{radians}
+}
 \description{
 Radians to degree
 }

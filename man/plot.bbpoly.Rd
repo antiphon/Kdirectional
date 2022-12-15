@@ -6,6 +6,21 @@
 \usage{
 \method{plot}{bbpoly}(x, normals = FALSE, faces = FALSE, ecol = 2, ncol = 4, add = TRUE, ...)
 }
+\arguments{
+\item{x}{bbpoly object}
+
+\item{normals}{draw normals}
+
+\item{faces}{draw faces}
+
+\item{ecol}{edge color}
+
+\item{ncol}{normal color}
+
+\item{add}{add or not}
+
+\item{...}{passsed to shade3d or lines (2d)}
+}
 \description{
 Plot bbpoly object
 }

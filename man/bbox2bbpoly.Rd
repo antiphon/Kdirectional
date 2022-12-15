@@ -6,6 +6,9 @@
 \usage{
 bbox2bbpoly(bb)
 }
+\arguments{
+\item{bb}{bbox}
+}
 \description{
 Construct a bbpoly from column range matrix
 }

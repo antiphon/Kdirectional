@@ -6,6 +6,9 @@
 \usage{
 check_bbpoly(x)
 }
+\arguments{
+\item{x}{object to check for bbpoly class}
+}
 \description{
 Check with error
 }

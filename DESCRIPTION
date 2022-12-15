@@ -1,20 +1,33 @@
 Package: Kdirectional
 Type: Package
 Title: Analysis of anisotropy in point patterns using second order statistics
-Version: 1.7
-Date: 2022-12-11
+Version: 1.8
+Date: 2022-12-15
 Author: Tuomas Rajala
 Maintainer: Tuomas Rajala <tuomas.rajala@iki.fi>
 Description: Tools for analysing linear transformations of 2D and 3D point
     patterns. Includes various directed summary statistics, and scaling+rotation estimations
     using Fry points.
 License: GPL
+Encoding: UTF-8
 Depends:
+    R (>= 3.5.0),
     Rcpp (>= 0.10.6)
 LinkingTo: Rcpp
 Suggests:
     knitr,
-    rmarkdown
+    rmarkdown,
+    spatstat
+Imports: 
+    graphics,
+    grDevices,
+    methods,
+    utils,
+    stats,
+    Matrix,
+    mvtnorm,
+    rgl,
+    sp
 VignetteBuilder: knitr
 RoxygenNote: 7.2.1
 URL: https://antiphon.github.io/Kdirectional/,

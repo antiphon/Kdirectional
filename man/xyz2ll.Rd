@@ -6,6 +6,9 @@
 \usage{
 xyz2ll(xyz)
 }
+\arguments{
+\item{xyz}{unit vector}
+}
 \description{
 xyz to lat lon
 }

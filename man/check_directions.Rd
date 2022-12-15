@@ -6,6 +6,19 @@
 \usage{
 check_directions(theta, epsilon, unit, dim = 2, antipode = FALSE, n_dir = 12)
 }
+\arguments{
+\item{theta}{angles}
+
+\item{epsilon}{opening}
+
+\item{unit}{unit vecs}
+
+\item{dim}{dimension}
+
+\item{antipode}{include antipodal directions}
+
+\item{n_dir}{resolution of generated directions}
+}
 \description{
-Sector computation directions
+Internal use only. Check input or generate directions.
 }

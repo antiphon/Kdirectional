@@ -6,6 +6,11 @@
 \usage{
 is.bbquad(x, ...)
 }
+\arguments{
+\item{x}{object to check}
+
+\item{...}{ignored}
+}
 \description{
 check class bbquad
 }

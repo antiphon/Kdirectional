@@ -14,6 +14,8 @@ anisotropy_abs_fast(f, r, eps, antipodal, power)
 \item{eps}{width of cone angle}
 
 \item{antipodal}{If TRUE, antipodes are equated}
+
+\item{power}{power of metric}
 }
 \description{
 Fast absolute anisotropy  statistic

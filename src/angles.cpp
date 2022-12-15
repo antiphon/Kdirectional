@@ -16,7 +16,7 @@ List c_angles(NumericMatrix x, IntegerVector from, IntegerVector to) {
     NumericVector angles(n);
     NumericVector angles2(n);
     NumericVector nndists(n);
-    int nn;
+    int nn = 0;
     
     for(i=0; i < from.length(); i++) {
       f = from[i]-1;

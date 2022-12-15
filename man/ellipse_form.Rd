@@ -2,7 +2,8 @@
 % Please edit documentation in R/from_ellipsoid_methods.R
 \name{ellipse_form}
 \alias{ellipse_form}
-\title{Ellipse center and matrix from general parameter form}
+\title{###################################################################
+Ellipse center and matrix from general parameter form}
 \usage{
 ellipse_form(beta, d, check = FALSE)
 }
@@ -14,5 +15,6 @@ ellipse_form(beta, d, check = FALSE)
 \item{check}{Check for definiteness?}
 }
 \description{
+###################################################################
 Ellipse center and matrix from general parameter form
 }

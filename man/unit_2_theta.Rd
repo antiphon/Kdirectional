@@ -6,6 +6,9 @@
 \usage{
 unit_2_theta(unit)
 }
+\arguments{
+\item{unit}{vector(s as matrix, cols=dimensions)}
+}
 \description{
 unit vector to theta (angle) list format input
 }

@@ -9,6 +9,7 @@
 #' @param n number of uniform dummies
 #'
 #' @useDynLib Kdirectional
+#' @import stats methods utils 
 #' @export
 
 Fest_directional <- function(x, u, theta, r, n) {

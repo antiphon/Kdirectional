@@ -6,6 +6,9 @@
 \usage{
 rotationMatrix2quaternion(R)
 }
+\arguments{
+\item{R}{matrix}
+}
 \description{
 Rotation matrix to quaternion
 }

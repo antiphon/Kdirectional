@@ -2,7 +2,8 @@
 % Please edit documentation in R/from_ellipsoid_methods.R
 \name{ellipse_solve_rota}
 \alias{ellipse_solve_rota}
-\title{Solve rotation and semi-axes from general transform}
+\title{########################################################################
+Solve rotation and semi-axes from general transform}
 \usage{
 ellipse_solve_rota(A, eps = 0)
 }
@@ -12,6 +13,7 @@ ellipse_solve_rota(A, eps = 0)
 \item{eps}{Inflate diagonal by this factor, to avoid numerical problems.}
 }
 \description{
+########################################################################
 Solve rotation and semi-axes from general transform
 }
 \details{
