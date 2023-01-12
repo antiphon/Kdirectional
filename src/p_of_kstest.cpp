@@ -1,15 +1,41 @@
 #include <Rcpp.h>
 using namespace Rcpp;
 
-void mMultiply(double *A,double *B,double *C,int m) { int i,j,k; double s;
-for(i=0;i<m;i++) for(j=0; j<m; j++)
-{s=0.; for(k=0;k<m;k++) s+=A[i*m+k]*B[k*m+j]; C[i*m+j]=s;}
+// TR code copied from somewhere, sorry someone for not crediting.
+
+void mMultiply(double *A,double *B,double *C,int m) { 
+  int i,j,k; double s;
+  for(i=0;i<m;i++) for(j=0; j<m; j++){
+    s=0.; 
+    for(k=0;k<m;k++) 
+      s+=A[i*m+k]*B[k*m+j]; 
+    C[i*m+j]=s;
+  }
 }
-void mPower(double *A,int eA,double *V,int *eV,int m,int n)
-{ double *B;int eB,i;
-if(n==1) {for(i=0;i<m*m;i++) V[i]=A[i];*eV=eA; return;} mPower(A,eA,V,eV,m,n/2); B=(double*)malloc((m*m)*sizeof(double)); mMultiply(V,V,B,m); eB=2*(*eV); if(n%2==0){for(i=0;i<m*m;i++) V[i]=B[i]; *eV=eB;}
-else {mMultiply(A,B,V,m); *eV=eA+eB;}
-if(V[(m/2)*m+(m/2)]>1e140) {for(i=0;i<m*m;i++) V[i]=V[i]*1e-140;*eV+=140;} free(B);
+
+void mPower(double *A,int eA,double *V,int *eV,int m,int n) { 
+  double *B;int eB,i;
+  if(n==1) {
+    for(i=0;i<m*m;i++) V[i]=A[i];*eV=eA; 
+    return;
+  } 
+  mPower(A,eA,V,eV,m,n/2); 
+  B=(double*)malloc((m*m)*sizeof(double)); 
+  mMultiply(V,V,B,m); 
+  eB=2*(*eV); 
+  if(n%2==0){
+    for(i=0;i<m*m;i++) V[i]=B[i]; 
+    *eV=eB;
+  }
+  else {
+    mMultiply(A,B,V,m); 
+    *eV=eA+eB;
+  }
+  if(V[(m/2)*m+(m/2)]>1e140) {
+    for(i=0;i<m*m;i++) V[i]=V[i]*1e-140;
+    *eV+=140;
+  } 
+  free(B);
 }
 
 

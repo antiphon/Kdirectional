@@ -1,7 +1,7 @@
 Package: Kdirectional
 Type: Package
 Title: Analysis of anisotropy in point patterns using second order statistics
-Version: 1.8
+Version: 1.8-1
 Date: 2022-12-15
 Author: Tuomas Rajala
 Maintainer: Tuomas Rajala <tuomas.rajala@iki.fi>
