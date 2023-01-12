@@ -4,7 +4,7 @@
 \alias{plot.confint_fryellipsoids}
 \title{Plot confidence intervals}
 \usage{
-plot.confint_fryellipsoids(x, ylim, ...)
+\method{plot}{confint_fryellipsoids}(x, ylim, ...)
 }
 \description{
 Plot confidence intervals

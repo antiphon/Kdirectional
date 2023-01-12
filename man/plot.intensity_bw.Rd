@@ -4,7 +4,7 @@
 \alias{plot.intensity_bw}
 \title{Quick plot for intensity bw object}
 \usage{
-plot.intensity_bw(x, ...)
+\method{plot}{intensity_bw}(x, ...)
 }
 \arguments{
 \item{x}{output of \link{intensity_bandwidth_profile}}

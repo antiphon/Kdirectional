@@ -30,7 +30,6 @@
 #' Returns a dataframe.
 #' 
 #' @useDynLib Kdirectional
-#' @export
 
 Test_anin <- function(x, u, epsilon, r, lambda=NULL, lambda_h, 
                       renormalise=TRUE,  border=1, ...) {

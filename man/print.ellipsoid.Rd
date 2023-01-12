@@ -5,7 +5,7 @@
 \title{###########################################################
 Print ellipsoid}
 \usage{
-print.ellipsoid(x, ...)
+\method{print}{ellipsoid}(x, ...)
 }
 \description{
 ###########################################################

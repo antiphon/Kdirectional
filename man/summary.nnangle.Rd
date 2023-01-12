@@ -4,7 +4,7 @@
 \alias{summary.nnangle}
 \title{Summary method for nearest neighbour angles}
 \usage{
-summary.nnangle(object, ...)
+\method{summary}{nnangle}(object, ...)
 }
 \arguments{
 \item{object}{from nnangle-function}

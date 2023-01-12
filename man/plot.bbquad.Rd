@@ -4,15 +4,7 @@
 \alias{plot.bbquad}
 \title{Plot bbquad object}
 \usage{
-plot.bbquad(
-  x,
-  edges = FALSE,
-  normals = FALSE,
-  ecol = 2,
-  ncol = 4,
-  add = TRUE,
-  ...
-)
+\method{plot}{bbquad}(x, edges = FALSE, normals = FALSE, ecol = 2, ncol = 4, add = TRUE, ...)
 }
 \arguments{
 \item{x}{bbquad}

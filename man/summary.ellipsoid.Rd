@@ -5,7 +5,7 @@
 \title{############################################################
 Summarise an ellipsoid}
 \usage{
-summary.ellipsoid(object, ...)
+\method{summary}{ellipsoid}(object, ...)
 }
 \description{
 ############################################################

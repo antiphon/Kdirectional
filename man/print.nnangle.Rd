@@ -4,7 +4,7 @@
 \alias{print.nnangle}
 \title{Print for nearest neighbour angles}
 \usage{
-print.nnangle(x, ...)
+\method{print}{nnangle}(x, ...)
 }
 \description{
 Print for nearest neighbour angles

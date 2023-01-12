@@ -4,7 +4,7 @@
 \alias{plot.f_cone}
 \title{Plot a typical conical directed function of range}
 \usage{
-plot.f_cone(x, r_scale = 1, rmax, ylim, legpos = "topright", lwd = 1, ...)
+\method{plot}{f_cone}(x, r_scale = 1, rmax, ylim, legpos = "topright", lwd = 1, ...)
 }
 \arguments{
 \item{x}{Output from some function}

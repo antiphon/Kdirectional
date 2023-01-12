@@ -4,7 +4,7 @@
 \alias{plot.pcf_directions}
 \title{Plot for pcf_directions}
 \usage{
-plot.pcf_directions(x, ymax = 2, ...)
+\method{plot}{pcf_directions}(x, ymax = 2, ...)
 }
 \description{
 Plot for pcf_directions

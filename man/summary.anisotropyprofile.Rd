@@ -4,7 +4,7 @@
 \alias{summary.anisotropyprofile}
 \title{Summary for anisotropy profile}
 \usage{
-summary.anisotropyprofile(object, ...)
+\method{summary}{anisotropyprofile}(object, ...)
 }
 \description{
 Summary for anisotropy profile
