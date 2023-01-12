@@ -1,12 +1,6 @@
 #include <Rcpp.h>
 using namespace Rcpp;
 
-// Below is a simple example of exporting a C++ function to R. You can
-// source this function into an R session using the Rcpp::sourceCpp 
-// function (or via the Source button on the editor toolbar)
-
-// For more on using Rcpp click the Help button on the editor toolbar
-
 void mMultiply(double *A,double *B,double *C,int m) { int i,j,k; double s;
 for(i=0;i<m;i++) for(j=0; j<m; j++)
 {s=0.; for(k=0;k<m;k++) s+=A[i*m+k]*B[k*m+j]; C[i*m+j]=s;}
@@ -23,16 +17,16 @@ if(V[(m/2)*m+(m/2)]>1e140) {for(i=0;i<m*m;i++) V[i]=V[i]*1e-140;*eV+=140;} free(
 double c_p_of_KStest(int n, double d)
 { int k,m,i,j,g,eH,eQ;
   double h,s,*H,*Q;
-//OMIT NEXT LINE IF YOU REQUIRE >7 DIGIT ACCURACY IN THE RIGHT TAIL
-s=d*d*n; if(s>7.24||(s>3.76&&n>99)) return 1-2*exp(-(2.000071+.331/sqrt(n)+1.409/n)*s);
-k=(int)(n*d)+1; m=2*k-1; h=k-n*d; H=(double*)malloc((m*m)*sizeof(double)); Q=(double*)malloc((m*m)*sizeof(double)); for(i=0;i<m;i++) for(j=0;j<m;j++)
-if(i-j+1<0) H[i*m+j]=0; else H[i*m+j]=1;
-for(i=0;i<m;i++) {H[i*m]-=pow(h,i+1); H[(m-1)*m+i]-=pow(h,(m-i));} H[(m-1)*m]+=(2*h-1>0?pow(2*h-1,m):0);
-for(i=0;i<m;i++) for(j=0;j<m;j++)
-if(i-j+1>0) for(g=1;g<=i-j+1;g++) H[i*m+j]/=g;
-eH=0; mPower(H,eH,Q,&eQ,m,n);
-s=Q[(k-1)*m+k-1];
-for(i=1;i<=n;i++) {s=s*i/n; if(s<1e-140) {s*=1e140; eQ-=140;}} s*=pow(10.,eQ); free(H); free(Q); return s;
+  //OMIT NEXT LINE IF YOU REQUIRE >7 DIGIT ACCURACY IN THE RIGHT TAIL
+  s=d*d*n; if(s>7.24||(s>3.76&&n>99)) return 1-2*exp(-(2.000071+.331/sqrt(n)+1.409/n)*s);
+  k=(int)(n*d)+1; m=2*k-1; h=k-n*d; H=(double*)malloc((m*m)*sizeof(double)); Q=(double*)malloc((m*m)*sizeof(double)); for(i=0;i<m;i++) for(j=0;j<m;j++)
+    if(i-j+1<0) H[i*m+j]=0; else H[i*m+j]=1;
+    for(i=0;i<m;i++) {H[i*m]-=pow(h,i+1); H[(m-1)*m+i]-=pow(h,(m-i));} H[(m-1)*m]+=(2*h-1>0?pow(2*h-1,m):0);
+    for(i=0;i<m;i++) for(j=0;j<m;j++)
+      if(i-j+1>0) for(g=1;g<=i-j+1;g++) H[i*m+j]/=g;
+      eH=0; mPower(H,eH,Q,&eQ,m,n);
+      s=Q[(k-1)*m+k-1];
+      for(i=1;i<=n;i++) {s=s*i/n; if(s<1e-140) {s*=1e140; eQ-=140;}} s*=pow(10.,eQ); free(H); free(Q); return s;
 }
 
 

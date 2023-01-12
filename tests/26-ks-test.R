@@ -12,7 +12,7 @@ y <- function(r) r
 
 D <- # TODO: Problem is that what is n?
 
-p <- pKolmogorov()
+p <- pKolmogorov(x)
 
 
 plot(v)
