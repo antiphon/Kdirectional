@@ -109,10 +109,6 @@ c_oh_K <- function(x, theta, r, bbox) {
     .Call('_Kdirectional_c_oh_K', PACKAGE = 'Kdirectional', x, theta, r, bbox)
 }
 
-c_p_of_KStest <- function(n, d) {
-    .Call('_Kdirectional_c_p_of_KStest', PACKAGE = 'Kdirectional', n, d)
-}
-
 c_pairwise_dist_angle <- function(x) {
     .Call('_Kdirectional_c_pairwise_dist_angle', PACKAGE = 'Kdirectional', x)
 }

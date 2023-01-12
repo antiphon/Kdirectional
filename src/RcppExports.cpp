@@ -431,18 +431,6 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
-// c_p_of_KStest
-double c_p_of_KStest(int n, double d);
-RcppExport SEXP _Kdirectional_c_p_of_KStest(SEXP nSEXP, SEXP dSEXP) {
-BEGIN_RCPP
-    Rcpp::RObject rcpp_result_gen;
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< int >::type n(nSEXP);
-    Rcpp::traits::input_parameter< double >::type d(dSEXP);
-    rcpp_result_gen = Rcpp::wrap(c_p_of_KStest(n, d));
-    return rcpp_result_gen;
-END_RCPP
-}
 // c_pairwise_dist_angle
 NumericMatrix c_pairwise_dist_angle(NumericMatrix x);
 RcppExport SEXP _Kdirectional_c_pairwise_dist_angle(SEXP xSEXP) {
@@ -606,7 +594,6 @@ static const R_CallMethodDef CallEntries[] = {
     {"_Kdirectional_c_knnangles", (DL_FUNC) &_Kdirectional_c_knnangles, 4},
     {"_Kdirectional_markcor_anin_c", (DL_FUNC) &_Kdirectional_markcor_anin_c, 11},
     {"_Kdirectional_c_oh_K", (DL_FUNC) &_Kdirectional_c_oh_K, 4},
-    {"_Kdirectional_c_p_of_KStest", (DL_FUNC) &_Kdirectional_c_p_of_KStest, 2},
     {"_Kdirectional_c_pairwise_dist_angle", (DL_FUNC) &_Kdirectional_c_pairwise_dist_angle, 1},
     {"_Kdirectional_c_pairwise_dist_angle_subset", (DL_FUNC) &_Kdirectional_c_pairwise_dist_angle_subset, 3},
     {"_Kdirectional_pcf_anin_fry_c", (DL_FUNC) &_Kdirectional_pcf_anin_fry_c, 7},
