@@ -4,7 +4,7 @@
 \alias{plot.pcf_anin}
 \title{Plot pcf_anin object}
 \usage{
-\method{plot}{pcf_anin}(x, r_scale = 1, rmax, ylim, legpos = "topright", ...)
+plot.pcf_anin(x, r_scale = 1, rmax, ylim, legpos = "topright", ...)
 }
 \arguments{
 \item{x}{Output from pcf_anin or pcf_anin_cylinder}

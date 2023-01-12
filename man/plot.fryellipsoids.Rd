@@ -4,7 +4,7 @@
 \alias{plot.fryellipsoids}
 \title{plot method for fryellipsoids}
 \usage{
-\method{plot}{fryellipsoids}(
+plot.fryellipsoids(
   x,
   ellipsoids = TRUE,
   used_points = TRUE,

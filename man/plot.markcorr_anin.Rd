@@ -4,7 +4,7 @@
 \alias{plot.markcorr_anin}
 \title{Plot markcorr_anin object}
 \usage{
-\method{plot}{markcorr_anin}(x, r_scale = 1, rmax, ylim, legpos = "topright", ...)
+plot.markcorr_anin(x, r_scale = 1, rmax, ylim, legpos = "topright", ...)
 }
 \arguments{
 \item{x}{Output from markcor_anin}

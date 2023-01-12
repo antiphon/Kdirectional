@@ -4,7 +4,7 @@
 \alias{plot.ellipsoid}
 \title{Plot an Ellipsoid Object}
 \usage{
-\method{plot}{ellipsoid}(
+plot.ellipsoid(
   x,
   add = TRUE,
   i = 0,

@@ -4,7 +4,7 @@
 \alias{plot.nnangle}
 \title{Plot for nnangle}
 \usage{
-\method{plot}{nnangle}(x, ...)
+plot.nnangle(x, ...)
 }
 \description{
 Plot for nnangle

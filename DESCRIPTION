@@ -29,6 +29,6 @@ Imports:
     rgl,
     sp
 VignetteBuilder: knitr
-RoxygenNote: 7.2.1
+RoxygenNote: 7.2.3
 URL: https://antiphon.github.io/Kdirectional/,
     https://github.com/antiphon/Kdirectional/

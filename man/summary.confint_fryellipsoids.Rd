@@ -4,7 +4,7 @@
 \alias{summary.confint_fryellipsoids}
 \title{Summary method for confint_fryellipsoid}
 \usage{
-\method{summary}{confint_fryellipsoids}(object, ...)
+summary.confint_fryellipsoids(object, ...)
 }
 \arguments{
 \item{...}{ignored}

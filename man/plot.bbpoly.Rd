@@ -4,7 +4,15 @@
 \alias{plot.bbpoly}
 \title{Plot bbpoly object}
 \usage{
-\method{plot}{bbpoly}(x, normals = FALSE, faces = FALSE, ecol = 2, ncol = 4, add = TRUE, ...)
+plot.bbpoly(
+  x,
+  normals = FALSE,
+  faces = FALSE,
+  ecol = 2,
+  ncol = 4,
+  add = TRUE,
+  ...
+)
 }
 \arguments{
 \item{x}{bbpoly object}

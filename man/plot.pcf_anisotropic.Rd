@@ -4,7 +4,7 @@
 \alias{plot.pcf_anisotropic}
 \title{method plot for anisotropic pcf-function}
 \usage{
-\method{plot}{pcf_anisotropic}(x, ab, ...)
+plot.pcf_anisotropic(x, ab, ...)
 }
 \description{
 method plot for anisotropic pcf-function

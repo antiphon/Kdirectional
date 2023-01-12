@@ -4,7 +4,7 @@
 \alias{print.bbquad}
 \title{print method for bbquad, a cuboid made of quads}
 \usage{
-\method{print}{bbquad}(x, ...)
+print.bbquad(x, ...)
 }
 \arguments{
 \item{x}{bbquad}

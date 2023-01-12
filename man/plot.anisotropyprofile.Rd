@@ -4,7 +4,7 @@
 \alias{plot.anisotropyprofile}
 \title{Plot method for "anisotropyprofile"}
 \usage{
-\method{plot}{anisotropyprofile}(
+plot.anisotropyprofile(
   x,
   ...,
   xlab = "first grid component",

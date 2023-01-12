@@ -4,7 +4,7 @@
 \alias{plot.os_K}
 \title{method plot for O-S K-function}
 \usage{
-\method{plot}{os_K}(x, ...)
+plot.os_K(x, ...)
 }
 \description{
 method plot for O-S K-function
