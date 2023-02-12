@@ -10,7 +10,6 @@
 #' @param Asolve.eps Inflate the A matrix diagonals by a factor of eps, to avoid numerical problems with (near) singular parameter sets.
 #' @param ... Passed on to sample_ellipse_beta
 #' 
-#' @import mvtnorm
 #' @export
 confint.ellipsoid <- function(object, 
                               parm, level, 
@@ -79,7 +78,6 @@ confint.ellipsoid <- function(object,
 #' @param probs The quantiles for the CI. Default is c(0.025, 0.975)
 #' @param tol tolerance for absolute  deviation in the ||beta||=1 constraint.
 #' 
-#' @import mvtnorm
 # #' @export
 
 confint.ellipsoid_old <- function(x, fun, nsim=1000, probs=c(0.025, 0.975),  ...){

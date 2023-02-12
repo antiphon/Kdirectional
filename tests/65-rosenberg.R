@@ -12,8 +12,8 @@ x <-  cbind(runif(nn), runif(nn))  * 60
 
 
 
-source("~/Sync/Aka/julkaisut/anisotropy-review-overleaf/examples/synthetic-examples/generate-stripe.R")
-x <- stripes
+#source("~/Sync/Aka/julkaisut/anisotropy-review-overleaf/examples/synthetic-examples/generate-stripe.R")
+#x <- stripes
 
 
 x <- check_pp(x)

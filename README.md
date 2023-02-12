@@ -2,13 +2,13 @@
 
 ## Description
 
-`{Kdirectional}` is an R-package containing tools for anisotropy analysis of point location data, also known as point patterns, based on pairwise differences. Focus is on tools that work both in 2D and in 3D. 
+`Kdirectional` is an R-package containing tools for anisotropy analysis of point location data, also known as point patterns, based on pairwise differences. Focus is on tools that work both in 2D and in 3D. 
 
 The package was born as a collection of custom functions for manipulating and visualising 3D point patterns, such as the ice sheet bubble data analysed in our geometric anistropy estimation paper Rajala et al. (2016)[^ice]. There might still be some exotic functions functions hanging around, undocumented, from early 2010s.
 
-In Rajala, Redenbach, Särkkä, Sormani (2018)[^rev] we collected "classical" point pattern statistics for anisotropy analysis, and in the follow up paper [^rev2] compared some of them in some simulation trials to see which "features" are most informative of anisotropy, and most powerful (statistically speaking) in testing for isotropy. `{Kdirectional}` includes all the summaries discussed in those papers. 
+In Rajala, Redenbach, Särkkä, Sormani (2018)[^rev] we collected "classical" point pattern statistics for anisotropy analysis, and in the follow up paper [^rev2] compared some of them in some simulation trials to see which "features" are most informative of anisotropy, and most powerful (statistically speaking) in testing for isotropy. `Kdirectional` includes all the summaries discussed in those papers. 
 
-The package has absorbed most of the functionality of `{ellipsoid}` (https://www.github.com/antiphon/ellipsoid) in order to reduce dependencies. 
+The package has absorbed most of the functionality of `ellipsoid` (https://www.github.com/antiphon/ellipsoid) in order to reduce dependencies. 
 
 Then name comes from the first function, Ripley's K-function for directional analysis (see `Kdirectional::Kest_directional`).
 
@@ -16,7 +16,7 @@ The codebase starts to be almost decade old in places, some documentation is mis
 
 ## How to install
 
-To install from Github, use `{devtools}` or `{remotes}`. 
+To install from Github, use `devtools` or `remotes`. 
 
 ```r
 # Requirements:
@@ -36,7 +36,7 @@ To also install the documentation (vignette), use
 install_github('antiphon/Kdirectional', build_vignettes = TRUE)
 ```
 
-The documentation should be available also as a `{pkgdown}` site.
+The documentation should be available also as a `pkgdown` site.
 
 
 [^ice]: T. Rajala, A. Särkkä, C. Redenbach, and M. Sormani. ‘Estimating Geometric Anisotropy in Spatial Point Patterns’. Spatial Statistics 15 (February 2016): 100–114. https://doi.org/10.1016/j.spasta.2015.12.005.

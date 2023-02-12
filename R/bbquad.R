@@ -85,7 +85,6 @@ bbquad_default <- function(xl=c(-.5,.5), yl=xl, zl=xl){
 #' @param x bbquad
 #' @param ... ignored
 #' 
-#' @exportMethod print
 #' @export
 
 print.bbquad <- function(x, ...){
@@ -118,8 +117,8 @@ is.bbquad <- function(x, ...){
 #' @param add add or not
 #' @param ... passsed to shade3d or lines (2d)
 #' 
+#' @importFrom rgl qmesh3d lines3d shade3d
 #' @export
-#' @import rgl
 
 plot.bbquad <- function(x, edges = FALSE, 
                         normals = FALSE, 

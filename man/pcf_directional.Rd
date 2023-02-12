@@ -33,4 +33,5 @@ Compute the sector/cone/cylindrical pcf function. This version uses the more gen
 x <- matrix(runif(300), ncol=2)
 k <- pcf_directional(x)
 plot(k, rmax = 0.1)
+
 }

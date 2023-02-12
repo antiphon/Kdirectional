@@ -21,7 +21,7 @@
 #' x <- matrix(runif(200), ncol=2)
 #' k <- Kest_directional(x)
 #' plot(k, rmax = 0.1)
-#' @import Matrix
+#' 
 #' @useDynLib Kdirectional
 #' @export
 
@@ -60,7 +60,6 @@ Kest_directional <- function(x, u, epsilon, r, ..., cylindrical = FALSE) {
 #' @return 
 #' Returns a dataframe.
 #' 
-#' @import Matrix
 #' @useDynLib Kdirectional
 #' @export
 

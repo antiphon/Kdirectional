@@ -244,8 +244,9 @@ bbpoly_planes <- function(x) {
 #' @param add add or not
 #' @param ... passsed to shade3d or lines (2d)
 #' 
+#' @importFrom rgl plot3d shade3d qmesh3d lines3d
+#' 
 #' @export
-#' @import rgl
 
 plot.bbpoly <- function(x, normals=FALSE, faces = FALSE,
                         ecol=2, ncol=4, add=TRUE, ...){

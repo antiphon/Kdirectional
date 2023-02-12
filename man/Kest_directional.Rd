@@ -33,4 +33,5 @@ Compute the sector/cone/cylindrical K function. This version uses the more gener
 x <- matrix(runif(200), ncol=2)
 k <- Kest_directional(x)
 plot(k, rmax = 0.1)
+
 }

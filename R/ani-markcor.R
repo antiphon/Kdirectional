@@ -23,7 +23,7 @@
 #' 
 #' 
 #' @useDynLib Kdirectional
-#' @import rgl
+#' 
 #' @export
 markcorr_anisotropic <- function(x, marks=NULL, r, f = function(a,b) a*b, 
                                directions,

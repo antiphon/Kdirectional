@@ -12,7 +12,7 @@
 #'   B) Triangulation by refining an icosahedron.
 #'   
 #' Returns latitude-longitude matrix. use ll2xyz or ll2ai for transformation.
-#' @import rgl
+#' @importFrom rgl icosahedron3d subdivision3d
 #' @export
 
 sphere.grid  <- function(N=2, lower=TRUE, ico=TRUE) {

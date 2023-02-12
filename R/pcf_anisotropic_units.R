@@ -21,7 +21,7 @@
 #' subdiving a regular icosahedron n_dir times. n_dir=2 is the default.
 #' 
 #' @useDynLib Kdirectional
-#' @import rgl
+#' @importFrom rgl subdivision3d
 #' @export
 
 pcf_directions <- function(x, directions, h, f=0.15, correction="translation", n_dir, r) {

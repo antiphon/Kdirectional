@@ -187,7 +187,7 @@ rellipsoid_dev <- function(n, axes=c(1,1,1), noise.sd=0, R=NULL, method=1, rej=F
 #' @param u unit vector
 #' @param triangle triangle coordinates
 #' 
-#' @import sp
+#' @importFrom sp point.in.polygon
 #' @export
 
 check_vector_passes_triangle <- function(u, triangle){

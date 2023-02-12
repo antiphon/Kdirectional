@@ -225,7 +225,6 @@ plot.fryellipsoids <- function(x, ellipsoids=TRUE, used_points=TRUE, sectors=NUL
 #############################################################
 #' Print method for fryellipsoids
 #' 
-#' @exportMethod print
 #' @export
 print.fryellipsoids <- function(x, ...) {
   cat("Ellipsoid fit to fry points.\n")

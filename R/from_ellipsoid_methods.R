@@ -17,7 +17,8 @@
 #' #' For 3D ellipsoid, if i=1,2 or 3, plot 2D intersection of 
 #' plane:  i = 1 yz-plane; i = 2 xz-plane; i = 3 xy-plane. 
 #' 
-#' @import rgl
+#' @importFrom rgl shade3d
+#' 
 #'@export
 plot.ellipsoid <- function(x,
                            add=TRUE, i=0, levels=1, 
@@ -95,7 +96,7 @@ predict.ellipsoid <- function(object, u, ...){
 #' 
 #' @param R Rotation matrix.
 #'
-#' @import rgl
+#' @importFrom rgl icosahedron3d subdivision3d translate3d asHomogeneous
 #' @export
 ellipsoid_shape <- function(N=2, axes=c(1,1,1), R=NULL, center=c(0,0,0)){
   ico <- rgl::icosahedron3d()
@@ -194,7 +195,9 @@ ellipse_solve_rota <- function(A, eps = 0){
 #' @param nsim number of simulations
 #' @param tol tolerance when comparing to vector length 1
 #' @param maxiter maximum number of iterations to try to get enough samples within tolerance
-#' @import mvtnorm 
+#' 
+#' @importFrom mvtnorm rmvnorm 
+#'
 #' @export
 sample_ellipse_beta <- function(x, nsim=100, tol=0, maxiter=500){
   d <- x$dim

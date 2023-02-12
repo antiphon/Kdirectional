@@ -92,7 +92,6 @@ plot.nnangle <- function(x, ...) {
 
 #' Print for nearest neighbour angles
 #' 
-#' @exportMethod print
 #' @export
 print.nnangle <- function(x, ...) {
   cat("Nearest neighbour angles and distances\n")

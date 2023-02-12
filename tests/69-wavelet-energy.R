@@ -2,11 +2,11 @@
 
 library(devtools)
 load_all(".")
-#source("tests/test-data.R")
+source("tests/test-data.R")
 
-#x <- pp
-source("~/Sync/Aka/julkaisut/anisotropy-review-overleaf/examples/synthetic-examples/generate-stripe.R")
-x <- stripes
+x <- pp
+#source("~/Sync/Aka/julkaisut/anisotropy-review-overleaf/examples/synthetic-examples/generate-stripe.R")
+#x <- stripes
 
 #nn <- 100
 #x <-  cbind(runif(nn) -.5, runif(nn) - .5)  * 60

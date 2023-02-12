@@ -179,7 +179,7 @@ if(0){
 }
 
 # 7. check the dot-product and covariance notation
-if(1){
+if(0){
   u <- c(1,2)
   u <- rbind( u/sqrt(sum(u^2)) )
   

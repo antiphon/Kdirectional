@@ -11,7 +11,9 @@ pp <- list(x=x, bbox=cbind(l,l,l))
 # compress
 co <- 0.8; s <- 1/sqrt(co)
 M <- diag(c(s,s,co))
+
 y <- x%*%t(M)
+
 bby <- pp$bbox%*%t(M)
 ppy <- list(x=y, bbox=bby)
 # translation weights

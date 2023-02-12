@@ -5,7 +5,7 @@ load_all(".")
 
 # gotta be able to compute intersections really fast
 
-n <- 100^2
+n <- 10^2
 
 x <- bbpoly_default()
 
